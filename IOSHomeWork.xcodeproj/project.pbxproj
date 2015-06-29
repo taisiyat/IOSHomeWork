@@ -7,6 +7,7 @@
 	objects = {
 
 /* Begin PBXBuildFile section */
+		76F7B43C9F0CCD82953F7B4C /* libPods-IOSHomeWorkTests.a in Frameworks */ = {isa = PBXBuildFile; fileRef = 406304F163B6566C4D1B0BC9 /* libPods-IOSHomeWorkTests.a */; };
 		8A3F16D61B3AD6C500E6551E /* main.m in Sources */ = {isa = PBXBuildFile; fileRef = 8A3F16D51B3AD6C500E6551E /* main.m */; };
 		8A3F16D91B3AD6C500E6551E /* AppDelegate.m in Sources */ = {isa = PBXBuildFile; fileRef = 8A3F16D81B3AD6C500E6551E /* AppDelegate.m */; };
 		8A3F16DC1B3AD6C500E6551E /* ViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 8A3F16DB1B3AD6C500E6551E /* ViewController.m */; };
@@ -27,6 +28,8 @@
 /* End PBXContainerItemProxy section */
 
 /* Begin PBXFileReference section */
+		406304F163B6566C4D1B0BC9 /* libPods-IOSHomeWorkTests.a */ = {isa = PBXFileReference; explicitFileType = archive.ar; includeInIndex = 0; path = "libPods-IOSHomeWorkTests.a"; sourceTree = BUILT_PRODUCTS_DIR; };
+		55B46FB7EC3516B7038401DA /* Pods-IOSHomeWorkTests.debug.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-IOSHomeWorkTests.debug.xcconfig"; path = "Pods/Target Support Files/Pods-IOSHomeWorkTests/Pods-IOSHomeWorkTests.debug.xcconfig"; sourceTree = "<group>"; };
 		8A3F16D01B3AD6C500E6551E /* IOSHomeWork.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = IOSHomeWork.app; sourceTree = BUILT_PRODUCTS_DIR; };
 		8A3F16D41B3AD6C500E6551E /* Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = Info.plist; sourceTree = "<group>"; };
 		8A3F16D51B3AD6C500E6551E /* main.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = main.m; sourceTree = "<group>"; };
@@ -40,6 +43,7 @@
 		8A3F16E91B3AD6C600E6551E /* IOSHomeWorkTests.xctest */ = {isa = PBXFileReference; explicitFileType = wrapper.cfbundle; includeInIndex = 0; path = IOSHomeWorkTests.xctest; sourceTree = BUILT_PRODUCTS_DIR; };
 		8A3F16EE1B3AD6C600E6551E /* Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = Info.plist; sourceTree = "<group>"; };
 		8A3F16EF1B3AD6C600E6551E /* IOSHomeWorkTests.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = IOSHomeWorkTests.m; sourceTree = "<group>"; };
+		DBC695F94A88503EC6D4A88A /* Pods-IOSHomeWorkTests.release.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-IOSHomeWorkTests.release.xcconfig"; path = "Pods/Target Support Files/Pods-IOSHomeWorkTests/Pods-IOSHomeWorkTests.release.xcconfig"; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -54,18 +58,30 @@
 			isa = PBXFrameworksBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				76F7B43C9F0CCD82953F7B4C /* libPods-IOSHomeWorkTests.a in Frameworks */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
 /* End PBXFrameworksBuildPhase section */
 
 /* Begin PBXGroup section */
+		67EE47B6239A77197EE051FC /* Pods */ = {
+			isa = PBXGroup;
+			children = (
+				55B46FB7EC3516B7038401DA /* Pods-IOSHomeWorkTests.debug.xcconfig */,
+				DBC695F94A88503EC6D4A88A /* Pods-IOSHomeWorkTests.release.xcconfig */,
+			);
+			name = Pods;
+			sourceTree = "<group>";
+		};
 		8A3F16C71B3AD6C500E6551E = {
 			isa = PBXGroup;
 			children = (
 				8A3F16D21B3AD6C500E6551E /* IOSHomeWork */,
 				8A3F16EC1B3AD6C600E6551E /* IOSHomeWorkTests */,
 				8A3F16D11B3AD6C500E6551E /* Products */,
+				67EE47B6239A77197EE051FC /* Pods */,
+				C08E624FF0E0289DD105FE78 /* Frameworks */,
 			);
 			sourceTree = "<group>";
 		};
@@ -119,6 +135,14 @@
 			name = "Supporting Files";
 			sourceTree = "<group>";
 		};
+		C08E624FF0E0289DD105FE78 /* Frameworks */ = {
+			isa = PBXGroup;
+			children = (
+				406304F163B6566C4D1B0BC9 /* libPods-IOSHomeWorkTests.a */,
+			);
+			name = Frameworks;
+			sourceTree = "<group>";
+		};
 /* End PBXGroup section */
 
 /* Begin PBXNativeTarget section */
@@ -143,9 +167,11 @@
 			isa = PBXNativeTarget;
 			buildConfigurationList = 8A3F16F61B3AD6C600E6551E /* Build configuration list for PBXNativeTarget "IOSHomeWorkTests" */;
 			buildPhases = (
+				4B49C199E1448BA8D9FDE63D /* Check Pods Manifest.lock */,
 				8A3F16E51B3AD6C600E6551E /* Sources */,
 				8A3F16E61B3AD6C600E6551E /* Frameworks */,
 				8A3F16E71B3AD6C600E6551E /* Resources */,
+				93C2532DAE9E524649F6E27C /* Copy Pods Resources */,
 			);
 			buildRules = (
 			);
@@ -213,6 +239,39 @@
 			runOnlyForDeploymentPostprocessing = 0;
 		};
 /* End PBXResourcesBuildPhase section */
+
+/* Begin PBXShellScriptBuildPhase section */
+		4B49C199E1448BA8D9FDE63D /* Check Pods Manifest.lock */ = {
+			isa = PBXShellScriptBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+			);
+			inputPaths = (
+			);
+			name = "Check Pods Manifest.lock";
+			outputPaths = (
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+			shellPath = /bin/sh;
+			shellScript = "diff \"${PODS_ROOT}/../Podfile.lock\" \"${PODS_ROOT}/Manifest.lock\" > /dev/null\nif [[ $? != 0 ]] ; then\n    cat << EOM\nerror: The sandbox is not in sync with the Podfile.lock. Run 'pod install' or update your CocoaPods installation.\nEOM\n    exit 1\nfi\n";
+			showEnvVarsInLog = 0;
+		};
+		93C2532DAE9E524649F6E27C /* Copy Pods Resources */ = {
+			isa = PBXShellScriptBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+			);
+			inputPaths = (
+			);
+			name = "Copy Pods Resources";
+			outputPaths = (
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+			shellPath = /bin/sh;
+			shellScript = "\"${SRCROOT}/Pods/Target Support Files/Pods-IOSHomeWorkTests/Pods-IOSHomeWorkTests-resources.sh\"\n";
+			showEnvVarsInLog = 0;
+		};
+/* End PBXShellScriptBuildPhase section */
 
 /* Begin PBXSourcesBuildPhase section */
 		8A3F16CC1B3AD6C500E6551E /* Sources */ = {
@@ -365,6 +424,7 @@
 		};
 		8A3F16F71B3AD6C600E6551E /* Debug */ = {
 			isa = XCBuildConfiguration;
+			baseConfigurationReference = 55B46FB7EC3516B7038401DA /* Pods-IOSHomeWorkTests.debug.xcconfig */;
 			buildSettings = {
 				BUNDLE_LOADER = "$(TEST_HOST)";
 				FRAMEWORK_SEARCH_PATHS = (
@@ -384,6 +444,7 @@
 		};
 		8A3F16F81B3AD6C600E6551E /* Release */ = {
 			isa = XCBuildConfiguration;
+			baseConfigurationReference = DBC695F94A88503EC6D4A88A /* Pods-IOSHomeWorkTests.release.xcconfig */;
 			buildSettings = {
 				BUNDLE_LOADER = "$(TEST_HOST)";
 				FRAMEWORK_SEARCH_PATHS = (
@@ -416,6 +477,7 @@
 				8A3F16F51B3AD6C600E6551E /* Release */,
 			);
 			defaultConfigurationIsVisible = 0;
+			defaultConfigurationName = Release;
 		};
 		8A3F16F61B3AD6C600E6551E /* Build configuration list for PBXNativeTarget "IOSHomeWorkTests" */ = {
 			isa = XCConfigurationList;
@@ -424,6 +486,7 @@
 				8A3F16F81B3AD6C600E6551E /* Release */,
 			);
 			defaultConfigurationIsVisible = 0;
+			defaultConfigurationName = Release;
 		};
 /* End XCConfigurationList section */
 	};
