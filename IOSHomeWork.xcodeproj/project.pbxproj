@@ -121,6 +121,7 @@
 		8A3F16EC1B3AD6C600E6551E /* IOSHomeWorkTests */ = {
 			isa = PBXGroup;
 			children = (
+				8A6EF8E21B41A3AB00CABD97 /* Specs */,
 				8A3F16EF1B3AD6C600E6551E /* IOSHomeWorkTests.m */,
 				8A3F16ED1B3AD6C600E6551E /* Supporting Files */,
 			);
@@ -154,6 +155,13 @@
 				8A6EF8D71B41A1D400CABD97 /* ViewController.m */,
 			);
 			path = Source;
+			sourceTree = "<group>";
+		};
+		8A6EF8E21B41A3AB00CABD97 /* Specs */ = {
+			isa = PBXGroup;
+			children = (
+			);
+			path = Specs;
 			sourceTree = "<group>";
 		};
 		C08E624FF0E0289DD105FE78 /* Frameworks */ = {
