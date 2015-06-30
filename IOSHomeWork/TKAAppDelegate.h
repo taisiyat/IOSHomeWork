@@ -1,5 +1,5 @@
 //
-//  ViewController.h
+//  TKAAppDelegate.h
 //  IOSHomeWork
 //
 //  Created by Taisiya on 24.06.15.
@@ -8,8 +8,8 @@
 
 #import <UIKit/UIKit.h>
 
-@interface ViewController : UIViewController
-
+@interface TKAAppDelegate : UIResponder <UIApplicationDelegate>
+@property (strong, nonatomic) UIWindow *window;
 
 @end
 

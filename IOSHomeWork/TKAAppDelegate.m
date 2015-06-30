@@ -1,21 +1,34 @@
 //
-//  AppDelegate.m
+//  TKAAppDelegate.m
 //  IOSHomeWork
 //
 //  Created by Taisiya on 24.06.15.
 //  Copyright (c) 2015 TKAHomeWork. All rights reserved.
 //
 
-#import "AppDelegate.h"
+#import "TKAAppDelegate.h"
+#import "TKAStudyViewController.h"
 
-@interface AppDelegate ()
+@interface TKAAppDelegate ()
 
 @end
 
-@implementation AppDelegate
+@implementation TKAAppDelegate
 
 
 - (BOOL)application:(UIApplication *)application didFinishLaunchingWithOptions:(NSDictionary *)launchOptions {
+    UIWindow *window = [[UIWindow alloc] initWithFrame:[[UIScreen mainScreen] bounds]];
+    self.window = window;
+    window.backgroundColor = [UIColor blueColor];
+    TKAStudyViewController *controller = [TKAStudyViewController new];
+    window.rootViewController = controller;
+    //window.rootViewController = [TKAStudyViewController new];
+
+    [window makeKeyAndVisible];
+    
+    controller.data = @"study 4";
+//    window.rootViewController.view.frame = CGRectMake(20, 20, 100, 100);
+    
     // Override point for customization after application launch.
     return YES;
 }

@@ -12,14 +12,15 @@
 		8A3F16F01B3AD6C600E6551E /* IOSHomeWorkTests.m in Sources */ = {isa = PBXBuildFile; fileRef = 8A3F16EF1B3AD6C600E6551E /* IOSHomeWorkTests.m */; };
 		8A6EF8D81B41A1D400CABD97 /* LaunchScreen.xib in Resources */ = {isa = PBXBuildFile; fileRef = 8A6EF8CE1B41A1D400CABD97 /* LaunchScreen.xib */; };
 		8A6EF8D91B41A1D400CABD97 /* LaunchScreen.xib in Resources */ = {isa = PBXBuildFile; fileRef = 8A6EF8CE1B41A1D400CABD97 /* LaunchScreen.xib */; };
-		8A6EF8DA1B41A1D400CABD97 /* Main.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = 8A6EF8D01B41A1D400CABD97 /* Main.storyboard */; };
-		8A6EF8DB1B41A1D400CABD97 /* Main.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = 8A6EF8D01B41A1D400CABD97 /* Main.storyboard */; };
 		8A6EF8DC1B41A1D400CABD97 /* Images.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = 8A6EF8D21B41A1D400CABD97 /* Images.xcassets */; };
 		8A6EF8DD1B41A1D400CABD97 /* Images.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = 8A6EF8D21B41A1D400CABD97 /* Images.xcassets */; };
-		8A6EF8DE1B41A1D400CABD97 /* AppDelegate.m in Sources */ = {isa = PBXBuildFile; fileRef = 8A6EF8D51B41A1D400CABD97 /* AppDelegate.m */; };
-		8A6EF8DF1B41A1D400CABD97 /* AppDelegate.m in Sources */ = {isa = PBXBuildFile; fileRef = 8A6EF8D51B41A1D400CABD97 /* AppDelegate.m */; };
-		8A6EF8E01B41A1D400CABD97 /* ViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 8A6EF8D71B41A1D400CABD97 /* ViewController.m */; };
-		8A6EF8E11B41A1D400CABD97 /* ViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 8A6EF8D71B41A1D400CABD97 /* ViewController.m */; };
+		8A86DCCF1B42893B007FE402 /* TKAAppDelegate.m in Sources */ = {isa = PBXBuildFile; fileRef = 8A86DCCE1B42893B007FE402 /* TKAAppDelegate.m */; };
+		8A86DCD31B4289EF007FE402 /* TKAStudyViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 8A86DCD11B4289EF007FE402 /* TKAStudyViewController.m */; };
+		8A86DCD41B4289EF007FE402 /* TKAStudyViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 8A86DCD11B4289EF007FE402 /* TKAStudyViewController.m */; };
+		8A86DCD51B4289EF007FE402 /* TKAStudyViewController.xib in Resources */ = {isa = PBXBuildFile; fileRef = 8A86DCD21B4289EF007FE402 /* TKAStudyViewController.xib */; };
+		8A86DCD61B4289EF007FE402 /* TKAStudyViewController.xib in Resources */ = {isa = PBXBuildFile; fileRef = 8A86DCD21B4289EF007FE402 /* TKAStudyViewController.xib */; };
+		8ADA65731B42C57500502EA2 /* TKAStudyView.m in Sources */ = {isa = PBXBuildFile; fileRef = 8ADA65721B42C57500502EA2 /* TKAStudyView.m */; };
+		8ADA65741B42C57500502EA2 /* TKAStudyView.m in Sources */ = {isa = PBXBuildFile; fileRef = 8ADA65721B42C57500502EA2 /* TKAStudyView.m */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXContainerItemProxy section */
@@ -42,12 +43,14 @@
 		8A3F16EE1B3AD6C600E6551E /* Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = Info.plist; sourceTree = "<group>"; };
 		8A3F16EF1B3AD6C600E6551E /* IOSHomeWorkTests.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = IOSHomeWorkTests.m; sourceTree = "<group>"; };
 		8A6EF8CF1B41A1D400CABD97 /* Base */ = {isa = PBXFileReference; lastKnownFileType = file.xib; name = Base; path = Base.lproj/LaunchScreen.xib; sourceTree = "<group>"; };
-		8A6EF8D11B41A1D400CABD97 /* Base */ = {isa = PBXFileReference; lastKnownFileType = file.storyboard; name = Base; path = Base.lproj/Main.storyboard; sourceTree = "<group>"; };
 		8A6EF8D21B41A1D400CABD97 /* Images.xcassets */ = {isa = PBXFileReference; lastKnownFileType = folder.assetcatalog; path = Images.xcassets; sourceTree = "<group>"; };
-		8A6EF8D41B41A1D400CABD97 /* AppDelegate.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = AppDelegate.h; sourceTree = "<group>"; };
-		8A6EF8D51B41A1D400CABD97 /* AppDelegate.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = AppDelegate.m; sourceTree = "<group>"; };
-		8A6EF8D61B41A1D400CABD97 /* ViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = ViewController.h; sourceTree = "<group>"; };
-		8A6EF8D71B41A1D400CABD97 /* ViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = ViewController.m; sourceTree = "<group>"; };
+		8A86DCCD1B42893B007FE402 /* TKAAppDelegate.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = TKAAppDelegate.h; sourceTree = "<group>"; };
+		8A86DCCE1B42893B007FE402 /* TKAAppDelegate.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = TKAAppDelegate.m; sourceTree = "<group>"; };
+		8A86DCD01B4289EF007FE402 /* TKAStudyViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = TKAStudyViewController.h; sourceTree = "<group>"; };
+		8A86DCD11B4289EF007FE402 /* TKAStudyViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = TKAStudyViewController.m; sourceTree = "<group>"; };
+		8A86DCD21B4289EF007FE402 /* TKAStudyViewController.xib */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.xib; path = TKAStudyViewController.xib; sourceTree = "<group>"; };
+		8ADA65711B42C57500502EA2 /* TKAStudyView.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = TKAStudyView.h; sourceTree = "<group>"; };
+		8ADA65721B42C57500502EA2 /* TKAStudyView.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = TKAStudyView.m; sourceTree = "<group>"; };
 		DBC695F94A88503EC6D4A88A /* Pods-IOSHomeWorkTests.release.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-IOSHomeWorkTests.release.xcconfig"; path = "Pods/Target Support Files/Pods-IOSHomeWorkTests/Pods-IOSHomeWorkTests.release.xcconfig"; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
@@ -104,6 +107,8 @@
 		8A3F16D21B3AD6C500E6551E /* IOSHomeWork */ = {
 			isa = PBXGroup;
 			children = (
+				8A86DCCD1B42893B007FE402 /* TKAAppDelegate.h */,
+				8A86DCCE1B42893B007FE402 /* TKAAppDelegate.m */,
 				8A3F16D31B3AD6C500E6551E /* Supporting Files */,
 			);
 			path = IOSHomeWork;
@@ -140,7 +145,6 @@
 			isa = PBXGroup;
 			children = (
 				8A6EF8CE1B41A1D400CABD97 /* LaunchScreen.xib */,
-				8A6EF8D01B41A1D400CABD97 /* Main.storyboard */,
 				8A6EF8D21B41A1D400CABD97 /* Images.xcassets */,
 			);
 			path = Resources;
@@ -149,10 +153,7 @@
 		8A6EF8D31B41A1D400CABD97 /* Source */ = {
 			isa = PBXGroup;
 			children = (
-				8A6EF8D41B41A1D400CABD97 /* AppDelegate.h */,
-				8A6EF8D51B41A1D400CABD97 /* AppDelegate.m */,
-				8A6EF8D61B41A1D400CABD97 /* ViewController.h */,
-				8A6EF8D71B41A1D400CABD97 /* ViewController.m */,
+				8A86DCCC1B428898007FE402 /* TKAStudyViewController */,
 			);
 			path = Source;
 			sourceTree = "<group>";
@@ -162,6 +163,18 @@
 			children = (
 			);
 			path = Specs;
+			sourceTree = "<group>";
+		};
+		8A86DCCC1B428898007FE402 /* TKAStudyViewController */ = {
+			isa = PBXGroup;
+			children = (
+				8A86DCD01B4289EF007FE402 /* TKAStudyViewController.h */,
+				8A86DCD11B4289EF007FE402 /* TKAStudyViewController.m */,
+				8A86DCD21B4289EF007FE402 /* TKAStudyViewController.xib */,
+				8ADA65711B42C57500502EA2 /* TKAStudyView.h */,
+				8ADA65721B42C57500502EA2 /* TKAStudyView.m */,
+			);
+			path = TKAStudyViewController;
 			sourceTree = "<group>";
 		};
 		C08E624FF0E0289DD105FE78 /* Frameworks */ = {
@@ -255,9 +268,9 @@
 			isa = PBXResourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				8A86DCD51B4289EF007FE402 /* TKAStudyViewController.xib in Resources */,
 				8A6EF8DC1B41A1D400CABD97 /* Images.xcassets in Resources */,
 				8A6EF8D81B41A1D400CABD97 /* LaunchScreen.xib in Resources */,
-				8A6EF8DA1B41A1D400CABD97 /* Main.storyboard in Resources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -265,9 +278,9 @@
 			isa = PBXResourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				8A86DCD61B4289EF007FE402 /* TKAStudyViewController.xib in Resources */,
 				8A6EF8DD1B41A1D400CABD97 /* Images.xcassets in Resources */,
 				8A6EF8D91B41A1D400CABD97 /* LaunchScreen.xib in Resources */,
-				8A6EF8DB1B41A1D400CABD97 /* Main.storyboard in Resources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -311,9 +324,10 @@
 			isa = PBXSourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
-				8A6EF8E01B41A1D400CABD97 /* ViewController.m in Sources */,
-				8A6EF8DE1B41A1D400CABD97 /* AppDelegate.m in Sources */,
 				8A3F16D61B3AD6C500E6551E /* main.m in Sources */,
+				8ADA65731B42C57500502EA2 /* TKAStudyView.m in Sources */,
+				8A86DCCF1B42893B007FE402 /* TKAAppDelegate.m in Sources */,
+				8A86DCD31B4289EF007FE402 /* TKAStudyViewController.m in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -321,9 +335,9 @@
 			isa = PBXSourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
-				8A6EF8E11B41A1D400CABD97 /* ViewController.m in Sources */,
-				8A6EF8DF1B41A1D400CABD97 /* AppDelegate.m in Sources */,
 				8A3F16F01B3AD6C600E6551E /* IOSHomeWorkTests.m in Sources */,
+				8A86DCD41B4289EF007FE402 /* TKAStudyViewController.m in Sources */,
+				8ADA65741B42C57500502EA2 /* TKAStudyView.m in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -344,14 +358,6 @@
 				8A6EF8CF1B41A1D400CABD97 /* Base */,
 			);
 			name = LaunchScreen.xib;
-			sourceTree = "<group>";
-		};
-		8A6EF8D01B41A1D400CABD97 /* Main.storyboard */ = {
-			isa = PBXVariantGroup;
-			children = (
-				8A6EF8D11B41A1D400CABD97 /* Base */,
-			);
-			name = Main.storyboard;
 			sourceTree = "<group>";
 		};
 /* End PBXVariantGroup section */
