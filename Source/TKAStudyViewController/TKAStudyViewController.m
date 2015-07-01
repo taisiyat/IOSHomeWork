@@ -17,13 +17,14 @@
 @implementation TKAStudyViewController
 
 #pragma mark -
-#pragma mark Accessora
+#pragma mark Accessors
 
-- (void)setData:(NSString *)data{
-    if (_data != data) {
-        _data = data;
+- (void)setStudying:(TKAStudying *)studying{
+    if (_studying != studying) {
+        _studying = studying;
         
-        self.studyView.label.text = data;
+        self.studyView.studying = studying;
+//        self.studyView.label.text = data;
     }
 }
 
@@ -41,7 +42,8 @@
 - (void)viewDidLoad {
     [super viewDidLoad];
   
-    self.data = self.data;
+    self.studyView.studying = self.studying;
+//    self.data = self.data;
 //    self.studyView.label.text = @"study second";
  //   [[(TKAStudyView *)[self view] label] setText:@"study second"];
 //    UILabel *label = [[UILabel alloc] initWithFrame:CGRectMake(10, 10, 80, 40)];
@@ -69,5 +71,13 @@
     // Pass the selected object to the new view controller.
 }
 */
+
+#pragma mark -
+#pragma mark Interface Handling
+
+- (IBAction)onRotateButton:(id)sender {
+    [self.studyView rotateLabel];
+}
+
 
 @end

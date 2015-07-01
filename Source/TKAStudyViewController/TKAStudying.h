@@ -9,5 +9,8 @@
 #import <Foundation/Foundation.h>
 
 @interface TKAStudying : NSObject
+@property (nonatomic, copy) NSString *name;
+@property (nonatomic, copy) NSString *surname;
+@property (nonatomic, readonly) NSString *fullname;
 
 @end

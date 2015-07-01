@@ -8,7 +8,15 @@
 
 #import <UIKit/UIKit.h>
 
+@class TKAStudying;
+
 @interface TKAStudyView : UIView
 @property (nonatomic, strong) IBOutlet UILabel *label;
+@property (nonatomic, strong) IBOutlet UIButton *button;
+
+@property (nonatomic, strong) TKAStudying *studying;
+
+- (void)fillWithStudying:(TKAStudying *)studying;
+- (void)rotateLabel;
 
 @end

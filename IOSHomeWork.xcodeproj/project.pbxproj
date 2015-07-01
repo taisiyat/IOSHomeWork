@@ -19,6 +19,8 @@
 		8A86DCD41B4289EF007FE402 /* TKAStudyViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 8A86DCD11B4289EF007FE402 /* TKAStudyViewController.m */; };
 		8A86DCD51B4289EF007FE402 /* TKAStudyViewController.xib in Resources */ = {isa = PBXBuildFile; fileRef = 8A86DCD21B4289EF007FE402 /* TKAStudyViewController.xib */; };
 		8A86DCD61B4289EF007FE402 /* TKAStudyViewController.xib in Resources */ = {isa = PBXBuildFile; fileRef = 8A86DCD21B4289EF007FE402 /* TKAStudyViewController.xib */; };
+		8AD832781B44171A00889EAF /* TKAStudying.m in Sources */ = {isa = PBXBuildFile; fileRef = 8AD832771B44171A00889EAF /* TKAStudying.m */; };
+		8AD832791B44171A00889EAF /* TKAStudying.m in Sources */ = {isa = PBXBuildFile; fileRef = 8AD832771B44171A00889EAF /* TKAStudying.m */; };
 		8ADA65731B42C57500502EA2 /* TKAStudyView.m in Sources */ = {isa = PBXBuildFile; fileRef = 8ADA65721B42C57500502EA2 /* TKAStudyView.m */; };
 		8ADA65741B42C57500502EA2 /* TKAStudyView.m in Sources */ = {isa = PBXBuildFile; fileRef = 8ADA65721B42C57500502EA2 /* TKAStudyView.m */; };
 /* End PBXBuildFile section */
@@ -49,6 +51,8 @@
 		8A86DCD01B4289EF007FE402 /* TKAStudyViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = TKAStudyViewController.h; sourceTree = "<group>"; };
 		8A86DCD11B4289EF007FE402 /* TKAStudyViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = TKAStudyViewController.m; sourceTree = "<group>"; };
 		8A86DCD21B4289EF007FE402 /* TKAStudyViewController.xib */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.xib; path = TKAStudyViewController.xib; sourceTree = "<group>"; };
+		8AD832761B44171A00889EAF /* TKAStudying.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = TKAStudying.h; sourceTree = "<group>"; };
+		8AD832771B44171A00889EAF /* TKAStudying.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = TKAStudying.m; sourceTree = "<group>"; };
 		8ADA65711B42C57500502EA2 /* TKAStudyView.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = TKAStudyView.h; sourceTree = "<group>"; };
 		8ADA65721B42C57500502EA2 /* TKAStudyView.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = TKAStudyView.m; sourceTree = "<group>"; };
 		DBC695F94A88503EC6D4A88A /* Pods-IOSHomeWorkTests.release.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-IOSHomeWorkTests.release.xcconfig"; path = "Pods/Target Support Files/Pods-IOSHomeWorkTests/Pods-IOSHomeWorkTests.release.xcconfig"; sourceTree = "<group>"; };
@@ -173,6 +177,8 @@
 				8A86DCD21B4289EF007FE402 /* TKAStudyViewController.xib */,
 				8ADA65711B42C57500502EA2 /* TKAStudyView.h */,
 				8ADA65721B42C57500502EA2 /* TKAStudyView.m */,
+				8AD832761B44171A00889EAF /* TKAStudying.h */,
+				8AD832771B44171A00889EAF /* TKAStudying.m */,
 			);
 			path = TKAStudyViewController;
 			sourceTree = "<group>";
@@ -326,6 +332,7 @@
 			files = (
 				8A3F16D61B3AD6C500E6551E /* main.m in Sources */,
 				8ADA65731B42C57500502EA2 /* TKAStudyView.m in Sources */,
+				8AD832781B44171A00889EAF /* TKAStudying.m in Sources */,
 				8A86DCCF1B42893B007FE402 /* TKAAppDelegate.m in Sources */,
 				8A86DCD31B4289EF007FE402 /* TKAStudyViewController.m in Sources */,
 			);
@@ -338,6 +345,7 @@
 				8A3F16F01B3AD6C600E6551E /* IOSHomeWorkTests.m in Sources */,
 				8A86DCD41B4289EF007FE402 /* TKAStudyViewController.m in Sources */,
 				8ADA65741B42C57500502EA2 /* TKAStudyView.m in Sources */,
+				8AD832791B44171A00889EAF /* TKAStudying.m in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};

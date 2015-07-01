@@ -8,7 +8,11 @@
 
 #import <UIKit/UIKit.h>
 
+@class TKAStudying;
+
 @interface TKAStudyViewController : UIViewController
-@property (nonatomic, strong) NSString *data;
+@property (nonatomic, strong) TKAStudying *studying;
+
+- (IBAction)onRotateButton:(id)sender;
 
 @end
