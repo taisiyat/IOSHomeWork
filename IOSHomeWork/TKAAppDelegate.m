@@ -8,6 +8,7 @@
 
 #import "TKAAppDelegate.h"
 #import "TKAStudyViewController.h"
+#import "TKAViewController.h"
 
 #import "TKAStudying.h"
 
@@ -21,18 +22,10 @@
 - (BOOL)application:(UIApplication *)application didFinishLaunchingWithOptions:(NSDictionary *)launchOptions {
     UIWindow *window = [[UIWindow alloc] initWithFrame:[[UIScreen mainScreen] bounds]];
     self.window = window;
-    window.backgroundColor = [UIColor blueColor];
-    TKAStudyViewController *controller = [TKAStudyViewController new];
-    controller.studying = [TKAStudying new];
-    window.rootViewController = controller;
-    //window.rootViewController = [TKAStudyViewController new];
 
+    window.rootViewController = [TKAViewController new];
     [window makeKeyAndVisible];
     
-//    controller.data = @"study 4";
-//    window.rootViewController.view.frame = CGRectMake(20, 20, 100, 100);
-    
-    // Override point for customization after application launch.
     return YES;
 }
 
