@@ -10,6 +10,15 @@
 
 @implementation TKAView
 
+- (void)setSquarePosition:(NSUInteger)squarePosition {
+    
+}
+
+- (void)setSquarePosition:(NSUInteger)squarePosition animated:(BOOL)animated {
+    
+}
+
+
 /*
 // Only override drawRect: if you perform custom drawing.
 // An empty implementation adversely affects performance during animation.
@@ -18,4 +27,6 @@
 }
 */
 
+
 @end
+

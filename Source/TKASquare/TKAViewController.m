@@ -9,13 +9,23 @@
 #import "TKAViewController.h"
 
 @interface TKAViewController ()
+@property (nonatomic, readonly) TKAView *mainView;
 
 @end
 
 @implementation TKAViewController
 
+- (TKAView *)mainView {
+    if ([self isViewLoaded] && [self.view isKindOfClass:[TKAView class]]) {
+        return (TKAView *)self.view;
+    }
+    
+    return nil;
+}
+
 - (void)viewDidLoad {
     [super viewDidLoad];
+    
     // Do any additional setup after loading the view from its nib.
 }
 

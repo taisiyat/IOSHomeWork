@@ -6,28 +6,30 @@
     <objects>
         <placeholder placeholderIdentifier="IBFilesOwner" id="-1" userLabel="File's Owner" customClass="TKAViewController">
             <connections>
-                <outlet property="view" destination="i5M-Pr-FkT" id="nDB-EI-gTB"/>
+                <outlet property="view" destination="i5M-Pr-FkT" id="RSc-tR-vLi"/>
             </connections>
         </placeholder>
         <placeholder placeholderIdentifier="IBFirstResponder" id="-2" customClass="UIResponder"/>
-        <view opaque="NO" clearsContextBeforeDrawing="NO" alpha="0.29999999999999966" contentMode="scaleToFill" id="i5M-Pr-FkT" userLabel="MainView">
+        <view opaque="NO" clearsContextBeforeDrawing="NO" alpha="0.29999999999999966" contentMode="scaleToFill" id="i5M-Pr-FkT" customClass="TKAView">
             <rect key="frame" x="0.0" y="0.0" width="320" height="568"/>
             <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
             <subviews>
-                <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Label" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" id="TkU-rM-8cW">
-                    <rect key="frame" x="139" y="516" width="42" height="21"/>
-                    <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
-                    <fontDescription key="fontDescription" type="system" pointSize="17"/>
-                    <color key="textColor" cocoaTouchSystemColor="darkTextColor"/>
-                    <nil key="highlightedColor"/>
-                </label>
-                <view opaque="NO" alpha="0.49999999999999961" contentMode="scaleToFill" id="ke2-Co-sKs">
-                    <rect key="frame" x="47" y="190" width="226" height="280"/>
+                <view opaque="NO" alpha="0.49999999999999961" contentMode="scaleToFill" id="ke2-Co-sKs" userLabel="SquareView" customClass="TKAView">
+                    <rect key="frame" x="0.0" y="0.0" width="80" height="80"/>
                     <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
                     <color key="backgroundColor" red="0.0" green="1" blue="1" alpha="1" colorSpace="calibratedRGB"/>
                 </view>
+                <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" id="6og-2m-h3R">
+                    <rect key="frame" x="142" y="382" width="46" height="30"/>
+                    <autoresizingMask key="autoresizingMask"/>
+                    <state key="normal" title="Button"/>
+                </button>
             </subviews>
             <color key="backgroundColor" red="1" green="0.0" blue="1" alpha="1" colorSpace="calibratedRGB"/>
+            <connections>
+                <outlet property="movingSquareButton" destination="6og-2m-h3R" id="KW3-xf-Qg0"/>
+                <outlet property="squareView" destination="ke2-Co-sKs" id="DhI-oO-E71"/>
+            </connections>
             <point key="canvasLocation" x="443" y="329"/>
         </view>
     </objects>

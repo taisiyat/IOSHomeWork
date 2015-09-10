@@ -10,6 +10,5 @@
 #import "TKAView.h"
 
 @interface TKAViewController : UIViewController
-@property (nonatomic, strong) IBOutlet TKAView *mainView;
 
 @end
