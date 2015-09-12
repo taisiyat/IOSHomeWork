@@ -10,12 +10,50 @@
 
 @implementation TKAView
 
-- (void)setSquarePosition:(NSUInteger)squarePosition {
-    
+- (void)setSquarePosition:(TKASquarePosition)squarePosition {
+//   [self setSquarePosition:squarePosition animated:NO];
+    CGRect frame = self.frame;
+    frame.origin = CGPointMake(50, 50);
 }
 
-- (void)setSquarePosition:(NSUInteger)squarePosition animated:(BOOL)animated {
-    
+- (void)setSquarePosition:(TKASquarePosition)squarePosition animated:(BOOL)animated {
+    CGRect frame = self.frame;
+    frame.origin = [self pointSquarePosition];
+    if (animated) {
+        [UIView animateWithDuration:5.0
+                       animations:^{
+                           self.frame = frame;
+                       }];
+    }
+    else {
+        self.frame = frame;
+    }
+}
+
+- (CGPoint)pointSquarePosition {
+    TKASquarePosition squarePosition = [self squarePosition];
+    CGRect screan = [self.superview frame];
+    CGRect square = self.frame;
+    switch (squarePosition) {
+        case TKATopLeftSquarePosition:
+            return CGPointMake(CGRectGetMinX(screan),
+                               CGRectGetMinY(screan)) ;
+        case TKATopRightSquarePosition:
+            return CGPointMake(CGRectGetMaxX(screan) - CGRectGetWidth(square),
+                               CGRectGetMinY(screan));
+        case TKABottomLeftSquarePosition:
+            return CGPointMake(CGRectGetMinX(screan),
+                               CGRectGetMaxY(screan) - CGRectGetHeight(square));
+        case TKABottomRightSquarePosition:
+            return CGPointMake(CGRectGetMaxX(screan) - CGRectGetWidth(square),
+                               CGRectGetMaxY(screan) - CGRectGetHeight(square));
+    }
+}
+
+- (TKASquarePosition)nextSquarePosition {
+    NSUInteger countSquarePosition = 4;
+    NSUInteger squarePosition = (NSUInteger)[self squarePosition];
+    return (squarePosition++)%countSquarePosition;
 }
 
 

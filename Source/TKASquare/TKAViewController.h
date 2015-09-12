@@ -11,4 +11,6 @@
 
 @interface TKAViewController : UIViewController
 
+- (IBAction)onMoveSquareButton:(id)sender;
+
 @end

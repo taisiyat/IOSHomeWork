@@ -9,13 +9,13 @@
 #import "TKAViewController.h"
 
 @interface TKAViewController ()
-@property (nonatomic, readonly) TKAView *mainView;
+@property (nonatomic, readonly) TKAView *squareView;
 
 @end
 
 @implementation TKAViewController
 
-- (TKAView *)mainView {
+- (TKAView *)squareView {
     if ([self isViewLoaded] && [self.view isKindOfClass:[TKAView class]]) {
         return (TKAView *)self.view;
     }
@@ -25,14 +25,26 @@
 
 - (void)viewDidLoad {
     [super viewDidLoad];
-    
-    // Do any additional setup after loading the view from its nib.
+    self.squareView.squarePosition = 0;
+    self.squareView.mouvingSquare = NO;
+}
+
+- (void)viewDidAppear:animated {
+    [super viewDidAppear:animated];
 }
 
 - (void)didReceiveMemoryWarning {
     [super didReceiveMemoryWarning];
-    // Dispose of any resources that can be recreated.
 }
+
+#pragma mark -
+#pragma mark Interface Handling
+
+- (IBAction)onMoveSquareButton:(id)sender {
+    [self.squareView setSquarePosition:[self.squareView nextSquarePosition]];
+
+}
+
 
 /*
 #pragma mark - Navigation

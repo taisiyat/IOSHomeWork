@@ -10,7 +10,7 @@
             </connections>
         </placeholder>
         <placeholder placeholderIdentifier="IBFirstResponder" id="-2" customClass="UIResponder"/>
-        <view opaque="NO" clearsContextBeforeDrawing="NO" alpha="0.29999999999999966" contentMode="scaleToFill" id="i5M-Pr-FkT" customClass="TKAView">
+        <view opaque="NO" clearsContextBeforeDrawing="NO" alpha="0.29999999999999966" contentMode="scaleToFill" id="i5M-Pr-FkT" customClass="TKAMainView">
             <rect key="frame" x="0.0" y="0.0" width="320" height="568"/>
             <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
             <subviews>
@@ -20,14 +20,18 @@
                     <color key="backgroundColor" red="0.0" green="1" blue="1" alpha="1" colorSpace="calibratedRGB"/>
                 </view>
                 <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" id="6og-2m-h3R">
-                    <rect key="frame" x="142" y="382" width="46" height="30"/>
+                    <rect key="frame" x="79" y="347" width="143" height="72"/>
                     <autoresizingMask key="autoresizingMask"/>
+                    <color key="backgroundColor" red="0.0" green="1" blue="1" alpha="0.56000000000000005" colorSpace="calibratedRGB"/>
                     <state key="normal" title="Button"/>
+                    <connections>
+                        <action selector="onMoveSquareButton:" destination="-1" eventType="touchUpInside" id="Ddl-Me-jPW"/>
+                    </connections>
                 </button>
             </subviews>
             <color key="backgroundColor" red="1" green="0.0" blue="1" alpha="1" colorSpace="calibratedRGB"/>
             <connections>
-                <outlet property="movingSquareButton" destination="6og-2m-h3R" id="KW3-xf-Qg0"/>
+                <outlet property="moveSquareButton" destination="6og-2m-h3R" id="hf6-ep-ZAM"/>
                 <outlet property="squareView" destination="ke2-Co-sKs" id="DhI-oO-E71"/>
             </connections>
             <point key="canvasLocation" x="443" y="329"/>
