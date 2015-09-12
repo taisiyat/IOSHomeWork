@@ -13,7 +13,8 @@
 - (void)setSquarePosition:(TKASquarePosition)squarePosition {
 //   [self setSquarePosition:squarePosition animated:NO];
     CGRect frame = self.frame;
-    frame.origin = CGPointMake(50, 50);
+    frame.origin = [self pointSquarePosition];
+    self.frame = frame;
 }
 
 - (void)setSquarePosition:(TKASquarePosition)squarePosition animated:(BOOL)animated {
