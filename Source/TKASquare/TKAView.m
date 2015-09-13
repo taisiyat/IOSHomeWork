@@ -31,12 +31,12 @@ typedef void(^TKABlock)(void);
 
     NSTimeInterval durationTime = 3.0;
     NSTimeInterval delayTime = 0.5;
-    
     CGRect frame = self.squareView.frame;
     frame.origin = [self pointNextSquarePosition:nextSquarePosition];
     
     void (^animationBlock)(void) = ^(void){
-        [self setMovingSquare:YES];
+//        [self setMovingSquare:YES];
+       self.animationSquare = YES;
        self.squareView.frame = frame;
     };
    
@@ -49,19 +49,22 @@ typedef void(^TKABlock)(void);
                               delay:delayTime
                             options:UIViewAnimationCurveEaseIn
                          animations:^(void){
-                             [self setMovingSquare:YES];
+//                             [self setMovingSquare:YES];
+                             self.animationSquare = YES;
                              self.squareView.frame = frame;
                          }
                          completion:^(BOOL finished){
                              if (_squarePosition != nextSquarePosition) {
                                  _squarePosition = nextSquarePosition;
                              }
-                                        [self setMovingSquare:NO];
+                             self.animationSquare = NO;
+//                                        [self setMovingSquare:NO];
                                      }];
     }
     else {
         animationBlock();
-        [self setMovingSquare:NO];
+        self.animationSquare = NO;
+//        [self setMovingSquare:NO];
     }
 }
 
@@ -88,7 +91,17 @@ typedef void(^TKABlock)(void);
     if (_movingSquare != movingSquare) {
         _movingSquare = movingSquare;
         
-        if (!movingSquare) {
+        if (movingSquare && !self.animationSquare) {
+            [self setSquarePosition:[self nextSquarePosition] animated:YES];
+        }
+    }
+}
+
+- (void)setAnimationSquare:(BOOL)animationSquare {
+    if (_animationSquare != animationSquare) {
+        _animationSquare = animationSquare;
+        
+        if (!animationSquare && self.movingSquare) {
             [self setSquarePosition:[self nextSquarePosition] animated:YES];
         }
     }
