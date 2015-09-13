@@ -10,62 +10,107 @@
 
 @implementation TKAView
 
-- (void)setSquarePosition:(TKASquarePosition)squarePosition {
-//   [self setSquarePosition:squarePosition animated:NO];
-    CGRect frame = self.frame;
-    frame.origin = [self pointSquarePosition];
-    self.frame = frame;
+- (void)setSquarePosition:(TKASquarePosition)nextSquarePosition {
+   [self setSquarePosition:nextSquarePosition animated:NO];
+    }
+
+- (void)setSquarePosition:(TKASquarePosition)nextSquarePosition
+                 animated:(BOOL)animated
+{
+    [self setSquarePosition:nextSquarePosition
+                   animated:animated
+          completionHandler:(^{})];
 }
 
-- (void)setSquarePosition:(TKASquarePosition)squarePosition animated:(BOOL)animated {
-    CGRect frame = self.frame;
-    frame.origin = [self pointSquarePosition];
+typedef void(^TKABlock)(void);
+
+- (void)setSquarePosition:(TKASquarePosition)nextSquarePosition
+                 animated:(BOOL)animated
+        completionHandler:(void(^)(void))handler
+{
+
+    NSTimeInterval durationTime = 3.0;
+    NSTimeInterval delayTime = 0.5;
+    
+    CGRect frame = self.squareView.frame;
+    frame.origin = [self pointNextSquarePosition:nextSquarePosition];
+    
+    void (^animationBlock)(void) = ^(void){
+        [self setMovingSquare:YES];
+       self.squareView.frame = frame;
+    };
+   
     if (animated) {
-        [UIView animateWithDuration:5.0
-                       animations:^{
-                           self.frame = frame;
-                       }];
+//        [UIView animateWithDuration:0.5
+//                         animations:^{
+//                             self.squareView.frame = frame;
+//                         }];
+        [UIView animateWithDuration:durationTime
+                              delay:delayTime
+                            options:UIViewAnimationCurveEaseIn
+                         animations:^(void){
+                             [self setMovingSquare:YES];
+                             self.squareView.frame = frame;
+                         }
+                         completion:^(BOOL finished){
+                             if (_squarePosition != nextSquarePosition) {
+                                 _squarePosition = nextSquarePosition;
+                             }
+                                        [self setMovingSquare:NO];
+                                     }];
     }
     else {
-        self.frame = frame;
+        animationBlock();
+        [self setMovingSquare:NO];
     }
 }
 
-- (CGPoint)pointSquarePosition {
-    TKASquarePosition squarePosition = [self squarePosition];
+- (CGPoint)pointNextSquarePosition:(TKASquarePosition)nextSquarePosition  {
     CGRect screan = [self.superview frame];
-    CGRect square = self.frame;
-    switch (squarePosition) {
+    CGRect squareFrame = self.squareView.frame;
+    switch (nextSquarePosition) {
         case TKATopLeftSquarePosition:
             return CGPointMake(CGRectGetMinX(screan),
                                CGRectGetMinY(screan)) ;
         case TKATopRightSquarePosition:
-            return CGPointMake(CGRectGetMaxX(screan) - CGRectGetWidth(square),
+            return CGPointMake(CGRectGetMaxX(screan) - CGRectGetWidth(squareFrame),
                                CGRectGetMinY(screan));
         case TKABottomLeftSquarePosition:
             return CGPointMake(CGRectGetMinX(screan),
-                               CGRectGetMaxY(screan) - CGRectGetHeight(square));
+                               CGRectGetMaxY(screan) - CGRectGetHeight(squareFrame));
         case TKABottomRightSquarePosition:
-            return CGPointMake(CGRectGetMaxX(screan) - CGRectGetWidth(square),
-                               CGRectGetMaxY(screan) - CGRectGetHeight(square));
+            return CGPointMake(CGRectGetMaxX(screan) - CGRectGetWidth(squareFrame),
+                               CGRectGetMaxY(screan) - CGRectGetHeight(squareFrame));
     }
 }
+
+- (void)setMovingSquare:(BOOL)movingSquare {
+    if (_movingSquare != movingSquare) {
+        _movingSquare = movingSquare;
+        
+        if (!movingSquare) {
+            [self setSquarePosition:[self nextSquarePosition] animated:YES];
+        }
+    }
+}
+
+- (void)animationMovingSquare {
+    if (self.movingSquare) {
+        self.movingSquare = NO;
+    }
+    else {
+        self.movingSquare = YES;
+    }
+}
+
+
 
 - (TKASquarePosition)nextSquarePosition {
     NSUInteger countSquarePosition = 4;
     NSUInteger squarePosition = (NSUInteger)[self squarePosition];
-    return (squarePosition++)%countSquarePosition;
+    return (TKASquarePosition)((++squarePosition)%countSquarePosition);
+
 }
-
-
-/*
-// Only override drawRect: if you perform custom drawing.
-// An empty implementation adversely affects performance during animation.
-- (void)drawRect:(CGRect)rect {
-    // Drawing code
-}
-*/
-
 
 @end
 

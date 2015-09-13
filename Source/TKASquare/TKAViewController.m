@@ -15,7 +15,7 @@
 
 @implementation TKAViewController
 
-- (TKAView *)squareView {
+- (TKAView *)mainView {
     if ([self isViewLoaded] && [self.view isKindOfClass:[TKAView class]]) {
         return (TKAView *)self.view;
     }
@@ -26,7 +26,7 @@
 - (void)viewDidLoad {
     [super viewDidLoad];
     self.squareView.squarePosition = 0;
-    self.squareView.mouvingSquare = NO;
+    self.squareView.movingSquare = NO;
 }
 
 - (void)viewDidAppear:animated {
@@ -41,10 +41,11 @@
 #pragma mark Interface Handling
 
 - (IBAction)onMoveSquareButton:(id)sender {
-    [self.squareView setSquarePosition:[self.squareView nextSquarePosition]];
+    [self.mainView animationMovingSquare];
+ //   [self.mainView setSquarePosition:[self.mainView nextSquarePosition] animated:YES];
+//    [self.mainView setSquarePosition:[self.mainView nextSquarePosition] animated:NO];
 
 }
-
 
 /*
 #pragma mark - Navigation

@@ -10,7 +10,6 @@
 		76F7B43C9F0CCD82953F7B4C /* libPods-IOSHomeWorkTests.a in Frameworks */ = {isa = PBXBuildFile; fileRef = 406304F163B6566C4D1B0BC9 /* libPods-IOSHomeWorkTests.a */; };
 		8A3F16D61B3AD6C500E6551E /* main.m in Sources */ = {isa = PBXBuildFile; fileRef = 8A3F16D51B3AD6C500E6551E /* main.m */; };
 		8A3F16F01B3AD6C600E6551E /* IOSHomeWorkTests.m in Sources */ = {isa = PBXBuildFile; fileRef = 8A3F16EF1B3AD6C600E6551E /* IOSHomeWorkTests.m */; };
-		8A5923C81BA3F24600704DC0 /* TKAMainView.m in Sources */ = {isa = PBXBuildFile; fileRef = 8A5923C71BA3F24600704DC0 /* TKAMainView.m */; };
 		8A6EF8D81B41A1D400CABD97 /* LaunchScreen.xib in Resources */ = {isa = PBXBuildFile; fileRef = 8A6EF8CE1B41A1D400CABD97 /* LaunchScreen.xib */; };
 		8A6EF8D91B41A1D400CABD97 /* LaunchScreen.xib in Resources */ = {isa = PBXBuildFile; fileRef = 8A6EF8CE1B41A1D400CABD97 /* LaunchScreen.xib */; };
 		8A6EF8DC1B41A1D400CABD97 /* Images.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = 8A6EF8D21B41A1D400CABD97 /* Images.xcassets */; };
@@ -41,8 +40,6 @@
 		8A3F16E91B3AD6C600E6551E /* IOSHomeWorkTests.xctest */ = {isa = PBXFileReference; explicitFileType = wrapper.cfbundle; includeInIndex = 0; path = IOSHomeWorkTests.xctest; sourceTree = BUILT_PRODUCTS_DIR; };
 		8A3F16EE1B3AD6C600E6551E /* Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = Info.plist; sourceTree = "<group>"; };
 		8A3F16EF1B3AD6C600E6551E /* IOSHomeWorkTests.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = IOSHomeWorkTests.m; sourceTree = "<group>"; };
-		8A5923C61BA3F24600704DC0 /* TKAMainView.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = TKAMainView.h; sourceTree = "<group>"; };
-		8A5923C71BA3F24600704DC0 /* TKAMainView.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = TKAMainView.m; sourceTree = "<group>"; };
 		8A6EF8CF1B41A1D400CABD97 /* Base */ = {isa = PBXFileReference; lastKnownFileType = file.xib; name = Base; path = Base.lproj/LaunchScreen.xib; sourceTree = "<group>"; };
 		8A6EF8D21B41A1D400CABD97 /* Images.xcassets */ = {isa = PBXFileReference; lastKnownFileType = folder.assetcatalog; path = Images.xcassets; sourceTree = "<group>"; };
 		8A86DCCD1B42893B007FE402 /* TKAAppDelegate.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = TKAAppDelegate.h; sourceTree = "<group>"; };
@@ -196,8 +193,6 @@
 				8AEBF2351BA1609A00C09EC8 /* TKAViewController.h */,
 				8AEBF2361BA1609A00C09EC8 /* TKAViewController.m */,
 				8AEBF2371BA1609A00C09EC8 /* TKAViewController.xib */,
-				8A5923C61BA3F24600704DC0 /* TKAMainView.h */,
-				8A5923C71BA3F24600704DC0 /* TKAMainView.m */,
 			);
 			path = TKASquare;
 			sourceTree = "<group>";
@@ -349,7 +344,6 @@
 			isa = PBXSourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
-				8A5923C81BA3F24600704DC0 /* TKAMainView.m in Sources */,
 				8A3F16D61B3AD6C500E6551E /* main.m in Sources */,
 				8AEBF2391BA1609A00C09EC8 /* TKAViewController.m in Sources */,
 				8AEBF2381BA1609A00C09EC8 /* TKAView.m in Sources */,

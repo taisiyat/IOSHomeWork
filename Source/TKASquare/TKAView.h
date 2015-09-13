@@ -16,12 +16,15 @@ typedef NS_ENUM(NSUInteger, TKASquarePosition) {
 };
 
 @interface TKAView : UIView
+@property (nonatomic, strong) IBOutlet UIButton *moveSquareButton;
+@property (nonatomic, strong) IBOutlet UIView   *squareView;
 @property (nonatomic, assign) TKASquarePosition squarePosition;
-@property (nonatomic, assign) BOOL              mouvingSquare;
+@property (nonatomic, assign) BOOL              movingSquare;
 
 - (void)setSquarePosition:(TKASquarePosition)squarePosition;
 - (void)setSquarePosition:(TKASquarePosition)squarePosition animated:(BOOL)animated;
 - (CGPoint)pointSquarePosition;
 - (TKASquarePosition)nextSquarePosition;
+- (void)animationMovingSquare;
 
 @end
