@@ -21,11 +21,15 @@ typedef NS_ENUM(NSUInteger, TKASquarePosition) {
 @property (nonatomic, assign) TKASquarePosition squarePosition;
 @property (nonatomic, assign) BOOL              movingSquare;
 @property (nonatomic, assign) BOOL              animationSquare;
+@property (nonatomic, assign) UIColor           *colorSquare;
 
-- (void)setSquarePosition:(TKASquarePosition)squarePosition;
-- (void)setSquarePosition:(TKASquarePosition)squarePosition animated:(BOOL)animated;
-- (CGPoint)pointSquarePosition;
-- (TKASquarePosition)nextSquarePosition;
-- (void)animationMovingSquare;
+//- (void)setSquarePosition:(TKASquarePosition)squarePosition;
+//- (void)setSquarePosition:(TKASquarePosition)squarePosition animated:(BOOL)animated;
+//- (void)setSquarePosition:(TKASquarePosition)nextSquarePosition
+//                 animated:(BOOL)animated
+//        completionHandler:(void(^)(void))handler;
+//- (CGPoint)pointSquarePosition;
+//- (TKASquarePosition)nextSquarePosition;
+- (void)animatedMovingSquare;
 
 @end
