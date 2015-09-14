@@ -28,9 +28,7 @@
 - (void)viewDidLoad {
     [super viewDidLoad];
     self.mainView.squarePosition = 0;
-    self.mainView.movingSquare = NO;
-    self.mainView.animationSquare = NO;
-//    self.mainView.colorSquare = self.mainView.squareView.backgroundColor;
+    self.mainView.squareMoved = NO;
 }
 
 - (void)didReceiveMemoryWarning {
@@ -41,7 +39,7 @@
 #pragma mark Interface Handling
 
 - (IBAction)onMoveSquareButton:(id)sender {
-    [self.mainView animatedMovingSquare];
+    self.mainView.squareMoved = !self.mainView.squareMoved;
 }
 
 @end

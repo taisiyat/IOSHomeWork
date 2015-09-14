@@ -12,24 +12,22 @@ typedef NS_ENUM(NSUInteger, TKASquarePosition) {
     TKATopLeftSquarePosition,
     TKATopRightSquarePosition,
     TKABottomLeftSquarePosition,
-    TKABottomRightSquarePosition
+    TKABottomRightSquarePosition,
+    TKACountSquarePosition
 };
 
 @interface TKAView : UIView
 @property (nonatomic, strong) IBOutlet UIButton *moveSquareButton;
 @property (nonatomic, strong) IBOutlet UIView   *squareView;
-@property (nonatomic, assign) TKASquarePosition squarePosition;
-@property (nonatomic, assign) BOOL              movingSquare;
-@property (nonatomic, assign) BOOL              animationSquare;
-@property (nonatomic, assign) UIColor           *colorSquare;
+
+@property (nonatomic, assign) TKASquarePosition                squarePosition;
+@property (nonatomic, assign, getter = isSquareMoved) BOOL     squareMoved;
+
 
 //- (void)setSquarePosition:(TKASquarePosition)squarePosition;
 //- (void)setSquarePosition:(TKASquarePosition)squarePosition animated:(BOOL)animated;
 //- (void)setSquarePosition:(TKASquarePosition)nextSquarePosition
 //                 animated:(BOOL)animated
 //        completionHandler:(void(^)(void))handler;
-//- (CGPoint)pointSquarePosition;
-//- (TKASquarePosition)nextSquarePosition;
-- (void)animatedMovingSquare;
 
 @end

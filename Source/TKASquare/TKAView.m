@@ -8,9 +8,8 @@
 
 #import "TKAView.h"
 
-static const NSUInteger     kTKACountSquarePosition = 4;
-static const NSTimeInterval kTKADurationTime        = 3.0;
-static const NSTimeInterval kTKADelayTime           = 0.5;
+static const NSTimeInterval kTKADurationTime        = 1.0;
+static const NSTimeInterval kTKADelayTime           = 0.1;
 
 @implementation TKAView
 
@@ -23,52 +22,42 @@ static const NSTimeInterval kTKADelayTime           = 0.5;
 {
     [self setSquarePosition:nextSquarePosition
                    animated:animated
-          completionHandler:(^{})];
+          completionHandler:nil];
 }
 
 typedef void(^TKABlock)(void);
 
 - (void)setSquarePosition:(TKASquarePosition)nextSquarePosition
                  animated:(BOOL)animated
-        completionHandler:(void(^)(void))handler
+        completionHandler:(void(^)())handlerBlock
 {
     CGRect frame = self.squareView.frame;
     frame.origin = [self pointNextSquarePosition:nextSquarePosition];
-    
-    void (^animationBlock)(void) = ^(void){
-       self.animationSquare = YES;
-       self.squareView.frame = frame;
-    };
-    
-    void (^handlerBlock)(BOOL) = ^(BOOL finished){
-        if (_squarePosition != nextSquarePosition) {
-            _squarePosition = nextSquarePosition;
-        }
-        
-        self.animationSquare = NO;
-    };
-   
-    if (animated) {
-        [UIView animateWithDuration:kTKADurationTime
+
+    [UIView animateWithDuration:animated ? kTKADurationTime : 0
                               delay:kTKADelayTime
                             options:UIViewAnimationOptionBeginFromCurrentState
                          animations:^(void){
-                                        self.animationSquare = YES;
-                                        self.squareView.frame = frame;
-                                    }
+                             self.squareView.frame = frame;
+                         }
                          completion:^(BOOL finished){
-                                        handler();
+
+                             if (_squarePosition != nextSquarePosition) {
+                                 _squarePosition = nextSquarePosition;
+                             }
+
+                             if (finished) {
+                                 if (self.squareMoved) {
+                                     [self setSquarePosition:[self nextSquarePosition]
+                                                    animated:YES
+                                           completionHandler:handlerBlock];
+                                 }
+                             }
                              
-                                        if (_squarePosition != nextSquarePosition) {
-                                            _squarePosition = nextSquarePosition;
-                                        }
-                             
-                                        self.animationSquare = NO;
-                                     }];
-    } else {
-        animationBlock();
-        handlerBlock(YES);
-    }
+//                             if (handlerBlock && finished) {
+//                                 handlerBlock();
+//                             }
+                         }];
 }
 
 - (CGPoint)pointNextSquarePosition:(TKASquarePosition)nextSquarePosition  {
@@ -77,56 +66,42 @@ typedef void(^TKABlock)(void);
     
     switch (nextSquarePosition) {
         case TKATopLeftSquarePosition:
-            self.colorSquare = [UIColor yellowColor];
             return CGPointMake(CGRectGetMinX(screen),
                                CGRectGetMinY(screen));
         case TKATopRightSquarePosition:
-            self.colorSquare = [UIColor greenColor];
             return CGPointMake(CGRectGetMaxX(screen) - CGRectGetWidth(squareFrame),
                                CGRectGetMinY(screen));
         case TKABottomLeftSquarePosition:
-            self.colorSquare = [UIColor orangeColor];
             return CGPointMake(CGRectGetMinX(screen),
                                CGRectGetMaxY(screen) - CGRectGetHeight(squareFrame));
         case TKABottomRightSquarePosition:
-            self.colorSquare = [UIColor purpleColor];
             return CGPointMake(CGRectGetMaxX(screen) - CGRectGetWidth(squareFrame),
                                CGRectGetMaxY(screen) - CGRectGetHeight(squareFrame));
+        default:
+            return squareFrame.origin;
     }
 }
 
-- (void)setMovingSquare:(BOOL)movingSquare {
-    if (_movingSquare != movingSquare) {
-        _movingSquare = movingSquare;
+
+- (void)setSquareMoved:(BOOL)squareMoved {
+    if (_squareMoved != squareMoved) {
+        _squareMoved = squareMoved;
+    }
         
-        if (movingSquare && !self.animationSquare) {
-            [self setSquarePosition:[self nextSquarePosition] animated:YES];
+    void(^handlerBlock)(void) = ^(void){
+        if (self.squareMoved) {
+            [self setSquarePosition:[self nextSquarePosition] animated:YES completionHandler:handlerBlock];
         }
-    }
-}
-
-- (void)setAnimationSquare:(BOOL)animationSquare {
-    if (_animationSquare != animationSquare) {
-        _animationSquare = animationSquare;
+    };
         
-        if (!animationSquare && self.movingSquare) {
-            [self setSquarePosition:[self nextSquarePosition]
-                           animated:YES
-                  completionHandler:^{
-                                        self.squareView.backgroundColor = self.colorSquare;
-                                    }];
-        }
-    }
+    handlerBlock();
 }
 
-- (void)animatedMovingSquare {
-    self.movingSquare = (self.movingSquare) ? NO : YES;
-}
 
 - (TKASquarePosition)nextSquarePosition {
     NSUInteger squarePosition = self.squarePosition;
-
-    return ((++squarePosition)%kTKACountSquarePosition);
+    
+    return ((++squarePosition) % TKACountSquarePosition);
 }
 
 @end
