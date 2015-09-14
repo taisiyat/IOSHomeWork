@@ -17,6 +17,9 @@
 
 @dynamic mainView;
 
+#pragma mark -
+#pragma mark Accessors
+
 - (TKAView *)mainView {
     if ([self isViewLoaded] && [self.view isKindOfClass:[TKAView class]]) {
         return (TKAView *)self.view;
@@ -25,8 +28,14 @@
     return nil;
 }
 
+#pragma mark -
+#pragma mark View LifeCycle
+
 - (void)viewDidLoad {
     [super viewDidLoad];
+}
+
+- (void)awakeFromNib {
     self.mainView.squarePosition = 0;
     self.mainView.squareMoved = NO;
 }

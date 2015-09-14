@@ -19,6 +19,7 @@
 		8AEBF2381BA1609A00C09EC8 /* TKAView.m in Sources */ = {isa = PBXBuildFile; fileRef = 8AEBF2341BA1609A00C09EC8 /* TKAView.m */; };
 		8AEBF2391BA1609A00C09EC8 /* TKAViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 8AEBF2361BA1609A00C09EC8 /* TKAViewController.m */; };
 		8AEBF23A1BA1609A00C09EC8 /* TKAViewController.xib in Resources */ = {isa = PBXBuildFile; fileRef = 8AEBF2371BA1609A00C09EC8 /* TKAViewController.xib */; };
+		8AFC616B1BA77B9E001ACBA9 /* TKAMacro.m in Sources */ = {isa = PBXBuildFile; fileRef = 8AFC616A1BA77B9E001ACBA9 /* TKAMacro.m */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXContainerItemProxy section */
@@ -56,6 +57,8 @@
 		8AEBF2351BA1609A00C09EC8 /* TKAViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = TKAViewController.h; sourceTree = "<group>"; };
 		8AEBF2361BA1609A00C09EC8 /* TKAViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = TKAViewController.m; sourceTree = "<group>"; };
 		8AEBF2371BA1609A00C09EC8 /* TKAViewController.xib */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.xib; path = TKAViewController.xib; sourceTree = "<group>"; };
+		8AFC616A1BA77B9E001ACBA9 /* TKAMacro.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = TKAMacro.m; sourceTree = "<group>"; };
+		8AFC616D1BA77C28001ACBA9 /* TKAMacro.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = TKAMacro.h; sourceTree = "<group>"; };
 		DBC695F94A88503EC6D4A88A /* Pods-IOSHomeWorkTests.release.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-IOSHomeWorkTests.release.xcconfig"; path = "Pods/Target Support Files/Pods-IOSHomeWorkTests/Pods-IOSHomeWorkTests.release.xcconfig"; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
@@ -158,6 +161,9 @@
 		8A6EF8D31B41A1D400CABD97 /* Source */ = {
 			isa = PBXGroup;
 			children = (
+				8AFC61691BA77B21001ACBA9 /* UI */,
+				8AFC61661BA77B15001ACBA9 /* Library */,
+				8AFC61681BA77B16001ACBA9 /* Models */,
 				8AEBF2321BA1609A00C09EC8 /* TKASquare */,
 				8A86DCCC1B428898007FE402 /* TKAStudyViewController */,
 			);
@@ -193,8 +199,39 @@
 				8AEBF2351BA1609A00C09EC8 /* TKAViewController.h */,
 				8AEBF2361BA1609A00C09EC8 /* TKAViewController.m */,
 				8AEBF2371BA1609A00C09EC8 /* TKAViewController.xib */,
+				8AFC616D1BA77C28001ACBA9 /* TKAMacro.h */,
+				8AFC616A1BA77B9E001ACBA9 /* TKAMacro.m */,
 			);
 			path = TKASquare;
+			sourceTree = "<group>";
+		};
+		8AFC61661BA77B15001ACBA9 /* Library */ = {
+			isa = PBXGroup;
+			children = (
+				8AFC61671BA77B16001ACBA9 /* Categories */,
+			);
+			path = Library;
+			sourceTree = "<group>";
+		};
+		8AFC61671BA77B16001ACBA9 /* Categories */ = {
+			isa = PBXGroup;
+			children = (
+			);
+			path = Categories;
+			sourceTree = "<group>";
+		};
+		8AFC61681BA77B16001ACBA9 /* Models */ = {
+			isa = PBXGroup;
+			children = (
+			);
+			path = Models;
+			sourceTree = "<group>";
+		};
+		8AFC61691BA77B21001ACBA9 /* UI */ = {
+			isa = PBXGroup;
+			children = (
+			);
+			path = UI;
 			sourceTree = "<group>";
 		};
 		C08E624FF0E0289DD105FE78 /* Frameworks */ = {
@@ -344,6 +381,7 @@
 			isa = PBXSourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				8AFC616B1BA77B9E001ACBA9 /* TKAMacro.m in Sources */,
 				8A3F16D61B3AD6C500E6551E /* main.m in Sources */,
 				8AEBF2391BA1609A00C09EC8 /* TKAViewController.m in Sources */,
 				8AEBF2381BA1609A00C09EC8 /* TKAView.m in Sources */,
