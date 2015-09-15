@@ -8,6 +8,7 @@
 
 /* Begin PBXBuildFile section */
 		76F7B43C9F0CCD82953F7B4C /* libPods-IOSHomeWorkTests.a in Frameworks */ = {isa = PBXBuildFile; fileRef = 406304F163B6566C4D1B0BC9 /* libPods-IOSHomeWorkTests.a */; };
+		8A1E54C31BA8A73E00C71B11 /* NSString+TKARandomWord.m in Sources */ = {isa = PBXBuildFile; fileRef = 8A1E54C21BA8A73E00C71B11 /* NSString+TKARandomWord.m */; };
 		8A3F16D61B3AD6C500E6551E /* main.m in Sources */ = {isa = PBXBuildFile; fileRef = 8A3F16D51B3AD6C500E6551E /* main.m */; };
 		8A3F16F01B3AD6C600E6551E /* IOSHomeWorkTests.m in Sources */ = {isa = PBXBuildFile; fileRef = 8A3F16EF1B3AD6C600E6551E /* IOSHomeWorkTests.m */; };
 		8A6EF8D81B41A1D400CABD97 /* LaunchScreen.xib in Resources */ = {isa = PBXBuildFile; fileRef = 8A6EF8CE1B41A1D400CABD97 /* LaunchScreen.xib */; };
@@ -19,7 +20,8 @@
 		8AEC46461BA8655C00F6FC0D /* TKAViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 8AEC46431BA8655C00F6FC0D /* TKAViewController.m */; };
 		8AEC46471BA8655C00F6FC0D /* TKAViewController.xib in Resources */ = {isa = PBXBuildFile; fileRef = 8AEC46441BA8655C00F6FC0D /* TKAViewController.xib */; };
 		8AEC464A1BA8657400F6FC0D /* TKAMacros.m in Sources */ = {isa = PBXBuildFile; fileRef = 8AEC46491BA8657400F6FC0D /* TKAMacros.m */; };
-		8AEC46531BA88F0400F6FC0D /* UIWindow+TKAWindow.m in Sources */ = {isa = PBXBuildFile; fileRef = 8AEC46521BA88F0400F6FC0D /* UIWindow+TKAWindow.m */; };
+		8AEC46671BA8926300F6FC0D /* NSString+TKAExtension.m in Sources */ = {isa = PBXBuildFile; fileRef = 8AEC46561BA8926300F6FC0D /* NSString+TKAExtension.m */; };
+		8AEC46701BA8931A00F6FC0D /* UIWindow+TKAExtension.m in Sources */ = {isa = PBXBuildFile; fileRef = 8AEC466F1BA8931A00F6FC0D /* UIWindow+TKAExtension.m */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXContainerItemProxy section */
@@ -35,6 +37,8 @@
 /* Begin PBXFileReference section */
 		406304F163B6566C4D1B0BC9 /* libPods-IOSHomeWorkTests.a */ = {isa = PBXFileReference; explicitFileType = archive.ar; includeInIndex = 0; path = "libPods-IOSHomeWorkTests.a"; sourceTree = BUILT_PRODUCTS_DIR; };
 		55B46FB7EC3516B7038401DA /* Pods-IOSHomeWorkTests.debug.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-IOSHomeWorkTests.debug.xcconfig"; path = "Pods/Target Support Files/Pods-IOSHomeWorkTests/Pods-IOSHomeWorkTests.debug.xcconfig"; sourceTree = "<group>"; };
+		8A1E54C11BA8A73E00C71B11 /* NSString+TKARandomWord.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = "NSString+TKARandomWord.h"; sourceTree = "<group>"; };
+		8A1E54C21BA8A73E00C71B11 /* NSString+TKARandomWord.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = "NSString+TKARandomWord.m"; sourceTree = "<group>"; };
 		8A3F16D01B3AD6C500E6551E /* IOSHomeWork.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = IOSHomeWork.app; sourceTree = BUILT_PRODUCTS_DIR; };
 		8A3F16D41B3AD6C500E6551E /* Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = Info.plist; sourceTree = "<group>"; };
 		8A3F16D51B3AD6C500E6551E /* main.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = main.m; sourceTree = "<group>"; };
@@ -52,8 +56,10 @@
 		8AEC46441BA8655C00F6FC0D /* TKAViewController.xib */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.xib; path = TKAViewController.xib; sourceTree = "<group>"; };
 		8AEC46481BA8657400F6FC0D /* TKAMacros.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = TKAMacros.h; sourceTree = "<group>"; };
 		8AEC46491BA8657400F6FC0D /* TKAMacros.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = TKAMacros.m; sourceTree = "<group>"; };
-		8AEC46511BA88F0400F6FC0D /* UIWindow+TKAWindow.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = "UIWindow+TKAWindow.h"; sourceTree = "<group>"; };
-		8AEC46521BA88F0400F6FC0D /* UIWindow+TKAWindow.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = "UIWindow+TKAWindow.m"; sourceTree = "<group>"; };
+		8AEC46551BA8926300F6FC0D /* NSString+TKAExtension.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = "NSString+TKAExtension.h"; sourceTree = "<group>"; };
+		8AEC46561BA8926300F6FC0D /* NSString+TKAExtension.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = "NSString+TKAExtension.m"; sourceTree = "<group>"; };
+		8AEC466E1BA8931A00F6FC0D /* UIWindow+TKAExtension.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = "UIWindow+TKAExtension.h"; sourceTree = "<group>"; };
+		8AEC466F1BA8931A00F6FC0D /* UIWindow+TKAExtension.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = "UIWindow+TKAExtension.m"; sourceTree = "<group>"; };
 		DBC695F94A88503EC6D4A88A /* Pods-IOSHomeWorkTests.release.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-IOSHomeWorkTests.release.xcconfig"; path = "Pods/Target Support Files/Pods-IOSHomeWorkTests/Pods-IOSHomeWorkTests.release.xcconfig"; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
@@ -83,6 +89,15 @@
 				DBC695F94A88503EC6D4A88A /* Pods-IOSHomeWorkTests.release.xcconfig */,
 			);
 			name = Pods;
+			sourceTree = "<group>";
+		};
+		8A1E54C01BA8A72700C71B11 /* NSString+TKARandomName */ = {
+			isa = PBXGroup;
+			children = (
+				8A1E54C11BA8A73E00C71B11 /* NSString+TKARandomWord.h */,
+				8A1E54C21BA8A73E00C71B11 /* NSString+TKARandomWord.m */,
+			);
+			path = "NSString+TKARandomName";
 			sourceTree = "<group>";
 		};
 		8A3F16C71B3AD6C500E6551E = {
@@ -182,13 +197,22 @@
 			path = TKASquare;
 			sourceTree = "<group>";
 		};
-		8AEC46501BA88F0400F6FC0D /* UIWindow+TKAWindow */ = {
+		8AEC46541BA8926300F6FC0D /* NSString+TKAExtension */ = {
 			isa = PBXGroup;
 			children = (
-				8AEC46511BA88F0400F6FC0D /* UIWindow+TKAWindow.h */,
-				8AEC46521BA88F0400F6FC0D /* UIWindow+TKAWindow.m */,
+				8AEC46551BA8926300F6FC0D /* NSString+TKAExtension.h */,
+				8AEC46561BA8926300F6FC0D /* NSString+TKAExtension.m */,
 			);
-			path = "UIWindow+TKAWindow";
+			path = "NSString+TKAExtension";
+			sourceTree = "<group>";
+		};
+		8AEC466D1BA8931A00F6FC0D /* UIWindow+TKAExtension */ = {
+			isa = PBXGroup;
+			children = (
+				8AEC466E1BA8931A00F6FC0D /* UIWindow+TKAExtension.h */,
+				8AEC466F1BA8931A00F6FC0D /* UIWindow+TKAExtension.m */,
+			);
+			path = "UIWindow+TKAExtension";
 			sourceTree = "<group>";
 		};
 		8AFC61661BA77B15001ACBA9 /* Library */ = {
@@ -204,7 +228,9 @@
 		8AFC61671BA77B16001ACBA9 /* Categories */ = {
 			isa = PBXGroup;
 			children = (
-				8AEC46501BA88F0400F6FC0D /* UIWindow+TKAWindow */,
+				8A1E54C01BA8A72700C71B11 /* NSString+TKARandomName */,
+				8AEC46541BA8926300F6FC0D /* NSString+TKAExtension */,
+				8AEC466D1BA8931A00F6FC0D /* UIWindow+TKAExtension */,
 			);
 			path = Categories;
 			sourceTree = "<group>";
@@ -370,11 +396,13 @@
 			isa = PBXSourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				8A1E54C31BA8A73E00C71B11 /* NSString+TKARandomWord.m in Sources */,
+				8AEC46701BA8931A00F6FC0D /* UIWindow+TKAExtension.m in Sources */,
 				8AEC464A1BA8657400F6FC0D /* TKAMacros.m in Sources */,
 				8A3F16D61B3AD6C500E6551E /* main.m in Sources */,
+				8AEC46671BA8926300F6FC0D /* NSString+TKAExtension.m in Sources */,
 				8AEC46461BA8655C00F6FC0D /* TKAViewController.m in Sources */,
 				8AEC46451BA8655C00F6FC0D /* TKAView.m in Sources */,
-				8AEC46531BA88F0400F6FC0D /* UIWindow+TKAWindow.m in Sources */,
 				8A86DCCF1B42893B007FE402 /* TKAAppDelegate.m in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;

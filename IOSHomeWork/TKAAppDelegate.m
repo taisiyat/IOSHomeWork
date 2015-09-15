@@ -8,7 +8,7 @@
 
 #import "TKAAppDelegate.h"
 #import "TKAViewController.h"
-#import "UIWindow+TKAWindow.h"
+#import "UIWindow+TKAExtension.h"
 
 @interface TKAAppDelegate ()
 

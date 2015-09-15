@@ -1,5 +1,5 @@
 //
-//  UIWindow+TKAWindow.h
+//  UIWindow+TKAExtension.h
 //  IOSHomeWork
 //
 //  Created by Taisiya on 15.09.15.
@@ -8,7 +8,7 @@
 
 #import <UIKit/UIKit.h>
 
-@interface UIWindow (TKAWindow)
+@interface UIWindow (TKAExtension)
 
 + (instancetype)mainwindow;
 
