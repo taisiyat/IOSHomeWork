@@ -23,7 +23,6 @@ typedef NS_ENUM(NSUInteger, TKASquarePosition) {
 @property (nonatomic, assign) TKASquarePosition          squarePosition;
 @property (nonatomic, assign, getter = isMoving) BOOL    moving;
 
-
 - (void)setSquarePosition:(TKASquarePosition)squarePosition;
 - (void)setSquarePosition:(TKASquarePosition)squarePosition animated:(BOOL)animated;
 - (void)setSquarePosition:(TKASquarePosition)nextSquarePosition

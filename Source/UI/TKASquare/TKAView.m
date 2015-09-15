@@ -7,7 +7,7 @@
 //
 
 #import "TKAView.h"
-#import "TKAMacro.h"
+#import "TKAMacros.h"
 
 static const NSTimeInterval kTKADurationTime        = 1.0;
 static const NSTimeInterval kTKADelayTime           = 0.1;
@@ -56,14 +56,16 @@ static const NSTimeInterval kTKADelayTime           = 0.1;
         _moving = moving;
     }
 
-    __weak typeof(self) weakSelf = self;
+//    __weak typeof(self) weakSelf = self;
+    TKAWeakVar(self)
     [self setSquarePosition:[self nextSquarePosition]
                    animated:YES
           completionHandler:^{
-              __strong typeof(weakSelf) strongSelf = weakSelf;
+//              __strong typeof(weakself) strongself = weakself;
+              TKAStrongVar(self)
               
-              if (strongSelf.moving){
-                  [strongSelf setMoving:moving];
+              if (strongself.moving){
+                  [strongself setMoving:moving];
               }
           }];
 

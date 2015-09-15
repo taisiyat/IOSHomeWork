@@ -7,6 +7,8 @@
 //
 
 #import "TKAViewController.h"
+#import "TKAMacros.h"
+#import "TKAView.h"
 
 @interface TKAViewController ()
 @property (nonatomic, readonly) TKAView *mainView;
@@ -27,6 +29,12 @@
     
     return nil;
 }
+
+//@end
+//
+////TKAViewControllerBaseViewProperty(TKAViewController, mainView, TKAView)
+//
+//@implementation TKAViewController
 
 #pragma mark -
 #pragma mark View LifeCycle
