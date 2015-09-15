@@ -35,11 +35,6 @@
     [super viewDidLoad];
 }
 
-- (void)awakeFromNib {
-    self.mainView.squarePosition = 0;
-    self.mainView.squareMoved = NO;
-}
-
 - (void)didReceiveMemoryWarning {
     [super didReceiveMemoryWarning];
 }
@@ -48,7 +43,7 @@
 #pragma mark Interface Handling
 
 - (IBAction)onMoveSquareButton:(id)sender {
-    self.mainView.squareMoved = !self.mainView.squareMoved;
+    self.mainView.moving = !self.mainView.moving;
 }
 
 @end
