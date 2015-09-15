@@ -55,14 +55,25 @@ static const NSTimeInterval kTKADelayTime           = 0.1;
     if (_moving != moving) {
         _moving = moving;
     }
+
+    __weak typeof(self) weakSelf = self;
+    [self setSquarePosition:[self nextSquarePosition]
+                   animated:YES
+          completionHandler:^{
+              __strong typeof(weakSelf) strongSelf = weakSelf;
+              
+              if (strongSelf.moving){
+                  [strongSelf setMoving:moving];
+              }
+          }];
+
+//    __block void(^handlerBlock)() = ^(){
+//        if (self.moving) {
+//            [self setSquarePosition:[self nextSquarePosition] animated:YES completionHandler:handlerBlock];
+//        }
+//    };
     
-    __block void(^handlerBlock)() = ^(){
-        if (self.moving) {
-            [self setSquarePosition:[self nextSquarePosition] animated:YES completionHandler:handlerBlock];
-        }
-    };
-    
-    handlerBlock();
+//    handlerBlock();
 }
 
 #pragma mark -
@@ -94,7 +105,10 @@ static const NSTimeInterval kTKADelayTime           = 0.1;
             break;
     }
     
-    return CGRectMake(nextPoint.x, nextPoint.y, CGRectGetWidth(squareFrame), CGRectGetHeight(squareFrame));
+    //return CGRectMake(nextPoint.x, nextPoint.y, CGRectGetWidth(squareFrame), CGRectGetHeight(squareFrame));
+    squareFrame.origin = CGPointMake(nextPoint.x, nextPoint.y);
+
+    return squareFrame;
 }
 
 - (TKASquarePosition)nextSquarePosition {
