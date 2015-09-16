@@ -56,26 +56,16 @@ static const NSTimeInterval kTKADelayTime           = 0.1;
         _moving = moving;
     }
 
-//    __weak typeof(self) weakSelf = self;
     TKAWeakVar(self)
     [self setSquarePosition:[self nextSquarePosition]
                    animated:YES
           completionHandler:^{
-//              __strong typeof(weakself) strongself = weakself;
-              TKAStrongVar(self)
-              
+              TKAStrongVarFromWeak(self)
+
               if (strongself.moving){
                   [strongself setMoving:moving];
               }
           }];
-
-//    __block void(^handlerBlock)() = ^(){
-//        if (self.moving) {
-//            [self setSquarePosition:[self nextSquarePosition] animated:YES completionHandler:handlerBlock];
-//        }
-//    };
-    
-//    handlerBlock();
 }
 
 #pragma mark -

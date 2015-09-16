@@ -10,31 +10,7 @@
 #import "TKAMacros.h"
 #import "TKAView.h"
 
-@interface TKAViewController ()
-@property (nonatomic, readonly) TKAView *mainView;
-
-@end
-
-@implementation TKAViewController
-
-@dynamic mainView;
-
-#pragma mark -
-#pragma mark Accessors
-
-- (TKAView *)mainView {
-    if ([self isViewLoaded] && [self.view isKindOfClass:[TKAView class]]) {
-        return (TKAView *)self.view;
-    }
-    
-    return nil;
-}
-
-//@end
-//
-////TKAViewControllerBaseViewProperty(TKAViewController, mainView, TKAView)
-//
-//@implementation TKAViewController
+TKAViewControllerBaseViewProperty(TKAViewController, mainView, TKAView)
 
 #pragma mark -
 #pragma mark View LifeCycle
