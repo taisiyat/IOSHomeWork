@@ -10,7 +10,7 @@
 
 @implementation UIWindow (TKAExtension)
 
-+ (instancetype)mainwindow {
++ (instancetype)window {
     return [[self alloc] initWithFrame:[[UIScreen mainScreen] bounds]];
 }
 

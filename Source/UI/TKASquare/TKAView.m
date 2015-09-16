@@ -37,76 +37,73 @@ static const NSTimeInterval kTKADelayTime           = 0.1;
     frame = [self nextSquareFrame:nextSquarePosition];
 
     [UIView animateWithDuration:animated ? kTKADurationTime : 0
-                              delay:kTKADelayTime
-                            options:UIViewAnimationOptionBeginFromCurrentState
-                         animations:^(void){
-                                        self.squareView.frame = frame;
-                                    }
-                         completion:^(BOOL finished){
-                             _squarePosition = nextSquarePosition;
-                            
-                             if (handlerBlock && finished) {
-                                 handlerBlock();
-                             }
-                         }];
+                          delay:kTKADelayTime
+                        options:UIViewAnimationOptionBeginFromCurrentState
+                     animations:^(void){
+                         self.animating = YES;
+                         self.squareView.frame = frame;
+                     }
+                     completion:^(BOOL finished){
+                         _squarePosition = nextSquarePosition;
+                         self.animating = NO;
+                         
+                         if (handlerBlock && finished) {
+                             handlerBlock();
+                         }
+                     }];
 }
 
-- (void)setMoving:(BOOL)moving {
-    if (_moving != moving) {
-        _moving = moving;
+#pragma mark -
+#pragma mark Public
+
+- (void)animateSquare {
+    if (self.moving && !self.animating) {
+        TKAWeakifyVariable(self)
+        [self setSquarePosition:[self nextSquarePosition]
+                       animated:YES
+              completionHandler:^(){
+                  TKAStrongifyVariableAndReturnEntity(self, TKAEmpty)
+                  [self animateSquare];
+              }];
     }
-
-    TKAWeakVar(self)
-    [self setSquarePosition:[self nextSquarePosition]
-                   animated:YES
-          completionHandler:^{
-              TKAStrongVarFromWeak(self)
-
-              if (strongself.moving){
-                  [strongself setMoving:moving];
-              }
-          }];
 }
 
 #pragma mark -
 #pragma mark Private
 
 - (CGRect)nextSquareFrame:(TKASquarePosition)nextSquarePosition  {
-    CGRect screenFrame = self.frame;
+    CGRect screen = self.frame;
     CGRect squareFrame = self.squareView.frame;
-    CGPoint nextPoint = CGPointZero;
+    CGPoint point = CGPointZero;
     
-    CGFloat maxX = CGRectGetWidth(screenFrame) - CGRectGetWidth(squareFrame);
-    CGFloat maxY = CGRectGetHeight(screenFrame) - CGRectGetHeight(squareFrame);
+    CGFloat pointX = CGRectGetWidth(screen) - CGRectGetWidth(squareFrame);
+    CGFloat pointY = CGRectGetHeight(screen) - CGRectGetHeight(squareFrame);
     
     switch (nextSquarePosition) {
         case TKATopRightSquarePosition:
-            nextPoint.x = maxX;
+            point.x = pointX;
             break;
         
         case TKABottomLeftSquarePosition:
-            nextPoint.y = maxY;
+            point.y = pointY;
             break;
         
         case TKABottomRightSquarePosition:
-            nextPoint.x = maxX;
-            nextPoint.y = maxY;
+            point.x = pointX;
+            point.y = pointY;
             break;
         
         default:
             break;
     }
     
-    //return CGRectMake(nextPoint.x, nextPoint.y, CGRectGetWidth(squareFrame), CGRectGetHeight(squareFrame));
-    squareFrame.origin = CGPointMake(nextPoint.x, nextPoint.y);
+    squareFrame.origin = point;
 
     return squareFrame;
 }
 
 - (TKASquarePosition)nextSquarePosition {
-    NSUInteger squarePosition = self.squarePosition;
-    
-    return ((squarePosition + 1) % TKACountSquarePosition);
+    return ((self.squarePosition + 1) % TKACountSquarePosition);
 }
 
 @end

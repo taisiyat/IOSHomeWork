@@ -14,14 +14,11 @@ static const NSUInteger kTKALengthWord = 8;
 @implementation NSString (TKARandomWord)
 
 + (instancetype)randomWord {
-    return [self randomStringWithLength:kTKALengthWord alphabet:[self lovercaseLetterAlphabet]];
+    return [self randomStringWithLength:kTKALengthWord alphabet:[self lowercaseLetterAlphabet]];
 }
 
-- (id)randomWordWithCapitalLetter {
-    NSString *letter = [NSString randomStringWithLength:1 alphabet:[NSString capitalizedLetterAlphabet]];
-    NSString *word = [NSString randomWord];
-    
-    return [letter stringByAppendingString:word];
++ (instancetype)randomWordWithCapitalLetter {
+    return [[self randomStringWithLength:kTKALengthWord alphabet:[self lowercaseLetterAlphabet]] capitalizedString];
 }
 
 @end

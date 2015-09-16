@@ -12,6 +12,8 @@
 
 TKAViewControllerBaseViewProperty(TKAViewController, mainView, TKAView)
 
+@implementation TKAViewController
+
 #pragma mark -
 #pragma mark View LifeCycle
 
@@ -28,6 +30,7 @@ TKAViewControllerBaseViewProperty(TKAViewController, mainView, TKAView)
 
 - (IBAction)onMoveSquareButton:(id)sender {
     self.mainView.moving = !self.mainView.moving;
+    [self.mainView animateSquare];
 }
 
 @end

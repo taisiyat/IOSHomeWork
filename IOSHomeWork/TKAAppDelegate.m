@@ -18,8 +18,9 @@
 
 
 - (BOOL)application:(UIApplication *)application didFinishLaunchingWithOptions:(NSDictionary *)launchOptions {
-    UIWindow *window = [UIWindow mainwindow];
+    UIWindow *window = [UIWindow window];
     self.window = window;
+    
     window.rootViewController = [TKAViewController new];
     [window makeKeyAndVisible];
     

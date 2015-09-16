@@ -10,7 +10,7 @@
 
 @interface NSString (TKAExtension)
 
-+ (id)lovercaseLetterAlphabet;
++ (id)lowercaseLetterAlphabet;
 + (id)capitalizedLetterAlphabet;
 + (id)numericAlphabet;
 + (id)punctuationMarkAlpabet;

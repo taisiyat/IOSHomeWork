@@ -10,6 +10,6 @@
 
 @interface UIWindow (TKAExtension)
 
-+ (instancetype)mainwindow;
++ (instancetype)window;
 
 @end

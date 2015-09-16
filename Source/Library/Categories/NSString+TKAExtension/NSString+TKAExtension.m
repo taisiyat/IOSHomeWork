@@ -11,7 +11,7 @@ static const NSUInteger kArbitrarySrtingLength = 10;
 
 @implementation NSString (TKAExtension)
 
-+ (id)lovercaseLetterAlphabet {
++ (id)lowercaseLetterAlphabet {
     return [self alphabetWithRange:NSMakeRange('a', 'z' - 'a' + 1)];
 }
 
@@ -41,7 +41,7 @@ static const NSUInteger kArbitrarySrtingLength = 10;
 }
 
 + (id)randomStringWithLength:(NSUInteger)length {
-    return [self randomStringWithLength:length alphabet:[self lovercaseLetterAlphabet]];
+    return [self randomStringWithLength:length alphabet:[self lowercaseLetterAlphabet]];
 }
 
 + (id)randomStringWithLength:(NSUInteger)length
