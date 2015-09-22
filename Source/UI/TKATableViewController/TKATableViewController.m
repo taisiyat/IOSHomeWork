@@ -11,7 +11,7 @@
 #import "TKATableView.h"
 #import "TKATableCell.h"
 #import "TKAUser.h"
-//#import "TKAUsers.h"
+#import "TKAUsers.h"
 
 #import "TKAMacros.h"
 
@@ -28,7 +28,6 @@ TKAViewControllerBaseViewProperty(TKATableViewController, tableView, TKATableVie
 
 - (void)viewDidLoad {
     [super viewDidLoad];
-    // Do any additional setup after loading the view from its nib.
 }
 
 - (void)didReceiveMemoryWarning {
@@ -40,8 +39,8 @@ TKAViewControllerBaseViewProperty(TKATableViewController, tableView, TKATableVie
 
 - (NSInteger)tableView:(UITableView *)tableView
  numberOfRowsInSection:(NSInteger)section {
-    return 100;
-//    return [self.users count];
+//    return 100;
+    return [self.users countOfUsers];
 }
 
 - (UITableViewCell *)tableView:(UITableView *)tableView
@@ -55,8 +54,8 @@ TKAViewControllerBaseViewProperty(TKATableViewController, tableView, TKATableVie
         cell = [cells firstObject];
     }
     
-    cell.user = [TKAUser new];
-//    cell.user = self.users[indexPath.row];
+//    cell.user = [TKAUser new];
+    cell.user = [self.users userAtIndex:indexPath.row];
     
     return cell;
 }
@@ -65,7 +64,14 @@ TKAViewControllerBaseViewProperty(TKATableViewController, tableView, TKATableVie
 #pragma mark Interface Handling
 
 - (IBAction)onAddButton:(id)sender {
+    TKAUsers *users = self.users;
+    UITableView *usersTable = self.tableView.usersTableView;
+    [users addUser:[TKAUser new]];
     
+    [usersTable beginUpdates];
+    [usersTable insertRowsAtIndexPaths:@[[NSIndexPath indexPathForRow:([users countOfUsers] - 1) inSection:0]]
+                      withRowAnimation:UITableViewRowAnimationNone];
+    [usersTable endUpdates];
 }
 
 - (IBAction)onRemoveButton:(id)sender {

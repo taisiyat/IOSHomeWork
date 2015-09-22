@@ -13,6 +13,8 @@
 @interface TKAUsers : NSObject
 @property (nonatomic, assign) NSArray *users;
 
+//+ (instancetype)users;
+
 - (void)addUser:(TKAUser *)user;
 - (void)removeUser:(TKAUser *)user;
 - (void)removeUserAtIndex:(NSUInteger)index;

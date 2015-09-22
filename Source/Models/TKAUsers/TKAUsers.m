@@ -17,6 +17,13 @@
 
 @dynamic users;
 
+//#pragma mark -
+//#pragma mark Class Method
+//
+//+ (instancetype)users {
+//    return [TKAUsers new];
+//}
+
 #pragma mark -
 #pragma mark Initializations and Deallocations
 
