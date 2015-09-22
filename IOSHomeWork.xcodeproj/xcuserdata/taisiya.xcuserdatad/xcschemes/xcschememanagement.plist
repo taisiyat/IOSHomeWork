@@ -9,6 +9,16 @@
 			<key>orderHint</key>
 			<integer>0</integer>
 		</dict>
+		<key>IOSTable copy.xcscheme</key>
+		<dict>
+			<key>orderHint</key>
+			<integer>4</integer>
+		</dict>
+		<key>IOSTable.xcscheme</key>
+		<dict>
+			<key>orderHint</key>
+			<integer>3</integer>
+		</dict>
 	</dict>
 	<key>SuppressBuildableAutocreation</key>
 	<dict>
@@ -18,6 +28,21 @@
 			<true/>
 		</dict>
 		<key>8A3F16E81B3AD6C600E6551E</key>
+		<dict>
+			<key>primary</key>
+			<true/>
+		</dict>
+		<key>8A4D8CD81BAEF1E500FEFA0E</key>
+		<dict>
+			<key>primary</key>
+			<true/>
+		</dict>
+		<key>8A4D8CED1BAEF1E600FEFA0E</key>
+		<dict>
+			<key>primary</key>
+			<true/>
+		</dict>
+		<key>8A4D8CFC1BAEF6E900FEFA0E</key>
 		<dict>
 			<key>primary</key>
 			<true/>

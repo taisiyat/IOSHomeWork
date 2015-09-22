@@ -20,7 +20,6 @@ typedef NS_ENUM(NSUInteger, TKASquarePosition) {
 @property (nonatomic, strong) IBOutlet UIButton *moveSquareButton;
 @property (nonatomic, strong) IBOutlet UIView   *squareView;
 
-@property (nonatomic, assign, getter = isAnimating) BOOL animating;
 @property (nonatomic, assign, getter = isMoving)    BOOL moving;
 @property (nonatomic, assign) TKASquarePosition          squarePosition;
 
@@ -29,5 +28,4 @@ typedef NS_ENUM(NSUInteger, TKASquarePosition) {
                  animated:(BOOL)animated
         completionHandler:(void(^)())handler;
 
-- (void)animateSquare;
 @end

@@ -46,3 +46,9 @@
     if (!var) { \
         return entity; \
     }
+
+#define TKAStrongifyVariableAndReturnNilIfNil(var) \
+TKAStrongifyVariableAndReturnEntity(var, nil)
+
+#define TKAStrongifyVariableAndReturnEmptyIfNil(var) \
+TKAStrongifyVariableAndReturnEntity(var, TKAEmpty)

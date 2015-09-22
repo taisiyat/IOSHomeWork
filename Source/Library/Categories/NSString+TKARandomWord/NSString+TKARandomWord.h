@@ -11,6 +11,6 @@
 @interface NSString (TKARandomWord)
 
 + (instancetype)randomWord;
-+ (instancetype)randomWordWithCapitalLetter;
++ (instancetype)randomName;
 
 @end

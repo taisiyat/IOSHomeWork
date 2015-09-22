@@ -8,7 +8,9 @@
 
 #import "TKAAppDelegate.h"
 #import "TKAViewController.h"
+#import "TKATableViewController.h"
 #import "UIWindow+TKAExtension.h"
+#import "UIViewController+TKAExtension.h"
 
 @interface TKAAppDelegate ()
 
@@ -21,7 +23,8 @@
     UIWindow *window = [UIWindow window];
     self.window = window;
     
-    window.rootViewController = [TKAViewController new];
+//    window.rootViewController = [TKAViewController viewController];
+    window.rootViewController = [TKATableViewController viewController];
     [window makeKeyAndVisible];
     
     return YES;

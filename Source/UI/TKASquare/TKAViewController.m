@@ -30,7 +30,6 @@ TKAViewControllerBaseViewProperty(TKAViewController, mainView, TKAView)
 
 - (IBAction)onMoveSquareButton:(id)sender {
     self.mainView.moving = !self.mainView.moving;
-    [self.mainView animateSquare];
 }
 
 @end

@@ -17,8 +17,8 @@ static const NSUInteger kTKALengthWord = 8;
     return [self randomStringWithLength:kTKALengthWord alphabet:[self lowercaseLetterAlphabet]];
 }
 
-+ (instancetype)randomWordWithCapitalLetter {
-    return [[self randomStringWithLength:kTKALengthWord alphabet:[self lowercaseLetterAlphabet]] capitalizedString];
++ (instancetype)randomName {
+    return [[self randomWord] capitalizedString];
 }
 
 @end

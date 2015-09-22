@@ -12,6 +12,11 @@
 static const NSTimeInterval kTKADurationTime        = 1.0;
 static const NSTimeInterval kTKADelayTime           = 0.1;
 
+@interface TKAView ()
+@property (nonatomic, assign, getter = isAnimating) BOOL animating;
+
+@end
+
 @implementation TKAView
 
 #pragma mark -
@@ -40,17 +45,22 @@ static const NSTimeInterval kTKADelayTime           = 0.1;
                           delay:kTKADelayTime
                         options:UIViewAnimationOptionBeginFromCurrentState
                      animations:^(void){
-                         self.animating = YES;
                          self.squareView.frame = frame;
                      }
                      completion:^(BOOL finished){
                          _squarePosition = nextSquarePosition;
-                         self.animating = NO;
-                         
                          if (handlerBlock && finished) {
                              handlerBlock();
                          }
                      }];
+}
+
+- (void)setMoving:(BOOL)moving {
+    if (_moving != moving) {
+        _moving = moving;
+    }
+    
+    [self animateSquare];
 }
 
 #pragma mark -
@@ -59,10 +69,12 @@ static const NSTimeInterval kTKADelayTime           = 0.1;
 - (void)animateSquare {
     if (self.moving && !self.animating) {
         TKAWeakifyVariable(self)
+        self.animating = YES;
         [self setSquarePosition:[self nextSquarePosition]
                        animated:YES
               completionHandler:^(){
-                  TKAStrongifyVariableAndReturnEntity(self, TKAEmpty)
+                  TKAStrongifyVariableAndReturnEmptyIfNil(self);
+                  self.animating = NO;
                   [self animateSquare];
               }];
     }
