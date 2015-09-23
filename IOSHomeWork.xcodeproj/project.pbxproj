@@ -237,13 +237,6 @@
 			path = TKATableCell;
 			sourceTree = "<group>";
 		};
-		8A4D8D0C1BAEFB4900FEFA0E /* TKAImageModel */ = {
-			isa = PBXGroup;
-			children = (
-			);
-			path = TKAImageModel;
-			sourceTree = "<group>";
-		};
 		8A5770DB1BA94A630050EAFB /* NSString+TKARandomWord */ = {
 			isa = PBXGroup;
 			children = (
@@ -346,7 +339,6 @@
 			children = (
 				8A4AD5091BB14B7900837631 /* TKAUsers */,
 				8A4AD5021BB13D8700837631 /* TKAUser */,
-				8A4D8D0C1BAEFB4900FEFA0E /* TKAImageModel */,
 			);
 			path = Models;
 			sourceTree = "<group>";

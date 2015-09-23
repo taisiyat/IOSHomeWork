@@ -11,9 +11,9 @@
 @class TKAUser;
 
 @interface TKAUsers : NSObject
-@property (nonatomic, assign) NSArray *users;
+@property (nonatomic, readonly) NSArray *users;
 
-//+ (instancetype)users;
++ (instancetype)users;
 
 - (void)addUser:(TKAUser *)user;
 - (void)removeUser:(TKAUser *)user;

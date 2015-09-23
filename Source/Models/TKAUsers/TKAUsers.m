@@ -9,7 +9,7 @@
 #import "TKAUsers.h"
 
 @interface TKAUsers ()
-@property (nonatomic, assign) NSMutableArray *mutableUsers;
+@property (nonatomic, strong) NSMutableArray *mutableUsers;
 
 @end
 
@@ -17,12 +17,12 @@
 
 @dynamic users;
 
-//#pragma mark -
-//#pragma mark Class Method
-//
-//+ (instancetype)users {
-//    return [TKAUsers new];
-//}
+#pragma mark -
+#pragma mark Class Method
+
++ (instancetype)users {
+    return [TKAUsers new];
+}
 
 #pragma mark -
 #pragma mark Initializations and Deallocations
