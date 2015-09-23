@@ -24,6 +24,8 @@ TKAViewControllerBaseViewProperty(TKATableViewController, tableView, TKATableVie
 
 - (void)viewDidLoad {
     [super viewDidLoad];
+    
+    [self.tableView.usersTableView reloadData];
 }
 
 - (void)didReceiveMemoryWarning {
@@ -35,7 +37,7 @@ TKAViewControllerBaseViewProperty(TKATableViewController, tableView, TKATableVie
 
 - (NSInteger)tableView:(UITableView *)tableView
  numberOfRowsInSection:(NSInteger)section {
-//    return 100;
+
     return [self.users countOfUsers];
 }
 
@@ -50,7 +52,6 @@ TKAViewControllerBaseViewProperty(TKATableViewController, tableView, TKATableVie
         cell = [cells firstObject];
     }
     
-//    cell.user = [TKAUser new];
     cell.user = [self.users userAtIndex:indexPath.row];
     
     return cell;
@@ -62,16 +63,19 @@ TKAViewControllerBaseViewProperty(TKATableViewController, tableView, TKATableVie
 - (IBAction)onAddButton:(id)sender {
     TKAUsers *users = self.users;
     UITableView *usersTable = self.tableView.usersTableView;
-    [users addUser:[TKAUser new]];
+    [users addUser:[TKAUser user]];
     
-    [usersTable beginUpdates];
-    [usersTable insertRowsAtIndexPaths:@[[NSIndexPath indexPathForRow:([users countOfUsers] - 1) inSection:0]]
-                      withRowAnimation:UITableViewRowAnimationNone];
-    [usersTable endUpdates];
+    NSUInteger indexRow = [users countOfUsers] - 1;
+    [usersTable insertRowsAtIndexPaths:@[[NSIndexPath indexPathForRow:indexRow inSection:0]]
+                      withRowAnimation:UITableViewRowAnimationAutomatic];
+    
+//    [usersTable reloadData];
 }
 
 - (IBAction)onRemoveButton:(id)sender {
-    
+    UITableView *usersTable = self.tableView.usersTableView;
+    TKATableView *tableView = self.tableView;
+    usersTable.editing = !usersTable.editing;
 }
 
 @end

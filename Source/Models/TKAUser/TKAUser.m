@@ -14,6 +14,13 @@
 @dynamic image;
 
 #pragma mark -
+#pragma mark Class Method
+
++ (instancetype)user {
+    return [TKAUser new];
+}
+
+#pragma mark -
 #pragma mark Initializations and Deallocations
 
 - (instancetype)init {

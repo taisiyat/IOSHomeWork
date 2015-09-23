@@ -7,8 +7,11 @@
 //
 
 #import "TKAAppDelegate.h"
+
 #import "TKAViewController.h"
 #import "TKATableViewController.h"
+#import "TKAUsers.h"
+
 #import "UIWindow+TKAExtension.h"
 #import "UIViewController+TKAExtension.h"
 
@@ -24,7 +27,10 @@
     self.window = window;
     
 //    window.rootViewController = [TKAViewController viewController];
-    window.rootViewController = [TKATableViewController viewController];
+    TKATableViewController *controller = [TKATableViewController viewController];
+    controller.users = [TKAUsers users];
+    window.rootViewController = controller;
+    
     [window makeKeyAndVisible];
     
     return YES;
