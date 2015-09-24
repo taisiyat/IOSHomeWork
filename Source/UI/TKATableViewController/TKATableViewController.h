@@ -16,6 +16,6 @@
 @property (nonatomic, strong) TKAUsers *users;
 
 - (IBAction)onAddButton:(id)sender;
-- (IBAction)onRemoveButton:(id)sender;
+- (IBAction)onEditButton:(id)sender;
 
 @end

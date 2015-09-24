@@ -57,6 +57,43 @@ TKAViewControllerBaseViewProperty(TKATableViewController, tableView, TKATableVie
     return cell;
 }
 
+- (void)tableView:(UITableView *)tableView
+    commitEditingStyle:(UITableViewCellEditingStyle)editingStyle
+     forRowAtIndexPath:(NSIndexPath *)indexPath
+{
+    if (UITableViewCellEditingStyleDelete) {
+        [self.users removeUserAtIndex:indexPath.row];
+        [tableView deleteRowsAtIndexPaths:@[indexPath]
+                         withRowAnimation:UITableViewRowAnimationAutomatic];
+    }
+}
+
+- (void)tableView:(UITableView *)tableView
+    moveRowAtIndexPath:(NSIndexPath *)sourceIndexPath
+           toIndexPath:(NSIndexPath *)destinationIndexPath
+{
+        [self.users moveUserAtIndex:sourceIndexPath.row
+                            toIndex:destinationIndexPath.row];
+}
+
+- (BOOL)tableView:(UITableView *)tableView
+    canMoveRowAtIndexPath:(NSIndexPath *)indexPath {
+    if (indexPath.row) {
+        return YES;
+    }
+    
+    return NO;
+}
+
+- (BOOL)tableView:(UITableView *)tableView
+    canEditRowAtIndexPath:(NSIndexPath *)indexPath {
+    if (indexPath.row && indexPath.row != [self.users countOfUsers]-1) {
+        return UITableViewCellEditingStyleInsert;
+    }
+    
+    return NO;
+}
+
 #pragma mark -
 #pragma mark Interface Handling
 
@@ -68,14 +105,12 @@ TKAViewControllerBaseViewProperty(TKATableViewController, tableView, TKATableVie
     NSUInteger indexRow = [users countOfUsers] - 1;
     [usersTable insertRowsAtIndexPaths:@[[NSIndexPath indexPathForRow:indexRow inSection:0]]
                       withRowAnimation:UITableViewRowAnimationAutomatic];
-    
-//    [usersTable reloadData];
 }
 
-- (IBAction)onRemoveButton:(id)sender {
+- (IBAction)onEditButton:(id)sender {
     UITableView *usersTable = self.tableView.usersTableView;
-    TKATableView *tableView = self.tableView;
     usersTable.editing = !usersTable.editing;
 }
+
 
 @end

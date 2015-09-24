@@ -17,5 +17,23 @@
     // Drawing code
 }
 */
+//- (void)setEditing:(BOOL)editing animated:(BOOL)animated {
+//
+//    [self setEditing:editing animated:YES];
+//    if (editing) {
+//        self.addButton.enabled = NO;
+//    } else {
+//        self.addButton.enabled = YES;
+//    }
+//}
+//
+//- (UITableViewCellEditingStyle)tableView:(UITableView *)tableView editingStyleForRowAtIndexPath:(NSIndexPath *)indexPath {
+////    SimpleEditableListAppDelegate *controller = (SimpleEditableListAppDelegate *)[[UIApplication sharedApplication] delegate];
+//    if (indexPath.row == [self.usersTableView ]-1) {
+//        return UITableViewCellEditingStyleInsert;
+//    } else {
+//        return UITableViewCellEditingStyleDelete;
+//    }
+//}
 
 @end

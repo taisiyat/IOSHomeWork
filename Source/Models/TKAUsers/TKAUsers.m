@@ -50,6 +50,10 @@
     [self.mutableUsers addObject:user];
 }
 
+- (void)addUser:(TKAUser *)user atIndex:(NSUInteger)index {
+    [self.mutableUsers insertObject:user atIndex:index];
+}
+
 - (void)removeUser:(TKAUser *)user {
     [self.mutableUsers removeObject:user];
 }
@@ -62,7 +66,16 @@
     return [self.mutableUsers objectAtIndex:index];
 }
 
-- (void)sortUsers:(TKAUser *)user {
+- (id)objectAtIndexSubscript:(NSUInteger)index {
+    return [self.mutableUsers objectAtIndexedSubscript:index];
+}
+
+- (void)moveUserAtIndex:(NSUInteger)sourceIndex
+                toIndex:(NSUInteger)destinationIndex
+{
+    TKAUser *user = [self userAtIndex:sourceIndex];
+    [self removeUserAtIndex:sourceIndex];
+    [self addUser:user atIndex:destinationIndex];
 }
 
 - (NSUInteger)countOfUsers {

@@ -16,10 +16,13 @@
 + (instancetype)users;
 
 - (void)addUser:(TKAUser *)user;
+- (void)addUser:(TKAUser *)user atIndex:(NSUInteger)index;
 - (void)removeUser:(TKAUser *)user;
 - (void)removeUserAtIndex:(NSUInteger)index;
 - (TKAUser *)userAtIndex:(NSUInteger)index;
-- (void)sortUsers:(TKAUser *)user;
+- (id)objectAtIndexSubscript:(NSUInteger)index;
+- (void)moveUserAtIndex:(NSUInteger)sourceIndex
+                toIndex:(NSUInteger)destinationIndex;
 - (NSUInteger)countOfUsers;
 
 @end

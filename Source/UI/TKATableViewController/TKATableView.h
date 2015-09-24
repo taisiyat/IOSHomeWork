@@ -11,7 +11,8 @@
 @interface TKATableView : UIView
 @property (nonatomic, strong) IBOutlet UITableView  *usersTableView;
 @property (nonatomic, strong) IBOutlet UIButton     *addButton;
-@property (nonatomic, strong) IBOutlet UIButton     *sortButton;
-@property (nonatomic, strong) IBOutlet UIButton     *removeButton;
+@property (nonatomic, strong) IBOutlet UIButton     *editButton;
+
+@property (nonatomic, assign) BOOL  *editing;
 
 @end

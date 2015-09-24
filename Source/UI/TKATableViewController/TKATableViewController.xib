@@ -33,31 +33,22 @@
                         <action selector="onAddButton:" destination="-1" eventType="touchUpInside" id="Vz9-bv-jxn"/>
                     </connections>
                 </button>
-                <button opaque="NO" contentMode="scaleToFill" fixedFrame="YES" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="4GV-EF-y7K" userLabel="Sort Button">
-                    <rect key="frame" x="126" y="519" width="80" height="30"/>
-                    <color key="backgroundColor" red="1" green="1" blue="0.0" alpha="1" colorSpace="calibratedRGB"/>
-                    <fontDescription key="fontDescription" type="system" pointSize="17"/>
-                    <state key="normal" title="Sort">
-                        <color key="titleShadowColor" white="0.5" alpha="1" colorSpace="calibratedWhite"/>
-                    </state>
-                </button>
-                <button opaque="NO" contentMode="scaleToFill" fixedFrame="YES" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="jff-5V-VUy" userLabel="Remove Button">
+                <button opaque="NO" contentMode="scaleToFill" fixedFrame="YES" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="jff-5V-VUy" userLabel="Edit Button">
                     <rect key="frame" x="232" y="519" width="80" height="30"/>
                     <color key="backgroundColor" red="1" green="1" blue="0.0" alpha="1" colorSpace="calibratedRGB"/>
                     <fontDescription key="fontDescription" type="system" pointSize="17"/>
-                    <state key="normal" title="Remove">
+                    <state key="normal" title="Edit">
                         <color key="titleShadowColor" white="0.5" alpha="1" colorSpace="calibratedWhite"/>
                     </state>
                     <connections>
-                        <action selector="onRemoveButton:" destination="-1" eventType="touchUpInside" id="fF1-Su-YKt"/>
+                        <action selector="onEditButton:" destination="-1" eventType="touchUpInside" id="5fd-9T-uTF"/>
                     </connections>
                 </button>
             </subviews>
             <color key="backgroundColor" white="1" alpha="1" colorSpace="custom" customColorSpace="calibratedWhite"/>
             <connections>
                 <outlet property="addButton" destination="eSg-UL-Czo" id="8PT-SQ-qPv"/>
-                <outlet property="removeButton" destination="jff-5V-VUy" id="eLO-j1-yUE"/>
-                <outlet property="sortButton" destination="4GV-EF-y7K" id="vMD-7L-eiN"/>
+                <outlet property="editButton" destination="jff-5V-VUy" id="WkZ-66-06J"/>
                 <outlet property="usersTableView" destination="DJb-xe-x02" id="71w-9C-L0S"/>
             </connections>
             <point key="canvasLocation" x="264" y="401"/>
