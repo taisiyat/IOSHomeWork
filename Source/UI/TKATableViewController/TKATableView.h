@@ -13,6 +13,6 @@
 @property (nonatomic, strong) IBOutlet UIButton     *addButton;
 @property (nonatomic, strong) IBOutlet UIButton     *editButton;
 
-@property (nonatomic, assign) BOOL  *editing;
+@property (nonatomic, assign, getter=isEditing) BOOL  *editing;
 
 @end

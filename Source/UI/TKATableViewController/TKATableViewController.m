@@ -15,6 +15,8 @@
 
 #import "TKAMacros.h"
 
+#import "UITableView+TKAExtension.h"
+
 TKAViewControllerBaseViewProperty(TKATableViewController, tableView, TKATableView)
 
 @implementation TKATableViewController
@@ -36,7 +38,7 @@ TKAViewControllerBaseViewProperty(TKATableViewController, tableView, TKATableVie
 #pragma mark UITableViewDataSource
 
 - (NSInteger)tableView:(UITableView *)tableView
- numberOfRowsInSection:(NSInteger)section {
+    numberOfRowsInSection:(NSInteger)section {
 
     return [self.users countOfUsers];
 }
@@ -87,8 +89,8 @@ TKAViewControllerBaseViewProperty(TKATableViewController, tableView, TKATableVie
 
 - (BOOL)tableView:(UITableView *)tableView
     canEditRowAtIndexPath:(NSIndexPath *)indexPath {
-    if (indexPath.row && indexPath.row != [self.users countOfUsers]-1) {
-        return UITableViewCellEditingStyleInsert;
+    if (indexPath.row) {
+        return YES;
     }
     
     return NO;
@@ -103,7 +105,7 @@ TKAViewControllerBaseViewProperty(TKATableViewController, tableView, TKATableVie
     [users addUser:[TKAUser user]];
     
     NSUInteger indexRow = [users countOfUsers] - 1;
-    [usersTable insertRowsAtIndexPaths:@[[NSIndexPath indexPathForRow:indexRow inSection:0]]
+    [usersTable insertRowsAtIndexPaths:@[[usersTable indexPathForRow:indexRow]]
                       withRowAnimation:UITableViewRowAnimationAutomatic];
 }
 
@@ -111,6 +113,5 @@ TKAViewControllerBaseViewProperty(TKATableViewController, tableView, TKATableVie
     UITableView *usersTable = self.tableView.usersTableView;
     usersTable.editing = !usersTable.editing;
 }
-
 
 @end

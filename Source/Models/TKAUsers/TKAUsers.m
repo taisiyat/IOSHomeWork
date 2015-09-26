@@ -2,20 +2,16 @@
 //  TKAUsers.m
 //  IOSHomeWork
 //
-//  Created by Taisiya on 22.09.15.
+//  Created by Taisiya on 26.09.15.
 //  Copyright (c) 2015 TKAHomeWork. All rights reserved.
 //
 
 #import "TKAUsers.h"
+#import "TKAUser.h"
 
-@interface TKAUsers ()
-@property (nonatomic, strong) NSMutableArray *mutableUsers;
-
-@end
+static const NSUInteger kTKAUsersCount = 10;
 
 @implementation TKAUsers
-
-@dynamic users;
 
 #pragma mark -
 #pragma mark Class Method
@@ -30,56 +26,27 @@
 - (instancetype)init {
     self = [super init];
     if (self) {
-        self.mutableUsers = [NSMutableArray array];
+        [self fill];
     }
     
     return self;
 }
 
 #pragma mark -
-#pragma mark Accessors
+#pragma mark Private
 
-- (NSArray *)users {
-    return [self.mutableUsers copy];
+- (void)fill {
+    [self fillWithRandomValueWithCount:kTKAUsersCount];
 }
 
-#pragma mark -
-#pragma mark Public 
-
-- (void)addUser:(TKAUser *)user {
-    [self.mutableUsers addObject:user];
+- (void)fillWithRandomValue {
+    [self addUser:[TKAUser user]];
 }
 
-- (void)addUser:(TKAUser *)user atIndex:(NSUInteger)index {
-    [self.mutableUsers insertObject:user atIndex:index];
-}
-
-- (void)removeUser:(TKAUser *)user {
-    [self.mutableUsers removeObject:user];
-}
-
-- (void)removeUserAtIndex:(NSUInteger)index {
-    [self.mutableUsers removeObjectAtIndex:index];
-}
-
-- (TKAUser *)userAtIndex:(NSUInteger)index {
-    return [self.mutableUsers objectAtIndex:index];
-}
-
-- (id)objectAtIndexSubscript:(NSUInteger)index {
-    return [self.mutableUsers objectAtIndexedSubscript:index];
-}
-
-- (void)moveUserAtIndex:(NSUInteger)sourceIndex
-                toIndex:(NSUInteger)destinationIndex
-{
-    TKAUser *user = [self userAtIndex:sourceIndex];
-    [self removeUserAtIndex:sourceIndex];
-    [self addUser:user atIndex:destinationIndex];
-}
-
-- (NSUInteger)countOfUsers {
-    return [self.mutableUsers count];
+- (void)fillWithRandomValueWithCount:(NSUInteger)count {
+    for (NSUInteger index = 0; index < 10; index++) {
+        [self fillWithRandomValue];
+    }
 }
 
 @end

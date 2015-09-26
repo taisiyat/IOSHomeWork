@@ -19,12 +19,12 @@
     }
 
 #define TKAViewControllerBaseViewProperty(viewControllerClass, propertyName, viewClass) \
-    @interface viewControllerClass (__TKAPrivateBaseView__##viewClass##__##propertyName) \
+    @interface viewControllerClass (__viewClass__##propertyName) \
     TKABaseViewProperty(propertyName, viewClass) \
     \
     @end \
     \
-    @implementation viewControllerClass (__TKAPrivateBaseView__##viewClass##__##propertyName) \
+    @implementation viewControllerClass (__viewClass__##propertyName) \
     \
     @dynamic propertyName; \
     \
@@ -34,15 +34,15 @@
 
 
 #define TKAWeakifyVariable(var) \
-    __weak typeof(var) weak##var = var;
+    __weak typeof(var) __TKAweak__##var = var;
 
 #define TKAStrongifyVariable(var) \
-    __strong typeof(weak##var) var = weak##var;
+    __strong typeof(__TKAweak__##var) var = __TKAweak__##var;
 
 #define TKAEmpty
 
 #define TKAStrongifyVariableAndReturnEntity(var, entity) \
-    __strong typeof(weak##var) var = weak##var; \
+    __strong typeof(__TKAweak__##var) var = __TKAweak__##var; \
     if (!var) { \
         return entity; \
     }
