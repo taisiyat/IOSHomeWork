@@ -13,8 +13,9 @@
 @class TKAUser;
 
 typedef NS_ENUM(NSUInteger, TKAUsersArrayState) {
-    TKAUsersArrayAdd,
-    TKAUsersArrayDelete,
+    TKAUsersArrayNotChange,
+    TKAUsersArrayAddUser,
+    TKAUsersArrayDeleteUser,
     TKAUsersArrayChange
 };
 
@@ -22,6 +23,7 @@ typedef NS_ENUM(NSUInteger, TKAUsersArrayState) {
 
 @optional
 - (void)usersArrayDidChange;
+- (void)usersArrayDidNotChange;
 
 @end
 

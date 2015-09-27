@@ -16,7 +16,6 @@
 #import "TKAMacros.h"
 
 #import "UITableView+TKAExtension.h"
-//#import "UINib+TKAExtension.h"
 
 TKAViewControllerBaseViewProperty(TKATableViewController, tableView, TKATableView)
 
@@ -28,7 +27,16 @@ TKAViewControllerBaseViewProperty(TKATableViewController, tableView, TKATableVie
 - (void)viewDidLoad {
     [super viewDidLoad];
     
+    [self.users addObserver:self];
     [self.tableView.usersTableView reloadData];
+}
+
+- (void)viewDidDisappear:(BOOL)animated {
+    [self.users removeObserver:self];
+}
+
+- (void)viewDidLayoutSubviews {
+    
 }
 
 - (void)didReceiveMemoryWarning {
@@ -63,6 +71,7 @@ TKAViewControllerBaseViewProperty(TKATableViewController, tableView, TKATableVie
         [self.users removeUserAtIndex:indexPath.row];
         [tableView deleteRowsAtIndexPaths:@[indexPath]
                          withRowAnimation:UITableViewRowAnimationAutomatic];
+        self.users.state = TKAUsersArrayNotChange;
     }
 }
 
@@ -103,11 +112,23 @@ TKAViewControllerBaseViewProperty(TKATableViewController, tableView, TKATableVie
     NSUInteger indexRow = [users countOfUsers] - 1;
     [usersTable insertRowsAtIndexPaths:@[[usersTable indexPathForRow:indexRow]]
                       withRowAnimation:UITableViewRowAnimationAutomatic];
+    users.state = TKAUsersArrayNotChange;
 }
 
 - (IBAction)onEditButton:(id)sender {
     UITableView *usersTable = self.tableView.usersTableView;
     usersTable.editing = !usersTable.editing;
+}
+
+#pragma mark -
+#pragma mark TKAUsersArrayObserver
+
+- (void)usersArrayDidChange {
+    [self.tableView.usersTableView setEditing:YES animated:YES];
+}
+
+- (void)usersArrayDidNotChange {
+    [self.tableView.usersTableView setEditing:NO animated:NO];
 }
 
 @end

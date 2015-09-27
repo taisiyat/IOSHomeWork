@@ -8,11 +8,9 @@
 
 #import <UIKit/UIKit.h>
 
-//@class TKAUser;
 @class TKAUsers;
 
 @interface TKATableViewController : UIViewController <UITableViewDelegate, UITableViewDataSource>
-//@property (nonatomic, strong) TKAUser  *user;
 @property (nonatomic, strong) TKAUsers *users;
 
 - (IBAction)onAddButton:(id)sender;

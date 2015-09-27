@@ -52,22 +52,22 @@
 
 - (void)addUser:(TKAUser *)user {
     [self.mutableUsers addObject:user];
-    self.state = TKAUsersArrayAdd;
+    self.state = TKAUsersArrayAddUser;
 }
 
 - (void)addUser:(TKAUser *)user atIndex:(NSUInteger)index {
     [self.mutableUsers insertObject:user atIndex:index];
-    self.state = TKAUsersArrayAdd;
+    self.state = TKAUsersArrayAddUser;
 }
 
 - (void)removeUser:(TKAUser *)user {
     [self.mutableUsers removeObject:user];
-    self.state = TKAUsersArrayDelete;
+    self.state = TKAUsersArrayDeleteUser;
 }
 
 - (void)removeUserAtIndex:(NSUInteger)index {
     [self.mutableUsers removeObjectAtIndex:index];
-    self.state = TKAUsersArrayDelete;
+    self.state = TKAUsersArrayDeleteUser;
 }
 
 - (TKAUser *)userAtIndex:(NSUInteger)index {
@@ -92,6 +92,23 @@
     return [self.mutableUsers count];
 }
 
+#pragma mark -
+#pragma mark Overloaded Methods
+
+- (SEL)selectorForState:(NSUInteger)state {
+    switch (state) {
+        case TKAUsersArrayNotChange:
+            return @selector(usersArrayDidNotChange);
+        case TKAUsersArrayChange:
+            return @selector(usersArrayDidChange);
+        case TKAUsersArrayAddUser:
+            return @selector(usersArrayDidChange);
+        case TKAUsersArrayDeleteUser:
+            return @selector(usersArrayDidChange);
+        default:
+            return [super selectorForState:state];
+    }
+}
 
 @end
 

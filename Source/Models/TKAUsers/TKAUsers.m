@@ -44,7 +44,7 @@ static const NSUInteger kTKAUsersCount = 6;
 }
 
 - (void)fillWithRandomValueWithCount:(NSUInteger)count {
-    for (NSUInteger index = 0; index < 10; index++) {
+    for (NSUInteger index = 0; index < kTKAUsersCount; index++) {
         [self fillWithRandomValue];
     }
 }
