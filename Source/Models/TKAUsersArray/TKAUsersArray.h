@@ -8,9 +8,24 @@
 
 #import <Foundation/Foundation.h>
 
+#import "TKAObservableObject.h"
+
 @class TKAUser;
 
-@interface TKAUsersArray : NSObject
+typedef NS_ENUM(NSUInteger, TKAUsersArrayState) {
+    TKAUsersArrayAdd,
+    TKAUsersArrayDelete,
+    TKAUsersArrayChange
+};
+
+@protocol TKAUsersArrayObsserver <NSObject>
+
+@optional
+- (void)usersArrayDidChange;
+
+@end
+
+@interface TKAUsersArray : TKAObservableObject <TKAUsersArrayObsserver>
 @property (nonatomic, readonly) NSArray     *users;
 @property (nonatomic, readonly) NSUInteger  count;
 

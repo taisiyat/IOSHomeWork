@@ -52,18 +52,22 @@
 
 - (void)addUser:(TKAUser *)user {
     [self.mutableUsers addObject:user];
+    self.state = TKAUsersArrayAdd;
 }
 
 - (void)addUser:(TKAUser *)user atIndex:(NSUInteger)index {
     [self.mutableUsers insertObject:user atIndex:index];
+    self.state = TKAUsersArrayAdd;
 }
 
 - (void)removeUser:(TKAUser *)user {
     [self.mutableUsers removeObject:user];
+    self.state = TKAUsersArrayDelete;
 }
 
 - (void)removeUserAtIndex:(NSUInteger)index {
     [self.mutableUsers removeObjectAtIndex:index];
+    self.state = TKAUsersArrayDelete;
 }
 
 - (TKAUser *)userAtIndex:(NSUInteger)index {
@@ -87,6 +91,7 @@
 - (NSUInteger)countOfUsers {
     return [self.mutableUsers count];
 }
+
 
 @end
 

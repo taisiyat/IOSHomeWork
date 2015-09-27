@@ -16,6 +16,7 @@
 #import "TKAMacros.h"
 
 #import "UITableView+TKAExtension.h"
+//#import "UINib+TKAExtension.h"
 
 TKAViewControllerBaseViewProperty(TKATableViewController, tableView, TKATableView)
 
@@ -45,15 +46,10 @@ TKAViewControllerBaseViewProperty(TKATableViewController, tableView, TKATableVie
 
 - (UITableViewCell *)tableView:(UITableView *)tableView
          cellForRowAtIndexPath:(NSIndexPath *)indexPath {
-    NSString *cellClass = NSStringFromClass([TKATableCell class]);
-    
-    TKATableCell *cell = [tableView dequeueReusableCellWithIdentifier:cellClass];
-    if (!cell) {
-        UINib *nib = [UINib nibWithNibName:cellClass bundle:nil];
-        NSArray *cells = [nib instantiateWithOwner:nil options:nil];
-        cell = [cells firstObject];
-    }
-    
+
+    TKATableCell *cell = [tableView cellWithClass:[TKATableCell class]];
+    cell = [tableView cellIfNotReusableCell:cell withClass:[TKATableCell class]];
+   
     cell.user = [self.users userAtIndex:indexPath.row];
     
     return cell;

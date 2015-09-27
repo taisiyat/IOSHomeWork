@@ -12,4 +12,7 @@
 
 - (NSIndexPath *)indexPathForRow:(NSInteger)indexRow;
 
+- (id)cellWithClass:(Class)cellClass;
+- (id)cellIfNotReusableCell:(id)cell withClass:(Class)cellClass;
+
 @end

@@ -9,7 +9,7 @@
 #import "TKAUsers.h"
 #import "TKAUser.h"
 
-static const NSUInteger kTKAUsersCount = 10;
+static const NSUInteger kTKAUsersCount = 6;
 
 @implementation TKAUsers
 
