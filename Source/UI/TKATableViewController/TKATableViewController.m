@@ -35,10 +35,6 @@ TKAViewControllerBaseViewProperty(TKATableViewController, tableView, TKATableVie
     [self.users removeObserver:self];
 }
 
-- (void)viewDidLayoutSubviews {
-    
-}
-
 - (void)didReceiveMemoryWarning {
     [super didReceiveMemoryWarning];
 }
@@ -116,19 +112,29 @@ TKAViewControllerBaseViewProperty(TKATableViewController, tableView, TKATableVie
 }
 
 - (IBAction)onEditButton:(id)sender {
-    UITableView *usersTable = self.tableView.usersTableView;
-    usersTable.editing = !usersTable.editing;
+    TKATableView *table = self.tableView;
+    table.editing = !table.editing;
 }
 
 #pragma mark -
 #pragma mark TKAUsersArrayObserver
 
 - (void)usersArrayDidChange {
-    [self.tableView.usersTableView setEditing:YES animated:YES];
-}
-
-- (void)usersArrayDidNotChange {
-    [self.tableView.usersTableView setEditing:NO animated:NO];
+    UITableView *usersTable = self.tableView.usersTableView;
+    switch (self.users.state) {
+        case TKAUsersArrayAddUser:
+            [self.tableView.usersTableView setEditing:YES animated:YES];
+            self.users.state = TKAUsersArrayNotChange;
+            break;
+        case TKAUsersArrayRemoveUser:
+            [self.tableView.usersTableView setEditing:YES animated:YES];
+            self.users.state = TKAUsersArrayNotChange;
+            break;
+    
+        default:
+            [self.tableView.usersTableView setEditing:NO animated:NO];
+            break;
+    }
 }
 
 @end

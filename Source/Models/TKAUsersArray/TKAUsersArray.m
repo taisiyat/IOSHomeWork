@@ -62,12 +62,12 @@
 
 - (void)removeUser:(TKAUser *)user {
     [self.mutableUsers removeObject:user];
-    self.state = TKAUsersArrayDeleteUser;
+    self.state = TKAUsersArrayRemoveUser;
 }
 
 - (void)removeUserAtIndex:(NSUInteger)index {
     [self.mutableUsers removeObjectAtIndex:index];
-    self.state = TKAUsersArrayDeleteUser;
+    self.state = TKAUsersArrayRemoveUser;
 }
 
 - (TKAUser *)userAtIndex:(NSUInteger)index {
@@ -75,9 +75,11 @@
 }
 
 - (id)objectAtIndexSubscript:(NSUInteger)index {
-    assert(index < [self.mutableUsers count]);
+    if (index < [self.mutableUsers count]) {
+        return [self.mutableUsers objectAtIndexedSubscript:index];
+    }
     
-    return [self.mutableUsers objectAtIndexedSubscript:index];
+    return nil;
 }
 
 - (void)moveUserAtIndex:(NSUInteger)sourceIndex
@@ -97,13 +99,9 @@
 
 - (SEL)selectorForState:(NSUInteger)state {
     switch (state) {
-        case TKAUsersArrayNotChange:
-            return @selector(usersArrayDidNotChange);
-        case TKAUsersArrayChange:
-            return @selector(usersArrayDidChange);
         case TKAUsersArrayAddUser:
             return @selector(usersArrayDidChange);
-        case TKAUsersArrayDeleteUser:
+        case TKAUsersArrayRemoveUser:
             return @selector(usersArrayDidChange);
         default:
             return [super selectorForState:state];

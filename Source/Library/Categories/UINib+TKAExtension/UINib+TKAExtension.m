@@ -10,36 +10,47 @@
 
 @implementation UINib (TKAExtension)
 
-+ (UINib *)nibWithNibName:(NSString *)name {
-    return [self nibWithNibName:name bundle:nil];
++ (UINib *)nibWithClass:(Class)classType {
+    return [self nibWithClass:classType bundle:nil];
 }
 
-- (NSArray *)instantiateWithNilOwnerAndNilOptions {
-    return [self instantiateWithOwner:nil options:nil];
++ (UINib *)nibWithClass:(Class)classType
+                 bundle:(NSBundle *)bundleOrNil
+{
+    NSString *className = NSStringFromClass(classType);
+    return [self nibWithNibName:className bundle:bundleOrNil];
 }
 
-- (NSArray *)objectWithNibName:(NSString *)name {
-    return [self objectWithNibName:name
-                           owner:nil
-                         options:nil];
+- (NSArray *)objectsWithClass:(Class)classType {
+    return [self objectsWithClass:classType
+                           bundle:nil];
 }
 
-- (NSArray *)objectWithNibName:(NSString *)name
+- (NSArray *)objectsWithClass:(Class)classType
+                       bundle:(NSBundle *)bundleOrNil
+{
+    return [self objectsWithClass:classType
+                           bundle:bundleOrNil
+                            owner:nil
+                          options:nil];
+}
+
+- (NSArray *)objectsWithClass:(Class)classType
                        owner:(id)ownerOrNil
                      options:(NSDictionary *)optionsOrNil
 {
-    return [self objectWithNibName:name
+    return [self objectsWithClass:classType
                           bundle:nil
                            owner:ownerOrNil
                          options:optionsOrNil];
 }
 
-- (NSArray *)objectWithNibName:(NSString *)name
+- (NSArray *)objectsWithClass:(Class)classType
                       bundle:(NSBundle *)bundleOrNil
                        owner:(id)ownerOrNil
                      options:(NSDictionary *)optionsOrNil
 {
-    UINib *nib = [UINib nibWithNibName:name bundle:bundleOrNil];
+    UINib *nib = [UINib nibWithClass:classType bundle:bundleOrNil];
     return [nib instantiateWithOwner:ownerOrNil options:optionsOrNil];
 }
 
@@ -52,14 +63,19 @@
 
 - (id)objectWithClass:(Class)typeClass
                bundle:(NSBundle *)bundleOrNil
+{
+    return [self objectWithClass:typeClass
+                          bundle:bundleOrNil
+                           owner:nil
+                         options:nil];
+}
+
+- (id)objectWithClass:(Class)classType
+               bundle:(NSBundle *)bundleOrNil
                 owner:(id)ownerOrNil
               options:(NSDictionary *)optionsOrNil
 {
-    NSString *className = NSStringFromClass(typeClass);
-//    UINib *nib = [UINib nibWithNibName:className bundle:bundleOrNil];
-//    return [[nib instantiateWithOwner:ownerOrNil options:optionsOrNil] firstObject];
-    
-    return [[self objectWithNibName:className] firstObject];
+    return [[self objectsWithClass:classType bundle:bundleOrNil owner:ownerOrNil options:optionsOrNil] firstObject];
 }
 
 @end

@@ -15,15 +15,14 @@
 typedef NS_ENUM(NSUInteger, TKAUsersArrayState) {
     TKAUsersArrayNotChange,
     TKAUsersArrayAddUser,
-    TKAUsersArrayDeleteUser,
-    TKAUsersArrayChange
+    TKAUsersArrayRemoveUser,
 };
 
 @protocol TKAUsersArrayObsserver <NSObject>
 
 @optional
 - (void)usersArrayDidChange;
-- (void)usersArrayDidNotChange;
+- (void)usersArrayDidChangeObject:(id)object;
 
 @end
 
