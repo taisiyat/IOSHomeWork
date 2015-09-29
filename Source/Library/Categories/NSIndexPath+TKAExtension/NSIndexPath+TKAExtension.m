@@ -6,12 +6,14 @@
 //  Copyright (c) 2015 TKAHomeWork. All rights reserved.
 //
 
+#import <UIKit/UIKit.h>
+
 #import "NSIndexPath+TKAExtension.h"
 
 @implementation NSIndexPath (TKAExtension)
 
-+ (NSIndexPath *)indexPathForRow:(NSUInteger)index {
-    return [NSIndexPath indexPathWithIndex:index];
++ (NSIndexPath *)indexPathForRow:(NSUInteger)indexRow {
+    return [NSIndexPath indexPathForRow:indexRow inSection:0];
 }
     
 @end

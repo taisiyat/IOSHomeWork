@@ -1,5 +1,5 @@
 //
-//  TKAUsersArray.h
+//  TKAArrayModel.h
 //  IOSHomeWork
 //
 //  Created by Taisiya on 26.09.15.
@@ -12,13 +12,13 @@
 
 @class TKAUser;
 
-typedef NS_ENUM(NSUInteger, TKAUsersArrayState) {
-    TKAUsersArrayNotChange,
-    TKAUsersArrayAddUser,
-    TKAUsersArrayRemoveUser,
+typedef NS_ENUM(NSUInteger, TKAArrayModelState) {
+    TKAArrayModelNotChange,
+    TKAArrayModelAddUser,
+    TKAArrayModelRemoveUser,
 };
 
-@protocol TKAUsersArrayObsserver <NSObject>
+@protocol TKAArrayModelObsserver <NSObject>
 
 @optional
 - (void)usersArrayDidChange;
@@ -26,7 +26,7 @@ typedef NS_ENUM(NSUInteger, TKAUsersArrayState) {
 
 @end
 
-@interface TKAUsersArray : TKAObservableObject <TKAUsersArrayObsserver>
+@interface TKAArrayModel : TKAObservableObject <TKAArrayModelObsserver>
 @property (nonatomic, readonly) NSArray     *users;
 @property (nonatomic, readonly) NSUInteger  count;
 

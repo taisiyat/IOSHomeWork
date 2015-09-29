@@ -6,13 +6,24 @@
 //  Copyright (c) 2015 TKAHomeWork. All rights reserved.
 //
 
+
 #import "UITableView+TKAExtension.h"
 #import "UINib+TKAExtension.h"
 
 @implementation UITableView (TKAExtension)
 
-- (NSIndexPath *)indexPathForRow:(NSInteger)indexRow {
-    return [NSIndexPath indexPathForRow:indexRow inSection:0];
+- (id)dequeueCellWithClass:(Class)cellClass {
+    NSString *cellClassString = NSStringFromClass(cellClass);
+    
+    id cell = [self dequeueReusableCellWithIdentifier:cellClassString];
+    if (!cell) {
+        UINib *nib = [UINib nibWithNibName:cellClassString bundle:nil];
+        NSArray *cells = [nib instantiateWithOwner:nil options:nil];
+        cell = [cells firstObject];
+//        cell = [UINib objectWithClass:cellClass];
+    }
+    
+    return cell;
 }
 
 - (id)cellWithClass:(Class)cellClass {

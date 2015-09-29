@@ -1,19 +1,19 @@
 //
-//  TKAUsersArray.m
+//  TKAArrayModel.m
 //  IOSHomeWork
 //
 //  Created by Taisiya on 26.09.15.
 //  Copyright (c) 2015 TKAHomeWork. All rights reserved.
 //
 
-#import "TKAUsersArray.h"
+#import "TKAArrayModel.h"
 
-@interface TKAUsersArray ()
+@interface TKAArrayModel ()
 @property (nonatomic, strong) NSMutableArray *mutableUsers;
 
 @end
 
-@implementation TKAUsersArray
+@implementation TKAArrayModel
 
 @dynamic users;
 
@@ -21,7 +21,7 @@
 #pragma mark Class Method
 
 + (instancetype)users {
-    return [TKAUsersArray new];
+    return [TKAArrayModel new];
 }
 
 #pragma mark -
@@ -52,26 +52,22 @@
 
 - (void)addUser:(TKAUser *)user {
     [self.mutableUsers addObject:user];
-//    self.state = TKAUsersArrayAddUser;
-    [self setState:TKAUsersArrayAddUser withObject:user];
+    [self setState:TKAArrayModelAddUser withObject:user];
 }
 
 - (void)addUser:(TKAUser *)user atIndex:(NSUInteger)index {
     [self.mutableUsers insertObject:user atIndex:index];
-//    self.state = TKAUsersArrayAddUser;
-    [self setState:TKAUsersArrayAddUser withObject:user];
+    [self setState:TKAArrayModelAddUser withObject:user];
 }
 
 - (void)removeUser:(TKAUser *)user {
     [self.mutableUsers removeObject:user];
-//    self.state = TKAUsersArrayRemoveUser;
-    [self setState:TKAUsersArrayRemoveUser withObject:user];
+    [self setState:TKAArrayModelRemoveUser withObject:user];
 }
 
 - (void)removeUserAtIndex:(NSUInteger)index {
     [self.mutableUsers removeObjectAtIndex:index];
-//    self.state = TKAUsersArrayRemoveUser;
-    [self setState:TKAUsersArrayRemoveUser withObject:[self.mutableUsers objectAtIndex:index]];
+    [self setState:TKAArrayModelRemoveUser withObject:[self.mutableUsers objectAtIndex:index]];
 }
 
 - (TKAUser *)userAtIndex:(NSUInteger)index {

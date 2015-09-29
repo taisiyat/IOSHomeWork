@@ -36,14 +36,14 @@
 #pragma mark Accessors
 
 - (UIImage *)image {
-    static UIImage *image = nil;
+    static UIImage *__image = nil;
     static dispatch_once_t onceToken;
-    NSURL *url = [[NSBundle mainBundle] URLForResource:@"image" withExtension:@"jpg"];
     dispatch_once(&onceToken, ^{
-        image = [UIImage imageWithContentsOfFile:[url path]];
+        NSURL *url = [[NSBundle mainBundle] URLForResource:@"image" withExtension:@"jpg"];
+        __image = [UIImage imageWithContentsOfFile:[url path]];
     });
 
-    return image;
+    return __image;
 }
 
 @end

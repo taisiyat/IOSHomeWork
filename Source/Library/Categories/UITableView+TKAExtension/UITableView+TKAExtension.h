@@ -6,12 +6,12 @@
 //  Copyright (c) 2015 TKAHomeWork. All rights reserved.
 //
 
+#import <Foundation/Foundation.h>
 #import <UIKit/UIKit.h>
 
 @interface UITableView (TKAExtension)
 
-- (NSIndexPath *)indexPathForRow:(NSInteger)indexRow;
-
+- (id)dequeueCellWithClass:(Class)cellClass;
 - (id)cellWithClass:(Class)cellClass;
 - (id)cellIfNotReusableCell:(id)cell withClass:(Class)cellClass;
 

@@ -6,6 +6,13 @@
 //  Copyright (c) 2015 TKAHomeWork. All rights reserved.
 //
 
+#define TKASetterWithAddObserver(var) \
+    if (_##var != var) { \
+        [_##var removeObserver:self]; \
+        _##var = var; \
+        [_##var addObserver:self]; \
+    }
+
 #define TKABaseViewProperty(propertyName, viewClass) \
     @property (nonatomic, readonly) viewClass   *propertyName;
 

@@ -14,7 +14,7 @@
 		8A0E0E891BB813E80062C0BD /* TKAPerformBlock.m in Sources */ = {isa = PBXBuildFile; fileRef = 8A0E0E881BB813E80062C0BD /* TKAPerformBlock.m */; };
 		8A3638661BB6D83900702D47 /* UITableView+TKAExtension.m in Sources */ = {isa = PBXBuildFile; fileRef = 8A3638651BB6D83900702D47 /* UITableView+TKAExtension.m */; };
 		8A3638691BB6DA5200702D47 /* UINib+TKAExtension.m in Sources */ = {isa = PBXBuildFile; fileRef = 8A3638681BB6DA5200702D47 /* UINib+TKAExtension.m */; };
-		8A36386D1BB6ED5000702D47 /* TKAUsersArray.m in Sources */ = {isa = PBXBuildFile; fileRef = 8A36386C1BB6ED5000702D47 /* TKAUsersArray.m */; };
+		8A36386D1BB6ED5000702D47 /* TKAArrayModel.m in Sources */ = {isa = PBXBuildFile; fileRef = 8A36386C1BB6ED5000702D47 /* TKAArrayModel.m */; };
 		8A3638741BB6EF0800702D47 /* TKAUsers.m in Sources */ = {isa = PBXBuildFile; fileRef = 8A3638731BB6EF0800702D47 /* TKAUsers.m */; };
 		8A3638791BB6F3C700702D47 /* TKATableViewCell.m in Sources */ = {isa = PBXBuildFile; fileRef = 8A3638781BB6F3C700702D47 /* TKATableViewCell.m */; };
 		8A3F16D61B3AD6C500E6551E /* main.m in Sources */ = {isa = PBXBuildFile; fileRef = 8A3F16D51B3AD6C500E6551E /* main.m */; };
@@ -67,8 +67,8 @@
 		8A3638651BB6D83900702D47 /* UITableView+TKAExtension.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = "UITableView+TKAExtension.m"; sourceTree = "<group>"; };
 		8A3638671BB6DA5200702D47 /* UINib+TKAExtension.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = "UINib+TKAExtension.h"; sourceTree = "<group>"; };
 		8A3638681BB6DA5200702D47 /* UINib+TKAExtension.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = "UINib+TKAExtension.m"; sourceTree = "<group>"; };
-		8A36386B1BB6ED5000702D47 /* TKAUsersArray.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = TKAUsersArray.h; sourceTree = "<group>"; };
-		8A36386C1BB6ED5000702D47 /* TKAUsersArray.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = TKAUsersArray.m; sourceTree = "<group>"; };
+		8A36386B1BB6ED5000702D47 /* TKAArrayModel.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = TKAArrayModel.h; sourceTree = "<group>"; };
+		8A36386C1BB6ED5000702D47 /* TKAArrayModel.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = TKAArrayModel.m; sourceTree = "<group>"; };
 		8A3638721BB6EF0800702D47 /* TKAUsers.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = TKAUsers.h; sourceTree = "<group>"; };
 		8A3638731BB6EF0800702D47 /* TKAUsers.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = TKAUsers.m; sourceTree = "<group>"; };
 		8A3638771BB6F3C700702D47 /* TKATableViewCell.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = TKATableViewCell.h; sourceTree = "<group>"; };
@@ -194,8 +194,8 @@
 		8A36386A1BB6EA8100702D47 /* TKAUsersArray */ = {
 			isa = PBXGroup;
 			children = (
-				8A36386B1BB6ED5000702D47 /* TKAUsersArray.h */,
-				8A36386C1BB6ED5000702D47 /* TKAUsersArray.m */,
+				8A36386B1BB6ED5000702D47 /* TKAArrayModel.h */,
+				8A36386C1BB6ED5000702D47 /* TKAArrayModel.m */,
 			);
 			path = TKAUsersArray;
 			sourceTree = "<group>";
@@ -286,6 +286,29 @@
 				8A3F16EE1B3AD6C600E6551E /* Info.plist */,
 			);
 			name = "Supporting Files";
+			sourceTree = "<group>";
+		};
+		8A3F5A931BBB283100176831 /* TKAChangeModel */ = {
+			isa = PBXGroup;
+			children = (
+				8A3F5A941BBB283100176831 /* TKAChangeModelOneIndex */,
+				8A3F5A951BBB283100176831 /* TKAChangeModelTwoIndex */,
+			);
+			path = TKAChangeModel;
+			sourceTree = "<group>";
+		};
+		8A3F5A941BBB283100176831 /* TKAChangeModelOneIndex */ = {
+			isa = PBXGroup;
+			children = (
+			);
+			path = TKAChangeModelOneIndex;
+			sourceTree = "<group>";
+		};
+		8A3F5A951BBB283100176831 /* TKAChangeModelTwoIndex */ = {
+			isa = PBXGroup;
+			children = (
+			);
+			path = TKAChangeModelTwoIndex;
 			sourceTree = "<group>";
 		};
 		8A4AD5021BB13D8700837631 /* TKAUser */ = {
@@ -440,6 +463,7 @@
 		8AFC61681BA77B16001ACBA9 /* Models */ = {
 			isa = PBXGroup;
 			children = (
+				8A3F5A931BBB283100176831 /* TKAChangeModel */,
 				8A3638711BB6EF0800702D47 /* TKAUsers */,
 				8A36386A1BB6EA8100702D47 /* TKAUsersArray */,
 				8A4AD5021BB13D8700837631 /* TKAUser */,
@@ -627,7 +651,7 @@
 				8A86DCCF1B42893B007FE402 /* TKAAppDelegate.m in Sources */,
 				8A3638661BB6D83900702D47 /* UITableView+TKAExtension.m in Sources */,
 				8A0E0E891BB813E80062C0BD /* TKAPerformBlock.m in Sources */,
-				8A36386D1BB6ED5000702D47 /* TKAUsersArray.m in Sources */,
+				8A36386D1BB6ED5000702D47 /* TKAArrayModel.m in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};

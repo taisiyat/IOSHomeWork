@@ -26,17 +26,11 @@ TKAViewControllerBaseViewProperty(TKATableViewController, tableView, TKATableVie
 #pragma mark Initializations and Dealocations
 
 - (void)dealloc {
-    [self.users removeObserver:self];
+    self.users = nil;
 }
 
 - (void)setUsers:(TKAUsers *)users {
-    if (users != _users) {
-        _users = users;
-        
-        if (users != nil) {
-            [self.users addObserver:self];
-        }
-    }
+    TKASetterWithAddObserver(users);
 }
 
 
@@ -60,24 +54,23 @@ TKAViewControllerBaseViewProperty(TKATableViewController, tableView, TKATableVie
 #pragma mark - 
 #pragma mark UITableViewDataSource
 
-- (NSInteger)tableView:(UITableView *)tableView
+- (NSInteger)   tableView:(UITableView *)tableView
     numberOfRowsInSection:(NSInteger)section {
 
     return [self.users countOfUsers];
 }
 
 - (UITableViewCell *)tableView:(UITableView *)tableView
-         cellForRowAtIndexPath:(NSIndexPath *)indexPath {
-
-    TKATableCell *cell = [tableView cellWithClass:[TKATableCell class]];
-    cell = [tableView cellIfNotReusableCell:cell withClass:[TKATableCell class]];
-   
+         cellForRowAtIndexPath:(NSIndexPath *)indexPath
+{
+    TKATableCell *cell = [tableView dequeueCellWithClass:[TKATableCell class]];
+ 
     cell.user = [self.users userAtIndex:indexPath.row];
     
     return cell;
 }
 
-- (void)tableView:(UITableView *)tableView
+- (void)     tableView:(UITableView *)tableView
     commitEditingStyle:(UITableViewCellEditingStyle)editingStyle
      forRowAtIndexPath:(NSIndexPath *)indexPath
 {
@@ -86,32 +79,31 @@ TKAViewControllerBaseViewProperty(TKATableViewController, tableView, TKATableVie
 //        [tableView deleteRowsAtIndexPaths:@[indexPath]
 //                         withRowAnimation:UITableViewRowAnimationAutomatic];
     }
+    if (UITableViewCellEditingStyleInsert) {
+        [self.users addUser:[TKAUser new] atIndex:indexPath.row];
+        //        [tableView insertRowsAtIndexPaths:@[indexPath]
+        //                         withRowAnimation:UITableViewRowAnimationAutomatic];
+    }
 }
 
-- (void)tableView:(UITableView *)tableView
+- (void)     tableView:(UITableView *)tableView
     moveRowAtIndexPath:(NSIndexPath *)sourceIndexPath
            toIndexPath:(NSIndexPath *)destinationIndexPath
 {
-        [self.users moveUserAtIndex:sourceIndexPath.row
-                            toIndex:destinationIndexPath.row];
+    [self.users moveUserAtIndex:sourceIndexPath.row
+                        toIndex:destinationIndexPath.row];
 }
 
-- (BOOL)tableView:(UITableView *)tableView
-    canMoveRowAtIndexPath:(NSIndexPath *)indexPath {
-    if (indexPath.row) {
-        return YES;
-    }
-    
-    return NO;
+- (BOOL)        tableView:(UITableView *)tableView
+    canMoveRowAtIndexPath:(NSIndexPath *)indexPath
+{
+    return indexPath.row;
 }
 
-- (BOOL)tableView:(UITableView *)tableView
-    canEditRowAtIndexPath:(NSIndexPath *)indexPath {
-    if (indexPath.row) {
-        return YES;
-    }
-    
-    return NO;
+- (BOOL)        tableView:(UITableView *)tableView
+    canEditRowAtIndexPath:(NSIndexPath *)indexPath
+{
+    return indexPath.row;
 }
 
 #pragma mark -
@@ -119,9 +111,9 @@ TKAViewControllerBaseViewProperty(TKATableViewController, tableView, TKATableVie
 
 - (IBAction)onAddButton:(id)sender {
     TKAUsers *users = self.users;
-    UITableView *usersTable = self.tableView.usersTableView;
     [users addUser:[TKAUser user]];
     
+//    UITableView *usersTable = self.tableView.usersTableView;
 //    NSUInteger indexRow = [users countOfUsers] - 1;
 //    [usersTable insertRowsAtIndexPaths:@[[usersTable indexPathForRow:indexRow]]
 //                      withRowAnimation:UITableViewRowAnimationAutomatic];
@@ -133,14 +125,14 @@ TKAViewControllerBaseViewProperty(TKATableViewController, tableView, TKATableVie
 }
 
 #pragma mark -
-#pragma mark TKAUsersArrayObserver
+#pragma mark TKAArrayModelObserver
 
 //- (void)usersArrayDidChange {
 //    switch (self.users.state) {
-//        case TKAUsersArrayAddUser:
+//        case TKAArrayModelAddUser:
 //            [self.tableView.usersTableView setEditing:YES animated:YES];
 //            break;
-//        case TKAUsersArrayRemoveUser:
+//        case TKAArrayModelRemoveUser:
 //            [self.tableView.usersTableView setEditing:YES animated:YES];
 //            break;
 //        default:
@@ -153,17 +145,18 @@ TKAViewControllerBaseViewProperty(TKATableViewController, tableView, TKATableVie
     UITableView *usersTable = self.tableView.usersTableView;
     NSUInteger indexRow = 0;
     switch (self.users.state) {
-        case TKAUsersArrayAddUser:
+        case TKAArrayModelAddUser:
             [self.tableView setEditing:YES animated:YES];
             indexRow = [self.users countOfUsers] - 1;
-            [usersTable insertRowsAtIndexPaths:@[[usersTable indexPathForRow:indexRow]]
-                              withRowAnimation:UITableViewRowAnimationAutomatic];
+//            [usersTable insertRowsAtIndexPaths:@[[usersTable indexPathForRow:indexRow]]
+//                              withRowAnimation:UITableViewRowAnimationAutomatic];
             break;
-        case TKAUsersArrayRemoveUser:
+        case TKAArrayModelRemoveUser:
             [self.tableView setEditing:YES animated:YES];
             indexRow = [self.users indexOfObject:user];
-            [usersTable deleteRowsAtIndexPaths:@[[usersTable indexPathForRow:indexRow]]
-                             withRowAnimation:UITableViewRowAnimationAutomatic];            break;
+//            [usersTable deleteRowsAtIndexPaths:@[[usersTable indexPathForRow:indexRow]]
+//                             withRowAnimation:UITableViewRowAnimationAutomatic];
+            break;
         default:
             [self.tableView.usersTableView setEditing:NO animated:NO];
             break;

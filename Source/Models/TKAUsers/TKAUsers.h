@@ -6,9 +6,9 @@
 //  Copyright (c) 2015 TKAHomeWork. All rights reserved.
 //
 
-#import "TKAUsersArray.h"
+#import "TKAArrayModel.h"
 
-@interface TKAUsers : TKAUsersArray
+@interface TKAUsers : TKAArrayModel
 
 + (instancetype)users;
 
