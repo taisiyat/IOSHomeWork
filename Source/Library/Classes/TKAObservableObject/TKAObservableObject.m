@@ -42,13 +42,7 @@
 
 - (NSSet *)observerSet {
     @synchronized (self) {
-        NSMutableSet *observerSet = self.mutableObserverSet;
-        NSMutableSet *result = [NSMutableSet setWithCapacity:[observerSet count]];
-        for (TKAReference *reference in observerSet) {
-            [result addObject:reference.target];
-        }
-        
-        return [result copy];
+        return [self.mutableObserverSet copy];
     }
 }
 
@@ -59,6 +53,22 @@
             
             void(^blockNotify)() = ^() {
                 [self notifyOfStateChangeWithSelector];
+//                [self notifyObserverWithSelector:@selector(usersArrayDidChange)];
+            };
+            
+            TKAPerformBlockOnMainQueue(blockNotify);
+        }
+    }
+}
+
+- (void)setState:(NSUInteger)state withObject:(id)object{
+    @synchronized (self) {
+        if (state != _state) {
+            _state = state;
+            
+            void(^blockNotify)() = ^() {
+                [self notifyOfStateChangeWithSelector];
+                [self notifyObserverWithSelector:@selector(usersArrayDidChangeObject:) withObject:object];
             };
             
             TKAPerformBlockOnMainQueue(blockNotify);
@@ -77,13 +87,13 @@
 
 - (void)addObserver:(id)observer {
     @synchronized (self) {
-        [self.mutableObserverSet addObject:[TKAAssignReference referenceWithTarget:observer]];
+        [self.mutableObserverSet addObject:observer];
     }
 }
 
 - (void)removeObserver:(id)observer {
     @synchronized (self) {
-        [self.mutableObserverSet removeObject:[TKAAssignReference referenceWithTarget:observer]];
+        [self.mutableObserverSet removeObject:observer];
     }
 }
 
@@ -97,13 +107,21 @@
 - (void)notifyOfStateChangeWithSelector {
     NSMutableSet *observerSet = self.mutableObserverSet;
     SEL selector = [self selectorForState:_state];
-    for (TKAReference *reference in observerSet) {
-        if ([reference.target respondsToSelector:selector]) {
-           [reference.target performSelector:selector withObject:self];
+    for (id observer in observerSet) {
+        if ([observer respondsToSelector:selector]) {
+            [observer performSelector:selector withObject:self];
         }
     }
 }
 
+- (void)notifyObserverWithSelector:(SEL)selector withObject:(id)user {
+    NSMutableSet *observerSet = self.mutableObserverSet;
+    for (id observer in observerSet) {
+        if ([observer respondsToSelector:selector]) {
+            [observer performSelector:selector withObject:user];
+        }
+    }
+}
 
 @end
 

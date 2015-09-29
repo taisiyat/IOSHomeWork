@@ -18,5 +18,6 @@
 - (void)removeObserver:(id)observer;
 
 - (SEL)selectorForState:(NSUInteger)state;
+- (void)setState:(NSUInteger)state withObject:(id)object;
 
 @end

@@ -36,10 +36,6 @@
 #pragma mark Accessors
 
 - (UIImage *)image {
-//    NSString *path = [[NSBundle mainBundle] pathForResource:@"image" ofType:@"jpg"];
-//        return [UIImage imageWithContentsOfFile:path];
-//    NSURL *url = [[NSBundle mainBundle] URLForResource:@"image" withExtension:@"jpg"];
-//    return [UIImage imageWithContentsOfFile:[url path]];
     static UIImage *image = nil;
     static dispatch_once_t onceToken;
     NSURL *url = [[NSBundle mainBundle] URLForResource:@"image" withExtension:@"jpg"];

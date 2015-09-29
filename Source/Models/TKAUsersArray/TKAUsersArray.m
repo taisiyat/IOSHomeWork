@@ -52,26 +52,34 @@
 
 - (void)addUser:(TKAUser *)user {
     [self.mutableUsers addObject:user];
-    self.state = TKAUsersArrayAddUser;
+//    self.state = TKAUsersArrayAddUser;
+    [self setState:TKAUsersArrayAddUser withObject:user];
 }
 
 - (void)addUser:(TKAUser *)user atIndex:(NSUInteger)index {
     [self.mutableUsers insertObject:user atIndex:index];
-    self.state = TKAUsersArrayAddUser;
+//    self.state = TKAUsersArrayAddUser;
+    [self setState:TKAUsersArrayAddUser withObject:user];
 }
 
 - (void)removeUser:(TKAUser *)user {
     [self.mutableUsers removeObject:user];
-    self.state = TKAUsersArrayRemoveUser;
+//    self.state = TKAUsersArrayRemoveUser;
+    [self setState:TKAUsersArrayRemoveUser withObject:user];
 }
 
 - (void)removeUserAtIndex:(NSUInteger)index {
     [self.mutableUsers removeObjectAtIndex:index];
-    self.state = TKAUsersArrayRemoveUser;
+//    self.state = TKAUsersArrayRemoveUser;
+    [self setState:TKAUsersArrayRemoveUser withObject:[self.mutableUsers objectAtIndex:index]];
 }
 
 - (TKAUser *)userAtIndex:(NSUInteger)index {
     return [self.mutableUsers objectAtIndex:index];
+}
+
+- (NSUInteger)indexOfObject:(TKAUser *)user {
+    return [self.mutableUsers indexOfObject:user];
 }
 
 - (id)objectAtIndexSubscript:(NSUInteger)index {
@@ -98,14 +106,7 @@
 #pragma mark Overloaded Methods
 
 - (SEL)selectorForState:(NSUInteger)state {
-    switch (state) {
-        case TKAUsersArrayAddUser:
-            return @selector(usersArrayDidChange);
-        case TKAUsersArrayRemoveUser:
-            return @selector(usersArrayDidChange);
-        default:
-            return [super selectorForState:state];
-    }
+    return [super selectorForState:state];
 }
 
 @end
