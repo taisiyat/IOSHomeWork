@@ -52,22 +52,22 @@
 
 - (void)addUser:(TKAUser *)user {
     [self.mutableUsers addObject:user];
-    [self setState:TKAArrayModelAddUser withObject:user];
+    [self setState:TKAArrayModelAddChange withObject:user];
 }
 
 - (void)addUser:(TKAUser *)user atIndex:(NSUInteger)index {
     [self.mutableUsers insertObject:user atIndex:index];
-    [self setState:TKAArrayModelAddUser withObject:user];
+    [self setState:TKAArrayModelAddChange withObject:user];
 }
 
 - (void)removeUser:(TKAUser *)user {
     [self.mutableUsers removeObject:user];
-    [self setState:TKAArrayModelRemoveUser withObject:user];
+    [self setState:TKAArrayModelRemoveChange withObject:user];
 }
 
 - (void)removeUserAtIndex:(NSUInteger)index {
     [self.mutableUsers removeObjectAtIndex:index];
-    [self setState:TKAArrayModelRemoveUser withObject:[self.mutableUsers objectAtIndex:index]];
+    [self setState:TKAArrayModelRemoveChange withObject:[self.mutableUsers objectAtIndex:index]];
 }
 
 - (TKAUser *)userAtIndex:(NSUInteger)index {
@@ -99,11 +99,7 @@
 }
 
 #pragma mark -
-#pragma mark Overloaded Methods
-
-- (SEL)selectorForState:(NSUInteger)state {
-    return [super selectorForState:state];
-}
+#pragma mark Overloaded Methods 
 
 @end
 

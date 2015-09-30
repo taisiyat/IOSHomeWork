@@ -21,12 +21,12 @@
     return [self nibWithNibName:className bundle:bundleOrNil];
 }
 
-- (NSArray *)objectsWithClass:(Class)classType {
++ (NSArray *)objectsWithClass:(Class)classType {
     return [self objectsWithClass:classType
                            bundle:nil];
 }
 
-- (NSArray *)objectsWithClass:(Class)classType
++ (NSArray *)objectsWithClass:(Class)classType
                        bundle:(NSBundle *)bundleOrNil
 {
     return [self objectsWithClass:classType
@@ -35,7 +35,7 @@
                           options:nil];
 }
 
-- (NSArray *)objectsWithClass:(Class)classType
++ (NSArray *)objectsWithClass:(Class)classType
                        owner:(id)ownerOrNil
                      options:(NSDictionary *)optionsOrNil
 {
@@ -45,7 +45,7 @@
                          options:optionsOrNil];
 }
 
-- (NSArray *)objectsWithClass:(Class)classType
++ (NSArray *)objectsWithClass:(Class)classType
                       bundle:(NSBundle *)bundleOrNil
                        owner:(id)ownerOrNil
                      options:(NSDictionary *)optionsOrNil
@@ -54,14 +54,14 @@
     return [nib instantiateWithOwner:ownerOrNil options:optionsOrNil];
 }
 
-- (id)objectWithClass:(Class)typeClass {
++ (id)objectWithClass:(Class)typeClass {
     return [self objectWithClass:typeClass
                            bundle:nil
                             owner:nil
                           options:nil];
 }
 
-- (id)objectWithClass:(Class)typeClass
++ (id)objectWithClass:(Class)typeClass
                bundle:(NSBundle *)bundleOrNil
 {
     return [self objectWithClass:typeClass
@@ -70,7 +70,7 @@
                          options:nil];
 }
 
-- (id)objectWithClass:(Class)classType
++ (id)objectWithClass:(Class)classType
                bundle:(NSBundle *)bundleOrNil
                 owner:(id)ownerOrNil
               options:(NSDictionary *)optionsOrNil

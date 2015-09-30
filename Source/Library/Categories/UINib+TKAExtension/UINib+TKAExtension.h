@@ -15,21 +15,21 @@
 + (UINib *)nibWithClass:(Class)classType
                  bundle:(NSBundle *)bundleOrNil;
 
-- (NSArray *)objectsWithClass:(Class)classType;
-- (NSArray *)objectsWithClass:(Class)classType
++ (NSArray *)objectsWithClass:(Class)classType;
++ (NSArray *)objectsWithClass:(Class)classType
                        bundle:(NSBundle *)bundleOrNil;
-- (NSArray *)objectsWithClass:(Class)classType
++ (NSArray *)objectsWithClass:(Class)classType
                         owner:(id)ownerOrNil
                       options:(NSDictionary *)optionsOrNil;
-- (NSArray *)objectsWithClass:(Class)classType
++ (NSArray *)objectsWithClass:(Class)classType
                        bundle:(NSBundle *)bundleOrNil
                         owner:(id)ownerOrNil
                       options:(NSDictionary *)optionsOrNil;
 
-- (id)objectWithClass:(Class)typeClass;
-- (id)objectWithClass:(Class)typeClass
++ (id)objectWithClass:(Class)typeClass;
++ (id)objectWithClass:(Class)typeClass
                bundle:(NSBundle *)bundleOrNil;
-- (id)objectWithClass:(Class)classType
++ (id)objectWithClass:(Class)classType
                bundle:(NSBundle *)bundleOrNil
                 owner:(id)ownerOrNil
               options:(NSDictionary *)optionsOrNil;

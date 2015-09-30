@@ -14,11 +14,14 @@
 		8A0E0E891BB813E80062C0BD /* TKAPerformBlock.m in Sources */ = {isa = PBXBuildFile; fileRef = 8A0E0E881BB813E80062C0BD /* TKAPerformBlock.m */; };
 		8A3638661BB6D83900702D47 /* UITableView+TKAExtension.m in Sources */ = {isa = PBXBuildFile; fileRef = 8A3638651BB6D83900702D47 /* UITableView+TKAExtension.m */; };
 		8A3638691BB6DA5200702D47 /* UINib+TKAExtension.m in Sources */ = {isa = PBXBuildFile; fileRef = 8A3638681BB6DA5200702D47 /* UINib+TKAExtension.m */; };
-		8A36386D1BB6ED5000702D47 /* TKAArrayModel.m in Sources */ = {isa = PBXBuildFile; fileRef = 8A36386C1BB6ED5000702D47 /* TKAArrayModel.m */; };
 		8A3638741BB6EF0800702D47 /* TKAUsers.m in Sources */ = {isa = PBXBuildFile; fileRef = 8A3638731BB6EF0800702D47 /* TKAUsers.m */; };
 		8A3638791BB6F3C700702D47 /* TKATableViewCell.m in Sources */ = {isa = PBXBuildFile; fileRef = 8A3638781BB6F3C700702D47 /* TKATableViewCell.m */; };
 		8A3F16D61B3AD6C500E6551E /* main.m in Sources */ = {isa = PBXBuildFile; fileRef = 8A3F16D51B3AD6C500E6551E /* main.m */; };
 		8A3F16F01B3AD6C600E6551E /* IOSHomeWorkTests.m in Sources */ = {isa = PBXBuildFile; fileRef = 8A3F16EF1B3AD6C600E6551E /* IOSHomeWorkTests.m */; };
+		8A3F5A991BBB29BB00176831 /* TKAArrayModel.m in Sources */ = {isa = PBXBuildFile; fileRef = 8A3F5A981BBB29BB00176831 /* TKAArrayModel.m */; };
+		8A3F5A9C1BBB308900176831 /* TKAChangeModel.m in Sources */ = {isa = PBXBuildFile; fileRef = 8A3F5A9B1BBB308900176831 /* TKAChangeModel.m */; };
+		8A3F5A9F1BBB3C4C00176831 /* TKAChangeModelOneIndex.m in Sources */ = {isa = PBXBuildFile; fileRef = 8A3F5A9E1BBB3C4C00176831 /* TKAChangeModelOneIndex.m */; };
+		8A3F5AA21BBB3C7B00176831 /* TKAChangeModelTwoIndex.m in Sources */ = {isa = PBXBuildFile; fileRef = 8A3F5AA11BBB3C7B00176831 /* TKAChangeModelTwoIndex.m */; };
 		8A4AD4FB1BB12DE300837631 /* TKATableCell.m in Sources */ = {isa = PBXBuildFile; fileRef = 8A4AD4FA1BB12DE300837631 /* TKATableCell.m */; };
 		8A4AD4FE1BB1360300837631 /* TKATableView.m in Sources */ = {isa = PBXBuildFile; fileRef = 8A4AD4FD1BB1360300837631 /* TKATableView.m */; };
 		8A4AD5051BB13DC300837631 /* TKAUser.m in Sources */ = {isa = PBXBuildFile; fileRef = 8A4AD5041BB13DC300837631 /* TKAUser.m */; };
@@ -67,8 +70,6 @@
 		8A3638651BB6D83900702D47 /* UITableView+TKAExtension.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = "UITableView+TKAExtension.m"; sourceTree = "<group>"; };
 		8A3638671BB6DA5200702D47 /* UINib+TKAExtension.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = "UINib+TKAExtension.h"; sourceTree = "<group>"; };
 		8A3638681BB6DA5200702D47 /* UINib+TKAExtension.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = "UINib+TKAExtension.m"; sourceTree = "<group>"; };
-		8A36386B1BB6ED5000702D47 /* TKAArrayModel.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = TKAArrayModel.h; sourceTree = "<group>"; };
-		8A36386C1BB6ED5000702D47 /* TKAArrayModel.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = TKAArrayModel.m; sourceTree = "<group>"; };
 		8A3638721BB6EF0800702D47 /* TKAUsers.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = TKAUsers.h; sourceTree = "<group>"; };
 		8A3638731BB6EF0800702D47 /* TKAUsers.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = TKAUsers.m; sourceTree = "<group>"; };
 		8A3638771BB6F3C700702D47 /* TKATableViewCell.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = TKATableViewCell.h; sourceTree = "<group>"; };
@@ -79,6 +80,14 @@
 		8A3F16E91B3AD6C600E6551E /* IOSHomeWorkTests.xctest */ = {isa = PBXFileReference; explicitFileType = wrapper.cfbundle; includeInIndex = 0; path = IOSHomeWorkTests.xctest; sourceTree = BUILT_PRODUCTS_DIR; };
 		8A3F16EE1B3AD6C600E6551E /* Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = Info.plist; sourceTree = "<group>"; };
 		8A3F16EF1B3AD6C600E6551E /* IOSHomeWorkTests.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = IOSHomeWorkTests.m; sourceTree = "<group>"; };
+		8A3F5A971BBB29BB00176831 /* TKAArrayModel.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = TKAArrayModel.h; sourceTree = "<group>"; };
+		8A3F5A981BBB29BB00176831 /* TKAArrayModel.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = TKAArrayModel.m; sourceTree = "<group>"; };
+		8A3F5A9A1BBB308900176831 /* TKAChangeModel.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = TKAChangeModel.h; sourceTree = "<group>"; };
+		8A3F5A9B1BBB308900176831 /* TKAChangeModel.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = TKAChangeModel.m; sourceTree = "<group>"; };
+		8A3F5A9D1BBB3C4C00176831 /* TKAChangeModelOneIndex.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = TKAChangeModelOneIndex.h; sourceTree = "<group>"; };
+		8A3F5A9E1BBB3C4C00176831 /* TKAChangeModelOneIndex.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = TKAChangeModelOneIndex.m; sourceTree = "<group>"; };
+		8A3F5AA01BBB3C7B00176831 /* TKAChangeModelTwoIndex.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = TKAChangeModelTwoIndex.h; sourceTree = "<group>"; };
+		8A3F5AA11BBB3C7B00176831 /* TKAChangeModelTwoIndex.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = TKAChangeModelTwoIndex.m; sourceTree = "<group>"; };
 		8A4AD4F91BB12DE300837631 /* TKATableCell.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = TKATableCell.h; sourceTree = "<group>"; };
 		8A4AD4FA1BB12DE300837631 /* TKATableCell.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = TKATableCell.m; sourceTree = "<group>"; };
 		8A4AD4FC1BB1360300837631 /* TKATableView.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = TKATableView.h; sourceTree = "<group>"; };
@@ -191,15 +200,6 @@
 			path = "UITableView+TKAExtension";
 			sourceTree = "<group>";
 		};
-		8A36386A1BB6EA8100702D47 /* TKAUsersArray */ = {
-			isa = PBXGroup;
-			children = (
-				8A36386B1BB6ED5000702D47 /* TKAArrayModel.h */,
-				8A36386C1BB6ED5000702D47 /* TKAArrayModel.m */,
-			);
-			path = TKAUsersArray;
-			sourceTree = "<group>";
-		};
 		8A3638711BB6EF0800702D47 /* TKAUsers */ = {
 			isa = PBXGroup;
 			children = (
@@ -293,6 +293,8 @@
 			children = (
 				8A3F5A941BBB283100176831 /* TKAChangeModelOneIndex */,
 				8A3F5A951BBB283100176831 /* TKAChangeModelTwoIndex */,
+				8A3F5A9A1BBB308900176831 /* TKAChangeModel.h */,
+				8A3F5A9B1BBB308900176831 /* TKAChangeModel.m */,
 			);
 			path = TKAChangeModel;
 			sourceTree = "<group>";
@@ -300,6 +302,8 @@
 		8A3F5A941BBB283100176831 /* TKAChangeModelOneIndex */ = {
 			isa = PBXGroup;
 			children = (
+				8A3F5A9D1BBB3C4C00176831 /* TKAChangeModelOneIndex.h */,
+				8A3F5A9E1BBB3C4C00176831 /* TKAChangeModelOneIndex.m */,
 			);
 			path = TKAChangeModelOneIndex;
 			sourceTree = "<group>";
@@ -307,8 +311,19 @@
 		8A3F5A951BBB283100176831 /* TKAChangeModelTwoIndex */ = {
 			isa = PBXGroup;
 			children = (
+				8A3F5AA01BBB3C7B00176831 /* TKAChangeModelTwoIndex.h */,
+				8A3F5AA11BBB3C7B00176831 /* TKAChangeModelTwoIndex.m */,
 			);
 			path = TKAChangeModelTwoIndex;
+			sourceTree = "<group>";
+		};
+		8A3F5A961BBB29BB00176831 /* TKAArrayModel */ = {
+			isa = PBXGroup;
+			children = (
+				8A3F5A971BBB29BB00176831 /* TKAArrayModel.h */,
+				8A3F5A981BBB29BB00176831 /* TKAArrayModel.m */,
+			);
+			path = TKAArrayModel;
 			sourceTree = "<group>";
 		};
 		8A4AD5021BB13D8700837631 /* TKAUser */ = {
@@ -463,9 +478,9 @@
 		8AFC61681BA77B16001ACBA9 /* Models */ = {
 			isa = PBXGroup;
 			children = (
+				8A3F5A961BBB29BB00176831 /* TKAArrayModel */,
 				8A3F5A931BBB283100176831 /* TKAChangeModel */,
 				8A3638711BB6EF0800702D47 /* TKAUsers */,
-				8A36386A1BB6EA8100702D47 /* TKAUsersArray */,
 				8A4AD5021BB13D8700837631 /* TKAUser */,
 			);
 			path = Models;
@@ -631,6 +646,7 @@
 			files = (
 				8A8B58E41BA9FE3D0001982A /* UIViewController+TKAExtension.m in Sources */,
 				8AEC46701BA8931A00F6FC0D /* UIWindow+TKAExtension.m in Sources */,
+				8A3F5A991BBB29BB00176831 /* TKAArrayModel.m in Sources */,
 				8A4D8D161BAEFC4B00FEFA0E /* TKATableViewController.m in Sources */,
 				8AEC464A1BA8657400F6FC0D /* TKAMacros.m in Sources */,
 				8A0E0E7C1BB80EC10062C0BD /* TKAObservableObject.m in Sources */,
@@ -638,20 +654,22 @@
 				8A0E0E841BB812620062C0BD /* TKAReference.m in Sources */,
 				8A3638741BB6EF0800702D47 /* TKAUsers.m in Sources */,
 				8A0E0E831BB812620062C0BD /* TKAAssignReference.m in Sources */,
+				8A3F5A9C1BBB308900176831 /* TKAChangeModel.m in Sources */,
 				8A3638791BB6F3C700702D47 /* TKATableViewCell.m in Sources */,
 				8A5770DE1BA94A630050EAFB /* NSString+TKARandomWord.m in Sources */,
 				8A3638691BB6DA5200702D47 /* UINib+TKAExtension.m in Sources */,
 				8A4AD5051BB13DC300837631 /* TKAUser.m in Sources */,
+				8A3F5A9F1BBB3C4C00176831 /* TKAChangeModelOneIndex.m in Sources */,
 				8AEC46671BA8926300F6FC0D /* NSString+TKAExtension.m in Sources */,
 				8AEC46461BA8655C00F6FC0D /* TKAViewController.m in Sources */,
 				8A6AE53C1BB9D64200C03250 /* NSIndexPath+TKAExtension.m in Sources */,
 				8A4AD4FB1BB12DE300837631 /* TKATableCell.m in Sources */,
+				8A3F5AA21BBB3C7B00176831 /* TKAChangeModelTwoIndex.m in Sources */,
 				8AEC46451BA8655C00F6FC0D /* TKAView.m in Sources */,
 				8A4AD4FE1BB1360300837631 /* TKATableView.m in Sources */,
 				8A86DCCF1B42893B007FE402 /* TKAAppDelegate.m in Sources */,
 				8A3638661BB6D83900702D47 /* UITableView+TKAExtension.m in Sources */,
 				8A0E0E891BB813E80062C0BD /* TKAPerformBlock.m in Sources */,
-				8A36386D1BB6ED5000702D47 /* TKAArrayModel.m in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};

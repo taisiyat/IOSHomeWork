@@ -76,13 +76,8 @@ TKAViewControllerBaseViewProperty(TKATableViewController, tableView, TKATableVie
 {
     if (UITableViewCellEditingStyleDelete) {
         [self.users removeUserAtIndex:indexPath.row];
-//        [tableView deleteRowsAtIndexPaths:@[indexPath]
-//                         withRowAnimation:UITableViewRowAnimationAutomatic];
-    }
-    if (UITableViewCellEditingStyleInsert) {
+    } else if (UITableViewCellEditingStyleInsert) {
         [self.users addUser:[TKAUser new] atIndex:indexPath.row];
-        //        [tableView insertRowsAtIndexPaths:@[indexPath]
-        //                         withRowAnimation:UITableViewRowAnimationAutomatic];
     }
 }
 
@@ -112,11 +107,6 @@ TKAViewControllerBaseViewProperty(TKATableViewController, tableView, TKATableVie
 - (IBAction)onAddButton:(id)sender {
     TKAUsers *users = self.users;
     [users addUser:[TKAUser user]];
-    
-//    UITableView *usersTable = self.tableView.usersTableView;
-//    NSUInteger indexRow = [users countOfUsers] - 1;
-//    [usersTable insertRowsAtIndexPaths:@[[usersTable indexPathForRow:indexRow]]
-//                      withRowAnimation:UITableViewRowAnimationAutomatic];
 }
 
 - (IBAction)onEditButton:(id)sender {
@@ -127,38 +117,24 @@ TKAViewControllerBaseViewProperty(TKATableViewController, tableView, TKATableVie
 #pragma mark -
 #pragma mark TKAArrayModelObserver
 
-//- (void)usersArrayDidChange {
-//    switch (self.users.state) {
-//        case TKAArrayModelAddUser:
-//            [self.tableView.usersTableView setEditing:YES animated:YES];
-//            break;
-//        case TKAArrayModelRemoveUser:
-//            [self.tableView.usersTableView setEditing:YES animated:YES];
-//            break;
-//        default:
-//            [self.tableView.usersTableView setEditing:NO animated:NO];
-//            break;
-//    }
-//}
-
-- (void)usersArrayDidChangeObject:(id)user {
+- (void)arrayModel:(id)users didChangeWithObject:(TKAUser *)user {
     UITableView *usersTable = self.tableView.usersTableView;
     NSUInteger indexRow = 0;
     switch (self.users.state) {
-        case TKAArrayModelAddUser:
-            [self.tableView setEditing:YES animated:YES];
+        case TKAArrayModelAddChange: {
             indexRow = [self.users countOfUsers] - 1;
-//            [usersTable insertRowsAtIndexPaths:@[[usersTable indexPathForRow:indexRow]]
-//                              withRowAnimation:UITableViewRowAnimationAutomatic];
+            [usersTable insertRowsAtIndexPaths:@[[NSIndexPath indexPathForRow:indexRow]]
+                                  withRowAnimation:UITableViewRowAnimationAutomatic];
+        }
             break;
-        case TKAArrayModelRemoveUser:
-            [self.tableView setEditing:YES animated:YES];
+        case TKAArrayModelRemoveChange: {
             indexRow = [self.users indexOfObject:user];
-//            [usersTable deleteRowsAtIndexPaths:@[[usersTable indexPathForRow:indexRow]]
-//                             withRowAnimation:UITableViewRowAnimationAutomatic];
+            [usersTable deleteRowsAtIndexPaths:@[[NSIndexPath indexPathForRow:indexRow]]
+                             withRowAnimation:UITableViewRowAnimationAutomatic];
+        }
             break;
         default:
-            [self.tableView.usersTableView setEditing:NO animated:NO];
+            self.tableView.editing = NO;
             break;
     }
 }

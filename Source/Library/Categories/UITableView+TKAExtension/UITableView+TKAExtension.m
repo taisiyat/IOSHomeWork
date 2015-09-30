@@ -17,31 +17,24 @@
     
     id cell = [self dequeueReusableCellWithIdentifier:cellClassString];
     if (!cell) {
-        UINib *nib = [UINib nibWithNibName:cellClassString bundle:nil];
-        NSArray *cells = [nib instantiateWithOwner:nil options:nil];
-        cell = [cells firstObject];
-//        cell = [UINib objectWithClass:cellClass];
+        cell = [UINib objectWithClass:cellClass];
     }
     
     return cell;
 }
 
-- (id)cellWithClass:(Class)cellClass {
-    NSString *cellClassString = NSStringFromClass(cellClass);
-    
-    return [self dequeueReusableCellWithIdentifier:cellClassString];
-}
-
-- (id)cellIfNotReusableCell:(id)cell withClass:(Class)cellClass {
-    if (!cell) {
-        NSString *cellClassString = NSStringFromClass(cellClass);
-        UINib *nib = [UINib nibWithNibName:cellClassString bundle:nil];
-        NSArray *cells = [nib instantiateWithOwner:nil options:nil];
-        cell = [cells firstObject];
-//        cell = [UINib objectWithClass:cellClass];
-    }
-    
-    return cell;
-}
+//- (void)arrayModelDidChange {
+//    switch (self.users.state) {
+//        case TKAArrayModelAddChange:
+//            [self.tableView.usersTableView setEditing:YES animated:YES];
+//            break;
+//        case TKAArrayModelRemoveChange:
+//            [self.tableView.usersTableView setEditing:YES animated:YES];
+//            break;
+//        default:
+//            [self.tableView.usersTableView setEditing:NO animated:NO];
+//            break;
+//    }
+//}
 
 @end

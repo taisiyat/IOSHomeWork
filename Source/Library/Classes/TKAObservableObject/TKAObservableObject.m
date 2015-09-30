@@ -41,24 +41,7 @@
 #pragma mark Accesssors
 
 - (NSSet *)observerSet {
-    @synchronized (self) {
-        return [self.mutableObserverSet copy];
-    }
-}
-
-- (void)setState:(NSUInteger)state {
-    @synchronized (self) {
-        if (state != _state) {
-            _state = state;
-            
-            void(^blockNotify)() = ^() {
-                [self notifyOfStateChangeWithSelector];
-//                [self notifyObserverWithSelector:@selector(usersArrayDidChange)];
-            };
-            
-            TKAPerformBlockOnMainQueue(blockNotify);
-        }
-    }
+    return [self.mutableObserverSet copy];
 }
 
 - (void)setState:(NSUInteger)state withObject:(id)object{
@@ -66,9 +49,10 @@
         if (state != _state) {
             _state = state;
             
-            void(^blockNotify)() = ^() {
-                [self notifyOfStateChangeWithSelector];
-                [self notifyObserverWithSelector:@selector(usersArrayDidChangeObject:) withObject:object];
+            void(^blockNotify)() = ^(){
+                [self notifyObserverWithSelector:@selector(arrayModel:didChangeWithObject:)
+                            withObservableObject:self
+                                      withObject:object];
             };
             
             TKAPerformBlockOnMainQueue(blockNotify);
@@ -76,49 +60,36 @@
     }
 }
 
-- (NSUInteger)state {
-    @synchronized (self) {
-        return _state;
-    }
-}
-
 #pragma mark -
 #pragma mark Pablic
 
 - (void)addObserver:(id)observer {
-    @synchronized (self) {
         [self.mutableObserverSet addObject:observer];
-    }
 }
 
 - (void)removeObserver:(id)observer {
-    @synchronized (self) {
         [self.mutableObserverSet removeObject:observer];
-    }
 }
 
 #pragma mark -
 #pragma mark Private
 
-- (SEL)selectorForState:(NSUInteger)state {
-    return NULL;
-}
-
-- (void)notifyOfStateChangeWithSelector {
+- (void)notifyOfStateChangeWithSelector:(SEL)selector {
     NSMutableSet *observerSet = self.mutableObserverSet;
-    SEL selector = [self selectorForState:_state];
-    for (id observer in observerSet) {
-        if ([observer respondsToSelector:selector]) {
-            [observer performSelector:selector withObject:self];
+        for (id observer in observerSet) {
+            if ([observer respondsToSelector:selector]) {
+                [observer performSelector:selector withObject:self];
+            }
         }
     }
-}
 
-- (void)notifyObserverWithSelector:(SEL)selector withObject:(id)user {
+- (void)notifyObserverWithSelector:(SEL)selector
+              withObservableObject:(id)array
+                        withObject:(id)user {
     NSMutableSet *observerSet = self.mutableObserverSet;
     for (id observer in observerSet) {
         if ([observer respondsToSelector:selector]) {
-            [observer performSelector:selector withObject:user];
+            [observer performSelector:selector withObject:array withObject:user];
         }
     }
 }

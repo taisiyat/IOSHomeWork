@@ -12,7 +12,5 @@
 @interface UITableView (TKAExtension)
 
 - (id)dequeueCellWithClass:(Class)cellClass;
-- (id)cellWithClass:(Class)cellClass;
-- (id)cellIfNotReusableCell:(id)cell withClass:(Class)cellClass;
 
 @end
