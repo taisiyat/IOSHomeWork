@@ -9,6 +9,7 @@
 
 #import "UITableView+TKAExtension.h"
 #import "UINib+TKAExtension.h"
+#import "TKAChangeModel.h"
 
 @implementation UITableView (TKAExtension)
 
@@ -22,19 +23,17 @@
     
     return cell;
 }
-
-//- (void)arrayModelDidChange {
-//    switch (self.users.state) {
-//        case TKAArrayModelAddChange:
-//            [self.tableView.usersTableView setEditing:YES animated:YES];
-//            break;
-//        case TKAArrayModelRemoveChange:
-//            [self.tableView.usersTableView setEditing:YES animated:YES];
-//            break;
-//        default:
-//            [self.tableView.usersTableView setEditing:NO animated:NO];
-//            break;
-//    }
-//}
+- (void)updateWithChanges:(TKAChangeModel *)user {
+    switch (user.state) {
+        case TKAChangeModelAdd:
+//            [self insertRowsAtIndexPaths:@[user.index] withRowAnimation:UITableViewRowAnimationAutomatic];
+            break;
+        case TKAChangeModelRemove:
+//            [self insertRowsAtIndexPaths:@[user.index] withRowAnimation:UITableViewRowAnimationAutomatic];
+            break;
+        default:
+            break;
+    }
+}
 
 @end

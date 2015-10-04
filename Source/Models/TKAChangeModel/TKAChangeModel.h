@@ -8,36 +8,34 @@
 
 #import <UIKit/UIKit.h>
 
-#import "TKAArrayModel.h"
-#import "TKAChangeModelOneIndex.h"
-#import "TKAChangeModelTwoIndex.h"
-
 #import "NSIndexPath+TKAExtension.h"
 
-@interface TKAChangeModel : TKAArrayModel
-@property (nonatomic, readonly) TKAArrayModelState state;
+@class TKAChangeModelOneIndex;
+@class TKAChangeModelTwoIndex;
 
-+ (instancetype)modelWithState:(TKAArrayModelState)state;
+typedef NS_ENUM(NSUInteger, TKAChangeModelState) {
+    TKAChangeModelAdd,
+    TKAChangeModelRemove
+};
 
-+ (instancetype)insertModel:(TKAChangeModelOneIndex *)model
-                  withIndex:(NSUInteger)index;
+@interface TKAChangeModel : NSObject
+@property (nonatomic, readonly) TKAChangeModelState state;
 
-+ (instancetype)insertModel:(TKAChangeModelOneIndex *)model
-              withIndexPath:(NSIndexPath *)indexPath;
++ (instancetype)modelWithState:(TKAChangeModelState)state;
 
-+ (instancetype)deleteModel:(TKAChangeModelOneIndex *)model
-                  withIndex:(NSUInteger)index;
++ (TKAChangeModelOneIndex *)insertModelWithIndex:(NSUInteger)index;
 
-+ (instancetype)deleteModel:(TKAChangeModelOneIndex *)model
-              withIndexPath:(NSIndexPath *)indexPath;
++ (TKAChangeModelOneIndex *)insertModelWithIndexPath:(NSIndexPath *)indexPath;
 
-+ (instancetype)moveModel:(TKAChangeModelTwoIndex *)model
-        withLocationIndex:(NSUInteger)locationIndex
-          withTargetIndex:(NSUInteger)targetIndex;
++ (instancetype)deleteModelWithIndex:(NSUInteger)index;
 
-+ (instancetype)moveModel:(TKAChangeModelTwoIndex *)model
-    withLocationIndexPath:(NSIndexPath *)locationIndexPath
-      withTargetIndexPath:(NSIndexPath *)targetIndexPath;
++ (instancetype)deleteModelWithIndexPath:(NSIndexPath *)indexPath;
+
++ (instancetype)moveModelWithLocationIndex:(NSUInteger)locationIndex
+                           withTargetIndex:(NSUInteger)targetIndex;
+
++ (instancetype)moveModelWithLocationIndexPath:(NSIndexPath *)locationIndexPath
+                           withTargetIndexPath:(NSIndexPath *)targetIndexPath;
 
 
 @end

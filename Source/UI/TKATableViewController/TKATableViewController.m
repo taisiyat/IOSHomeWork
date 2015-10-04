@@ -74,9 +74,9 @@ TKAViewControllerBaseViewProperty(TKATableViewController, tableView, TKATableVie
     commitEditingStyle:(UITableViewCellEditingStyle)editingStyle
      forRowAtIndexPath:(NSIndexPath *)indexPath
 {
-    if (UITableViewCellEditingStyleDelete) {
+    if (editingStyle == UITableViewCellEditingStyleDelete) {
         [self.users removeUserAtIndex:indexPath.row];
-    } else if (UITableViewCellEditingStyleInsert) {
+    } else if (editingStyle == UITableViewCellEditingStyleInsert) {
         [self.users addUser:[TKAUser new] atIndex:indexPath.row];
     }
 }
@@ -92,13 +92,13 @@ TKAViewControllerBaseViewProperty(TKATableViewController, tableView, TKATableVie
 - (BOOL)        tableView:(UITableView *)tableView
     canMoveRowAtIndexPath:(NSIndexPath *)indexPath
 {
-    return indexPath.row;
+    return 0 != indexPath.row;
 }
 
 - (BOOL)        tableView:(UITableView *)tableView
     canEditRowAtIndexPath:(NSIndexPath *)indexPath
 {
-    return indexPath.row;
+    return 0 != indexPath.row;
 }
 
 #pragma mark -
@@ -117,24 +117,13 @@ TKAViewControllerBaseViewProperty(TKATableViewController, tableView, TKATableVie
 #pragma mark -
 #pragma mark TKAArrayModelObserver
 
-- (void)arrayModel:(id)users didChangeWithObject:(TKAUser *)user {
+- (void)arrayModel:(TKAArrayModel *)users didChangeWithObject:(TKAChangeModel *)user {
     UITableView *usersTable = self.tableView.usersTableView;
-    NSUInteger indexRow = 0;
     switch (self.users.state) {
-        case TKAArrayModelAddChange: {
-            indexRow = [self.users countOfUsers] - 1;
-            [usersTable insertRowsAtIndexPaths:@[[NSIndexPath indexPathForRow:indexRow]]
-                                  withRowAnimation:UITableViewRowAnimationAutomatic];
-        }
-            break;
-        case TKAArrayModelRemoveChange: {
-            indexRow = [self.users indexOfObject:user];
-            [usersTable deleteRowsAtIndexPaths:@[[NSIndexPath indexPathForRow:indexRow]]
-                             withRowAnimation:UITableViewRowAnimationAutomatic];
-        }
+        case TKAArrayModelChange:
+            [usersTable updateWithChanges:user];
             break;
         default:
-            self.tableView.editing = NO;
             break;
     }
 }

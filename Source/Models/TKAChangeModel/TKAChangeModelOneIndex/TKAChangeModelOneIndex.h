@@ -9,12 +9,12 @@
 #import "TKAChangeModel.h"
 
 @interface TKAChangeModelOneIndex : TKAChangeModel
-@property (nonatomic, readonly) NSUInteger index;
+@property (nonatomic, assign) NSUInteger index;
 
-+(instancetype)modelWithIndex:(NSUInteger)index
-                    withState:(TKAArrayModelState *)state;
++ (instancetype)modelWithIndex:(NSUInteger)index
+                    withState:(TKAChangeModelState)state;
 
 + (instancetype)modelWithIndexPath:(NSIndexPath *)indexPath
-                         withState:(TKAArrayModelState *)state;
+                         withState:(TKAChangeModelState)state;
 
 @end

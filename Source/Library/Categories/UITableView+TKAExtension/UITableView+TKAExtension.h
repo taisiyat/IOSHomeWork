@@ -9,8 +9,11 @@
 #import <Foundation/Foundation.h>
 #import <UIKit/UIKit.h>
 
+@class TKAChangeModel;
+
 @interface UITableView (TKAExtension)
 
 - (id)dequeueCellWithClass:(Class)cellClass;
+- (void)updateWithChanges:(TKAChangeModel *)user;
 
 @end

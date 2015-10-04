@@ -8,16 +8,16 @@
 
 #import "TKAChangeModel.h"
 
-@interface TKAChangeModelTwoIndex : TKAChangeModel
-@property (nonatomic, readonly) NSUInteger locationIndex;
-@property (nonatomic, readonly) NSUInteger targetIndex;
-
-+ (instancetype)modelWithLocationIndex:(NSUInteger)locationIndex
-                       withTargetIndex:(NSUInteger)targetIndex
-                             withState:(TKAArrayModelState *)state;
-
-+ (instancetype)modelWithLocationIndexPath:(NSIndexPath *)locationIndexPath
-                       withTargetIndexPath:(NSIndexPath *)targetIndexPath
-                                 withState:(TKAArrayModelState *)state;
-
-@end
+//@interface TKAChangeModelTwoIndex : TKAChangeModel
+//@property (nonatomic, readonly) NSUInteger locationIndex;
+//@property (nonatomic, readonly) NSUInteger targetIndex;
+//
+//+ (instancetype)modelWithLocationIndex:(NSUInteger)locationIndex
+//                       withTargetIndex:(NSUInteger)targetIndex
+//                             withState:(TKAArrayModelState *)state;
+//
+//+ (instancetype)modelWithLocationIndexPath:(NSIndexPath *)locationIndexPath
+//                       withTargetIndexPath:(NSIndexPath *)targetIndexPath
+//                                 withState:(TKAArrayModelState *)state;
+//
+//@end

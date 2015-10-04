@@ -9,20 +9,20 @@
 #import <Foundation/Foundation.h>
 
 #import "TKAObservableObject.h"
-#import "TKAChangeModel.h"
 
 @class TKAUser;
+@class TKAChangeModel;
+@class TKAArrayModel;
 
 typedef NS_ENUM(NSUInteger, TKAArrayModelState) {
-    TKAArrayModelAddChange,
-    TKAArrayModelRemoveChange,
-    TKAArrayModelMoveChange,
+    TKAArrayModelNotChange,
+    TKAArrayModelChange
 };
 
 @protocol TKAArrayModelObsserver <NSObject>
 
 @optional
-- (void)arrayModel:(id)arrayModel didChangeWithObject:(TKAUser *)object;
+- (void)arrayModel:(TKAArrayModel *)arrayModel didChangeWithObject:(TKAChangeModel *)object;
 
 @end
 
@@ -38,7 +38,7 @@ typedef NS_ENUM(NSUInteger, TKAArrayModelState) {
 - (void)removeUserAtIndex:(NSUInteger)index;
 - (TKAUser *)userAtIndex:(NSUInteger)index;
 - (NSUInteger)indexOfObject:(TKAUser *)user;
-- (id)objectAtIndexSubscript:(NSUInteger)index;
+- (id)objectAtIndexedSubscript:(NSUInteger)index;
 - (void)moveUserAtIndex:(NSUInteger)sourceIndex
                 toIndex:(NSUInteger)destinationIndex;
 - (NSUInteger)countOfUsers;

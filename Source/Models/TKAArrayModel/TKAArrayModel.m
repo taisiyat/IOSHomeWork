@@ -7,6 +7,8 @@
 //
 
 #import "TKAArrayModel.h"
+#import "TKAChangeModel.h"
+#import "TKAUser.h"
 
 @interface TKAArrayModel ()
 @property (nonatomic, strong) NSMutableArray *mutableUsers;
@@ -52,22 +54,21 @@
 
 - (void)addUser:(TKAUser *)user {
     [self.mutableUsers addObject:user];
-    [self setState:TKAArrayModelAddChange withObject:user];
+    [self setState:TKAArrayModelChange withObject:[TKAChangeModel insertModelWithIndex:[self indexOfObject:user]]];
 }
 
 - (void)addUser:(TKAUser *)user atIndex:(NSUInteger)index {
     [self.mutableUsers insertObject:user atIndex:index];
-    [self setState:TKAArrayModelAddChange withObject:user];
+    [self setState:TKAArrayModelChange withObject:[TKAChangeModel insertModelWithIndex:index]];
 }
 
 - (void)removeUser:(TKAUser *)user {
     [self.mutableUsers removeObject:user];
-    [self setState:TKAArrayModelRemoveChange withObject:user];
-}
+    [self setState:TKAArrayModelChange withObject:[TKAChangeModel deleteModelWithIndex:[self indexOfObject:user]]];}
 
 - (void)removeUserAtIndex:(NSUInteger)index {
     [self.mutableUsers removeObjectAtIndex:index];
-    [self setState:TKAArrayModelRemoveChange withObject:[self.mutableUsers objectAtIndex:index]];
+    [self setState:TKAArrayModelChange withObject:[TKAChangeModel deleteModelWithIndex:index]];
 }
 
 - (TKAUser *)userAtIndex:(NSUInteger)index {
@@ -78,7 +79,7 @@
     return [self.mutableUsers indexOfObject:user];
 }
 
-- (id)objectAtIndexSubscript:(NSUInteger)index {
+- (id)objectAtIndexedSubscript:(NSUInteger)index {
     if (index < [self.mutableUsers count]) {
         return [self.mutableUsers objectAtIndexedSubscript:index];
     }
@@ -100,6 +101,19 @@
 
 #pragma mark -
 #pragma mark Overloaded Methods 
+
+- (SEL)selectorForState:(NSUInteger)state {
+    switch (state) {
+        case TKAArrayModelChange:
+            return @selector(arrayModel:didChangeWithObject:);
+            
+        case TKAArrayModelNotChange:
+            return nil;
+            
+        default:
+            return [super selectorForState:state];
+    }
+}
 
 @end
 

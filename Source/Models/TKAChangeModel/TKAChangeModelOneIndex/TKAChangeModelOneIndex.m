@@ -9,26 +9,26 @@
 #import "TKAChangeModelOneIndex.h"
 
 @interface TKAChangeModelOneIndex ()
-@property (nonatomic, assign) NSUInteger index;
+//@property (nonatomic, assign) NSUInteger index;
 
 @end
 
 @implementation TKAChangeModelOneIndex
 
-@dynamic index;
+//@dynamic index;
 
 + (instancetype)modelWithIndex:(NSUInteger)index
-                    withState:(TKAArrayModelState *)state {
-    TKAChangeModelOneIndex *result = [self new];
+                    withState:(TKAChangeModelState)state {
+    TKAChangeModelOneIndex *result = [self modelWithState:state];
     result.index = index;
+
     return result;
 }
 
 + (instancetype)modelWithIndexPath:(NSIndexPath *)indexPath
-                         withState:(TKAArrayModelState *)state
+                         withState:(TKAChangeModelState)state
 {
     return  [self modelWithIndex:indexPath.row withState:state];
 }
-
 
 @end
