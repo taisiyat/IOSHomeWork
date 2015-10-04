@@ -14,9 +14,8 @@
 @implementation UITableView (TKAExtension)
 
 - (id)dequeueCellWithClass:(Class)cellClass {
-    NSString *cellClassString = NSStringFromClass(cellClass);
-    
-    id cell = [self dequeueReusableCellWithIdentifier:cellClassString];
+    id cell = [self dequeueReusableCellWithIdentifier:NSStringFromClass(cellClass)];
+ 
     if (!cell) {
         cell = [UINib objectWithClass:cellClass];
     }

@@ -26,12 +26,12 @@
     }
 
 #define TKAViewControllerBaseViewProperty(viewControllerClass, propertyName, viewClass) \
-    @interface viewControllerClass (__viewClass__##propertyName) \
+    @interface viewControllerClass (__TKAViewController__##viewClass##__##propertyName##__baseview) \
     TKABaseViewProperty(propertyName, viewClass) \
     \
     @end \
     \
-    @implementation viewControllerClass (__viewClass__##propertyName) \
+    @implementation viewControllerClass (__TKAViewController__##viewClass##__##propertyName##__baseview) \
     \
     @dynamic propertyName; \
     \

@@ -9,21 +9,21 @@
 #import "TKAArrayModel.h"
 #import "TKAChangeModel.h"
 #import "TKAChangeModelOneIndex.h"
-#import "TKAUser.h"
+//#import "TKAUser.h"
 
 @interface TKAArrayModel ()
-@property (nonatomic, strong) NSMutableArray *mutableUsers;
+@property (nonatomic, strong) NSMutableArray *mutableUnits;
 
 @end
 
 @implementation TKAArrayModel
 
-@dynamic users;
+@dynamic units;
 
 #pragma mark -
 #pragma mark Class Method
 
-+ (instancetype)users {
++ (instancetype)units {
     return [TKAArrayModel new];
 }
 
@@ -33,7 +33,7 @@
 - (instancetype)init {
     self = [super init];
     if (self) {
-        self.mutableUsers = [NSMutableArray array];
+        self.mutableUnits = [NSMutableArray array];
     }
     
     return self;
@@ -42,76 +42,73 @@
 #pragma mark -
 #pragma mark Accessors
 
-- (NSArray *)users {
-    return [self.mutableUsers copy];
+- (NSArray *)units {
+    return [self.mutableUnits copy];
 }
 
 - (NSUInteger)count {
-    return [self.mutableUsers count];
+    return [self.mutableUnits count];
 }
 
 #pragma mark -
 #pragma mark Public
 
-- (void)addUser:(TKAUser *)user {
-    [self.mutableUsers addObject:user];
+- (void)addUnit:(id)unit {
+    [self.mutableUnits addObject:unit];
     if ([self.observerSet anyObject] != nil) {
-        NSIndexPath *userIndexPath = [self indexPathOfObject:user];
-        [self setState:TKAArrayModelChange withObject:[TKAChangeModel insertModelWithIndexPath:userIndexPath]];
+        NSIndexPath *unitIndexPath = [self indexPathOfObject:unit];
+        [self setState:TKAArrayModelChange
+            withObject:[TKAChangeModel insertModelWithIndexPath:unitIndexPath]];
     }
 }
 
-- (void)addUser:(TKAUser *)user atIndex:(NSUInteger)index {
-    [self.mutableUsers insertObject:user atIndex:index];
-    NSIndexPath *userIndexPath = [NSIndexPath indexPathForRow:index];
+- (void)addUnit:(id)unit atIndex:(NSUInteger)index {
+    [self.mutableUnits insertObject:unit atIndex:index];
+    NSIndexPath *unitIndexPath = [NSIndexPath indexPathForRow:index];
     [self setState:TKAArrayModelChange
-        withObject:[TKAChangeModel insertModelWithIndexPath:userIndexPath]];
+        withObject:[TKAChangeModel insertModelWithIndexPath:unitIndexPath]];
 }
 
-- (void)removeUser:(TKAUser *)user {
-    NSIndexPath *userIndexPath = [self indexPathOfObject:user];
-    [self.mutableUsers removeObject:user];
+- (void)removeUnit:(id)unit {
+    NSIndexPath *unitIndexPath = [self indexPathOfObject:unit];
+    [self.mutableUnits removeObject:unit];
     [self setState:TKAArrayModelChange
-        withObject:[TKAChangeModel deleteModelWithIndexPath:userIndexPath]];
+        withObject:[TKAChangeModel deleteModelWithIndexPath:unitIndexPath]];
 }
 
-- (void)removeUserAtIndex:(NSUInteger)index {
-    [self.mutableUsers removeObjectAtIndex:index];
-    NSIndexPath *userIndexPath = [NSIndexPath indexPathForRow:index];
+- (void)removeUnitAtIndex:(NSUInteger)index {
+    [self.mutableUnits removeObjectAtIndex:index];
+    NSIndexPath *unitIndexPath = [NSIndexPath indexPathForRow:index];
     [self setState:TKAArrayModelChange
-        withObject:[TKAChangeModel deleteModelWithIndexPath:userIndexPath]];
+        withObject:[TKAChangeModel deleteModelWithIndexPath:unitIndexPath]];
 }
 
-- (TKAUser *)userAtIndex:(NSUInteger)index {
-    return [self.mutableUsers objectAtIndex:index];
+- (id)unitAtIndex:(NSUInteger)index {
+    return [self.mutableUnits objectAtIndex:index];
 }
 
-- (NSUInteger)indexOfObject:(TKAUser *)user {
-    return [self.mutableUsers indexOfObject:user];
+- (NSUInteger)indexOfObject:(id)unit {
+    return [self.mutableUnits indexOfObject:unit];
 }
 
-- (NSIndexPath *)indexPathOfObject:(TKAUser *)user {
-    return [NSIndexPath indexPathForRow:[self.mutableUsers indexOfObject:user]];
+- (NSIndexPath *)indexPathOfObject:(id)unit {
+    return [NSIndexPath indexPathForRow:[self.mutableUnits indexOfObject:unit]];
 }
 
 - (id)objectAtIndexedSubscript:(NSUInteger)index {
-    if (index < [self.mutableUsers count]) {
-        return [self.mutableUsers objectAtIndexedSubscript:index];
+    if (index < [self.mutableUnits count]) {
+        return [self.mutableUnits objectAtIndexedSubscript:index];
     }
     
     return nil;
 }
 
-- (void)moveUserAtIndex:(NSUInteger)sourceIndex
+- (void)moveUnitAtIndex:(NSUInteger)sourceIndex
                 toIndex:(NSUInteger)destinationIndex
 {
-    TKAUser *user = [self userAtIndex:sourceIndex];
-    [self removeUserAtIndex:sourceIndex];
-    [self addUser:user atIndex:destinationIndex];
-}
-
-- (NSUInteger)countOfUsers {
-    return [self.mutableUsers count];
+    id unit = [self unitAtIndex:sourceIndex];
+    [self removeUnitAtIndex:sourceIndex];
+    [self addUnit:unit atIndex:destinationIndex];
 }
 
 #pragma mark -

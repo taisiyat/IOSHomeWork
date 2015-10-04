@@ -57,7 +57,7 @@ TKAViewControllerBaseViewProperty(TKATableViewController, tableView, TKATableVie
 - (NSInteger)   tableView:(UITableView *)tableView
     numberOfRowsInSection:(NSInteger)section {
 
-    return [self.users countOfUsers];
+    return [self.users count];
 }
 
 - (UITableViewCell *)tableView:(UITableView *)tableView
@@ -65,7 +65,7 @@ TKAViewControllerBaseViewProperty(TKATableViewController, tableView, TKATableVie
 {
     TKATableCell *cell = [tableView dequeueCellWithClass:[TKATableCell class]];
  
-    cell.user = [self.users userAtIndex:indexPath.row];
+    cell.user = [self.users unitAtIndex:indexPath.row];
     
     return cell;
 }
@@ -75,9 +75,9 @@ TKAViewControllerBaseViewProperty(TKATableViewController, tableView, TKATableVie
      forRowAtIndexPath:(NSIndexPath *)indexPath
 {
     if (editingStyle == UITableViewCellEditingStyleDelete) {
-        [self.users removeUserAtIndex:indexPath.row];
+        [self.users removeUnitAtIndex:indexPath.row];
     } else if (editingStyle == UITableViewCellEditingStyleInsert) {
-        [self.users addUser:[TKAUser new] atIndex:indexPath.row];
+        [self.users addUnit:[TKAUser new] atIndex:indexPath.row];
     }
 }
 
@@ -85,7 +85,7 @@ TKAViewControllerBaseViewProperty(TKATableViewController, tableView, TKATableVie
     moveRowAtIndexPath:(NSIndexPath *)sourceIndexPath
            toIndexPath:(NSIndexPath *)destinationIndexPath
 {
-    [self.users moveUserAtIndex:sourceIndexPath.row
+    [self.users moveUnitAtIndex:sourceIndexPath.row
                         toIndex:destinationIndexPath.row];
 }
 
@@ -106,7 +106,7 @@ TKAViewControllerBaseViewProperty(TKATableViewController, tableView, TKATableVie
 
 - (IBAction)onAddButton:(id)sender {
     TKAUsers *users = self.users;
-    [users addUser:[TKAUser user]];
+    [users addUnit:[TKAUser user]];
 }
 
 - (IBAction)onEditButton:(id)sender {

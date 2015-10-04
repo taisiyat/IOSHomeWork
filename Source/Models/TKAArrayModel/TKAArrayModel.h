@@ -10,7 +10,7 @@
 
 #import "TKAObservableObject.h"
 
-@class TKAUser;
+//@class TKAUser;
 @class TKAChangeModel;
 @class TKAArrayModel;
 
@@ -27,21 +27,20 @@ typedef NS_ENUM(NSUInteger, TKAArrayModelState) {
 @end
 
 @interface TKAArrayModel : TKAObservableObject <TKAArrayModelObsserver>
-@property (nonatomic, readonly) NSArray     *users;
+@property (nonatomic, readonly) NSArray     *units;
 @property (nonatomic, readonly) NSUInteger  count;
 
 + (instancetype)arrayModel;
 
-- (void)addUser:(TKAUser *)user;
-- (void)addUser:(TKAUser *)user atIndex:(NSUInteger)index;
-- (void)removeUser:(TKAUser *)user;
-- (void)removeUserAtIndex:(NSUInteger)index;
-- (TKAUser *)userAtIndex:(NSUInteger)index;
-- (NSUInteger)indexOfObject:(TKAUser *)user;
-- (NSIndexPath *)indexPathOfObject:(TKAUser *)user;
+- (void)addUnit:(id)unit;
+- (void)addUnit:(id)unit atIndex:(NSUInteger)index;
+- (void)removeUnit:(id)unit;
+- (void)removeUnitAtIndex:(NSUInteger)index;
+- (id)unitAtIndex:(NSUInteger)index;
+- (NSUInteger)indexOfObject:(id)unit;
+- (NSIndexPath *)indexPathOfObject:(id)unit;
 - (id)objectAtIndexedSubscript:(NSUInteger)index;
-- (void)moveUserAtIndex:(NSUInteger)sourceIndex
+- (void)moveUnitAtIndex:(NSUInteger)sourceIndex
                 toIndex:(NSUInteger)destinationIndex;
-- (NSUInteger)countOfUsers;
 
 @end

@@ -9,11 +9,12 @@
 #import <Foundation/Foundation.h>
 #import <UIKit/UIKit.h>
 
+static NSString *const kTKAImageName        = @"image";
+static NSString *const kTKAImageExtension   = @"jpg";
+
 @interface TKAUser : NSObject
 @property (nonatomic, copy)     NSString    *name;
 @property (nonatomic, readonly) UIImage     *image;
-@property (nonatomic, assign) NSUInteger     state;
-@property (nonatomic, assign) NSUInteger     index;
 
 + (instancetype)user;
 

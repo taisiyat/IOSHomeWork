@@ -39,7 +39,8 @@
     static UIImage *__image = nil;
     static dispatch_once_t onceToken;
     dispatch_once(&onceToken, ^{
-        NSURL *url = [[NSBundle mainBundle] URLForResource:@"image" withExtension:@"jpg"];
+        NSURL *url = [[NSBundle mainBundle] URLForResource:kTKAImageName
+                                             withExtension:kTKAImageExtension];
         __image = [UIImage imageWithContentsOfFile:[url path]];
     });
 

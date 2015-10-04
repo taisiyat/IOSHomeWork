@@ -40,7 +40,7 @@ static const NSUInteger kTKAUsersCount = 6;
 }
 
 - (void)fillWithRandomValue {
-    [self addUser:[TKAUser user]];
+    [self addUnit:[TKAUser user]];
 }
 
 - (void)fillWithRandomValueWithCount:(NSUInteger)count {
