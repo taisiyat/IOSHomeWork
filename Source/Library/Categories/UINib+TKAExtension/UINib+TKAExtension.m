@@ -17,8 +17,7 @@
 + (UINib *)nibWithClass:(Class)classType
                  bundle:(NSBundle *)bundleOrNil
 {
-    NSString *className = NSStringFromClass(classType);
-    return [self nibWithNibName:className bundle:bundleOrNil];
+    return [self nibWithNibName:NSStringFromClass(classType) bundle:bundleOrNil];
 }
 
 + (NSArray *)objectsWithClass:(Class)classType {
@@ -56,9 +55,9 @@
 
 + (id)objectWithClass:(Class)typeClass {
     return [self objectWithClass:typeClass
-                           bundle:nil
-                            owner:nil
-                          options:nil];
+                          bundle:nil
+                           owner:nil
+                         options:nil];
 }
 
 + (id)objectWithClass:(Class)typeClass
@@ -75,7 +74,16 @@
                 owner:(id)ownerOrNil
               options:(NSDictionary *)optionsOrNil
 {
-    return [[self objectsWithClass:classType bundle:bundleOrNil owner:ownerOrNil options:optionsOrNil] firstObject];
+    UINib *nib = [UINib nibWithClass:classType bundle:bundleOrNil];
+    NSArray *arrayNib = [nib instantiateWithOwner:ownerOrNil options:optionsOrNil];
+    
+    for (id object in arrayNib) {
+        if ([object isKindOfClass:classType]) {
+            return object;
+        }
+    }
+    
+    return nil;
 }
 
 @end

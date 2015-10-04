@@ -10,10 +10,9 @@
 
 @interface TKAChangeModelOneIndex : TKAChangeModel
 //@property (nonatomic, readonly) NSUInteger index;
-@property (nonatomic, assign) NSUInteger index;
 
 + (instancetype)modelWithIndex:(NSUInteger)index
-                    withState:(TKAChangeModelState)state;
+                     withState:(TKAChangeModelState)state;
 
 + (instancetype)modelWithIndexPath:(NSIndexPath *)indexPath
                          withState:(TKAChangeModelState)state;

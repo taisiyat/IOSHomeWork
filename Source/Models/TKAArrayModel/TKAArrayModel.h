@@ -38,6 +38,7 @@ typedef NS_ENUM(NSUInteger, TKAArrayModelState) {
 - (void)removeUserAtIndex:(NSUInteger)index;
 - (TKAUser *)userAtIndex:(NSUInteger)index;
 - (NSUInteger)indexOfObject:(TKAUser *)user;
+- (NSIndexPath *)indexPathOfObject:(TKAUser *)user;
 - (id)objectAtIndexedSubscript:(NSUInteger)index;
 - (void)moveUserAtIndex:(NSUInteger)sourceIndex
                 toIndex:(NSUInteger)destinationIndex;

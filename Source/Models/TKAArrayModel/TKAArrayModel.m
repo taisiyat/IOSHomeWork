@@ -8,6 +8,7 @@
 
 #import "TKAArrayModel.h"
 #import "TKAChangeModel.h"
+#import "TKAChangeModelOneIndex.h"
 #import "TKAUser.h"
 
 @interface TKAArrayModel ()
@@ -55,27 +56,30 @@
 - (void)addUser:(TKAUser *)user {
     [self.mutableUsers addObject:user];
     if ([self.observerSet anyObject] != nil) {
-        [self setState:TKAArrayModelChange
-            withObject:[TKAChangeModel insertModelWithIndex:[self indexOfObject:user]]];
+        NSIndexPath *userIndexPath = [self indexPathOfObject:user];
+        [self setState:TKAArrayModelChange withObject:[TKAChangeModel insertModelWithIndexPath:userIndexPath]];
     }
-//        [self setState:TKAArrayModelChange withObject:[TKAChangeModel insertModelWithIndex:[self indexOfObject:user]]];
-
 }
 
 - (void)addUser:(TKAUser *)user atIndex:(NSUInteger)index {
     [self.mutableUsers insertObject:user atIndex:index];
-    [self setState:TKAArrayModelChange withObject:[TKAChangeModel insertModelWithIndex:index]];
+    NSIndexPath *userIndexPath = [NSIndexPath indexPathForRow:index];
+    [self setState:TKAArrayModelChange
+        withObject:[TKAChangeModel insertModelWithIndexPath:userIndexPath]];
 }
 
 - (void)removeUser:(TKAUser *)user {
-    NSUInteger index = [self indexOfObject:user];
+    NSIndexPath *userIndexPath = [self indexPathOfObject:user];
     [self.mutableUsers removeObject:user];
-    [self setState:TKAArrayModelChange withObject:[TKAChangeModel deleteModelWithIndex:index]];
+    [self setState:TKAArrayModelChange
+        withObject:[TKAChangeModel deleteModelWithIndexPath:userIndexPath]];
 }
 
 - (void)removeUserAtIndex:(NSUInteger)index {
     [self.mutableUsers removeObjectAtIndex:index];
-    [self setState:TKAArrayModelChange withObject:[TKAChangeModel deleteModelWithIndex:index]];
+    NSIndexPath *userIndexPath = [NSIndexPath indexPathForRow:index];
+    [self setState:TKAArrayModelChange
+        withObject:[TKAChangeModel deleteModelWithIndexPath:userIndexPath]];
 }
 
 - (TKAUser *)userAtIndex:(NSUInteger)index {
@@ -84,6 +88,10 @@
 
 - (NSUInteger)indexOfObject:(TKAUser *)user {
     return [self.mutableUsers indexOfObject:user];
+}
+
+- (NSIndexPath *)indexPathOfObject:(TKAUser *)user {
+    return [NSIndexPath indexPathForRow:[self.mutableUsers indexOfObject:user]];
 }
 
 - (id)objectAtIndexedSubscript:(NSUInteger)index {

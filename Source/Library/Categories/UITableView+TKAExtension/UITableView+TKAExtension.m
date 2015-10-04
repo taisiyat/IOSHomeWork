@@ -23,14 +23,22 @@
     
     return cell;
 }
+
 - (void)updateWithChanges:(TKAChangeModel *)user {
     switch (user.state) {
         case TKAChangeModelAdd:
-            [self insertRowsAtIndexPaths:@[[NSIndexPath indexPathForRow:user.index]] withRowAnimation:UITableViewRowAnimationAutomatic];
+            [self insertRowsAtIndexPaths:@[user.indexPath]
+                        withRowAnimation:UITableViewRowAnimationAutomatic];
             break;
+            
         case TKAChangeModelRemove:
-            [self deleteRowsAtIndexPaths:@[[NSIndexPath indexPathForRow:user.index]] withRowAnimation:UITableViewRowAnimationAutomatic];
+            [self deleteRowsAtIndexPaths:@[user.indexPath]
+                        withRowAnimation:UITableViewRowAnimationAutomatic];
             break;
+            
+        case TKAChangeModelMove:
+            break;
+            
         default:
             break;
     }

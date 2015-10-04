@@ -7,7 +7,6 @@
 //
 
 #import <UIKit/UIKit.h>
-
 #import "NSIndexPath+TKAExtension.h"
 
 @class TKAChangeModelOneIndex;
@@ -15,29 +14,32 @@
 
 typedef NS_ENUM(NSUInteger, TKAChangeModelState) {
     TKAChangeModelAdd,
-    TKAChangeModelRemove
+    TKAChangeModelRemove,
+    TKAChangeModelMove
 };
 
 @interface TKAChangeModel : NSObject
-//@property (nonatomic, readonly) TKAChangeModelState state;
 @property (nonatomic, assign) TKAChangeModelState state;
 @property (nonatomic, assign) NSUInteger index;
+@property (nonatomic, assign) NSIndexPath *indexPath;
+@property (nonatomic, assign) NSUInteger locationIndex;
+@property (nonatomic, assign) NSUInteger targetIndex;
+@property (nonatomic, assign) NSIndexPath *locationIndexPath;
+@property (nonatomic, assign) NSIndexPath *targetIndexPath;
 
 + (instancetype)modelWithState:(TKAChangeModelState)state;
 
-+ (instancetype)insertModelWithIndex:(NSUInteger)index;
++ (TKAChangeModelOneIndex *)insertModelWithIndex:(NSUInteger)index;
 
-+ (instancetype)insertModelWithIndexPath:(NSIndexPath *)indexPath;
++ (TKAChangeModelOneIndex *)insertModelWithIndexPath:(NSIndexPath *)indexPath;
 
-+ (instancetype)deleteModelWithIndex:(NSUInteger)index;
++ (TKAChangeModelOneIndex *)deleteModelWithIndex:(NSUInteger)index;
 
-+ (instancetype)deleteModelWithIndexPath:(NSIndexPath *)indexPath;
++ (TKAChangeModelOneIndex *)deleteModelWithIndexPath:(NSIndexPath *)indexPath;
 
-+ (instancetype)moveModelWithLocationIndex:(NSUInteger)locationIndex
-                           withTargetIndex:(NSUInteger)targetIndex;
++ (TKAChangeModelTwoIndex *)moveModelWithLocationIndex:(NSUInteger)locationIndex
+                                       withTargetIndex:(NSUInteger)targetIndex;
 
-+ (instancetype)moveModelWithLocationIndexPath:(NSIndexPath *)locationIndexPath
-                           withTargetIndexPath:(NSIndexPath *)targetIndexPath;
-- (NSUInteger)index;
-
++ (TKAChangeModelTwoIndex *)moveModelWithLocationIndexPath:(NSIndexPath *)locationIndexPath
+                                       withTargetIndexPath:(NSIndexPath *)targetIndexPath;
 @end

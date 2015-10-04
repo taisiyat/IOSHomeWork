@@ -8,33 +8,37 @@
 
 #import "TKAChangeModelTwoIndex.h"
 
-//@interface TKAChangeModelTwoIndex ()
+@interface TKAChangeModelTwoIndex ()
 //@property (nonatomic, assign) NSUInteger locationIndex;
 //@property (nonatomic, assign) NSUInteger targetIndex;
-//
-//@end
-//
-//@implementation TKAChangeModelTwoIndex
+
+@end
+
+@implementation TKAChangeModelTwoIndex
+
 //@dynamic locationIndex;
 //@dynamic targetIndex;
-//
-//+ (instancetype)modelWithLocationIndex:(NSUInteger)locationIndex
-//                       withTargetIndex:(NSUInteger)targetIndex
-//                             withState:(TKAArrayModelState *)state
-//{
-//    TKAChangeModelTwoIndex *result = [self new];
-//    result.locationIndex = locationIndex;
-//    result.targetIndex = targetIndex;
-//    
-//    return result;
-//}
-//
-//+ (instancetype)modelWithLocationIndexPath:(NSIndexPath *)locationIndexPath
-//                       withTargetIndexPath:(NSIndexPath *)targetIndexPath
-//                             withState:(TKAArrayModelState *)state
-//{
-//    return [self modelWithLocationIndex:locationIndexPath.row
-//                        withTargetIndex:targetIndexPath.row
-//                              withState:state];
-//}
-//@end
+
++ (instancetype)modelWithLocationIndex:(NSUInteger)locationIndex
+                       withTargetIndex:(NSUInteger)targetIndex
+                             withState:(TKAChangeModelState)state
+{
+    TKAChangeModelTwoIndex *result = [self modelWithState:state];
+    result.locationIndex = locationIndex;
+    result.targetIndex = targetIndex;
+    
+    return result;
+}
+
++ (instancetype)modelWithLocationIndexPath:(NSIndexPath *)locationIndexPath
+                       withTargetIndexPath:(NSIndexPath *)targetIndexPath
+                             withState:(TKAChangeModelState)state
+{
+    TKAChangeModelTwoIndex *result = [self modelWithState:state];
+    result.locationIndexPath = locationIndexPath;
+    result.targetIndexPath = targetIndexPath;
+    
+    return result;
+}
+
+@end

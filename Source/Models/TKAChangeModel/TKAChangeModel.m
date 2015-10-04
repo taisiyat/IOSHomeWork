@@ -13,6 +13,7 @@
 @interface TKAChangeModel ()
 //@property (nonatomic, assign) TKAChangeModelState state;
 
+
 @end
 
 @implementation TKAChangeModel
@@ -26,64 +27,41 @@
     return result;
 }
 
-+ (instancetype)modelWithIndex:(NSUInteger)index withState:(TKAChangeModelState)state {
-    TKAChangeModel *result = [self new];
-    result.state = state;
-    result.index = index;
-    
-    return result;
++ (TKAChangeModelOneIndex *)insertModelWithIndex:(NSUInteger)index {
+    return [TKAChangeModelOneIndex modelWithIndex:index
+                                        withState:TKAChangeModelAdd];
 }
 
-+ (instancetype)insertModelWithIndex:(NSUInteger)index {
-        return [TKAChangeModel modelWithIndex:index
++ (TKAChangeModelOneIndex *)insertModelWithIndexPath:(NSIndexPath *)indexPath {
+    return [TKAChangeModelOneIndex modelWithIndexPath:indexPath
                                             withState:TKAChangeModelAdd];
-    }
+}
 
++ (TKAChangeModelOneIndex *)deleteModelWithIndex:(NSUInteger)index {
+    return [TKAChangeModelOneIndex modelWithIndex:index
+                                        withState:TKAChangeModelRemove];
+}
 
-    + (instancetype)deleteModelWithIndex:(NSUInteger)index {
-        return [TKAChangeModel modelWithIndex:index
++ (TKAChangeModelOneIndex *)deleteModelWithIndexPath:(NSIndexPath *)indexPath {
+    return [TKAChangeModelOneIndex modelWithIndexPath:indexPath
                                             withState:TKAChangeModelRemove];
-    }
+}
 
-//+ (instancetype)insertModelWithIndex:(NSUInteger)index {
-//    return [TKAChangeModelOneIndex modelWithIndex:index
-//                                        withState:TKAChangeModelAdd];
-//}
-//
-//+ (instancetype)insertModelWithIndexPath:(NSIndexPath *)indexPath {
-//    return [self insertModelWithIndex:indexPath.row];
-//}
-//
-//+ (instancetype)deleteModelWithIndex:(NSUInteger)index {
-//    return [TKAChangeModelOneIndex modelWithIndex:index
-//                                        withState:TKAChangeModelRemove];
-//}
-//
-//+ (instancetype)deleteModelWithIndexPath:(NSIndexPath *)indexPath {
-//    return [self deleteModelWithIndex:indexPath.row];
-//}
-//
-//- (NSUInteger)index {
-//    return self.index;
-//}
++ (TKAChangeModelTwoIndex *)moveModel:(TKAChangeModelTwoIndex *)model
+                    withLocationIndex:(NSUInteger)locationIndex
+                      withTargetIndex:(NSUInteger)targetIndex
+{
+    return [TKAChangeModelTwoIndex modelWithLocationIndex:locationIndex
+                                          withTargetIndex:targetIndex
+                                                withState:TKAChangeModelMove];
+}
 
-//+ (instancetype)moveModel:(TKAChangeModelTwoIndex *)model
-//        withLocationIndex:(NSUInteger)locationIndex
-//          withTargetIndex:(NSUInteger)targetIndex
-//{
-//    return [TKAChangeModelTwoIndex modelWithLocationIndex:(NSUInteger)locationIndex
-//                                          withTargetIndex:(NSUInteger)targetIndex
-//                                                withState:TKAChangeModelMove];
-//}
-//
-//+ (instancetype)moveModel:(TKAChangeModelTwoIndex *)model
-//    withLocationIndexPath:(NSIndexPath *)locationIndexPath
-//      withTargetIndexPath:(NSIndexPath *)targetIndexPath
-//{
-//    return [self moveModel:model
-//         withLocationIndex:locationIndexPath.row
-//           withTargetIndex:targetIndexPath.row];
-//}
-
++ (TKAChangeModelTwoIndex *)moveModel:(TKAChangeModelTwoIndex *)model
+                withLocationIndexPath:(NSIndexPath *)locationIndexPath
+                  withTargetIndexPath:(NSIndexPath *)targetIndexPath
+{
+    return [TKAChangeModelTwoIndex modelWithLocationIndexPath:locationIndexPath
+                                          withTargetIndexPath:targetIndexPath withState:TKAChangeModelMove];
+}
 
 @end
