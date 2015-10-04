@@ -9,7 +9,7 @@
 #import "TKAAppDelegate.h"
 
 #import "TKAViewController.h"
-#import "TKATableViewController.h"
+#import "TKAUsersViewController.h"
 #import "TKAUsers.h"
 
 #import "UIWindow+TKAExtension.h"
@@ -26,8 +26,7 @@
     UIWindow *window = [UIWindow window];
     self.window = window;
     
-//    window.rootViewController = [TKAViewController viewController];
-    TKATableViewController *controller = [TKATableViewController viewController];
+    TKAUsersViewController *controller = [TKAUsersViewController viewController];
     controller.users = [TKAUsers users];
     window.rootViewController = controller;
     

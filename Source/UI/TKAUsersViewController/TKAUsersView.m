@@ -1,14 +1,14 @@
 //
-//  TKATableView.m
+//  TKAUsersView.m
 //  IOSHomeWork
 //
-//  Created by Taisiya on 22.09.15.
+//  Created by Taisiya on 04.10.15.
 //  Copyright (c) 2015 TKAHomeWork. All rights reserved.
 //
 
-#import "TKATableView.h"
+#import "TKAUsersView.h"
 
-@implementation TKATableView
+@implementation TKAUsersView
 
 #pragma mark -
 #pragma mark Initializations and Deaallocations
@@ -19,7 +19,7 @@
     self.editing = NO;
 }
 
-#pragma mark - 
+#pragma mark -
 #pragma mark Accessors
 
 - (void)setEditing:(BOOL)editing {
@@ -27,11 +27,11 @@
 }
 
 - (void)setEditing:(BOOL)editing animated:(BOOL)animated {
-    [self.usersTableView setEditing:editing animated:animated];
+    [self.tableView setEditing:editing animated:animated];
 }
 
 - (BOOL)isEditing {
-    return self.usersTableView.editing;
+    return self.tableView.editing;
 }
 
 @end

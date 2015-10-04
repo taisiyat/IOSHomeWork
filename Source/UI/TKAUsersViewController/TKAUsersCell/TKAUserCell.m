@@ -1,16 +1,15 @@
 //
-//  TKATableCell.m
+//  TKAUserCell.m
 //  IOSHomeWork
 //
-//  Created by Taisiya on 22.09.15.
+//  Created by Taisiya on 04.10.15.
 //  Copyright (c) 2015 TKAHomeWork. All rights reserved.
 //
 
-#import "TKATableCell.h"
-
+#import "TKAUserCell.h"
 #import "TKAUser.h"
 
-@implementation TKATableCell
+@implementation TKAUserCell
 
 #pragma mark -
 #pragma mark Initializations and Deallocations
@@ -19,7 +18,7 @@
     [super awakeFromNib];
 }
 
-#pragma mark - 
+#pragma mark -
 #pragma mark Accessor
 
 - (void)setUser:(TKAUser *)user {
