@@ -54,7 +54,12 @@
 
 - (void)addUser:(TKAUser *)user {
     [self.mutableUsers addObject:user];
-    [self setState:TKAArrayModelChange withObject:[TKAChangeModel insertModelWithIndex:[self indexOfObject:user]]];
+    if ([self.observerSet anyObject] != nil) {
+        [self setState:TKAArrayModelChange
+            withObject:[TKAChangeModel insertModelWithIndex:[self indexOfObject:user]]];
+    }
+//        [self setState:TKAArrayModelChange withObject:[TKAChangeModel insertModelWithIndex:[self indexOfObject:user]]];
+
 }
 
 - (void)addUser:(TKAUser *)user atIndex:(NSUInteger)index {
@@ -63,8 +68,10 @@
 }
 
 - (void)removeUser:(TKAUser *)user {
+    NSUInteger index = [self indexOfObject:user];
     [self.mutableUsers removeObject:user];
-    [self setState:TKAArrayModelChange withObject:[TKAChangeModel deleteModelWithIndex:[self indexOfObject:user]]];}
+    [self setState:TKAArrayModelChange withObject:[TKAChangeModel deleteModelWithIndex:index]];
+}
 
 - (void)removeUserAtIndex:(NSUInteger)index {
     [self.mutableUsers removeObjectAtIndex:index];

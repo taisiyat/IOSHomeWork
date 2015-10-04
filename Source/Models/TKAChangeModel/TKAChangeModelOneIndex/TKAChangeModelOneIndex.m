@@ -17,9 +17,18 @@
 
 //@dynamic index;
 
+- (instancetype)init {
+    self = [super init];
+    if (self) {
+        
+    }
+    
+    return self;
+}
+
 + (instancetype)modelWithIndex:(NSUInteger)index
                     withState:(TKAChangeModelState)state {
-    TKAChangeModelOneIndex *result = [self modelWithState:state];
+    TKAChangeModelOneIndex *result = [self new];
     result.index = index;
 
     return result;
@@ -29,6 +38,10 @@
                          withState:(TKAChangeModelState)state
 {
     return  [self modelWithIndex:indexPath.row withState:state];
+}
+
+- (NSUInteger)index {
+    return self.index;
 }
 
 @end

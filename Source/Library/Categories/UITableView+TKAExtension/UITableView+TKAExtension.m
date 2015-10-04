@@ -6,7 +6,7 @@
 //  Copyright (c) 2015 TKAHomeWork. All rights reserved.
 //
 
-
+#import <UIKit/UIKit.h>
 #import "UITableView+TKAExtension.h"
 #import "UINib+TKAExtension.h"
 #import "TKAChangeModel.h"
@@ -26,10 +26,10 @@
 - (void)updateWithChanges:(TKAChangeModel *)user {
     switch (user.state) {
         case TKAChangeModelAdd:
-//            [self insertRowsAtIndexPaths:@[user.index] withRowAnimation:UITableViewRowAnimationAutomatic];
+            [self insertRowsAtIndexPaths:@[[NSIndexPath indexPathForRow:user.index]] withRowAnimation:UITableViewRowAnimationAutomatic];
             break;
         case TKAChangeModelRemove:
-//            [self insertRowsAtIndexPaths:@[user.index] withRowAnimation:UITableViewRowAnimationAutomatic];
+            [self deleteRowsAtIndexPaths:@[[NSIndexPath indexPathForRow:user.index]] withRowAnimation:UITableViewRowAnimationAutomatic];
             break;
         default:
             break;

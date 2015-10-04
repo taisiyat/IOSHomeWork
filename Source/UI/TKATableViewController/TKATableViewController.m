@@ -120,8 +120,9 @@ TKAViewControllerBaseViewProperty(TKATableViewController, tableView, TKATableVie
 - (void)arrayModel:(TKAArrayModel *)users didChangeWithObject:(TKAChangeModel *)user {
     UITableView *usersTable = self.tableView.usersTableView;
     switch (self.users.state) {
-        case TKAArrayModelChange:
+        case TKAArrayModelChange: {
             [usersTable updateWithChanges:user];
+            users.state = TKAArrayModelNotChange;}
             break;
         default:
             break;

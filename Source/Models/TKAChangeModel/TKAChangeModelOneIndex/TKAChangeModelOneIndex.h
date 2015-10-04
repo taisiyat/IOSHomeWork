@@ -9,6 +9,7 @@
 #import "TKAChangeModel.h"
 
 @interface TKAChangeModelOneIndex : TKAChangeModel
+//@property (nonatomic, readonly) NSUInteger index;
 @property (nonatomic, assign) NSUInteger index;
 
 + (instancetype)modelWithIndex:(NSUInteger)index

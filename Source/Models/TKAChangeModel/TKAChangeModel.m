@@ -11,13 +11,13 @@
 #import "TKAChangeModelTwoIndex.h"
 
 @interface TKAChangeModel ()
-@property (nonatomic, assign) TKAChangeModelState state;
+//@property (nonatomic, assign) TKAChangeModelState state;
 
 @end
 
 @implementation TKAChangeModel
 
-@dynamic state;
+//@dynamic state;
 
 + (instancetype)modelWithState:(TKAChangeModelState)state {
     TKAChangeModel *result = [self new];
@@ -26,23 +26,46 @@
     return result;
 }
 
-+ (TKAChangeModelOneIndex *)insertModelWithIndex:(NSUInteger)index {
-    return [TKAChangeModelOneIndex modelWithIndex:index
-                                        withState:TKAChangeModelAdd];
++ (instancetype)modelWithIndex:(NSUInteger)index withState:(TKAChangeModelState)state {
+    TKAChangeModel *result = [self new];
+    result.state = state;
+    result.index = index;
+    
+    return result;
 }
 
-+ (TKAChangeModelOneIndex *)insertModelWithIndexPath:(NSIndexPath *)indexPath {
-    return [self insertModelWithIndex:indexPath.row];
-}
++ (instancetype)insertModelWithIndex:(NSUInteger)index {
+        return [TKAChangeModel modelWithIndex:index
+                                            withState:TKAChangeModelAdd];
+    }
 
-+ (instancetype)deleteModelWithIndex:(NSUInteger)index {
-    return [TKAChangeModelOneIndex modelWithIndex:index
-                                        withState:TKAChangeModelRemove];
-}
 
-+ (instancetype)deleteModelWithIndexPath:(NSIndexPath *)indexPath {
-    return [self deleteModelWithIndex:indexPath.row];
-}
+    + (instancetype)deleteModelWithIndex:(NSUInteger)index {
+        return [TKAChangeModel modelWithIndex:index
+                                            withState:TKAChangeModelRemove];
+    }
+
+//+ (instancetype)insertModelWithIndex:(NSUInteger)index {
+//    return [TKAChangeModelOneIndex modelWithIndex:index
+//                                        withState:TKAChangeModelAdd];
+//}
+//
+//+ (instancetype)insertModelWithIndexPath:(NSIndexPath *)indexPath {
+//    return [self insertModelWithIndex:indexPath.row];
+//}
+//
+//+ (instancetype)deleteModelWithIndex:(NSUInteger)index {
+//    return [TKAChangeModelOneIndex modelWithIndex:index
+//                                        withState:TKAChangeModelRemove];
+//}
+//
+//+ (instancetype)deleteModelWithIndexPath:(NSIndexPath *)indexPath {
+//    return [self deleteModelWithIndex:indexPath.row];
+//}
+//
+//- (NSUInteger)index {
+//    return self.index;
+//}
 
 //+ (instancetype)moveModel:(TKAChangeModelTwoIndex *)model
 //        withLocationIndex:(NSUInteger)locationIndex

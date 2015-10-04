@@ -19,13 +19,15 @@ typedef NS_ENUM(NSUInteger, TKAChangeModelState) {
 };
 
 @interface TKAChangeModel : NSObject
-@property (nonatomic, readonly) TKAChangeModelState state;
+//@property (nonatomic, readonly) TKAChangeModelState state;
+@property (nonatomic, assign) TKAChangeModelState state;
+@property (nonatomic, assign) NSUInteger index;
 
 + (instancetype)modelWithState:(TKAChangeModelState)state;
 
-+ (TKAChangeModelOneIndex *)insertModelWithIndex:(NSUInteger)index;
++ (instancetype)insertModelWithIndex:(NSUInteger)index;
 
-+ (TKAChangeModelOneIndex *)insertModelWithIndexPath:(NSIndexPath *)indexPath;
++ (instancetype)insertModelWithIndexPath:(NSIndexPath *)indexPath;
 
 + (instancetype)deleteModelWithIndex:(NSUInteger)index;
 
@@ -36,6 +38,6 @@ typedef NS_ENUM(NSUInteger, TKAChangeModelState) {
 
 + (instancetype)moveModelWithLocationIndexPath:(NSIndexPath *)locationIndexPath
                            withTargetIndexPath:(NSIndexPath *)targetIndexPath;
-
+- (NSUInteger)index;
 
 @end
