@@ -7,9 +7,11 @@
 //
 
 #import <UIKit/UIKit.h>
+#import "TKAChangeModel.h"
+
+#import "TKAChangeModel+UITableView.h"
 #import "UITableView+TKAExtension.h"
 #import "UINib+TKAExtension.h"
-#import "TKAChangeModel.h"
 
 @implementation UITableView (TKAExtension)
 
@@ -23,24 +25,40 @@
     return cell;
 }
 
-- (void)updateWithChanges:(TKAChangeModel *)user {
-    switch (user.state) {
+- (void)updateWithChanges:(TKAChangeModel *)model {
+    
+//    TKAChangeModelOneIndex *modelOne = model;
+//    TKAChangeModelTwoIndex *modelTwo = model;
+    
+    switch (model.state) {
         case TKAChangeModelAdd:
-            [self insertRowsAtIndexPaths:@[user.indexPath]
+            [self insertRowsAtIndexPaths:@[[model indexPath]]
                         withRowAnimation:UITableViewRowAnimationAutomatic];
             break;
             
         case TKAChangeModelRemove:
-            [self deleteRowsAtIndexPaths:@[user.indexPath]
+            [self deleteRowsAtIndexPaths:@[[model indexPath]]
                         withRowAnimation:UITableViewRowAnimationAutomatic];
             break;
             
         case TKAChangeModelMove:
+            [self moveRowAtIndexPath:[model locationIndexPath]
+                         toIndexPath:[model targetIndexPath]];
             break;
-            
+ 
         default:
             break;
     }
+}
+
+//- (void)updateWithChanges:(TKAChangeModel *)model {
+//    [self updateWithChanges:model withRowAnimation:UITableViewRowAnimationAutomatic];
+//}
+
+- (void)updateWithChanges:(TKAChangeModel *)model withRowAnimation:(UITableViewRowAnimation)animation {
+    [self beginUpdates];
+    [model useToTableView:self rowAnimation:animation];
+    [self endUpdates];
 }
 
 @end

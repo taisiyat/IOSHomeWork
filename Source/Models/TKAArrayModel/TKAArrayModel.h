@@ -10,7 +10,6 @@
 
 #import "TKAObservableObject.h"
 
-//@class TKAUser;
 @class TKAChangeModel;
 @class TKAArrayModel;
 

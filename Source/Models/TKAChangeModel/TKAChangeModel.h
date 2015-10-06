@@ -19,27 +19,37 @@ typedef NS_ENUM(NSUInteger, TKAChangeModelState) {
 };
 
 @interface TKAChangeModel : NSObject
+//@property (nonatomic, readonly) TKAChangeModelState state;
+//@property (nonatomic, readonly) NSUInteger index;
+//@property (nonatomic, readonly) NSUInteger locationIndex;
+//@property (nonatomic, readonly) NSUInteger targetIndex;
 @property (nonatomic, assign) TKAChangeModelState state;
 @property (nonatomic, assign) NSUInteger index;
-@property (nonatomic, assign) NSIndexPath *indexPath;
 @property (nonatomic, assign) NSUInteger locationIndex;
 @property (nonatomic, assign) NSUInteger targetIndex;
-@property (nonatomic, assign) NSIndexPath *locationIndexPath;
-@property (nonatomic, assign) NSIndexPath *targetIndexPath;
+
 
 + (instancetype)modelWithState:(TKAChangeModelState)state;
 
+//@end
+//
+//@interface TKAChangeModel (TKAIndex)
+
 + (TKAChangeModelOneIndex *)insertModelWithIndex:(NSUInteger)index;
-
-+ (TKAChangeModelOneIndex *)insertModelWithIndexPath:(NSIndexPath *)indexPath;
-
 + (TKAChangeModelOneIndex *)deleteModelWithIndex:(NSUInteger)index;
-
-+ (TKAChangeModelOneIndex *)deleteModelWithIndexPath:(NSIndexPath *)indexPath;
-
 + (TKAChangeModelTwoIndex *)moveModelWithLocationIndex:(NSUInteger)locationIndex
                                        withTargetIndex:(NSUInteger)targetIndex;
 
+- (NSIndexPath *)indexPath;
+//@end
+//
+//@interface TKAChangeModel (TKAIndexPath)
+
++ (TKAChangeModelOneIndex *)insertModelWithIndexPath:(NSIndexPath *)indexPath;
++ (TKAChangeModelOneIndex *)deleteModelWithIndexPath:(NSIndexPath *)indexPath;
 + (TKAChangeModelTwoIndex *)moveModelWithLocationIndexPath:(NSIndexPath *)locationIndexPath
                                        withTargetIndexPath:(NSIndexPath *)targetIndexPath;
+- (NSIndexPath *)locationIndexPath;
+- (NSIndexPath *)targetIndexPath;
+
 @end

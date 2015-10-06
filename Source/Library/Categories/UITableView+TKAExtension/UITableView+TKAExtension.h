@@ -14,6 +14,7 @@
 @interface UITableView (TKAExtension)
 
 - (id)dequeueCellWithClass:(Class)cellClass;
-- (void)updateWithChanges:(TKAChangeModel *)user;
+- (void)updateWithChanges:(TKAChangeModel *)model;
+- (void)updateWithChanges:(TKAChangeModel *)model withRowAnimation:(UITableViewRowAnimation)animation;
 
 @end

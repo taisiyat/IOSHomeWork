@@ -27,14 +27,13 @@
     return result;
 }
 
+//@end
+//
+//@implementation TKAChangeModel (TKAIndex)
+
 + (TKAChangeModelOneIndex *)insertModelWithIndex:(NSUInteger)index {
     return [TKAChangeModelOneIndex modelWithIndex:index
                                         withState:TKAChangeModelAdd];
-}
-
-+ (TKAChangeModelOneIndex *)insertModelWithIndexPath:(NSIndexPath *)indexPath {
-    return [TKAChangeModelOneIndex modelWithIndexPath:indexPath
-                                            withState:TKAChangeModelAdd];
 }
 
 + (TKAChangeModelOneIndex *)deleteModelWithIndex:(NSUInteger)index {
@@ -42,23 +41,30 @@
                                         withState:TKAChangeModelRemove];
 }
 
-+ (TKAChangeModelOneIndex *)deleteModelWithIndexPath:(NSIndexPath *)indexPath {
-    return [TKAChangeModelOneIndex modelWithIndexPath:indexPath
-                                            withState:TKAChangeModelRemove];
-}
-
-+ (TKAChangeModelTwoIndex *)moveModel:(TKAChangeModelTwoIndex *)model
-                    withLocationIndex:(NSUInteger)locationIndex
-                      withTargetIndex:(NSUInteger)targetIndex
++ (TKAChangeModelTwoIndex *)moveModelwithLocationIndex:(NSUInteger)locationIndex
+                                       withTargetIndex:(NSUInteger)targetIndex
 {
     return [TKAChangeModelTwoIndex modelWithLocationIndex:locationIndex
                                           withTargetIndex:targetIndex
                                                 withState:TKAChangeModelMove];
 }
 
-+ (TKAChangeModelTwoIndex *)moveModel:(TKAChangeModelTwoIndex *)model
-                withLocationIndexPath:(NSIndexPath *)locationIndexPath
-                  withTargetIndexPath:(NSIndexPath *)targetIndexPath
+//@end
+//
+//@implementation TKAChangeModel (TKAIndexPath)
+
++ (TKAChangeModelOneIndex *)insertModelWithIndexPath:(NSIndexPath *)indexPath {
+    return [TKAChangeModelOneIndex modelWithIndexPath:indexPath
+                                            withState:TKAChangeModelAdd];
+}
+
++ (TKAChangeModelOneIndex *)deleteModelWithIndexPath:(NSIndexPath *)indexPath {
+    return [TKAChangeModelOneIndex modelWithIndexPath:indexPath
+                                            withState:TKAChangeModelRemove];
+}
+
++ (TKAChangeModelTwoIndex *)moveModelWithLocationIndexPath:(NSIndexPath *)locationIndexPath
+                                       withTargetIndexPath:(NSIndexPath *)targetIndexPath
 {
     return [TKAChangeModelTwoIndex modelWithLocationIndexPath:locationIndexPath
                                           withTargetIndexPath:targetIndexPath withState:TKAChangeModelMove];

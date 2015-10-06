@@ -9,7 +9,7 @@
 #import "TKAArrayModel.h"
 #import "TKAChangeModel.h"
 #import "TKAChangeModelOneIndex.h"
-//#import "TKAUser.h"
+#import "NSMutableArray+TKAExtension.h"
 
 @interface TKAArrayModel ()
 @property (nonatomic, strong) NSMutableArray *mutableUnits;
@@ -56,31 +56,28 @@
 - (void)addUnit:(id)unit {
     [self.mutableUnits addObject:unit];
     if ([self.observerSet anyObject] != nil) {
-        NSIndexPath *unitIndexPath = [self indexPathOfObject:unit];
         [self setState:TKAArrayModelChange
-            withObject:[TKAChangeModel insertModelWithIndexPath:unitIndexPath]];
+            withObject:[TKAChangeModel insertModelWithIndex:[self indexOfObject:unit]]];
     }
 }
 
 - (void)addUnit:(id)unit atIndex:(NSUInteger)index {
     [self.mutableUnits insertObject:unit atIndex:index];
-    NSIndexPath *unitIndexPath = [NSIndexPath indexPathForRow:index];
     [self setState:TKAArrayModelChange
-        withObject:[TKAChangeModel insertModelWithIndexPath:unitIndexPath]];
+        withObject:[TKAChangeModel insertModelWithIndex:index]];
 }
 
 - (void)removeUnit:(id)unit {
-    NSIndexPath *unitIndexPath = [self indexPathOfObject:unit];
+    NSUInteger index = [self indexOfObject:unit];
     [self.mutableUnits removeObject:unit];
     [self setState:TKAArrayModelChange
-        withObject:[TKAChangeModel deleteModelWithIndexPath:unitIndexPath]];
+        withObject:[TKAChangeModel deleteModelWithIndex:index]];
 }
 
 - (void)removeUnitAtIndex:(NSUInteger)index {
     [self.mutableUnits removeObjectAtIndex:index];
-    NSIndexPath *unitIndexPath = [NSIndexPath indexPathForRow:index];
     [self setState:TKAArrayModelChange
-        withObject:[TKAChangeModel deleteModelWithIndexPath:unitIndexPath]];
+        withObject:[TKAChangeModel deleteModelWithIndex:index]];
 }
 
 - (id)unitAtIndex:(NSUInteger)index {
@@ -106,13 +103,14 @@
 - (void)moveUnitAtIndex:(NSUInteger)sourceIndex
                 toIndex:(NSUInteger)destinationIndex
 {
-    id unit = [self unitAtIndex:sourceIndex];
-    [self removeUnitAtIndex:sourceIndex];
-    [self addUnit:unit atIndex:destinationIndex];
+    [self.mutableUnits moveObjectFromLocationIndex:sourceIndex
+                                     toTargetIndex:destinationIndex];
+    [self setState:TKAArrayModelChange
+        withObject:[TKAChangeModel moveModelWithLocationIndex:sourceIndex withTargetIndex:destinationIndex]];
 }
 
 #pragma mark -
-#pragma mark Overloaded Methods 
+#pragma mark Overloaded Methods
 
 - (SEL)selectorForState:(NSUInteger)state {
     switch (state) {

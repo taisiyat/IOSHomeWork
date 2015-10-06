@@ -8,12 +8,12 @@
 
 #import "TKAChangeModelOneIndex.h"
 
-@interface TKAChangeModelOneIndex ()
+//@interface TKAChangeModelOneIndex ()//(TKAIndex)
 //@property (nonatomic, assign) NSUInteger index;
+//
+//@end
 
-@end
-
-@implementation TKAChangeModelOneIndex
+@implementation TKAChangeModelOneIndex //(TKAIndex)
 
 //@dynamic index;
 
@@ -25,12 +25,21 @@
     return result;
 }
 
+//@end
+//
+//@implementation TKAChangeModelOneIndex (TKAIndexPath)
+
+#pragma mark -
+#pragma mark Acessors Methods
+
+- (NSIndexPath *)indexPath {
+    return [NSIndexPath indexPathForRow:self.index];
+}
+
 + (instancetype)modelWithIndexPath:(NSIndexPath *)indexPath
                          withState:(TKAChangeModelState)state
 {
-    TKAChangeModelOneIndex *result = [self modelWithState:state];
-    result.indexPath = indexPath;
-    
-    return result;}
+    return [self modelWithIndex:indexPath.row withState:state];
+}
 
 @end
