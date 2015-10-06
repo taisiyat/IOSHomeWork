@@ -13,7 +13,6 @@
 @interface TKAChangeModel ()
 //@property (nonatomic, assign) TKAChangeModelState state;
 
-
 @end
 
 @implementation TKAChangeModel
@@ -27,9 +26,9 @@
     return result;
 }
 
-//@end
-//
-//@implementation TKAChangeModel (TKAIndex)
+@end
+
+@implementation TKAChangeModel (TKAIndex)
 
 + (TKAChangeModelOneIndex *)insertModelWithIndex:(NSUInteger)index {
     return [TKAChangeModelOneIndex modelWithIndex:index
@@ -49,9 +48,9 @@
                                                 withState:TKAChangeModelMove];
 }
 
-//@end
-//
-//@implementation TKAChangeModel (TKAIndexPath)
+@end
+
+@implementation TKAChangeModel (TKAIndexPath)
 
 + (TKAChangeModelOneIndex *)insertModelWithIndexPath:(NSIndexPath *)indexPath {
     return [TKAChangeModelOneIndex modelWithIndexPath:indexPath

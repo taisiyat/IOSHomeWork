@@ -27,8 +27,9 @@
     self.window = window;
     
     TKAUsersViewController *controller = [TKAUsersViewController viewController];
+    UINavigationController *navController = [[UINavigationController alloc] initWithRootViewController:controller];
     controller.users = [TKAUsers users];
-    window.rootViewController = controller;
+    window.rootViewController = navController;
     
     [window makeKeyAndVisible];
     

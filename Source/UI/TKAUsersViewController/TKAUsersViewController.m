@@ -33,9 +33,13 @@ TKAViewControllerBaseViewProperty(TKAUsersViewController, usersView, TKAUsersVie
     TKASetterWithAddObserver(users);
 }
 
-
 #pragma mark -
 #pragma mark View Lifecycle
+
+- (instancetype)initWithNibName:(NSString *)nibNameOrNil bundle:(NSBundle *)nibBundleOrNil {
+    [self setupNavigationItem];
+    return self;
+}
 
 - (void)viewDidLoad {
     [super viewDidLoad];
@@ -96,6 +100,21 @@ TKAViewControllerBaseViewProperty(TKAUsersViewController, usersView, TKAUsersVie
     canEditRowAtIndexPath:(NSIndexPath *)indexPath
 {
     return 0 != indexPath.row;
+}
+
+- (void)setupNavigationItem {
+    UINavigationItem *usersItem = self.navigationItem;
+    usersItem.title = @"users";
+    usersItem.leftBarButtonItem = [[UIBarButtonItem alloc]
+                                   initWithTitle:@"ADD"
+                                   style:UIBarButtonItemStyleDone
+                                   target:self
+                                   action:@selector(onAddButton:)];
+    usersItem.rightBarButtonItem = [[UIBarButtonItem alloc]
+                                    initWithTitle:@"Edit"
+                                    style:UIBarButtonItemStyleDone
+                                    target:self
+                                    action:@selector(onEditButton:)];
 }
 
 #pragma mark -
