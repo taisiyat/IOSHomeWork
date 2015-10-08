@@ -27,8 +27,8 @@
 
 - (void)updateWithChanges:(TKAChangeModel *)model {
     
-//    TKAChangeModelOneIndex *modelOne = model;
-//    TKAChangeModelTwoIndex *modelTwo = model;
+    TKAChangeModelOneIndex *modelOne = (TKAChangeModelOneIndex *)model;
+    TKAChangeModelTwoIndex *modelTwo = (TKAChangeModelTwoIndex *)model;
     
     switch (model.state) {
         case TKAChangeModelAdd:
