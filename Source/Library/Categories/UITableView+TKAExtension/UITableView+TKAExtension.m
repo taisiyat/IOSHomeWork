@@ -7,7 +7,10 @@
 //
 
 #import <UIKit/UIKit.h>
+
 #import "TKAChangeModel.h"
+#import "TKAChangeModelOneIndex.h"
+#import "TKAChangeModelTwoIndex.h"
 
 #import "TKAChangeModel+UITableView.h"
 #import "UITableView+TKAExtension.h"
@@ -25,35 +28,34 @@
     return cell;
 }
 
-- (void)updateWithChanges:(TKAChangeModel *)model {
-    
-    TKAChangeModelOneIndex *modelOne = (TKAChangeModelOneIndex *)model;
-    TKAChangeModelTwoIndex *modelTwo = (TKAChangeModelTwoIndex *)model;
-    
-    switch (model.state) {
-        case TKAChangeModelAdd:
-            [self insertRowsAtIndexPaths:@[[model indexPath]]
-                        withRowAnimation:UITableViewRowAnimationAutomatic];
-            break;
-            
-        case TKAChangeModelRemove:
-            [self deleteRowsAtIndexPaths:@[[model indexPath]]
-                        withRowAnimation:UITableViewRowAnimationAutomatic];
-            break;
-            
-        case TKAChangeModelMove:
-            [self moveRowAtIndexPath:[model locationIndexPath]
-                         toIndexPath:[model targetIndexPath]];
-            break;
- 
-        default:
-            break;
-    }
-}
-
 //- (void)updateWithChanges:(TKAChangeModel *)model {
-//    [self updateWithChanges:model withRowAnimation:UITableViewRowAnimationAutomatic];
+//    TKAChangeModelOneIndex *modelOne = (TKAChangeModelOneIndex *)model;
+//    TKAChangeModelTwoIndex *modelTwo = (TKAChangeModelTwoIndex *)model;
+//    
+//    switch (model.state) {
+//        case TKAChangeModelAdd:
+//            [self insertRowsAtIndexPaths:@[modelOne.indexPath]
+//                        withRowAnimation:UITableViewRowAnimationAutomatic];
+//            break;
+//            
+//        case TKAChangeModelRemove:
+//            [self deleteRowsAtIndexPaths:@[modelOne.indexPath]
+//                        withRowAnimation:UITableViewRowAnimationAutomatic];
+//            break;
+//            
+//        case TKAChangeModelMove:
+//            [self moveRowAtIndexPath:modelTwo.locationIndexPath
+//                         toIndexPath:modelTwo.targetIndexPath];
+//            break;
+// 
+//        default:
+//            break;
+//    }
 //}
+
+- (void)updateWithChanges:(TKAChangeModel *)model {
+    [self updateWithChanges:model withRowAnimation:UITableViewRowAnimationAutomatic];
+}
 
 - (void)updateWithChanges:(TKAChangeModel *)model withRowAnimation:(UITableViewRowAnimation)animation {
     [self beginUpdates];

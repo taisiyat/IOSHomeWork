@@ -9,9 +9,7 @@
 #import "TKAChangeModel.h"
 
 @interface TKAChangeModelOneIndex : TKAChangeModel
-//@property (nonatomic, readonly) NSUInteger index;
-@property (nonatomic, assign) NSUInteger index;
-@property (nonatomic, assign) NSIndexPath *indexPath;
+@property (nonatomic, readonly) NSUInteger index;
 
 @end
 
@@ -23,7 +21,7 @@
 @end
 
 @interface TKAChangeModelOneIndex (TKAIndexPath)
-//@property (nonatomic, readonly) NSIndexPath *indexPath;
+@property (nonatomic, readonly) NSIndexPath *indexPath;
 
 + (instancetype)modelWithIndexPath:(NSIndexPath *)indexPath
                          withState:(TKAChangeModelState)state;

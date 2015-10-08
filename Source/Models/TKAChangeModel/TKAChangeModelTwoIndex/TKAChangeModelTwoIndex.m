@@ -8,48 +8,63 @@
 
 #import "TKAChangeModelTwoIndex.h"
 
-//@interface TKAChangeModelTwoIndex () //(TKAIndex)
-//@property (nonatomic, assign) NSUInteger locationIndex;
-//@property (nonatomic, assign) NSUInteger targetIndex;
-//
-//@end
+@interface TKAChangeModelTwoIndex ()
+@property (nonatomic, assign) NSUInteger modelLocationIndex;
+@property (nonatomic, assign) NSUInteger modelTargetIndex;
 
-@implementation TKAChangeModelTwoIndex //(TKAIndex)
+@end
 
-//@dynamic locationIndex;
-//@dynamic targetIndex;
+@implementation TKAChangeModelTwoIndex
+
+@dynamic locationIndex;
+@dynamic targetIndex;
+
+@end
+
+@implementation TKAChangeModelTwoIndex (TKAIndex)
 
 + (instancetype)modelWithLocationIndex:(NSUInteger)locationIndex
                        withTargetIndex:(NSUInteger)targetIndex
                              withState:(TKAChangeModelState)state
 {
     TKAChangeModelTwoIndex *result = [self modelWithState:state];
-    result.locationIndex = locationIndex;
-    result.targetIndex = targetIndex;
+    result.modelLocationIndex = locationIndex;
+    result.modelTargetIndex = targetIndex;
     
     return result;
 }
 
-//@end
-//
-//@implementation TKAChangeModelTwoIndex (TKAIndexPath)
-
 #pragma mark -
 #pragma mark Acessors Methods
 
-- (NSIndexPath *)locationIndexPath {
-    return [NSIndexPath indexPathForRow:self.locationIndex];
+- (NSUInteger)locationIndex {
+    return self.modelLocationIndex;
 }
 
-- (NSIndexPath *)targetIndexPath {
-    return [NSIndexPath indexPathForRow:self.targetIndex];
+- (NSUInteger)targetIndex {
+    return self.modelTargetIndex;
 }
+
+@end
+
+@implementation TKAChangeModelTwoIndex (TKAIndexPath)
 
 + (instancetype)modelWithLocationIndexPath:(NSIndexPath *)locationIndexPath
                        withTargetIndexPath:(NSIndexPath *)targetIndexPath
                                  withState:(TKAChangeModelState)state
 {
     return [self modelWithLocationIndex:locationIndexPath.row withTargetIndex:targetIndexPath.row withState:state];
+}
+
+#pragma mark -
+#pragma mark Acessors Methods
+
+- (NSIndexPath *)locationIndexPath {
+    return [NSIndexPath indexPathForRow:self.modelLocationIndex];
+}
+
+- (NSIndexPath *)targetIndexPath {
+    return [NSIndexPath indexPathForRow:self.modelTargetIndex];
 }
 
 @end

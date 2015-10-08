@@ -11,19 +11,23 @@
 #import "TKAChangeModelTwoIndex.h"
 
 @interface TKAChangeModel ()
-//@property (nonatomic, assign) TKAChangeModelState state;
+@property (nonatomic, assign) TKAChangeModelState modelState;
 
 @end
 
 @implementation TKAChangeModel
 
-//@dynamic state;
+@dynamic state;
 
 + (instancetype)modelWithState:(TKAChangeModelState)state {
     TKAChangeModel *result = [self new];
-    result.state = state;
+    result.modelState = state;
     
     return result;
+}
+
+- (TKAChangeModelState)state {
+    return self.modelState;
 }
 
 @end
@@ -40,7 +44,7 @@
                                         withState:TKAChangeModelRemove];
 }
 
-+ (TKAChangeModelTwoIndex *)moveModelwithLocationIndex:(NSUInteger)locationIndex
++ (TKAChangeModelTwoIndex *)moveModelWithLocationIndex:(NSUInteger)locationIndex
                                        withTargetIndex:(NSUInteger)targetIndex
 {
     return [TKAChangeModelTwoIndex modelWithLocationIndex:locationIndex
@@ -66,7 +70,8 @@
                                        withTargetIndexPath:(NSIndexPath *)targetIndexPath
 {
     return [TKAChangeModelTwoIndex modelWithLocationIndexPath:locationIndexPath
-                                          withTargetIndexPath:targetIndexPath withState:TKAChangeModelMove];
+                                          withTargetIndexPath:targetIndexPath
+                                                    withState:TKAChangeModelMove];
 }
 
 @end
