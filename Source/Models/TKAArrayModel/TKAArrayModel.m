@@ -109,6 +109,14 @@
         withObject:[TKAChangeModel moveModelWithLocationIndex:sourceIndex withTargetIndex:destinationIndex]];
 }
 
+- (void)loadArrayModel {
+    
+}
+
+- (void)saveArrayModel {
+    [NSKeyedArchiver archiveRootObject:self.mutableUnits toFile:self.filePath];
+}
+
 #pragma mark -
 #pragma mark Overloaded Methods
 
@@ -116,6 +124,15 @@
     switch (state) {
         case TKAArrayModelChange:
             return @selector(arrayModel:didChangeWithObject:);
+            
+        case TKAArrayModelWillLoad:
+            return @selector(arrayModelWillLoad);
+            
+        case TKAArrayModelDidLoad:
+            return @selector(arrayModelDidLoad);
+            
+        case TKAArrayModelFailLoad:
+            return @selector(arrayModelFailLoad);
             
         case TKAArrayModelNotChange:
             return nil;

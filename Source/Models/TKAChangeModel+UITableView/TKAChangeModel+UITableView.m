@@ -28,12 +28,12 @@
 - (void)useToTableView:(UITableView *)tableView rowAnimation:(UITableViewRowAnimation)animation {
     switch (self.state) {
         case TKAChangeModelAdd:
-            [tableView insertRowsAtIndexPaths:@[[self indexPath]]
+            [tableView insertRowsAtIndexPaths:@[self.indexPath]
                              withRowAnimation:animation];
             break;
             
         case TKAChangeModelRemove:
-            [tableView deleteRowsAtIndexPaths:@[[self indexPath]]
+            [tableView deleteRowsAtIndexPaths:@[self.indexPath]
                              withRowAnimation:animation];
             break;
             
@@ -47,8 +47,8 @@
 @implementation TKAChangeModelTwoIndex (UITableView)
 
 - (void)useToTableView:(UITableView *)tableView rowAnimation:(UITableViewRowAnimation)animation {
-    [tableView moveRowAtIndexPath:[self locationIndexPath]
-                      toIndexPath:[self targetIndexPath]];
+    [tableView moveRowAtIndexPath:self.locationIndexPath
+                      toIndexPath:self.targetIndexPath];
 }
 
 @end

@@ -7,6 +7,7 @@
 //
 
 #import "TKAUsersView.h"
+#import "TKAVisibleView.h"
 
 @implementation TKAUsersView
 
@@ -16,6 +17,7 @@
 - (void)awakeFromNib {
     [super awakeFromNib];
     
+//    self.visibleView = [TKAVisibleView viewWithSuperview:[[UIApplication sharedApplication] keyWindow]];
     self.editing = NO;
 }
 
@@ -32,6 +34,18 @@
 
 - (BOOL)isEditing {
     return self.tableView.editing;
+}
+
+- (BOOL)isVisibleViewVisible {
+    return [self.visibleView isVisible];
+}
+
+- (void)showVisibleView {
+    [self.visibleView showViewWithAnimate:YES];
+}
+
+- (void)hideVisibleView {
+    [self.visibleView hideViewWithAnimate:YES];
 }
 
 @end
