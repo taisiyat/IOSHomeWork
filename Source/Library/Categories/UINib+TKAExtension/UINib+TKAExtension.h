@@ -34,4 +34,10 @@
                 owner:(id)ownerOrNil
               options:(NSDictionary *)optionsOrNil;
 
+- (id)objectWithClass:(Class)typeClass;
+- (id)objectWithClass:(Class)classType
+               bundle:(NSBundle *)bundleOrNil
+                owner:(id)ownerOrNil
+              options:(NSDictionary *)optionsOrNil;
+
 @end

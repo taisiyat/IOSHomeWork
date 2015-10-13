@@ -25,7 +25,6 @@
 		8A4AD5051BB13DC300837631 /* TKAUser.m in Sources */ = {isa = PBXBuildFile; fileRef = 8A4AD5041BB13DC300837631 /* TKAUser.m */; };
 		8A4AD5081BB14A9100837631 /* image.jpg in Resources */ = {isa = PBXBuildFile; fileRef = 8A4AD5071BB14A9100837631 /* image.jpg */; };
 		8A5770DE1BA94A630050EAFB /* NSString+TKARandomWord.m in Sources */ = {isa = PBXBuildFile; fileRef = 8A5770DD1BA94A630050EAFB /* NSString+TKARandomWord.m */; };
-		8A592B391BC715BC00BD6ACE /* NSFileManager+TKAExtension.m in Sources */ = {isa = PBXBuildFile; fileRef = 8A592B381BC715BC00BD6ACE /* NSFileManager+TKAExtension.m */; };
 		8A6AE53C1BB9D64200C03250 /* NSIndexPath+TKAExtension.m in Sources */ = {isa = PBXBuildFile; fileRef = 8A6AE53B1BB9D64200C03250 /* NSIndexPath+TKAExtension.m */; };
 		8A6EF8D81B41A1D400CABD97 /* LaunchScreen.xib in Resources */ = {isa = PBXBuildFile; fileRef = 8A6EF8CE1B41A1D400CABD97 /* LaunchScreen.xib */; };
 		8A6EF8D91B41A1D400CABD97 /* LaunchScreen.xib in Resources */ = {isa = PBXBuildFile; fileRef = 8A6EF8CE1B41A1D400CABD97 /* LaunchScreen.xib */; };
@@ -99,8 +98,6 @@
 		8A4D8D091BAEF6EA00FEFA0E /* IOSTable copy-Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; name = "IOSTable copy-Info.plist"; path = "/Users/taisiya/Documents/IOSHomeWork/IOSTable copy-Info.plist"; sourceTree = "<absolute>"; };
 		8A5770DC1BA94A630050EAFB /* NSString+TKARandomWord.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = "NSString+TKARandomWord.h"; sourceTree = "<group>"; };
 		8A5770DD1BA94A630050EAFB /* NSString+TKARandomWord.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = "NSString+TKARandomWord.m"; sourceTree = "<group>"; };
-		8A592B371BC715BC00BD6ACE /* NSFileManager+TKAExtension.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = "NSFileManager+TKAExtension.h"; sourceTree = "<group>"; };
-		8A592B381BC715BC00BD6ACE /* NSFileManager+TKAExtension.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = "NSFileManager+TKAExtension.m"; sourceTree = "<group>"; };
 		8A6AE53A1BB9D64200C03250 /* NSIndexPath+TKAExtension.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = "NSIndexPath+TKAExtension.h"; sourceTree = "<group>"; };
 		8A6AE53B1BB9D64200C03250 /* NSIndexPath+TKAExtension.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = "NSIndexPath+TKAExtension.m"; sourceTree = "<group>"; };
 		8A6EF8CF1B41A1D400CABD97 /* Base */ = {isa = PBXFileReference; lastKnownFileType = file.xib; name = Base; path = Base.lproj/LaunchScreen.xib; sourceTree = "<group>"; };
@@ -366,15 +363,6 @@
 			path = "NSString+TKARandomWord";
 			sourceTree = "<group>";
 		};
-		8A592B361BC7156A00BD6ACE /* NSFileManager+TKAExtension */ = {
-			isa = PBXGroup;
-			children = (
-				8A592B371BC715BC00BD6ACE /* NSFileManager+TKAExtension.h */,
-				8A592B381BC715BC00BD6ACE /* NSFileManager+TKAExtension.m */,
-			);
-			path = "NSFileManager+TKAExtension";
-			sourceTree = "<group>";
-		};
 		8A6AE5391BB9D61100C03250 /* NSIndexPath+TKAExtension */ = {
 			isa = PBXGroup;
 			children = (
@@ -516,7 +504,6 @@
 		8AFC61671BA77B16001ACBA9 /* Categories */ = {
 			isa = PBXGroup;
 			children = (
-				8A592B361BC7156A00BD6ACE /* NSFileManager+TKAExtension */,
 				8A7224B51BC4241F0062AE2E /* NAMutableArray+TKAExtension */,
 				8A6AE5391BB9D61100C03250 /* NSIndexPath+TKAExtension */,
 				8A3638631BB6D81D00702D47 /* UITableView+TKAExtension */,
@@ -703,7 +690,6 @@
 				8A8B58E41BA9FE3D0001982A /* UIViewController+TKAExtension.m in Sources */,
 				8AEC46701BA8931A00F6FC0D /* UIWindow+TKAExtension.m in Sources */,
 				8A808B451BC6BA82006CA11C /* TKAVisibleView.m in Sources */,
-				8A592B391BC715BC00BD6ACE /* NSFileManager+TKAExtension.m in Sources */,
 				8AA02BFF1BC19FBC004B93DB /* TKAUsersView.m in Sources */,
 				8A3F5A991BBB29BB00176831 /* TKAArrayModel.m in Sources */,
 				8AEC464A1BA8657400F6FC0D /* TKAMacros.m in Sources */,

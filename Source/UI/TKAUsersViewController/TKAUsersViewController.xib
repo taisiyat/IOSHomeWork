@@ -23,7 +23,7 @@
                     </connections>
                 </tableView>
                 <button opaque="NO" contentMode="scaleToFill" fixedFrame="YES" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="Djs-HO-rVc">
-                    <rect key="frame" x="50" y="484" width="46" height="30"/>
+                    <rect key="frame" x="50" y="484" width="44" height="30"/>
                     <state key="normal" title="Add">
                         <color key="titleShadowColor" white="0.5" alpha="1" colorSpace="calibratedWhite"/>
                     </state>
@@ -32,7 +32,7 @@
                     </connections>
                 </button>
                 <button opaque="NO" contentMode="scaleToFill" fixedFrame="YES" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="9Rt-Zt-sgH">
-                    <rect key="frame" x="204" y="484" width="46" height="30"/>
+                    <rect key="frame" x="114" y="484" width="46" height="30"/>
                     <state key="normal" title="Edit">
                         <color key="titleShadowColor" white="0.5" alpha="1" colorSpace="calibratedWhite"/>
                     </state>
@@ -40,11 +40,51 @@
                         <action selector="onEditButton:" destination="-1" eventType="touchUpInside" id="zt5-p4-ktk"/>
                     </connections>
                 </button>
+                <button opaque="NO" contentMode="scaleToFill" fixedFrame="YES" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="ic0-pt-96q">
+                    <rect key="frame" x="56" y="522" width="46" height="30"/>
+                    <state key="normal" title="Save">
+                        <color key="titleShadowColor" white="0.5" alpha="1" colorSpace="calibratedWhite"/>
+                    </state>
+                    <connections>
+                        <action selector="onSaveButton:" destination="-1" eventType="touchUpInside" id="Zl2-Sf-2A4"/>
+                    </connections>
+                </button>
+                <button opaque="NO" contentMode="scaleToFill" fixedFrame="YES" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="lKH-as-7a3">
+                    <rect key="frame" x="124" y="522" width="46" height="30"/>
+                    <state key="normal" title="Load">
+                        <color key="titleShadowColor" white="0.5" alpha="1" colorSpace="calibratedWhite"/>
+                    </state>
+                    <connections>
+                        <action selector="onLoadButton:" destination="-1" eventType="touchUpInside" id="wi1-gv-yVi"/>
+                    </connections>
+                </button>
+                <button opaque="NO" contentMode="scaleToFill" fixedFrame="YES" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="mCz-oO-0ze">
+                    <rect key="frame" x="235" y="484" width="46" height="30"/>
+                    <state key="normal" title="Show">
+                        <color key="titleShadowColor" white="0.5" alpha="1" colorSpace="calibratedWhite"/>
+                    </state>
+                    <connections>
+                        <action selector="onShowButton:" destination="-1" eventType="touchUpInside" id="l1e-i5-BRc"/>
+                    </connections>
+                </button>
+                <button opaque="NO" contentMode="scaleToFill" fixedFrame="YES" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="mUC-2f-Zff">
+                    <rect key="frame" x="235" y="514" width="46" height="30"/>
+                    <state key="normal" title="Hide">
+                        <color key="titleShadowColor" white="0.5" alpha="1" colorSpace="calibratedWhite"/>
+                    </state>
+                    <connections>
+                        <action selector="onHideButton:" destination="-1" eventType="touchUpInside" id="0I0-0o-1cT"/>
+                    </connections>
+                </button>
             </subviews>
             <color key="backgroundColor" white="1" alpha="1" colorSpace="custom" customColorSpace="calibratedWhite"/>
             <connections>
                 <outlet property="addButton" destination="Djs-HO-rVc" id="7Ax-Nv-ChC"/>
                 <outlet property="editButton" destination="9Rt-Zt-sgH" id="LfX-4j-2aZ"/>
+                <outlet property="hideButton" destination="mUC-2f-Zff" id="KYi-c6-XQc"/>
+                <outlet property="loadButton" destination="lKH-as-7a3" id="Xy4-Zb-UnW"/>
+                <outlet property="saveButton" destination="ic0-pt-96q" id="eXm-J5-KqT"/>
+                <outlet property="showButton" destination="mCz-oO-0ze" id="iAj-Pc-MLo"/>
                 <outlet property="tableView" destination="ctQ-v0-zww" id="HhT-Cc-fdb"/>
             </connections>
             <point key="canvasLocation" x="420" y="401"/>

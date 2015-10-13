@@ -14,7 +14,7 @@ static const NSTimeInterval kTKATimeDuration    = 1.0;
 static const NSTimeInterval kTKATimeInterval    = 0.0;
 static const NSTimeInterval kTKATimeIntervalNUL = 0.0;
 static const CGFloat        kTKAShow            = 1.0;
-static const CGFloat        kTKAHide            = 0.0;
+static const CGFloat        kTKAHide            = 0.2;
 
 @interface TKAVisibleView ()
 @property (nonatomic, assign, getter = isAnimate) BOOL animate;
@@ -23,51 +23,50 @@ static const CGFloat        kTKAHide            = 0.0;
 
 @implementation TKAVisibleView
 
+#pragma mark -
+#pragma mark Initializations and Deallocations
+
 - (void)awakeFromNib {
     [super awakeFromNib];
 }
 
-+ (instancetype)visibleView {
++ (instancetype)visibleViewWithSuperView:(UIView *)superView {
     TKAVisibleView *visibleView = [UINib objectWithClass:[TKAVisibleView class]];
-//    [superview addSubview:visibleView];
-//    visibleView.frame = superview.bounds;
+    [superView addSubview:visibleView];
+    visibleView.frame = superView.bounds;
     
     return visibleView;
 }
 
 - (void)setVisible:(BOOL)visible {
     if (_visible != visible) {
-        _visible = visible;
-        [self animateVisibleView];
+        [UIView animateWithDuration:self.animate ? kTKATimeDuration : kTKATimeIntervalNUL
+                              delay:self.animate ? kTKATimeInterval : kTKATimeIntervalNUL
+                            options:UIViewAnimationOptionCurveEaseInOut
+                         animations:^{
+                             self.alpha = self.visible ? kTKAHide : kTKAShow;
+                         }
+                         completion:^(BOOL finished) {
+                             _visible = visible;
+                         }];
+   
     }
 }
 
-- (void)animateVisibleView {
-    [UIView animateWithDuration:self.animate ? kTKATimeDuration : kTKATimeIntervalNUL
-                          delay:self.animate ? kTKATimeInterval : kTKATimeIntervalNUL
-                        options:UIViewAnimationOptionCurveEaseInOut
-                     animations:^{
-                         self.alpha = self.visible ? kTKAHide : kTKAShow;
-                     }
-                     completion:^(BOOL finished) {
-                         
-                     }];
-}
-
-- (void)showView {
-    [self showViewWithAnimate:NO];
+- (void)show {
+    [self showWithAnimate:YES];
  }
 
-- (void)hideView {
-    [self hideViewWithAnimate:NO];
+- (void)hide {
+    [self hideWithAnimate:YES];
 }
 
-- (void)showViewWithAnimate:(BOOL)animate {
+- (void)showWithAnimate:(BOOL)animate {
     self.animate = animate;
     self.visible = YES;
 }
 
-- (void)hideViewWithAnimate:(BOOL)animate {
+- (void)hideWithAnimate:(BOOL)animate {
     self.animate = animate;
     self.visible = NO;
 }

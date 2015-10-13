@@ -13,11 +13,11 @@
 
 @implementation TKAChangeModel (UITableView)
 
-- (void)useToTableView:(UITableView *)tableView {
-    [self useToTableView:tableView rowAnimation:UITableViewRowAnimationAutomatic];
+- (void)applyToTableView:(UITableView *)tableView {
+    [self applyToTableView:tableView rowAnimation:UITableViewRowAnimationAutomatic];
 }
 
-- (void)useToTableView:(UITableView *)tableView rowAnimation:(UITableViewRowAnimation)animation {
+- (void)applyToTableView:(UITableView *)tableView rowAnimation:(UITableViewRowAnimation)animation {
     
 }
 
@@ -25,7 +25,7 @@
 
 @implementation TKAChangeModelOneIndex (UITableView)
 
-- (void)useToTableView:(UITableView *)tableView rowAnimation:(UITableViewRowAnimation)animation {
+- (void)applyToTableView:(UITableView *)tableView rowAnimation:(UITableViewRowAnimation)animation {
     switch (self.state) {
         case TKAChangeModelAdd:
             [tableView insertRowsAtIndexPaths:@[self.indexPath]
@@ -46,7 +46,7 @@
 
 @implementation TKAChangeModelTwoIndex (UITableView)
 
-- (void)useToTableView:(UITableView *)tableView rowAnimation:(UITableViewRowAnimation)animation {
+- (void)applyToTableView:(UITableView *)tableView rowAnimation:(UITableViewRowAnimation)animation {
     [tableView moveRowAtIndexPath:self.locationIndexPath
                       toIndexPath:self.targetIndexPath];
 }

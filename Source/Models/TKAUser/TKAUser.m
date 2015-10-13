@@ -9,6 +9,9 @@
 #import "TKAUser.h"
 #import "NSString+TKARandomWord.h"
 
+static NSString *const kTKAImageName        = @"image";
+static NSString *const kTKAImageExtension   = @"jpg";
+
 @implementation TKAUser
 
 @dynamic image;

@@ -30,7 +30,7 @@ TKAViewControllerBaseViewProperty(TKAUsersViewController, usersView, TKAUsersVie
 }
 
 - (void)setUsers:(TKAUsers *)users {
-    TKASetterWithAddObserver(users);
+    TKASynthesizeObservingSetter(users, users);
 }
 
 #pragma mark -
@@ -133,6 +133,23 @@ TKAViewControllerBaseViewProperty(TKAUsersViewController, usersView, TKAUsersVie
 - (IBAction)onEditButton:(id)sender {
     TKAUsersView *table = self.usersView;
     table.editing = !table.editing;
+}
+
+- (IBAction)onSaveButton:(id)sender {
+    [self.users save];
+}
+
+- (IBAction)onLoadButton:(id)sender {
+    [self.users load];
+    [self.usersView.tableView reloadData];
+}
+
+- (IBAction)onShowButton:(id)sender {
+    [self.usersView show];
+}
+
+- (IBAction)onHideButton:(id)sender {
+    [self.usersView hide];
 }
 
 #pragma mark -

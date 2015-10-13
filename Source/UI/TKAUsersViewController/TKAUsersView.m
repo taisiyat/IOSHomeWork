@@ -16,8 +16,9 @@
 
 - (void)awakeFromNib {
     [super awakeFromNib];
-    
-//    self.visibleView = [TKAVisibleView viewWithSuperview:[[UIApplication sharedApplication] keyWindow]];
+//    TKAVisibleView *loadingView = [TKAVisibleView visibleViewWithSuperView:[[UIApplication sharedApplication] keyWindow]];
+    TKAVisibleView *loadingView = [TKAVisibleView visibleViewWithSuperView:self];
+    self.visibleView = loadingView;
     self.editing = NO;
 }
 
@@ -36,16 +37,12 @@
     return self.tableView.editing;
 }
 
-- (BOOL)isVisibleViewVisible {
-    return [self.visibleView isVisible];
+- (void)show {
+    [self.visibleView show];
 }
 
-- (void)showVisibleView {
-    [self.visibleView showViewWithAnimate:YES];
-}
-
-- (void)hideVisibleView {
-    [self.visibleView hideViewWithAnimate:YES];
+- (void)hide {
+    [self.visibleView hide];
 }
 
 @end

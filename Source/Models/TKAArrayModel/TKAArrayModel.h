@@ -25,18 +25,12 @@ typedef NS_ENUM(NSUInteger, TKAArrayModelState) {
 
 @optional
 - (void)arrayModel:(TKAArrayModel *)arrayModel didChangeWithObject:(TKAChangeModel *)object;
-- (void)arrayModelWillLoad;
-- (void)arrayModelDidLoad;
-- (void)arrayModelFailLoad;
 
 @end
 
-@interface TKAArrayModel : TKAObservableObject <TKAArrayModelObsserver>
+@interface TKAArrayModel : TKAObservableObject <TKAArrayModelObsserver, NSCoding>
 @property (nonatomic, readonly) NSArray     *units;
 @property (nonatomic, readonly) NSUInteger  count;
-
-@property (nonatomic, copy) NSString  *filePath;
-//@property (nonatomic, readonly) NSFileManager  *filePath;
 
 + (instancetype)arrayModel;
 
@@ -51,7 +45,7 @@ typedef NS_ENUM(NSUInteger, TKAArrayModelState) {
 - (void)moveUnitAtIndex:(NSUInteger)sourceIndex
                 toIndex:(NSUInteger)destinationIndex;
 
-- (void)loadArrayModel;
-- (void)saveArrayModel;
+- (void)load;
+- (void)save;
 
 @end

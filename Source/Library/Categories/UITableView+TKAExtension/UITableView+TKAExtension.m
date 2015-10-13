@@ -59,7 +59,7 @@
 
 - (void)updateWithChanges:(TKAChangeModel *)model withRowAnimation:(UITableViewRowAnimation)animation {
     [self beginUpdates];
-    [model useToTableView:self rowAnimation:animation];
+    [model applyToTableView:self rowAnimation:animation];
     [self endUpdates];
 }
 

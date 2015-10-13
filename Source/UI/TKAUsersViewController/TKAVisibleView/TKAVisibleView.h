@@ -11,9 +11,11 @@
 @interface TKAVisibleView : UIView
 @property (nonatomic, assign, getter = isVisible) BOOL visible;
 
-- (void)showView;
-- (void)hideView;
-- (void)showViewWithAnimate:(BOOL)animate;
-- (void)hideViewWithAnimate:(BOOL)animate;
++ (instancetype)visibleViewWithSuperView:(UIView *)superView;
+
+- (void)show;
+- (void)hide;
+- (void)showWithAnimate:(BOOL)animate;
+- (void)hideWithAnimate:(BOOL)animate;
 
 @end

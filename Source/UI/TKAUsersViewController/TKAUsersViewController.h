@@ -15,5 +15,9 @@
 
 - (IBAction)onAddButton:(id)sender;
 - (IBAction)onEditButton:(id)sender;
+- (IBAction)onSaveButton:(id)sender;
+- (IBAction)onLoadButton:(id)sender;
+- (IBAction)onShowButton:(id)sender;
+- (IBAction)onHideButton:(id)sender;
 
 @end

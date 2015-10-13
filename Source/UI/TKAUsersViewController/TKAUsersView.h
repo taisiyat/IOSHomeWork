@@ -16,8 +16,16 @@
 @property (nonatomic, strong) IBOutlet UIButton     *editButton;
 @property (nonatomic, strong) IBOutlet TKAVisibleView     *visibleView;
 
+@property (nonatomic, strong) IBOutlet UIButton     *saveButton;
+@property (nonatomic, strong) IBOutlet UIButton     *loadButton;
+@property (nonatomic, strong) IBOutlet UIButton     *showButton;
+@property (nonatomic, strong) IBOutlet UIButton     *hideButton;
+
 @property (nonatomic, assign, getter=isEditing) BOOL  editing;
 
 - (void)setEditing:(BOOL)editing animated:(BOOL)animated;
+
+- (void)show;
+- (void)hide;
 
 @end

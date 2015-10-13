@@ -9,7 +9,12 @@
 #import "TKAArrayModel.h"
 #import "TKAChangeModel.h"
 #import "TKAChangeModelOneIndex.h"
+
 #import "NSMutableArray+TKAExtension.h"
+
+static NSString * const kTKAArray = @"ArrayDate";
+static NSString *const kTKAFileName = @"usersArray.txt";
+static NSString *const kTKAKeyArray = @"array";
 
 @interface TKAArrayModel ()
 @property (nonatomic, strong) NSMutableArray *mutableUnits;
@@ -109,12 +114,24 @@
         withObject:[TKAChangeModel moveModelWithLocationIndex:sourceIndex withTargetIndex:destinationIndex]];
 }
 
-- (void)loadArrayModel {
-    
+- (NSString *)fileFolder {
+    return [NSSearchPathForDirectoriesInDomains(NSDocumentationDirectory, NSUserDomainMask, YES) firstObject];
 }
 
-- (void)saveArrayModel {
-    [NSKeyedArchiver archiveRootObject:self.mutableUnits toFile:self.filePath];
+- (NSString *)filePathWithFileName:(NSString *)fileName {
+    return [[self fileFolder] stringByAppendingPathComponent:fileName];
+}
+
+- (BOOL)fileExistsWithFileName:(NSString *)fileName {
+    return [[NSFileManager defaultManager] fileExistsAtPath:[self filePathWithFileName:fileName]];
+}
+
+- (void)load {
+    self.mutableUnits = [NSKeyedUnarchiver unarchiveObjectWithFile:[self filePathWithFileName:kTKAFileName]];
+}
+
+- (void)save {
+    [NSKeyedArchiver archiveRootObject:self.mutableUnits toFile:[self filePathWithFileName:kTKAFileName]];
 }
 
 #pragma mark -
@@ -125,21 +142,23 @@
         case TKAArrayModelChange:
             return @selector(arrayModel:didChangeWithObject:);
             
-        case TKAArrayModelWillLoad:
-            return @selector(arrayModelWillLoad);
-            
-        case TKAArrayModelDidLoad:
-            return @selector(arrayModelDidLoad);
-            
-        case TKAArrayModelFailLoad:
-            return @selector(arrayModelFailLoad);
-            
         case TKAArrayModelNotChange:
             return nil;
             
         default:
             return [super selectorForState:state];
     }
+}
+
+#pragma mark -
+#pragma mark NSCoding
+
+- (void)encodeWithCoder:(NSCoder *)aCoder {
+    [aCoder encodeObject:self.mutableUnits forKey:kTKAKeyArray];
+}
+
+- (id)decodeWithCoder:(NSCoder *)aDecoder {
+   return [aDecoder decodeObjectForKey:kTKAKeyArray];
 }
 
 @end

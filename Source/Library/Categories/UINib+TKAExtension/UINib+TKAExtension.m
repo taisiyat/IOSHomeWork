@@ -86,4 +86,28 @@
     return nil;
 }
 
+- (id)objectWithClass:(Class)typeClass {
+    return [self objectWithClass:typeClass
+                          bundle:nil
+                           owner:nil
+                         options:nil];
+}
+
+- (id)objectWithClass:(Class)classType
+               bundle:(NSBundle *)bundleOrNil
+                owner:(id)ownerOrNil
+              options:(NSDictionary *)optionsOrNil
+{
+    UINib *nib = [UINib nibWithClass:classType bundle:bundleOrNil];
+    NSArray *arrayNib = [nib instantiateWithOwner:ownerOrNil options:optionsOrNil];
+    
+    for (id object in arrayNib) {
+        if ([object isKindOfClass:classType]) {
+            return object;
+        }
+    }
+    
+    return nil;
+}
+
 @end

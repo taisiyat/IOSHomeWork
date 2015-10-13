@@ -12,7 +12,7 @@
 
 @interface TKAChangeModel (UITableView)
 
-- (void)useToTableView:(UITableView *)tableView;
-- (void)useToTableView:(UITableView *)tableView rowAnimation:(UITableViewRowAnimation)animation;
+- (void)applyToTableView:(UITableView *)tableView;
+- (void)applyToTableView:(UITableView *)tableView rowAnimation:(UITableViewRowAnimation)animation;
 
 @end
