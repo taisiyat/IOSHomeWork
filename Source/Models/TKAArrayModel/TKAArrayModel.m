@@ -14,8 +14,8 @@
 
 static NSString * const kTKAArray = @"ArrayDate";
 static NSString *const kTKAFileName = @"usersArray.txt";
-static NSString *const kTKAKeyArray = @"array";
-
+static NSString *const kTKAKeyArray = @"TKAArray";
+ 
 @interface TKAArrayModel ()
 @property (nonatomic, strong) NSMutableArray *mutableUnits;
 
@@ -115,7 +115,7 @@ static NSString *const kTKAKeyArray = @"array";
 }
 
 - (NSString *)fileFolder {
-    return [NSSearchPathForDirectoriesInDomains(NSDocumentationDirectory, NSUserDomainMask, YES) firstObject];
+    return [NSSearchPathForDirectoriesInDomains(NSDocumentDirectory, NSUserDomainMask, YES) firstObject];
 }
 
 - (NSString *)filePathWithFileName:(NSString *)fileName {
@@ -148,17 +148,6 @@ static NSString *const kTKAKeyArray = @"array";
         default:
             return [super selectorForState:state];
     }
-}
-
-#pragma mark -
-#pragma mark NSCoding
-
-- (void)encodeWithCoder:(NSCoder *)aCoder {
-    [aCoder encodeObject:self.mutableUnits forKey:kTKAKeyArray];
-}
-
-- (id)decodeWithCoder:(NSCoder *)aDecoder {
-   return [aDecoder decodeObjectForKey:kTKAKeyArray];
 }
 
 @end

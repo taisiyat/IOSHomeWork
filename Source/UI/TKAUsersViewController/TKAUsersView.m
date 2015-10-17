@@ -7,7 +7,8 @@
 //
 
 #import "TKAUsersView.h"
-#import "TKAVisibleView.h"
+
+//#import "TKALoadingView.h"
 
 @implementation TKAUsersView
 
@@ -17,8 +18,8 @@
 - (void)awakeFromNib {
     [super awakeFromNib];
 //    TKAVisibleView *loadingView = [TKAVisibleView visibleViewWithSuperView:[[UIApplication sharedApplication] keyWindow]];
-    TKAVisibleView *loadingView = [TKAVisibleView visibleViewWithSuperView:self];
-    self.visibleView = loadingView;
+//    TKAVisibleView *loadingView = [TKALoadingView visibleViewWithSuperView:self];
+//    self.visibleView = loadingView;
     self.editing = NO;
 }
 
@@ -38,11 +39,11 @@
 }
 
 - (void)show {
-    [self.visibleView show];
+    [self hideLoadingView];
 }
 
 - (void)hide {
-    [self.visibleView hide];
+    [self showLoadingView];
 }
 
 @end

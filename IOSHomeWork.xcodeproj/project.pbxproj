@@ -12,6 +12,7 @@
 		8A0E0E831BB812620062C0BD /* TKAAssignReference.m in Sources */ = {isa = PBXBuildFile; fileRef = 8A0E0E801BB812620062C0BD /* TKAAssignReference.m */; };
 		8A0E0E841BB812620062C0BD /* TKAReference.m in Sources */ = {isa = PBXBuildFile; fileRef = 8A0E0E821BB812620062C0BD /* TKAReference.m */; };
 		8A0E0E891BB813E80062C0BD /* TKAPerformBlock.m in Sources */ = {isa = PBXBuildFile; fileRef = 8A0E0E881BB813E80062C0BD /* TKAPerformBlock.m */; };
+		8A25F1651BD2947400041058 /* TKALoadingView.m in Sources */ = {isa = PBXBuildFile; fileRef = 8A25F1641BD2947400041058 /* TKALoadingView.m */; };
 		8A3638661BB6D83900702D47 /* UITableView+TKAExtension.m in Sources */ = {isa = PBXBuildFile; fileRef = 8A3638651BB6D83900702D47 /* UITableView+TKAExtension.m */; };
 		8A3638691BB6DA5200702D47 /* UINib+TKAExtension.m in Sources */ = {isa = PBXBuildFile; fileRef = 8A3638681BB6DA5200702D47 /* UINib+TKAExtension.m */; };
 		8A3638741BB6EF0800702D47 /* TKAUsers.m in Sources */ = {isa = PBXBuildFile; fileRef = 8A3638731BB6EF0800702D47 /* TKAUsers.m */; };
@@ -70,6 +71,8 @@
 		8A0E0E821BB812620062C0BD /* TKAReference.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = TKAReference.m; sourceTree = "<group>"; };
 		8A0E0E881BB813E80062C0BD /* TKAPerformBlock.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = TKAPerformBlock.m; sourceTree = "<group>"; };
 		8A0E0E8A1BB814380062C0BD /* TKAPerformBlock.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = TKAPerformBlock.h; sourceTree = "<group>"; };
+		8A25F1631BD2947400041058 /* TKALoadingView.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = TKALoadingView.h; sourceTree = "<group>"; };
+		8A25F1641BD2947400041058 /* TKALoadingView.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = TKALoadingView.m; sourceTree = "<group>"; };
 		8A3638641BB6D83900702D47 /* UITableView+TKAExtension.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = "UITableView+TKAExtension.h"; sourceTree = "<group>"; };
 		8A3638651BB6D83900702D47 /* UITableView+TKAExtension.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = "UITableView+TKAExtension.m"; sourceTree = "<group>"; };
 		8A3638671BB6DA5200702D47 /* UINib+TKAExtension.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = "UINib+TKAExtension.h"; sourceTree = "<group>"; };
@@ -191,6 +194,15 @@
 				8A0E0E801BB812620062C0BD /* TKAAssignReference.m */,
 			);
 			path = TKAAssignReference;
+			sourceTree = "<group>";
+		};
+		8A25F1621BD2947400041058 /* TKALoadingView */ = {
+			isa = PBXGroup;
+			children = (
+				8A25F1631BD2947400041058 /* TKALoadingView.h */,
+				8A25F1641BD2947400041058 /* TKALoadingView.m */,
+			);
+			path = TKALoadingView;
 			sourceTree = "<group>";
 		};
 		8A36385C1BB6CEA200702D47 /* UINib+TKAExtension */ = {
@@ -439,6 +451,7 @@
 		8AA02BF31BC19FBC004B93DB /* TKAUsersViewController */ = {
 			isa = PBXGroup;
 			children = (
+				8A25F1621BD2947400041058 /* TKALoadingView */,
 				8A808B421BC6BA82006CA11C /* TKAVisibleView */,
 				8AA02BF41BC19FBC004B93DB /* TKAUsersCell */,
 				8AA02BF81BC19FBC004B93DB /* TKAUsersView.h */,
@@ -696,6 +709,7 @@
 				8A0E0E7C1BB80EC10062C0BD /* TKAObservableObject.m in Sources */,
 				8A3F16D61B3AD6C500E6551E /* main.m in Sources */,
 				8A0E0E841BB812620062C0BD /* TKAReference.m in Sources */,
+				8A25F1651BD2947400041058 /* TKALoadingView.m in Sources */,
 				8AA02C001BC19FBC004B93DB /* TKAUsersViewController.m in Sources */,
 				8A3638741BB6EF0800702D47 /* TKAUsers.m in Sources */,
 				8A0E0E831BB812620062C0BD /* TKAAssignReference.m in Sources */,

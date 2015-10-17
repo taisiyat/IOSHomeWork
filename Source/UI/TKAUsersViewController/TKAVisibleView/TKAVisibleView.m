@@ -7,68 +7,71 @@
 //
 
 #import "TKAVisibleView.h"
-#import "TKAUsersView.h"
+
+//#import "TKAUsersView.h"
 #import "UINib+TKAExtension.h"
 
 static const NSTimeInterval kTKATimeDuration    = 1.0;
-static const NSTimeInterval kTKATimeInterval    = 0.0;
+static const NSTimeInterval kTKATimeDelay    = 0.0;
 static const NSTimeInterval kTKATimeIntervalNUL = 0.0;
-static const CGFloat        kTKAShow            = 1.0;
-static const CGFloat        kTKAHide            = 0.2;
+static const CGFloat        kTKAVisibleView            = 0.6;
 
-@interface TKAVisibleView ()
-@property (nonatomic, assign, getter = isAnimate) BOOL animate;
-
-@end
+//@interface TKAVisibleView ()
+////@property (nonatomic, assign, getter = isAnimate) BOOL animate;
+////@property (nonatomic, assign, getter = isVisible) BOOL visible;
+//
+//@end
 
 @implementation TKAVisibleView
 
 #pragma mark -
 #pragma mark Initializations and Deallocations
 
-- (void)awakeFromNib {
-    [super awakeFromNib];
-}
+//- (void)awakeFromNib {
+//    [super awakeFromNib];
+//}
 
 + (instancetype)visibleViewWithSuperView:(UIView *)superView {
-    TKAVisibleView *visibleView = [UINib objectWithClass:[TKAVisibleView class]];
+    TKAVisibleView *visibleView = [UINib objectWithClass:[self class]];
     [superView addSubview:visibleView];
     visibleView.frame = superView.bounds;
     
     return visibleView;
 }
 
+#pragma mark -
+#pragma mark Accesssors
+
+//- (BOOL)visible {
+//    return self.visible;
+//}
+
 - (void)setVisible:(BOOL)visible {
+    [self setVisible:visible animate:NO];
+}
+
+- (void)setVisible:(BOOL)visible animate:(BOOL)animate {
+    [self setVisible:visible animate:animate completion:nil];
+}
+
+- (void)setVisible:(BOOL)visible animate:(BOOL)animate completion:(void(^)())completion {
+    NSTimeInterval animateDuration = animate ? kTKATimeDuration : kTKATimeIntervalNUL;
+    
     if (_visible != visible) {
-        [UIView animateWithDuration:self.animate ? kTKATimeDuration : kTKATimeIntervalNUL
-                              delay:self.animate ? kTKATimeInterval : kTKATimeIntervalNUL
+        [UIView animateWithDuration:animateDuration
+                              delay:kTKATimeDelay
                             options:UIViewAnimationOptionCurveEaseInOut
                          animations:^{
-                             self.alpha = self.visible ? kTKAHide : kTKAShow;
+                             self.alpha = visible ? kTKAVisibleView : 0.0;
                          }
                          completion:^(BOOL finished) {
                              _visible = visible;
+                             
+                             if (completion) {
+                                 completion();
+                             }
                          }];
-   
     }
-}
-
-- (void)show {
-    [self showWithAnimate:YES];
- }
-
-- (void)hide {
-    [self hideWithAnimate:YES];
-}
-
-- (void)showWithAnimate:(BOOL)animate {
-    self.animate = animate;
-    self.visible = YES;
-}
-
-- (void)hideWithAnimate:(BOOL)animate {
-    self.animate = animate;
-    self.visible = NO;
 }
 
 @end

@@ -7,10 +7,10 @@
 //
 
 #import <UIKit/UIKit.h>
+
 #import "TKATableViewCell.h"
 
 @class TKAUser;
-//@class TKAUsers;
 
 @interface TKAUserCell : TKATableViewCell
 

@@ -9,8 +9,9 @@
 #import "TKAUser.h"
 #import "NSString+TKARandomWord.h"
 
-static NSString *const kTKAImageName        = @"image";
-static NSString *const kTKAImageExtension   = @"jpg";
+static NSString * const kTKAImageName        = @"image";
+static NSString * const kTKAImageExtension   = @"jpg";
+static NSString * const kTKAKeyArray         = @"TKAArray";
 
 @implementation TKAUser
 
@@ -48,6 +49,17 @@ static NSString *const kTKAImageExtension   = @"jpg";
     });
 
     return __image;
+}
+
+#pragma mark -
+#pragma mark NSCoding
+
+- (void)encodeWithCoder:(NSCoder *)aCoder {
+    [aCoder encodeObject:self.name forKey:kTKAKeyArray];
+}
+
+- (id)initWithCoder:(NSCoder *)aDecoder {
+    return [aDecoder decodeObjectForKey:kTKAKeyArray];
 }
 
 @end

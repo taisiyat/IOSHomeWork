@@ -13,9 +13,9 @@
 
 + (instancetype)visibleViewWithSuperView:(UIView *)superView;
 
-- (void)show;
-- (void)hide;
-- (void)showWithAnimate:(BOOL)animate;
-- (void)hideWithAnimate:(BOOL)animate;
+//- (void)visible;
+//- (void)setVisible:(BOOL)visible;
+- (void)setVisible:(BOOL)visible animate:(BOOL)animate;
+- (void)setVisible:(BOOL)visible animate:(BOOL)animate completion:(void(^)())completion;
 
 @end
