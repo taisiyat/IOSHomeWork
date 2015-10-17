@@ -8,7 +8,7 @@
 
 #import "TKAArrayModel.h"
 
-@interface TKAUsers : TKAArrayModel
+@interface TKAUsers : TKAArrayModel <NSCoding>
 
 + (instancetype)users;
 

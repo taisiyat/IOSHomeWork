@@ -10,4 +10,40 @@
 
 @implementation TKAModel
 
+#pragma mark -
+#pragma mark Overloaded Methods
+
+- (void)load {
+    
+}
+
+- (void)performLoading {
+
+}
+
+- (SEL)selectorForState:(NSUInteger)state {
+    switch (state) {
+        case TKAModelChange:
+            return @selector(model:didChangeWithObject:);
+            
+        case TKAModelWillLoad:
+            return @selector(modelWillLoad:);
+        
+        case TKAModelDidLoad:
+            return @selector(modelDidLoad:);
+            
+        case TKAModelFailLoad:
+            return @selector(modelFailLoad:);
+            
+        case TKAModelDidFailLoad:
+            return @selector(modelDidFailLoad:);
+
+        case TKAModelNotChange:
+            return nil;
+            
+        default:
+            return [super selectorForState:state];
+    }
+}
+
 @end

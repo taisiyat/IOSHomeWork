@@ -136,11 +136,11 @@ TKAViewControllerBaseViewProperty(TKAUsersViewController, usersView, TKAUsersVie
 }
 
 - (IBAction)onSaveButton:(id)sender {
-    [self.users save];
+ //   [self.users save];
 }
 
 - (IBAction)onLoadButton:(id)sender {
-    [self.users load];
+//    [self.users load];
     [self.usersView.tableView reloadData];
 }
 
@@ -153,16 +153,36 @@ TKAViewControllerBaseViewProperty(TKAUsersViewController, usersView, TKAUsersVie
 }
 
 #pragma mark -
-#pragma mark TKAArrayModelObserver
+#pragma mark TKALoadingModelObserver
 
-- (void)arrayModel:(TKAArrayModel *)users didChangeWithObject:(TKAChangeModel *)user {
+- (void)modelWillLoad:(TKAArrayModel *)users {
+    
+}
+
+- (void)modelDidLoad:(TKAArrayModel *)users {
+    
+}
+
+- (void)modelFailLoad:(TKAArrayModel *)users {
+    
+}
+
+- (void)modelDidFailLoad:(TKAArrayModel *)users {
+    
+}
+
+#pragma mark -
+#pragma mark TKAChangeModelObserver
+
+- (void)model:(TKAArrayModel *)users didChangeWithObject:(TKAChangeModel *)user {
     UITableView *table = self.usersView.tableView;
     switch (self.users.state) {
-        case TKAArrayModelChange: {
+        case TKAModelChange: {
             [table updateWithChanges:user];
-            users.state = TKAArrayModelNotChange;
+            users.state = TKAModelNotChange;
         }
             break;
+            
         default:
             break;
     }

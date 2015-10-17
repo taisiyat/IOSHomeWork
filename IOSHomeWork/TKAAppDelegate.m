@@ -16,6 +16,7 @@
 #import "UIViewController+TKAExtension.h"
 
 @interface TKAAppDelegate ()
+@property (nonatomic, assign) TKAUsers *users;
 
 @end
 
@@ -28,7 +29,9 @@
     
     TKAUsersViewController *controller = [TKAUsersViewController viewController];
     UINavigationController *navController = [[UINavigationController alloc] initWithRootViewController:controller];
+//    TKAUsers *users = [TKAUsers users];
     controller.users = [TKAUsers users];
+    self.users = controller.users;
     window.rootViewController = navController;
     
     [window makeKeyAndVisible];
@@ -41,7 +44,7 @@
 }
 
 - (void)applicationDidEnterBackground:(UIApplication *)application {
-    
+    [self.users save];
 }
 
 - (void)applicationWillEnterForeground:(UIApplication *)application {

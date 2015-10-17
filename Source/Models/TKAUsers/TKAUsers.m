@@ -10,6 +10,8 @@
 #import "TKAUser.h"
 
 static const NSUInteger kTKAUsersCount = 6;
+//static NSString * const kTKAFileName   = @"usersArray";
+static NSString * const kTKAKeyUsers   = @"TKAKeyUsers";
 
 @implementation TKAUsers
 
@@ -48,5 +50,21 @@ static const NSUInteger kTKAUsersCount = 6;
         [self fillWithRandomValue];
     }
 }
+
+#pragma mark -
+#pragma mark NSCoding
+
+- (void)encodeWithCoder:(NSCoder *)coder {
+    [coder encodeObject:self forKey:kTKAKeyUsers];
+}
+
+- (id)initWithCoder:(NSCoder *)decoder {
+    if (self) {
+        self = [decoder decodeObjectForKey:kTKAKeyUsers];
+    }
+    
+    return self;
+}
+
 
 @end

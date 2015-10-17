@@ -12,9 +12,9 @@
 
 #import "NSMutableArray+TKAExtension.h"
 
-static NSString * const kTKAArray = @"ArrayDate";
-static NSString *const kTKAFileName = @"usersArray.txt";
-static NSString *const kTKAKeyArray = @"TKAArray";
+static NSString * const kTKAArray           = @"ArrayDate";
+static NSString * const kTKAFileName        = @"usersArray";
+static NSString * const kTKAKeyArrayModel   = @"TKAArrayModel";
  
 @interface TKAArrayModel ()
 @property (nonatomic, strong) NSMutableArray *mutableUnits;
@@ -61,27 +61,27 @@ static NSString *const kTKAKeyArray = @"TKAArray";
 - (void)addUnit:(id)unit {
     [self.mutableUnits addObject:unit];
     if ([self.observerSet anyObject] != nil) {
-        [self setState:TKAArrayModelChange
+        [self setState:TKAModelChange
             withObject:[TKAChangeModel insertModelWithIndex:[self indexOfObject:unit]]];
     }
 }
 
 - (void)addUnit:(id)unit atIndex:(NSUInteger)index {
     [self.mutableUnits insertObject:unit atIndex:index];
-    [self setState:TKAArrayModelChange
+    [self setState:TKAModelChange
         withObject:[TKAChangeModel insertModelWithIndex:index]];
 }
 
 - (void)removeUnit:(id)unit {
     NSUInteger index = [self indexOfObject:unit];
     [self.mutableUnits removeObject:unit];
-    [self setState:TKAArrayModelChange
+    [self setState:TKAModelChange
         withObject:[TKAChangeModel deleteModelWithIndex:index]];
 }
 
 - (void)removeUnitAtIndex:(NSUInteger)index {
     [self.mutableUnits removeObjectAtIndex:index];
-    [self setState:TKAArrayModelChange
+    [self setState:TKAModelChange
         withObject:[TKAChangeModel deleteModelWithIndex:index]];
 }
 
@@ -110,7 +110,7 @@ static NSString *const kTKAKeyArray = @"TKAArray";
 {
     [self.mutableUnits moveObjectFromLocationIndex:sourceIndex
                                      toTargetIndex:destinationIndex];
-    [self setState:TKAArrayModelChange
+    [self setState:TKAModelChange
         withObject:[TKAChangeModel moveModelWithLocationIndex:sourceIndex withTargetIndex:destinationIndex]];
 }
 
@@ -126,7 +126,7 @@ static NSString *const kTKAKeyArray = @"TKAArray";
     return [[NSFileManager defaultManager] fileExistsAtPath:[self filePathWithFileName:fileName]];
 }
 
-- (void)load {
+- (void)performLoading {
     self.mutableUnits = [NSKeyedUnarchiver unarchiveObjectWithFile:[self filePathWithFileName:kTKAFileName]];
 }
 
@@ -134,21 +134,21 @@ static NSString *const kTKAKeyArray = @"TKAArray";
     [NSKeyedArchiver archiveRootObject:self.mutableUnits toFile:[self filePathWithFileName:kTKAFileName]];
 }
 
-#pragma mark -
-#pragma mark Overloaded Methods
-
-- (SEL)selectorForState:(NSUInteger)state {
-    switch (state) {
-        case TKAArrayModelChange:
-            return @selector(arrayModel:didChangeWithObject:);
-            
-        case TKAArrayModelNotChange:
-            return nil;
-            
-        default:
-            return [super selectorForState:state];
-    }
-}
+//#pragma mark -
+//#pragma mark Overloaded Methods
+//
+//- (SEL)selectorForState:(NSUInteger)state {
+//    switch (state) {
+//        case TKAArrayModelChange:
+//            return @selector(arrayModel:didChangeWithObject:);
+//            
+//        case TKAArrayModelNotChange:
+//            return nil;
+//            
+//        default:
+//            return [super selectorForState:state];
+//    }
+//}
 
 @end
 

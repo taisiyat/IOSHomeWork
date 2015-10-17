@@ -11,7 +11,7 @@
 
 static NSString * const kTKAImageName        = @"image";
 static NSString * const kTKAImageExtension   = @"jpg";
-static NSString * const kTKAKeyArray         = @"TKAArray";
+static NSString * const kTKAKeyUser          = @"TKAKeyUser";
 
 @implementation TKAUser
 
@@ -54,12 +54,16 @@ static NSString * const kTKAKeyArray         = @"TKAArray";
 #pragma mark -
 #pragma mark NSCoding
 
-- (void)encodeWithCoder:(NSCoder *)aCoder {
-    [aCoder encodeObject:self.name forKey:kTKAKeyArray];
+- (void)encodeWithCoder:(NSCoder *)coder {
+    [coder encodeObject:self.name forKey:kTKAKeyUser];
 }
 
-- (id)initWithCoder:(NSCoder *)aDecoder {
-    return [aDecoder decodeObjectForKey:kTKAKeyArray];
+- (id)initWithCoder:(NSCoder *)decoder {
+    if (self) {
+        self.name = [decoder decodeObjectForKey:kTKAKeyUser];
+    }
+    
+    return self;
 }
 
 @end

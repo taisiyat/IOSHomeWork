@@ -8,27 +8,27 @@
 
 #import <Foundation/Foundation.h>
 
-#import "TKAObservableObject.h"
+#import "TKAModel.h"
 
 @class TKAChangeModel;
-@class TKAArrayModel;
+//@class TKAArrayModel;
+//
+//typedef NS_ENUM(NSUInteger, TKAArrayModelState) {
+//    TKAArrayModelNotChange,
+//    TKAArrayModelChange,
+//    TKAArrayModelWillLoad,
+//    TKAArrayModelDidLoad,
+//    TKAArrayModelFailLoad
+//};
+//
+//@protocol TKAArrayModelObsserver <NSObject>
+//
+//@optional
+//- (void)arrayModel:(TKAArrayModel *)arrayModel didChangeWithObject:(TKAChangeModel *)object;
+//
+//@end
 
-typedef NS_ENUM(NSUInteger, TKAArrayModelState) {
-    TKAArrayModelNotChange,
-    TKAArrayModelChange,
-    TKAArrayModelWillLoad,
-    TKAArrayModelDidLoad,
-    TKAArrayModelFailLoad
-};
-
-@protocol TKAArrayModelObsserver <NSObject>
-
-@optional
-- (void)arrayModel:(TKAArrayModel *)arrayModel didChangeWithObject:(TKAChangeModel *)object;
-
-@end
-
-@interface TKAArrayModel : TKAObservableObject <TKAArrayModelObsserver, NSCoding>
+@interface TKAArrayModel : TKAModel//TKAObservableObject <TKAArrayModelObsserver, NSCoding>
 @property (nonatomic, readonly) NSArray     *units;
 @property (nonatomic, readonly) NSUInteger  count;
 
@@ -47,5 +47,6 @@ typedef NS_ENUM(NSUInteger, TKAArrayModelState) {
 
 - (void)load;
 - (void)save;
+- (void)performLoading;
 
 @end
