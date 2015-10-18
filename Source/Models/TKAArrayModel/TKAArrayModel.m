@@ -11,6 +11,7 @@
 #import "TKAChangeModelOneIndex.h"
 
 #import "NSMutableArray+TKAExtension.h"
+#import "NSFileManager+TKAExtension.h"
 
 static NSString * const kTKAArray           = @"ArrayDate";
 static NSString * const kTKAFileName        = @"usersArray";
@@ -115,19 +116,24 @@ static NSString * const kTKAKeyArrayModel   = @"TKAArrayModel";
 }
 
 - (NSString *)fileFolder {
-    return [NSSearchPathForDirectoriesInDomains(NSDocumentDirectory, NSUserDomainMask, YES) firstObject];
+    return [NSFileManager fileFolder];
 }
 
 - (NSString *)filePathWithFileName:(NSString *)fileName {
-    return [[self fileFolder] stringByAppendingPathComponent:fileName];
+    return [NSFileManager filePathWithFileName:fileName];
 }
 
 - (BOOL)fileExistsWithFileName:(NSString *)fileName {
-    return [[NSFileManager defaultManager] fileExistsAtPath:[self filePathWithFileName:fileName]];
+    return [NSFileManager fileExistsWithFileName:fileName];
 }
 
 - (void)performLoading {
-    self.mutableUnits = [NSKeyedUnarchiver unarchiveObjectWithFile:[self filePathWithFileName:kTKAFileName]];
+    if ([self fileExistsWithFileName:kTKAFileName]) {
+        self.state = TKAModelWillLoad;
+        self.mutableUnits = [[NSKeyedUnarchiver unarchiveObjectWithFile:[self filePathWithFileName:kTKAFileName]] mutableCopy];
+    } else {
+//        [self ];
+    }
 }
 
 - (void)save {

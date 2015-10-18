@@ -45,8 +45,8 @@
 - (void)moveUnitAtIndex:(NSUInteger)sourceIndex
                 toIndex:(NSUInteger)destinationIndex;
 
-- (void)load;
+//- (void)load;
 - (void)save;
-- (void)performLoading;
+//- (void)performLoading;
 
 @end

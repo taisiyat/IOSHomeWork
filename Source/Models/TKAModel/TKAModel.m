@@ -8,17 +8,40 @@
 
 #import "TKAModel.h"
 
+#import "TKAPerformBlock.h"
+#import "TKAMacros.h"
+
+static const NSTimeInterval kTKASleepTime = 1;
+
 @implementation TKAModel
 
 #pragma mark -
 #pragma mark Overloaded Methods
 
 - (void)load {
+    TKAModelState state = self.state;
     
+    if (TKAModelWillLoad == state || TKAModelDidLoad == state) {
+//        [self notificationOfState]
+        return;
+    }
+   
+    self.state = TKAModelWillLoad;
+    
+    TKAWeakifyVariable(self)
+    
+    TKAPerformBlockAsyncBackground((void(^)()){
+        TKAStrongifyVariableAndReturnNilIfNil(self);
+        [self performLoading];
+        
+        TKAPerformBlockSyncOnMainQueue(^{
+            self.state = TKAModelDidLoad;
+        });
+    });
 }
 
 - (void)performLoading {
-
+    [self doesNotRecognizeSelector:_cmd];
 }
 
 - (SEL)selectorForState:(NSUInteger)state {

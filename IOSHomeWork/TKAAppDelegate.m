@@ -56,7 +56,7 @@
 }
 
 - (void)applicationWillTerminate:(UIApplication *)application {
-    
+    [self.users save];
 }
 
 @end

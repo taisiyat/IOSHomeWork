@@ -31,6 +31,7 @@ TKAViewControllerBaseViewProperty(TKAUsersViewController, usersView, TKAUsersVie
 
 - (void)setUsers:(TKAUsers *)users {
     TKASynthesizeObservingSetter(users, users);
+    [_users load];
 }
 
 #pragma mark -
@@ -49,6 +50,7 @@ TKAViewControllerBaseViewProperty(TKAUsersViewController, usersView, TKAUsersVie
 - (void)viewDidLoad {
     [super viewDidLoad];
     
+    [self.users load];
     [self.usersView.tableView reloadData];
 }
 
@@ -135,36 +137,21 @@ TKAViewControllerBaseViewProperty(TKAUsersViewController, usersView, TKAUsersVie
     table.editing = !table.editing;
 }
 
-- (IBAction)onSaveButton:(id)sender {
- //   [self.users save];
-}
-
-- (IBAction)onLoadButton:(id)sender {
-//    [self.users load];
-    [self.usersView.tableView reloadData];
-}
-
-- (IBAction)onShowButton:(id)sender {
-    [self.usersView show];
-}
-
-- (IBAction)onHideButton:(id)sender {
-    [self.usersView hide];
-}
-
 #pragma mark -
 #pragma mark TKALoadingModelObserver
 
 - (void)modelWillLoad:(TKAArrayModel *)users {
-    
+    [self.usersView hide];
+    [self.users load];
 }
 
 - (void)modelDidLoad:(TKAArrayModel *)users {
-    
+    [self.usersView.tableView reloadData];
+    [self.usersView show];
 }
 
 - (void)modelFailLoad:(TKAArrayModel *)users {
-    
+    [self.users load];
 }
 
 - (void)modelDidFailLoad:(TKAArrayModel *)users {

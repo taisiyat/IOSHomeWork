@@ -9,7 +9,7 @@
 #import <Foundation/Foundation.h>
 #import "TKAPerformBlock.h"
 
-void TKAPerformBlockOnMainQueue(TKABlock block) {
+void TKAPerformBlockSyncOnMainQueue(TKABlock block) {
     if ([NSThread isMainThread]) {
         block();
     } else {
@@ -17,5 +17,15 @@ void TKAPerformBlockOnMainQueue(TKABlock block) {
     }
 };
 
-void TKAPerformBlockAsyncBackground(TKABlock block);
-void TKAPerformBlockSyncOnMainQueue(TKABlock block);
+void TKAPerformBlockAsyncBackground(TKABlock block) {
+    dispatch_async(dispatch_get_global_queue(QOS_CLASS_BACKGROUND, 0), block);
+}
+
+void TKAPerformBlockAsyncOnMainQueue(TKABlock block) {
+    if ([NSThread isMainThread]) {
+        block();
+    } else {
+        dispatch_async(dispatch_get_main_queue(), block);
+    }
+}
+

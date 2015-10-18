@@ -36,6 +36,7 @@
         self.visibleView = [TKAVisibleView visibleViewWithSuperView:self];
     }
     
+    [self bringSubviewToFront:self.visibleView];
     [self.visibleView setVisible:YES animate:YES];
 }
 

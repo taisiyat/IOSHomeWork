@@ -1,0 +1,17 @@
+//
+//  NSFileManager+TKAExtension.h
+//  IOSHomeWork
+//
+//  Created by Taisiya on 18.10.15.
+//  Copyright (c) 2015 TKAHomeWork. All rights reserved.
+//
+
+#import <Foundation/Foundation.h>
+
+@interface NSFileManager (TKAExtension)
+
++ (NSString *)fileFolder;
++ (NSString *)filePathWithFileName:(NSString *)fileName;
++ (BOOL)fileExistsWithFileName:(NSString *)fileName;
+
+@end

@@ -53,7 +53,7 @@
                 [self notifyOfStateChangeWithSelector];
             };
             
-            TKAPerformBlockOnMainQueue(blockNotify);
+            TKAPerformBlockSyncOnMainQueue(blockNotify);
         }
     }
 }
@@ -67,7 +67,7 @@
                 [self notifyOfStateChangeWithSelectorWithObject:object];
             };
             
-            TKAPerformBlockOnMainQueue(blockNotify);
+            TKAPerformBlockSyncOnMainQueue(blockNotify);
         }
     }
 }
