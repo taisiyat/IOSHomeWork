@@ -7,11 +7,16 @@
 //
 
 #import "TKAUsers.h"
-#import "TKAUser.h"
 
-static const NSUInteger kTKAUsersCount = 6;
-//static NSString * const kTKAFileName   = @"usersArray";
-static NSString * const kTKAKeyUsers   = @"TKAKeyUsers";
+#import "TKAUser.h"
+#import "NSFileManager+TKAExtension.h"
+
+#import "TKAMacros.h"
+
+static const NSUInteger kTKAUsersCount      = 6;
+static const NSTimeInterval kTKASleepTime   = 1;
+static NSString * const kTKAFileName        = @"usersArray";
+static NSString * const kTKAKeyUsers        = @"TKAKeyUsers";
 
 @implementation TKAUsers
 
@@ -29,9 +34,43 @@ static NSString * const kTKAKeyUsers   = @"TKAKeyUsers";
     self = [super init];
     if (self) {
         [self fill];
+//        [self load];
     }
     
     return self;
+}
+
+- (NSString *)fileFolder {
+    return [NSFileManager fileFolder];
+}
+
+- (NSString *)filePathWithFileName:(NSString *)fileName {
+    return [NSFileManager filePathWithFileName:fileName];
+}
+
+#pragma mark -
+#pragma mark Public
+
+- (BOOL)fileExists {
+    return [NSFileManager fileExistsWithFileName:kTKAFileName];
+}
+
+- (void)performLoading {
+    if ([self fileExists]) {
+        self.state = TKAModelWillLoad;
+        TKASleep(kTKASleepTime);
+        NSArray *arrayUsers = [[NSKeyedUnarchiver unarchiveObjectWithFile:self.filePath] mutableCopy];
+      
+        for (id object in arrayUsers) {
+            [self addUnit:object];
+        }
+    } else {
+        [self fill];
+    }
+}
+
+- (void)save {
+    [NSKeyedArchiver archiveRootObject:self.mutableCopy toFile:self.filePath];
 }
 
 #pragma mark -
@@ -51,20 +90,19 @@ static NSString * const kTKAKeyUsers   = @"TKAKeyUsers";
     }
 }
 
-#pragma mark -
-#pragma mark NSCoding
-
-- (void)encodeWithCoder:(NSCoder *)coder {
-    [coder encodeObject:self forKey:kTKAKeyUsers];
-}
-
-- (id)initWithCoder:(NSCoder *)decoder {
-    if (self) {
-        self = [decoder decodeObjectForKey:kTKAKeyUsers];
-    }
-    
-    return self;
-}
-
+//#pragma mark -
+//#pragma mark NSCoding
+//
+//- (void)encodeWithCoder:(NSCoder *)coder {
+//    [coder encodeObject:self forKey:kTKAKeyUsers];
+//}
+//
+//- (id)initWithCoder:(NSCoder *)decoder {
+//    if (self) {
+//        self = [decoder decodeObjectForKey:kTKAKeyUsers];
+//    }
+//    
+//    return self;
+//}
 
 @end

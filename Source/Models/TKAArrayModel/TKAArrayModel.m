@@ -14,8 +14,8 @@
 #import "NSFileManager+TKAExtension.h"
 
 static NSString * const kTKAArray           = @"ArrayDate";
-static NSString * const kTKAFileName        = @"usersArray";
-static NSString * const kTKAKeyArrayModel   = @"TKAArrayModel";
+//static NSString * const kTKAFileName        = @"usersArray";
+//static NSString * const kTKAKeyArrayModel   = @"TKAArrayModel";
  
 @interface TKAArrayModel ()
 @property (nonatomic, strong) NSMutableArray *mutableUnits;
@@ -114,47 +114,6 @@ static NSString * const kTKAKeyArrayModel   = @"TKAArrayModel";
     [self setState:TKAModelChange
         withObject:[TKAChangeModel moveModelWithLocationIndex:sourceIndex withTargetIndex:destinationIndex]];
 }
-
-- (NSString *)fileFolder {
-    return [NSFileManager fileFolder];
-}
-
-- (NSString *)filePathWithFileName:(NSString *)fileName {
-    return [NSFileManager filePathWithFileName:fileName];
-}
-
-- (BOOL)fileExistsWithFileName:(NSString *)fileName {
-    return [NSFileManager fileExistsWithFileName:fileName];
-}
-
-- (void)performLoading {
-    if ([self fileExistsWithFileName:kTKAFileName]) {
-        self.state = TKAModelWillLoad;
-        self.mutableUnits = [[NSKeyedUnarchiver unarchiveObjectWithFile:[self filePathWithFileName:kTKAFileName]] mutableCopy];
-    } else {
-//        [self ];
-    }
-}
-
-- (void)save {
-    [NSKeyedArchiver archiveRootObject:self.mutableUnits toFile:[self filePathWithFileName:kTKAFileName]];
-}
-
-//#pragma mark -
-//#pragma mark Overloaded Methods
-//
-//- (SEL)selectorForState:(NSUInteger)state {
-//    switch (state) {
-//        case TKAArrayModelChange:
-//            return @selector(arrayModel:didChangeWithObject:);
-//            
-//        case TKAArrayModelNotChange:
-//            return nil;
-//            
-//        default:
-//            return [super selectorForState:state];
-//    }
-//}
 
 @end
 

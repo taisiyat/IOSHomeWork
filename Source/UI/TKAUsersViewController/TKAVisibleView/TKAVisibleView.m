@@ -27,9 +27,9 @@ static const CGFloat        kTKAVisibleView            = 0.6;
 #pragma mark -
 #pragma mark Initializations and Deallocations
 
-//- (void)awakeFromNib {
-//    [super awakeFromNib];
-//}
+- (void)awakeFromNib {
+    [super awakeFromNib];
+}
 
 + (instancetype)visibleViewWithSuperView:(UIView *)superView {
     TKAVisibleView *visibleView = [UINib objectWithClass:[self class]];

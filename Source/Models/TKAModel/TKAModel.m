@@ -22,7 +22,7 @@ static const NSTimeInterval kTKASleepTime = 1;
     TKAModelState state = self.state;
     
     if (TKAModelWillLoad == state || TKAModelDidLoad == state) {
-//        [self notificationOfState]
+//        [self notifyOfStateChangeWithSelector]
         return;
     }
    
@@ -30,8 +30,8 @@ static const NSTimeInterval kTKASleepTime = 1;
     
     TKAWeakifyVariable(self)
     
-    TKAPerformBlockAsyncBackground((void(^)()){
-        TKAStrongifyVariableAndReturnNilIfNil(self);
+    TKAPerformBlockAsyncBackground(^{
+        TKAStrongifyVariableAndReturnEmptyIfNil(self);
         [self performLoading];
         
         TKAPerformBlockSyncOnMainQueue(^{

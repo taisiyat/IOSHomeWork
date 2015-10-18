@@ -15,9 +15,9 @@
 #pragma mark -
 #pragma mark Initializations and Deallocations
 
-//- (void)awakeFromNib {
-//    [super awakeFromNib];
-//}
+- (void)awakeFromNib {
+    [super awakeFromNib];
+}
 
 - (instancetype)init {
     self = [super init];

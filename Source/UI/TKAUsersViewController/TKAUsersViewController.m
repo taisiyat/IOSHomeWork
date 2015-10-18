@@ -51,7 +51,7 @@ TKAViewControllerBaseViewProperty(TKAUsersViewController, usersView, TKAUsersVie
     [super viewDidLoad];
     
     [self.users load];
-    [self.usersView.tableView reloadData];
+//    [self.usersView.tableView reloadData];
 }
 
 - (void)didReceiveMemoryWarning {
@@ -129,10 +129,14 @@ TKAViewControllerBaseViewProperty(TKAUsersViewController, usersView, TKAUsersVie
 
 - (IBAction)onAddButton:(id)sender {
     TKAUsers *users = self.users;
+    // for test
+//    [users save];
     [users addUnit:[TKAUser user]];
 }
 
 - (IBAction)onEditButton:(id)sender {
+        // for test
+//    [self.users load];
     TKAUsersView *table = self.usersView;
     table.editing = !table.editing;
 }
@@ -142,7 +146,6 @@ TKAViewControllerBaseViewProperty(TKAUsersViewController, usersView, TKAUsersVie
 
 - (void)modelWillLoad:(TKAArrayModel *)users {
     [self.usersView hide];
-    [self.users load];
 }
 
 - (void)modelDidLoad:(TKAArrayModel *)users {

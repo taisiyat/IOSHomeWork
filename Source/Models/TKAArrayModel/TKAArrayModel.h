@@ -11,24 +11,8 @@
 #import "TKAModel.h"
 
 @class TKAChangeModel;
-//@class TKAArrayModel;
-//
-//typedef NS_ENUM(NSUInteger, TKAArrayModelState) {
-//    TKAArrayModelNotChange,
-//    TKAArrayModelChange,
-//    TKAArrayModelWillLoad,
-//    TKAArrayModelDidLoad,
-//    TKAArrayModelFailLoad
-//};
-//
-//@protocol TKAArrayModelObsserver <NSObject>
-//
-//@optional
-//- (void)arrayModel:(TKAArrayModel *)arrayModel didChangeWithObject:(TKAChangeModel *)object;
-//
-//@end
 
-@interface TKAArrayModel : TKAModel//TKAObservableObject <TKAArrayModelObsserver, NSCoding>
+@interface TKAArrayModel : TKAModel
 @property (nonatomic, readonly) NSArray     *units;
 @property (nonatomic, readonly) NSUInteger  count;
 
@@ -44,9 +28,5 @@
 - (id)objectAtIndexedSubscript:(NSUInteger)index;
 - (void)moveUnitAtIndex:(NSUInteger)sourceIndex
                 toIndex:(NSUInteger)destinationIndex;
-
-//- (void)load;
-- (void)save;
-//- (void)performLoading;
 
 @end
