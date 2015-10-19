@@ -9,10 +9,14 @@
 #import <Foundation/Foundation.h>
 #import <UIKit/UIKit.h>
 
-@interface TKAUser : NSObject <NSCoding>
+#import "TKAModel.h"
+
+@interface TKAUser : TKAModel <NSCoding>
 @property (nonatomic, copy)     NSString    *name;
 @property (nonatomic, readonly) UIImage     *image;
 
 + (instancetype)user;
+
+- (void)performLoading;
 
 @end

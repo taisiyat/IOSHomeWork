@@ -15,7 +15,7 @@
 
 static NSString * const kTKAArray           = @"ArrayDate";
 //static NSString * const kTKAFileName        = @"usersArray";
-//static NSString * const kTKAKeyArrayModel   = @"TKAArrayModel";
+static NSString * const kTKAKeyArrayModel   = @"TKAArrayModel";
  
 @interface TKAArrayModel ()
 @property (nonatomic, strong) NSMutableArray *mutableUnits;
@@ -114,6 +114,26 @@ static NSString * const kTKAArray           = @"ArrayDate";
     [self setState:TKAModelChange
         withObject:[TKAChangeModel moveModelWithLocationIndex:sourceIndex withTargetIndex:destinationIndex]];
 }
+
+- (void)save {
+    [NSKeyedArchiver archiveRootObject:self.mutableCopy toFile:self.filePath];
+}
+
+#pragma mark -
+#pragma mark NSCoding
+
+- (void)encodeWithCoder:(NSCoder *)coder {
+    [coder encodeObject:self.mutableCopy forKey:kTKAKeyArrayModel];
+}
+
+- (id)initWithCoder:(NSCoder *)decoder {
+    if (self) {
+        self.mutableUnits = [decoder decodeObjectForKey:kTKAKeyArrayModel];
+    }
+
+    return self;
+}
+
 
 @end
 

@@ -40,6 +40,9 @@ static NSString * const kTKAKeyUsers        = @"TKAKeyUsers";
     return self;
 }
 
+#pragma mark -
+#pragma mark Accessors
+
 - (NSString *)fileFolder {
     return [NSFileManager fileFolder];
 }
@@ -67,10 +70,6 @@ static NSString * const kTKAKeyUsers        = @"TKAKeyUsers";
     } else {
         [self fill];
     }
-}
-
-- (void)save {
-    [NSKeyedArchiver archiveRootObject:self.mutableCopy toFile:self.filePath];
 }
 
 #pragma mark -

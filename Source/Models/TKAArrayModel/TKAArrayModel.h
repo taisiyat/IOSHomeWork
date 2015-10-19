@@ -16,6 +16,9 @@
 @property (nonatomic, readonly) NSArray     *units;
 @property (nonatomic, readonly) NSUInteger  count;
 
+@property (nonatomic, copy) NSString *fileFolder;
+@property (nonatomic, copy) NSString *filePath;
+
 + (instancetype)arrayModel;
 
 - (void)addUnit:(id)unit;

@@ -7,7 +7,10 @@
 //
 
 #import "TKAUser.h"
+
 #import "NSString+TKARandomWord.h"
+
+#import "TKAMacros.h"
 
 static NSString * const kTKAImageName        = @"image";
 static NSString * const kTKAImageExtension   = @"jpg";
@@ -49,6 +52,15 @@ static NSString * const kTKAKeyUser          = @"TKAKeyUser";
     });
 
     return __image;
+}
+
+#pragma mark -
+#pragma mark Public
+
+- (void)performLoading {
+    self.state = TKAModelWillLoad;
+    TKASleep(kTKASleepTime);
+    UIImage *loadImage = self.image;
 }
 
 #pragma mark -
