@@ -16,6 +16,7 @@
 
 @property (nonatomic, strong) IBOutlet UILabel      *nameLabel;
 @property (nonatomic, strong) IBOutlet UIImageView  *image;
+@property (nonatomic, strong) IBOutlet UIActivityIndicatorView *spinner;
 
 @property (nonatomic, strong) TKAUser               *user;
 

@@ -15,14 +15,6 @@
 #pragma mark -
 #pragma mark Initializations and Deaallocations
 
-- (void)awakeFromNib {
-    [super awakeFromNib];
-//    TKAVisibleView *loadingView = [TKAVisibleView visibleViewWithSuperView:[[UIApplication sharedApplication] keyWindow]];
-//    TKAVisibleView *loadingView = [TKALoadingView visibleViewWithSuperView:self];
-//    self.visibleView = loadingView;
-    self.editing = NO;
-}
-
 #pragma mark -
 #pragma mark Accessors
 

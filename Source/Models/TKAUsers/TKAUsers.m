@@ -18,7 +18,18 @@ static const NSTimeInterval kTKASleepTime   = 1;
 static NSString * const kTKAFileName        = @"usersArray";
 static NSString * const kTKAKeyUsers        = @"TKAKeyUsers";
 
+@interface TKAUsers ()
+@property (nonatomic, readonly) NSString *fileFolder;
+@property (nonatomic, readonly) NSString *filePath;
+@property (nonatomic, readonly) NSArray  *notificationNames;
+
+@end
+
 @implementation TKAUsers
+
+@dynamic fileFolder;
+@dynamic filePath;
+@dynamic notificationNames;
 
 #pragma mark -
 #pragma mark Class Method
@@ -30,11 +41,16 @@ static NSString * const kTKAKeyUsers        = @"TKAKeyUsers";
 #pragma mark -
 #pragma mark Initializations and Deallocations
 
+- (void)dealloc {
+    [self unsubscribeFromApplicationNotification:self.notificationNames];
+}
+
 - (instancetype)init {
     self = [super init];
     if (self) {
-        [self fill];
-//        [self load];
+//        [self fill];
+        [self load];
+        [self subscribeToApplicationNotification:self.notificationNames];
     }
     
     return self;
@@ -51,6 +67,10 @@ static NSString * const kTKAKeyUsers        = @"TKAKeyUsers";
     return [NSFileManager filePathWithFileName:fileName];
 }
 
+- (NSArray *)notificationNames {
+    return @[UIApplicationWillTerminateNotification, UIApplicationWillResignActiveNotification];
+}
+
 #pragma mark -
 #pragma mark Public
 
@@ -59,17 +79,27 @@ static NSString * const kTKAKeyUsers        = @"TKAKeyUsers";
 }
 
 - (void)performLoading {
+    id block = nil;
     if ([self fileExists]) {
-        self.state = TKAModelWillLoad;
         TKASleep(kTKASleepTime);
         NSArray *arrayUsers = [[NSKeyedUnarchiver unarchiveObjectWithFile:self.filePath] mutableCopy];
-      
+        
+        block = ^{
         for (id object in arrayUsers) {
             [self addUnit:object];
         }
+        };
+            [self performBlock:block shouldNotify:YES];
     } else {
+        block = ^{
         [self fill];
+        };
+        [self performBlock:block shouldNotify:NO];
     }
+}
+
+- (void)save {
+    [NSKeyedArchiver archiveRootObject:self.mutableCopy toFile:self.filePath];
 }
 
 #pragma mark -
@@ -89,19 +119,25 @@ static NSString * const kTKAKeyUsers        = @"TKAKeyUsers";
     }
 }
 
-//#pragma mark -
-//#pragma mark NSCoding
-//
-//- (void)encodeWithCoder:(NSCoder *)coder {
-//    [coder encodeObject:self forKey:kTKAKeyUsers];
-//}
-//
-//- (id)initWithCoder:(NSCoder *)decoder {
-//    if (self) {
-//        self = [decoder decodeObjectForKey:kTKAKeyUsers];
-//    }
-//    
-//    return self;
-//}
+#pragma mark -
+#pragma mark Private
+
+
+- (void)unsubscribeFromApplicationNotification:(NSArray *)notificationNames {
+    for (NSString *notificationName in self.notificationNames) {
+    [[NSNotificationCenter defaultCenter] removeObserver:self
+                                                    name:notificationName
+                                                  object:nil];
+    }
+}
+
+- (void)subscribeToApplicationNotification:(NSArray *)notificationNames {
+    for (NSString *notificationName in self.notificationNames) {
+    [[NSNotificationCenter defaultCenter] addObserver:self
+                                             selector:@selector(save)
+                                                 name:notificationName
+                                               object:nil];
+    }
+}
 
 @end

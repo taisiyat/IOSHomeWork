@@ -7,8 +7,7 @@
 //
 
 #import <Foundation/Foundation.h>
-
-
+#import "TKAPerformBlock.h"
 
 @interface TKAObservableObject : NSObject
 @property (nonatomic, readonly)  NSSet       *observerSet;
@@ -20,4 +19,9 @@
 - (void)setState:(NSUInteger)state withObject:(id)object;
 - (SEL)selectorForState:(NSUInteger)state;
 
+- (void)performBlock:(TKABlock)block shouldNotify:(BOOL)shouldNotify;
+
+// these methods are called in subclasses
+- (void)notifyOfStateWithSelector:(SEL)selector;
+- (void)notifyOfStateWithSelector:(SEL)selector withObject:(id)object;
 @end

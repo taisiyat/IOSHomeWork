@@ -40,5 +40,6 @@ typedef NS_ENUM(NSUInteger, TKAModelState) {
 
 - (void)load;
 - (void)performLoading;
+- (void)setupLoading;
 
 @end

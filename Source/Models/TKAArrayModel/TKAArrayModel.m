@@ -115,10 +115,6 @@ static NSString * const kTKAKeyArrayModel   = @"TKAArrayModel";
         withObject:[TKAChangeModel moveModelWithLocationIndex:sourceIndex withTargetIndex:destinationIndex]];
 }
 
-- (void)save {
-    [NSKeyedArchiver archiveRootObject:self.mutableCopy toFile:self.filePath];
-}
-
 #pragma mark -
 #pragma mark NSCoding
 

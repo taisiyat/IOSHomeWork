@@ -22,11 +22,11 @@ static const NSTimeInterval kTKASleepTime = 1;
     TKAModelState state = self.state;
     
     if (TKAModelWillLoad == state || TKAModelDidLoad == state) {
-//        [self notifyOfStateChangeWithSelector]
+        [self notifyOfStateWithSelector:[self selectorForState:state]];
         return;
     }
    
-    self.state = TKAModelWillLoad;
+    [self setupLoading];
     
     TKAWeakifyVariable(self)
     
@@ -42,6 +42,10 @@ static const NSTimeInterval kTKASleepTime = 1;
 
 - (void)performLoading {
     [self doesNotRecognizeSelector:_cmd];
+}
+
+- (void)setupLoading {
+    self.state = TKAModelWillLoad;
 }
 
 - (SEL)selectorForState:(NSUInteger)state {

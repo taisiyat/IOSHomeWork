@@ -8,9 +8,7 @@
 
 #import "TKAArrayModel.h"
 
-@interface TKAUsers : TKAArrayModel <NSCoding>
-@property (nonatomic, copy) NSString *fileFolder;
-@property (nonatomic, copy) NSString *filePath;
+@interface TKAUsers : TKAArrayModel 
 
 + (instancetype)users;
 

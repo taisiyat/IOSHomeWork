@@ -15,10 +15,6 @@
 #pragma mark -
 #pragma mark Initializations and Deallocations
 
-- (void)awakeFromNib {
-    [super awakeFromNib];
-}
-
 - (instancetype)init {
     self = [super init];
     if (self) {
@@ -33,7 +29,7 @@
 
 - (void)showLoadingView {
     if (!self.visibleView) {
-        self.visibleView = [TKAVisibleView visibleViewWithSuperView:self];
+        self.visibleView = [self reloadLoadingView];
     }
     
     [self bringSubviewToFront:self.visibleView];
@@ -46,6 +42,10 @@
 
 - (BOOL)isHidden {
     return self.visibleView.visible;
+}
+
+- (id)reloadLoadingView {
+    return [TKAVisibleView visibleViewWithSuperView:self];
 }
 
 @end
