@@ -13,6 +13,6 @@ typedef void(^TKABlock)();
 
 void TKAPerformBlockSyncOnMainQueue(TKABlock block);
 void TKAPerformBlockAsyncOnMainQueue(TKABlock block);
-void TKAPerformBlockAsyncBackground(TKABlock block);
+void TKAPerformBlockAsyncOnBackgroundQueue(TKABlock block);
 
 #endif

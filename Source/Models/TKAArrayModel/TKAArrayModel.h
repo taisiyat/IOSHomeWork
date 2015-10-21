@@ -24,7 +24,6 @@
 - (void)removeUnitAtIndex:(NSUInteger)index;
 - (id)unitAtIndex:(NSUInteger)index;
 - (NSUInteger)indexOfObject:(id)unit;
-- (NSIndexPath *)indexPathOfObject:(id)unit;
 - (id)objectAtIndexedSubscript:(NSUInteger)index;
 - (void)moveUnitAtIndex:(NSUInteger)sourceIndex
                 toIndex:(NSUInteger)destinationIndex;

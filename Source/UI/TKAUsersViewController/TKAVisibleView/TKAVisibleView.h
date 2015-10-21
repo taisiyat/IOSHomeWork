@@ -9,12 +9,10 @@
 #import <UIKit/UIKit.h>
 
 @interface TKAVisibleView : UIView
-@property (nonatomic, assign, getter = isVisible) BOOL visible;
+@property (nonatomic, assign, getter=isVisible) BOOL visible;
 
-+ (instancetype)visibleViewWithSuperView:(UIView *)superView;
++ (instancetype)visibleViewWithSuperview:(UIView *)superView;
 
-//- (void)visible;
-//- (void)setVisible:(BOOL)visible;
 - (void)setVisible:(BOOL)visible animate:(BOOL)animate;
 - (void)setVisible:(BOOL)visible animate:(BOOL)animate completion:(void(^)())completion;
 

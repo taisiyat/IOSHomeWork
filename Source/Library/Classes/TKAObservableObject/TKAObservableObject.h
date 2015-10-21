@@ -10,8 +10,8 @@
 #import "TKAPerformBlock.h"
 
 @interface TKAObservableObject : NSObject
-@property (nonatomic, readonly)  NSSet       *observerSet;
 @property (atomic, assign)       NSUInteger  state;
+@property (nonatomic, readonly)  NSSet       *observerSet;
 
 - (void)addObserver:(id)observer;
 - (void)removeObserver:(id)observer;
@@ -24,4 +24,5 @@
 // these methods are called in subclasses
 - (void)notifyOfStateWithSelector:(SEL)selector;
 - (void)notifyOfStateWithSelector:(SEL)selector withObject:(id)object;
+
 @end

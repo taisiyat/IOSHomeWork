@@ -12,11 +12,14 @@
 #import "TKAUserCell.h"
 #import "TKAUser.h"
 #import "TKAUsers.h"
+#import "TKALoadingView.h"
 
 #import "TKAMacros.h"
 
 #import "UITableView+TKAExtension.h"
 #import "NSIndexPath+TKAExtension.h"
+
+static NSString * const kTKANavigationItemTitle = @"users";
 
 TKAViewControllerBaseViewProperty(TKAUsersViewController, usersView, TKAUsersView)
 
@@ -31,7 +34,7 @@ TKAViewControllerBaseViewProperty(TKAUsersViewController, usersView, TKAUsersVie
 
 - (void)setUsers:(TKAUsers *)users {
     TKASynthesizeObservingSetter(users, users);
-    [_users load];
+    [users load];
 }
 
 #pragma mark -
@@ -111,7 +114,7 @@ TKAViewControllerBaseViewProperty(TKAUsersViewController, usersView, TKAUsersVie
 
 - (void)setupNavigationItem {
     UINavigationItem *usersItem = self.navigationItem;
-    usersItem.title = @"users";
+    usersItem.title = kTKANavigationItemTitle;
     usersItem.leftBarButtonItem = [[UIBarButtonItem alloc]
                                    initWithTitle:@"ADD"
                                    style:UIBarButtonItemStyleDone
@@ -145,12 +148,12 @@ TKAViewControllerBaseViewProperty(TKAUsersViewController, usersView, TKAUsersVie
 #pragma mark TKALoadingModelObserver
 
 - (void)modelWillLoad:(TKAArrayModel *)users {
-    [self.usersView hide];
+    [self.usersView showLoadingView];
 }
 
 - (void)modelDidLoad:(TKAArrayModel *)users {
     [self.usersView.tableView reloadData];
-    [self.usersView show];
+    [self.usersView hideLoadingView];
 }
 
 - (void)modelFailLoad:(TKAArrayModel *)users {
@@ -166,10 +169,10 @@ TKAViewControllerBaseViewProperty(TKAUsersViewController, usersView, TKAUsersVie
 
 - (void)model:(TKAArrayModel *)users didChangeWithObject:(TKAChangeModel *)user {
     UITableView *table = self.usersView.tableView;
+    
     switch (self.users.state) {
         case TKAModelChange: {
             [table updateWithChanges:user];
-            users.state = TKAModelNotChange;
         }
             break;
             

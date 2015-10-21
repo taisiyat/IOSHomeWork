@@ -60,10 +60,10 @@ TKAStrongifyVariableAndReturnEntity(var, nil)
 #define TKAStrongifyVariableAndReturnEmptyIfNil(var) \
 TKAStrongifyVariableAndReturnEntity(var, TKAEmpty)
 
-#define TKANeedSleep TKASleepTime 
+#define TKANeedToSleep 1
 
-#if TKANeedSleep
-    #define TKASleep(TKASleepTime) [NSThread sleepForTimeInterval:TKASleepTime];
+#if TKANeedToSleep == 1
+    #define TKASleep(timeInterval) [NSThread sleepForTimeInterval:timeInterval];
 #else
-    #define TKASleep(TKASleepTime)
+    #define TKASleep(timeInterval)
 #endif

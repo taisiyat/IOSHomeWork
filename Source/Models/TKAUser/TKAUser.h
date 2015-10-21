@@ -17,6 +17,4 @@
 
 + (instancetype)user;
 
-- (void)performLoading;
-
 @end

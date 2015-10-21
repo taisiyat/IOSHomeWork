@@ -10,8 +10,8 @@
 
 @interface NSFileManager (TKAExtension)
 
-+ (NSString *)fileFolder;
-+ (NSString *)filePathWithFileName:(NSString *)fileName;
++ (NSString *)documentsDirectory;
++ (NSString *)pathForDocumentsDirectoryWithFileName:(NSString *)fileName;
 + (BOOL)fileExistsWithFileName:(NSString *)fileName;
 
 @end

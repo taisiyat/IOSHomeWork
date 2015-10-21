@@ -8,43 +8,28 @@
 
 #import "TKAVisibleView.h"
 
-//#import "TKAUsersView.h"
 #import "UINib+TKAExtension.h"
 
 static const NSTimeInterval kTKATimeDuration    = 1.0;
-static const NSTimeInterval kTKATimeDelay    = 0.0;
+static const NSTimeInterval kTKATimeDelay       = 0.0;
 static const NSTimeInterval kTKATimeIntervalNUL = 0.0;
-static const CGFloat        kTKAVisibleView            = 0.6;
-
-//@interface TKAVisibleView ()
-////@property (nonatomic, assign, getter = isAnimate) BOOL animate;
-////@property (nonatomic, assign, getter = isVisible) BOOL visible;
-//
-//@end
+static const CGFloat        kTKAVisibleView     = 0.6;
 
 @implementation TKAVisibleView
 
 #pragma mark -
 #pragma mark Initializations and Deallocations
 
-- (void)awakeFromNib {
-    [super awakeFromNib];
-}
-
-+ (instancetype)visibleViewWithSuperView:(UIView *)superView {
++ (instancetype)visibleViewWithSuperview:(UIView *)superview {
     TKAVisibleView *visibleView = [UINib objectWithClass:[self class]];
-    [superView addSubview:visibleView];
-    visibleView.frame = superView.bounds;
+    [superview addSubview:visibleView];
+    visibleView.frame = superview.bounds;
     
     return visibleView;
 }
 
 #pragma mark -
 #pragma mark Accesssors
-
-//- (BOOL)visible {
-//    return self.visible;
-//}
 
 - (void)setVisible:(BOOL)visible {
     [self setVisible:visible animate:NO];
@@ -55,10 +40,8 @@ static const CGFloat        kTKAVisibleView            = 0.6;
 }
 
 - (void)setVisible:(BOOL)visible animate:(BOOL)animate completion:(void(^)())completion {
-    NSTimeInterval animateDuration = animate ? kTKATimeDuration : kTKATimeIntervalNUL;
-    
     if (_visible != visible) {
-        [UIView animateWithDuration:animateDuration
+        [UIView animateWithDuration:animate ? kTKATimeDuration : kTKATimeIntervalNUL
                               delay:kTKATimeDelay
                             options:UIViewAnimationOptionCurveEaseInOut
                          animations:^{

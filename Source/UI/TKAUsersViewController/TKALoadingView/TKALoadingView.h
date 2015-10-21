@@ -11,11 +11,11 @@
 @class TKAVisibleView;
 
 @interface TKALoadingView : UIView
-@property (nonatomic, strong) IBOutlet TKAVisibleView *visibleView;
+@property (nonatomic, strong) TKAVisibleView    *loadingView;
 @property (nonatomic, readonly, getter=isHidden) BOOL hidden;
 
 - (void)showLoadingView;
 - (void)hideLoadingView;
-- (id)reloadLoadingView;
+- (id)newLoadingView;
 
 @end

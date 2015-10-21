@@ -8,8 +8,6 @@
 
 #import "TKAUsersView.h"
 
-//#import "TKALoadingView.h"
-
 @implementation TKAUsersView
 
 #pragma mark -
@@ -28,14 +26,6 @@
 
 - (BOOL)isEditing {
     return self.tableView.editing;
-}
-
-- (void)show {
-    [self hideLoadingView];
-}
-
-- (void)hide {
-    [self showLoadingView];
 }
 
 @end

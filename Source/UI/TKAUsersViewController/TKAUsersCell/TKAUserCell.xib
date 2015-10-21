@@ -22,11 +22,15 @@
                     <imageView userInteractionEnabled="NO" contentMode="scaleToFill" horizontalHuggingPriority="251" verticalHuggingPriority="251" fixedFrame="YES" translatesAutoresizingMaskIntoConstraints="NO" id="Jep-Ca-Ilx">
                         <rect key="frame" x="165" y="0.0" width="64" height="43"/>
                     </imageView>
+                    <activityIndicatorView opaque="NO" contentMode="scaleToFill" horizontalHuggingPriority="750" verticalHuggingPriority="750" fixedFrame="YES" style="gray" translatesAutoresizingMaskIntoConstraints="NO" id="d2p-0Q-Zvh">
+                        <rect key="frame" x="187" y="11" width="20" height="20"/>
+                    </activityIndicatorView>
                 </subviews>
             </tableViewCellContentView>
             <connections>
                 <outlet property="image" destination="Jep-Ca-Ilx" id="20z-xO-vtS"/>
                 <outlet property="nameLabel" destination="hMu-a7-RhC" id="YXZ-qS-7Bw"/>
+                <outlet property="spinner" destination="d2p-0Q-Zvh" id="SrU-1Q-Zul"/>
             </connections>
             <point key="canvasLocation" x="420" y="401"/>
         </tableViewCell>

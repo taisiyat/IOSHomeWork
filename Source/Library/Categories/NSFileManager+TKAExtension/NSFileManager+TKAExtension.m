@@ -10,16 +10,16 @@
 
 @implementation NSFileManager (TKAExtension)
 
-+ (NSString *)fileFolder {
++ (NSString *)documentsDirectory {
     return [NSSearchPathForDirectoriesInDomains(NSDocumentDirectory, NSUserDomainMask, YES) firstObject];
 }
 
-+ (NSString *)filePathWithFileName:(NSString *)fileName {
-    return [[self fileFolder] stringByAppendingPathComponent:fileName];
++ (NSString *)pathForDocumentsDirectoryWithFileName:(NSString *)fileName {
+    return [[self documentsDirectory] stringByAppendingPathComponent:fileName];
 }
 
 + (BOOL)fileExistsWithFileName:(NSString *)fileName {
-    return [[NSFileManager defaultManager] fileExistsAtPath:[self filePathWithFileName:fileName]];
+    return [[NSFileManager defaultManager] fileExistsAtPath:[self pathForDocumentsDirectoryWithFileName:fileName]];
 }
 
 @end

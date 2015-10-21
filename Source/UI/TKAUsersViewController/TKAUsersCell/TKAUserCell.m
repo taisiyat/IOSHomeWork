@@ -24,12 +24,9 @@
 }
 
 - (void)setUser:(TKAUser *)user {
-//    if (_user != user) {
-//        _user = user;
         TKASynthesizeObservingSetter(user, user);
         [self fillWithModel:user];
         [user load];
-//    }
 }
 
 #pragma mark -
@@ -48,6 +45,7 @@
 }
 
 - (void)modelDidLoad:(TKAUser *)user {
+    [self fillWithModel:user];
     [self.spinner stopAnimating];
 }
 
@@ -58,6 +56,5 @@
 - (void)modelDidFailLoad:(TKAUser *)user {
     
 }
-
 
 @end

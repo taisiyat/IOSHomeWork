@@ -15,37 +15,50 @@
 #pragma mark -
 #pragma mark Initializations and Deallocations
 
-- (instancetype)init {
-    self = [super init];
-    if (self) {
-        self.visibleView = [TKAVisibleView visibleViewWithSuperView:self];
-    }
+//- (instancetype)init {
+//    self = [super init];
+//    
+//    if (self) {
+//        self.loadingView = [self newLoadingView];
+//    }
+//    
+//    return self;
+//}
+
+- (void)awakeFromNib {
+    [super awakeFromNib];
     
-    return self;
+    if (self) {
+        self.loadingView = [self newLoadingView];
+    }
+}
+
+#pragma mark -
+#pragma mark Accessors
+
+- (BOOL)isHidden {
+    return self.loadingView.visible;
 }
 
 #pragma mark -
 #pragma mark Public
 
 - (void)showLoadingView {
-    if (!self.visibleView) {
-        self.visibleView = [self reloadLoadingView];
+    if (!self.loadingView) {
+        self.loadingView = [self newLoadingView];
     }
     
-    [self bringSubviewToFront:self.visibleView];
-    [self.visibleView setVisible:YES animate:YES];
+    [self bringSubviewToFront:self.loadingView];
+    [self.loadingView setVisible:YES animate:YES];
 }
 
 - (void)hideLoadingView {
-    [self.visibleView setVisible:NO animate:YES];
+    [self.loadingView setVisible:NO animate:YES];
+    [self sendSubviewToBack:self.loadingView];
 }
 
-- (BOOL)isHidden {
-    return self.visibleView.visible;
-}
-
-- (id)reloadLoadingView {
-    return [TKAVisibleView visibleViewWithSuperView:self];
+- (id)newLoadingView {
+    return [TKAVisibleView visibleViewWithSuperview:self];
 }
 
 @end

@@ -11,35 +11,30 @@
 @class TKAChangeModel;
 
 typedef NS_ENUM(NSUInteger, TKAModelState) {
-    TKAModelNotChange,
-    TKAModelChange,
+    TKAModelUnLoading,
     TKAModelWillLoad,
     TKAModelDidLoad,
     TKAModelFailLoad,
-    TKAModelDidFailLoad
+    TKAModelDidFailLoad,
+    TKAModelChange
 };
 
-@protocol TKAChangeModelObserver <NSObject>
-
-@optional
-- (void)model:(id)model didChangeWithObject:(TKAChangeModel *)object;
-
-@end
-
-@protocol TKALoadingModelObserver <NSObject>
+@protocol TKAModelObserver <NSObject>
 
 @optional
 - (void)modelWillLoad:(id)model;
 - (void)modelDidLoad:(id)model;
 - (void)modelFailLoad:(id)model;
 - (void)modelDidFailLoad:(id)model;
+- (void)model:(id)model didChangeWithObject:(TKAChangeModel *)object;
 
 @end
 
-@interface TKAModel : TKAObservableObject <TKAChangeModelObserver, TKALoadingModelObserver>
+@interface TKAModel : TKAObservableObject <TKAModelObserver>
 
 - (void)load;
 - (void)performLoading;
 - (void)setupLoading;
+- (void)finishLoading;
 
 @end

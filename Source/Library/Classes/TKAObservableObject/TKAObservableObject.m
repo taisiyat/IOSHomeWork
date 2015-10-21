@@ -7,13 +7,13 @@
 //
 
 #import "TKAObservableObject.h"
-#import "TKAAssignReference.h"
+
 #import "TKAPerformBlock.h"
-//#import "TKACarBathTest.h"
 
 @interface TKAObservableObject ()
-@property (nonatomic, retain)     NSMutableSet       *mutableObserverSet;
-@property (nonatomic, assign)     BOOL                 shouldNotify;
+//@property (nonatomic, retain)     NSMutableSet  *mutableObserverSet;
+@property (nonatomic, retain)     NSHashTable   *mutableObserverSet;
+@property (nonatomic, assign)     BOOL          shouldNotify;
 
 @end
 
@@ -32,7 +32,8 @@
 - (instancetype)init {
     self = [super init];
     if (self) {
-        self.mutableObserverSet = [NSMutableSet set];
+//        self.mutableObserverSet = [NSMutableSet set];
+        self.mutableObserverSet = [NSHashTable weakObjectsHashTable];
         self.shouldNotify = YES;
     }
     
@@ -47,19 +48,7 @@
 }
 
 - (void)setState:(NSUInteger)state {
-    @synchronized (self) {
-        if (state != _state) {
-            _state = state;
-            
-            void(^blockNotify)() = ^(){
-                [self notifyOfStateChangeWithSelector];
-            };
-            
-            if (self.shouldNotify) {
-                TKAPerformBlockSyncOnMainQueue(blockNotify);
-            }
-        }
-    }
+    [self setState:state withObject:nil];
 }
 
 - (void)setState:(NSUInteger)state withObject:(id)object {
@@ -67,45 +56,12 @@
         if (state != _state) {
             _state = state;
             
-            void(^blockNotify)() = ^(){
-                [self notifyOfStateChangeWithSelectorWithObject:object];
-            };
-            
             if (self.shouldNotify) {
-                TKAPerformBlockSyncOnMainQueue(blockNotify);
+                TKAPerformBlockSyncOnMainQueue(^{[self notifyOfStateChangeWithSelectorWithObject:object];});
             }
         }
     }
 }
-
-//- (void)setState:(NSUInteger)state {
-//    @synchronized (self) {
-//        if (state != _state) {
-//            _state = state;
-//            
-//            void(^blockNotify)() = ^(){
-//                [self notifyOfStateChangeWithSelector];
-//            };
-//            
-//            TKAPerformBlockSyncOnMainQueue(blockNotify);
-//        }
-//    }
-//}
-//
-//- (void)setState:(NSUInteger)state withObject:(id)object {
-//    @synchronized (self) {
-//        if (state != _state) {
-//            _state = state;
-//            
-//            void(^blockNotify)() = ^(){
-//                    [self notifyOfStateChangeWithSelectorWithObject:object];
-//            };
-//            
-//            TKAPerformBlockSyncOnMainQueue(blockNotify);
-//        }
-//    }
-//}
-
 
 - (NSUInteger)state {
     @synchronized (self) {
@@ -143,14 +99,19 @@
     [self notifyOfStateWithSelector:selector withObject:nil];
 }
 
+#pragma clang diagnostic push
+#pragma clang diagnostic ignored "-Warc-performSelector-leaks"
+
 - (void)notifyOfStateWithSelector:(SEL)selector withObject:(id)object {
-    NSMutableSet *observerSet = self.mutableObserverSet;
+    NSHashTable *observerSet = self.mutableObserverSet;
     for (id observer in observerSet) {
         if ([observer respondsToSelector:selector]) {
             [observer performSelector:selector withObject:self withObject:object];
         }
     }
 }
+
+#pragma clang diagnostic pop
 
 #pragma mark -
 #pragma mark Private

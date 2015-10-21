@@ -12,8 +12,6 @@
 
 + (instancetype)users;
 
-- (BOOL)fileExists;
-- (void)performLoading;
 - (void)save;
 
 @end

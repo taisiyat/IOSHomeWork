@@ -7,20 +7,22 @@
 //
 
 #import "TKAUsers.h"
-
 #import "TKAUser.h"
+
 #import "NSFileManager+TKAExtension.h"
 
 #import "TKAMacros.h"
 
-static const NSUInteger kTKAUsersCount      = 6;
-static const NSTimeInterval kTKASleepTime   = 1;
-static NSString * const kTKAFileName        = @"usersArray";
-static NSString * const kTKAKeyUsers        = @"TKAKeyUsers";
+static const NSUInteger     kTKAUsersCount      = 6;
+static const NSTimeInterval kTKASleepTime       = 1;
+static NSString * const     kTKAFileName        = @"usersArray";
+static NSString * const     kTKAKeyUsers        = @"TKAKeyUsers";
 
 @interface TKAUsers ()
 @property (nonatomic, readonly) NSString *fileFolder;
 @property (nonatomic, readonly) NSString *filePath;
+@property (nonatomic, readonly, getter=isFileExists) BOOL *fileExists;
+
 @property (nonatomic, readonly) NSArray  *notificationNames;
 
 @end
@@ -29,6 +31,7 @@ static NSString * const kTKAKeyUsers        = @"TKAKeyUsers";
 
 @dynamic fileFolder;
 @dynamic filePath;
+@dynamic fileExists;
 @dynamic notificationNames;
 
 #pragma mark -
@@ -48,8 +51,6 @@ static NSString * const kTKAKeyUsers        = @"TKAKeyUsers";
 - (instancetype)init {
     self = [super init];
     if (self) {
-//        [self fill];
-        [self load];
         [self subscribeToApplicationNotification:self.notificationNames];
     }
     
@@ -60,42 +61,42 @@ static NSString * const kTKAKeyUsers        = @"TKAKeyUsers";
 #pragma mark Accessors
 
 - (NSString *)fileFolder {
-    return [NSFileManager fileFolder];
+    return [NSFileManager documentsDirectory];
 }
 
-- (NSString *)filePathWithFileName:(NSString *)fileName {
-    return [NSFileManager filePathWithFileName:fileName];
+- (NSString *)filePath {
+    return [NSFileManager pathForDocumentsDirectoryWithFileName:kTKAFileName];
 }
 
 - (NSArray *)notificationNames {
     return @[UIApplicationWillTerminateNotification, UIApplicationWillResignActiveNotification];
 }
 
-#pragma mark -
-#pragma mark Public
-
-- (BOOL)fileExists {
+- (BOOL)isFileExists {
     return [NSFileManager fileExistsWithFileName:kTKAFileName];
 }
 
+#pragma mark -
+#pragma mark Public
+
 - (void)performLoading {
     id block = nil;
-    if ([self fileExists]) {
+    
+    if (self.fileExists) {
         TKASleep(kTKASleepTime);
         NSArray *arrayUsers = [[NSKeyedUnarchiver unarchiveObjectWithFile:self.filePath] mutableCopy];
         
         block = ^{
-        for (id object in arrayUsers) {
-            [self addUnit:object];
-        }
+            for (id object in arrayUsers) {
+                [self addUnit:object];
+            }
         };
-            [self performBlock:block shouldNotify:YES];
+        
     } else {
-        block = ^{
-        [self fill];
-        };
-        [self performBlock:block shouldNotify:NO];
+        block = ^{[self fill];};
     }
+    
+    [self performBlock:block shouldNotify:NO];
 }
 
 - (void)save {
@@ -122,21 +123,20 @@ static NSString * const kTKAKeyUsers        = @"TKAKeyUsers";
 #pragma mark -
 #pragma mark Private
 
-
 - (void)unsubscribeFromApplicationNotification:(NSArray *)notificationNames {
     for (NSString *notificationName in self.notificationNames) {
-    [[NSNotificationCenter defaultCenter] removeObserver:self
-                                                    name:notificationName
-                                                  object:nil];
+        [[NSNotificationCenter defaultCenter] removeObserver:self
+                                                        name:notificationName
+                                                      object:nil];
     }
 }
 
 - (void)subscribeToApplicationNotification:(NSArray *)notificationNames {
     for (NSString *notificationName in self.notificationNames) {
-    [[NSNotificationCenter defaultCenter] addObserver:self
-                                             selector:@selector(save)
-                                                 name:notificationName
-                                               object:nil];
+        [[NSNotificationCenter defaultCenter] addObserver:self
+                                                 selector:@selector(save)
+                                                     name:notificationName
+                                                   object:nil];
     }
 }
 

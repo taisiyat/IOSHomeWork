@@ -9,9 +9,8 @@
 #import "TKAModel.h"
 
 #import "TKAPerformBlock.h"
-#import "TKAMacros.h"
 
-static const NSTimeInterval kTKASleepTime = 1;
+#import "TKAMacros.h"
 
 @implementation TKAModel
 
@@ -23,20 +22,17 @@ static const NSTimeInterval kTKASleepTime = 1;
     
     if (TKAModelWillLoad == state || TKAModelDidLoad == state) {
         [self notifyOfStateWithSelector:[self selectorForState:state]];
+        
         return;
     }
    
     [self setupLoading];
     
     TKAWeakifyVariable(self)
-    
-    TKAPerformBlockAsyncBackground(^{
+    TKAPerformBlockAsyncOnBackgroundQueue(^{
         TKAStrongifyVariableAndReturnEmptyIfNil(self);
         [self performLoading];
-        
-        TKAPerformBlockSyncOnMainQueue(^{
-            self.state = TKAModelDidLoad;
-        });
+        [self finishLoading];
     });
 }
 
@@ -46,6 +42,12 @@ static const NSTimeInterval kTKASleepTime = 1;
 
 - (void)setupLoading {
     self.state = TKAModelWillLoad;
+}
+
+- (void)finishLoading {
+    TKAPerformBlockSyncOnMainQueue(^{
+        self.state = TKAModelDidLoad;
+    });
 }
 
 - (SEL)selectorForState:(NSUInteger)state {
@@ -64,10 +66,7 @@ static const NSTimeInterval kTKASleepTime = 1;
             
         case TKAModelDidFailLoad:
             return @selector(modelDidFailLoad:);
-
-        case TKAModelNotChange:
-            return nil;
-            
+         
         default:
             return [super selectorForState:state];
     }

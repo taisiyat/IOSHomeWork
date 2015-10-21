@@ -29,11 +29,11 @@
     
     TKAUsersViewController *controller = [TKAUsersViewController viewController];
     UINavigationController *navController = [[UINavigationController alloc] initWithRootViewController:controller];
-//    TKAUsers *users = [TKAUsers users];
-    controller.users = [TKAUsers users];
-    self.users = controller.users;
     window.rootViewController = navController;
     
+    TKAUsers *users = [TKAUsers users];
+    controller.users = users;
+    self.users = users;
     [window makeKeyAndVisible];
     
     return YES;
@@ -44,7 +44,7 @@
 }
 
 - (void)applicationDidEnterBackground:(UIApplication *)application {
-    [self.users save];
+
 }
 
 - (void)applicationWillEnterForeground:(UIApplication *)application {
@@ -56,7 +56,7 @@
 }
 
 - (void)applicationWillTerminate:(UIApplication *)application {
-    [self.users save];
+
 }
 
 @end
