@@ -25,8 +25,8 @@
 
 - (void)setUser:(TKAUser *)user {
     TKASynthesizeObservingSetter(user, user);
-    [self fillWithModel:user];
-    [user load];
+    [self fillWithModel:_user];
+    [_user load];
 }
 
 #pragma mark -
@@ -36,6 +36,8 @@
     self.nameLabel.text = user.name;
     if (user.image) {
         self.image.image = user.image;
+    } else {
+        [user load];
     }
 }
 
@@ -52,7 +54,7 @@
 }
 
 - (void)modelFailLoad:(TKAUser *)user {
-    [self.user load];
+//    [self.user load];
 }
 
 - (void)modelDidFailLoad:(TKAUser *)user {

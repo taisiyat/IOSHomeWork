@@ -11,7 +11,7 @@
 @class TKAChangeModel;
 
 typedef NS_ENUM(NSUInteger, TKAModelState) {
-    TKAModelUnLoad,
+    TKAModelUnload,
     TKAModelWillLoad,
     TKAModelDidLoad,
     TKAModelFailLoad,
