@@ -15,13 +15,23 @@
 #pragma mark -
 #pragma mark Initializations and Deallocations
 
-- (void)awakeFromNib {
-    [super awakeFromNib];
+- (instancetype)init {
+    self = [super init];
     
     if (self) {
         self.loadingView = [self newLoadingView];
     }
+    
+    return self;
 }
+
+//- (void)awakeFromNib {
+//    [super awakeFromNib];
+//    
+//    if (self) {
+//        self.loadingView = [self newLoadingView];
+//    }
+//}
 
 #pragma mark -
 #pragma mark Accessors
@@ -44,7 +54,7 @@
 
 - (void)hideLoadingView {
     [self.loadingView setVisible:NO animate:YES];
-    [self sendSubviewToBack:self.loadingView];
+//    [self sendSubviewToBack:self.loadingView];
 }
 
 - (id)newLoadingView {

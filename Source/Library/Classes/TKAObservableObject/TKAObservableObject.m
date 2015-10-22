@@ -20,6 +20,7 @@
 @implementation TKAObservableObject
 
 @synthesize state = _state;
+
 @dynamic observerSet;
 
 #pragma mark -
@@ -55,10 +56,10 @@
     @synchronized (self) {
         if (state != _state) {
             _state = state;
-            
-            if (self.shouldNotify) {
-                TKAPerformBlockSyncOnMainQueue(^{[self notifyOfStateChangeWithSelectorWithObject:object];});
-            }
+        }
+        
+        if (self.shouldNotify) {
+            TKAPerformBlockSyncOnMainQueue(^{[self notifyOfStateChangeWithSelectorWithObject:object];});
         }
     }
 }

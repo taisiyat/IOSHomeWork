@@ -83,7 +83,7 @@ TKAViewControllerBaseViewProperty(TKAUsersViewController, usersView, TKAUsersVie
     commitEditingStyle:(UITableViewCellEditingStyle)editingStyle
      forRowAtIndexPath:(NSIndexPath *)indexPath
 {
-    TKAArrayModel *users = self.users;
+    TKAUsers *users = self.users;
     if (editingStyle == UITableViewCellEditingStyleDelete) {
         [users removeUnitAtIndex:indexPath.row];
     } else if (editingStyle == UITableViewCellEditingStyleInsert) {
@@ -114,31 +114,24 @@ TKAViewControllerBaseViewProperty(TKAUsersViewController, usersView, TKAUsersVie
 - (void)setupNavigationItem {
     UINavigationItem *usersItem = self.navigationItem;
     usersItem.title = kTKANavigationItemTitle;
-    usersItem.leftBarButtonItem = [[UIBarButtonItem alloc]
-                                   initWithTitle:@"ADD"
-                                   style:UIBarButtonItemStyleDone
-                                   target:self
-                                   action:@selector(onAddButton:)];
-    usersItem.rightBarButtonItem = [[UIBarButtonItem alloc]
-                                    initWithTitle:@"Edit"
-                                    style:UIBarButtonItemStyleDone
-                                    target:self
-                                    action:@selector(onEditButton:)];
+    usersItem.leftBarButtonItem = [[UIBarButtonItem alloc] initWithTitle:@"ADD"
+                                                                   style:UIBarButtonItemStyleDone
+                                                                  target:self
+                                                                  action:@selector(onAddButton:)];
+    usersItem.rightBarButtonItem = [[UIBarButtonItem alloc] initWithTitle:@"Edit"
+                                                                    style:UIBarButtonItemStyleDone
+                                                                   target:self
+                                                                   action:@selector(onEditButton:)];
 }
 
 #pragma mark -
 #pragma mark Interface Handling
 
 - (IBAction)onAddButton:(id)sender {
-    TKAUsers *users = self.users;
-    // for test
-//    [users save];
-    [users addUnit:[TKAUser user]];
+    [self.users addUnit:[TKAUser user]];
 }
 
 - (IBAction)onEditButton:(id)sender {
-        // for test
-//    [self.users load];
     TKAUsersView *table = self.usersView;
     table.editing = !table.editing;
 }
@@ -146,7 +139,7 @@ TKAViewControllerBaseViewProperty(TKAUsersViewController, usersView, TKAUsersVie
 #pragma mark -
 #pragma mark TKALoadingModelObserver
 
-- (void)modelWillLoad:(TKAArrayModel *)users {
+- (void)modelWillLoad:(TKAUsers *)users {
     [self.usersView showLoadingView];
 }
 
@@ -156,7 +149,7 @@ TKAViewControllerBaseViewProperty(TKAUsersViewController, usersView, TKAUsersVie
 }
 
 - (void)modelFailLoad:(TKAArrayModel *)users {
-    [self.users load];
+ //   [self.users load];
 }
 
 - (void)modelDidFailLoad:(TKAArrayModel *)users {
@@ -170,7 +163,7 @@ TKAViewControllerBaseViewProperty(TKAUsersViewController, usersView, TKAUsersVie
     UITableView *table = self.usersView.tableView;
     
     switch (self.users.state) {
-        case TKAModelChange: {
+        case TKAModelDidChange: {
             [table updateWithChanges:user];
         }
             break;

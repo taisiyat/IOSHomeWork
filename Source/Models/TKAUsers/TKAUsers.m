@@ -83,7 +83,7 @@ static NSString * const     kTKAKeyUsers        = @"TKAKeyUsers";
     id block = nil;
     
     if (self.fileExists) {
-//        TKASleep(kTKASleepTime);
+        TKASleep(kTKASleepTime);
         NSArray *arrayUsers = [[NSKeyedUnarchiver unarchiveObjectWithFile:self.filePath] mutableCopy];
         
         block = ^{
@@ -99,8 +99,24 @@ static NSString * const     kTKAKeyUsers        = @"TKAKeyUsers";
     [self performBlock:block shouldNotify:NO];
 }
 
+- (void)setupLoading {
+    self.state = TKAModelWillLoad;
+}
+
+- (void)finishLoading {
+    TKAWeakifyVariable(self);
+    TKAPerformBlockSyncOnMainQueue(^{
+        TKAStrongifyVariable(self);
+        self.state = TKAModelDidLoad;
+    });
+}
+
 - (void)save {
-    [NSKeyedArchiver archiveRootObject:self.mutableCopy toFile:self.filePath];
+    [NSKeyedArchiver archiveRootObject:self.units toFile:self.filePath];
+}
+
+- (void)saveWithNotification:(id)notification {
+    [self save];
 }
 
 #pragma mark -
@@ -134,7 +150,7 @@ static NSString * const     kTKAKeyUsers        = @"TKAKeyUsers";
 - (void)subscribeToApplicationNotification:(NSArray *)notificationNames {
     for (NSString *notificationName in self.notificationNames) {
         [[NSNotificationCenter defaultCenter] addObserver:self
-                                                 selector:@selector(save)
+                                                 selector:@selector(saveWithNotification:)
                                                      name:notificationName
                                                    object:nil];
     }

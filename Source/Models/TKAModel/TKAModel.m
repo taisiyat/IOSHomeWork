@@ -18,19 +18,21 @@
 #pragma mark Overloaded Methods
 
 - (void)load {
-    TKAModelState state = self.state;
+    @synchronized (self) {
+        TKAModelState state = self.state;
     
-    if (TKAModelWillLoad == state || TKAModelDidLoad == state) {
-        [self notifyOfStateWithSelector:[self selectorForState:state]];
+        if (TKAModelWillLoad == state || TKAModelDidLoad == state) {
+            [self notifyOfStateWithSelector:[self selectorForState:state]];
         
-        return;
+            return;
+        }
     }
-   
+    
     [self setupLoading];
     
-//    TKAWeakifyVariable(self)
+    TKAWeakifyVariable(self)
     TKAPerformBlockAsyncOnBackgroundQueue(^{
-//        TKAStrongifyVariableAndReturnEmptyIfNil(self);
+        TKAStrongifyVariableAndReturnEmptyIfNil(self);
         [self performLoading];
         [self finishLoading];
     });
@@ -41,18 +43,22 @@
 }
 
 - (void)setupLoading {
-    self.state = TKAModelWillLoad;
+//    self.state = TKAModelWillLoad;
+    [self doesNotRecognizeSelector:_cmd];
+
 }
 
 - (void)finishLoading {
-    TKAPerformBlockSyncOnMainQueue(^{
-        self.state = TKAModelDidLoad;
-    });
+//    TKAPerformBlockSyncOnMainQueue(^{
+//        self.state = TKAModelDidLoad;
+//    });
+    [self doesNotRecognizeSelector:_cmd];
+
 }
 
 - (SEL)selectorForState:(NSUInteger)state {
     switch (state) {
-        case TKAModelChange:
+        case TKAModelDidChange:
             return @selector(model:didChangeWithObject:);
             
         case TKAModelWillLoad:
@@ -64,7 +70,7 @@
         case TKAModelFailLoad:
             return @selector(modelFailLoad:);
             
-        case TKAModelDidFailLoad:
+        case TKAModelDidFailLoading:
             return @selector(modelDidFailLoad:);
          
         default:

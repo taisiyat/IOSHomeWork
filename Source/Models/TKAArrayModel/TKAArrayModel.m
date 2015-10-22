@@ -13,7 +13,7 @@
 #import "NSMutableArray+TKAExtension.h"
 #import "NSFileManager+TKAExtension.h"
 
-static NSString * const kTKAArray           = @"ArrayDate";
+//static NSString * const kTKAArray           = @"ArrayDate";
 static NSString * const kTKAKeyArrayModel   = @"TKAArrayModel";
  
 @interface TKAArrayModel ()
@@ -64,18 +64,21 @@ static NSString * const kTKAKeyArrayModel   = @"TKAArrayModel";
 
 - (void)addUnit:(id)unit atIndex:(NSUInteger)index {
     [self.mutableUnits insertObject:unit atIndex:index];
-    [self setState:TKAModelChange
+    [self setState:TKAModelDidChange
         withObject:[TKAChangeModel insertModelWithIndex:index]];
 }
 
 - (void)removeUnit:(id)unit {
     NSUInteger index = [self indexOfObject:unit];
-    [self removeUnitAtIndex:index];
+    [self.mutableUnits removeObjectAtIndex:index];
+    [self setState:TKAModelDidChange
+        withObject:[TKAChangeModel deleteModelWithIndex:index]];
+//    [self removeUnitAtIndex:index];
 }
 
 - (void)removeUnitAtIndex:(NSUInteger)index {
     [self.mutableUnits removeObjectAtIndex:index];
-    [self setState:TKAModelChange
+    [self setState:TKAModelDidChange
         withObject:[TKAChangeModel deleteModelWithIndex:index]];
 }
 
@@ -89,12 +92,12 @@ static NSString * const kTKAKeyArrayModel   = @"TKAArrayModel";
 
 - (id)objectAtIndexedSubscript:(NSUInteger)index {
     NSMutableArray *units = self.mutableUnits;
-    assert(index < [units count]);
-//    if (index < [units count]) {
+//    assert(index < [units count]);
+    if (index < [units count]) {
         return [units objectAtIndexedSubscript:index];
-//    }
+    }
     
-//    return nil;
+    return nil;
 }
 
 - (void)moveUnitAtIndex:(NSUInteger)sourceIndex
@@ -102,7 +105,7 @@ static NSString * const kTKAKeyArrayModel   = @"TKAArrayModel";
 {
     [self.mutableUnits moveObjectFromLocationIndex:sourceIndex
                                      toTargetIndex:destinationIndex];
-    [self setState:TKAModelChange
+    [self setState:TKAModelDidChange
         withObject:[TKAChangeModel moveModelWithLocationIndex:sourceIndex withTargetIndex:destinationIndex]];
 }
 

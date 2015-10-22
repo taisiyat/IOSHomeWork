@@ -17,7 +17,6 @@ static const NSTimeInterval kTKASleepTime    = 1;
 static NSString * const kTKAImageName        = @"image";
 static NSString * const kTKAImageExtension   = @"jpg";
 static NSString * const kTKAKeyUser          = @"TKAKeyUser";
-static NSString * const kTKAFileName         = @"usersArray";
 
 @interface TKAUser ()
 @property (nonatomic, strong)   UIImage     *image;
@@ -29,7 +28,6 @@ static NSString * const kTKAFileName         = @"usersArray";
 
 @implementation TKAUser
 
-@dynamic image;
 @dynamic fileFolder;
 @dynamic filePath;
 @dynamic fileExists;
@@ -44,36 +42,39 @@ static NSString * const kTKAFileName         = @"usersArray";
 #pragma mark -
 #pragma mark Initializations and Deallocations
 
+- (instancetype)init {
+    self = [super init];
+    if (self) {
+        self.name = [NSString randomName];
+    }
+    
+    return self;
+}
+
 #pragma mark -
 #pragma mark Accessors
-
-
-- (BOOL)fileExists {
-    return [NSFileManager fileExistsWithFileName:kTKAFileName];
-}
 
 #pragma mark -
 #pragma mark Public
 
 - (void)performLoading {
     TKASleep(kTKASleepTime);
-    
-    UIImage *image = nil;
     NSURL *url = [[NSBundle mainBundle] URLForResource:kTKAImageName
                                          withExtension:kTKAImageExtension];
-    image = [UIImage imageWithContentsOfFile:[url path]];
+    UIImage *image = [UIImage imageWithContentsOfFile:[url path]];
     self.image = image;
-    void(^block)() =nil;
-    
-    if (self.isFileExists) {
-        block = ^{
-            self.name = [NSKeyedUnarchiver unarchiveObjectWithFile:self.filePath];
-        };
-    } else {
-        block = ^{ self.name = [NSString randomName];};
-    }
-    
-    [self performBlock:block shouldNotify:NO];
+}
+
+- (void)setupLoading {
+    self.state = TKAModelWillLoad;
+}
+
+- (void)finishLoading {
+    TKAWeakifyVariable(self);
+    TKAPerformBlockSyncOnMainQueue(^{
+        TKAStrongifyVariable(self);
+        self.state = self.image ? TKAModelDidLoad : TKAModelFailLoad;
+    });
 }
 
 #pragma mark -

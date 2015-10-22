@@ -10,10 +10,10 @@
 
 #import "UINib+TKAExtension.h"
 
-static const NSTimeInterval kTKATimeDuration    = 1.0;
+static const NSTimeInterval kTKATimeDuration    = 3.0;
 static const NSTimeInterval kTKATimeDelay       = 0.0;
 static const NSTimeInterval kTKATimeIntervalNUL = 0.0;
-static const CGFloat        kTKAVisibleView     = 0.6;
+static const CGFloat        kTKAVisibleView     = 1.0;
 
 @implementation TKAVisibleView
 

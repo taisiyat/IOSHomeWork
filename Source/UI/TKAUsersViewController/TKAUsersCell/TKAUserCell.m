@@ -24,9 +24,9 @@
 }
 
 - (void)setUser:(TKAUser *)user {
-        TKASynthesizeObservingSetter(user, user);
-        [self fillWithModel:user];
-        [user load];
+    TKASynthesizeObservingSetter(user, user);
+    [self fillWithModel:user];
+    [user load];
 }
 
 #pragma mark -
@@ -34,11 +34,13 @@
 
 - (void)fillWithModel:(TKAUser *)user {
     self.nameLabel.text = user.name;
-    self.image.image = user.image;
+    if (user.image) {
+        self.image.image = user.image;
+    }
 }
 
 #pragma mark -
-#pragma mark TKALoadingModelObserver
+#pragma mark TKAModelObserver
 
 - (void)modelWillLoad:(TKAUser *)user {
     [self.spinner startAnimating];
