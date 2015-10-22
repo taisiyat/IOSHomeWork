@@ -34,7 +34,7 @@ TKAViewControllerBaseViewProperty(TKAUsersViewController, usersView, TKAUsersVie
 
 - (void)setUsers:(TKAUsers *)users {
     TKASynthesizeObservingSetter(users, users);
-    [users load];
+//    [users load];
 }
 
 #pragma mark -
@@ -54,7 +54,6 @@ TKAViewControllerBaseViewProperty(TKAUsersViewController, usersView, TKAUsersVie
     [super viewDidLoad];
     
     [self.users load];
-//    [self.usersView.tableView reloadData];
 }
 
 - (void)didReceiveMemoryWarning {

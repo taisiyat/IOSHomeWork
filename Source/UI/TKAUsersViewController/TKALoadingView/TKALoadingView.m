@@ -15,16 +15,6 @@
 #pragma mark -
 #pragma mark Initializations and Deallocations
 
-//- (instancetype)init {
-//    self = [super init];
-//    
-//    if (self) {
-//        self.loadingView = [self newLoadingView];
-//    }
-//    
-//    return self;
-//}
-
 - (void)awakeFromNib {
     [super awakeFromNib];
     

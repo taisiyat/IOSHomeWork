@@ -44,16 +44,6 @@ static NSString * const kTKAFileName         = @"usersArray";
 #pragma mark -
 #pragma mark Initializations and Deallocations
 
-- (instancetype)init {
-    self = [super init];
-    if (self) {
-//        self.name = [NSString randomName];
-//        [self load];
-    }
-    
-    return self;
-}
-
 #pragma mark -
 #pragma mark Accessors
 

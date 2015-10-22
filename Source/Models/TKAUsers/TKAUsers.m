@@ -83,7 +83,7 @@ static NSString * const     kTKAKeyUsers        = @"TKAKeyUsers";
     id block = nil;
     
     if (self.fileExists) {
-        TKASleep(kTKASleepTime);
+//        TKASleep(kTKASleepTime);
         NSArray *arrayUsers = [[NSKeyedUnarchiver unarchiveObjectWithFile:self.filePath] mutableCopy];
         
         block = ^{

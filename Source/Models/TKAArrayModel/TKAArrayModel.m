@@ -59,11 +59,6 @@ static NSString * const kTKAKeyArrayModel   = @"TKAArrayModel";
 #pragma mark Public
 
 - (void)addUnit:(id)unit {
-//    [self.mutableUnits addObject:unit];
-//    if ([self.observerSet anyObject] != nil) {
-//        [self setState:TKAModelChange
-//            withObject:[TKAChangeModel insertModelWithIndex:[self indexOfObject:unit]]];
-//    }
     [self addUnit:unit atIndex:[self.mutableUnits count]];
 }
 
@@ -76,9 +71,6 @@ static NSString * const kTKAKeyArrayModel   = @"TKAArrayModel";
 - (void)removeUnit:(id)unit {
     NSUInteger index = [self indexOfObject:unit];
     [self removeUnitAtIndex:index];
-//    [self.mutableUnits removeObject:unit];
-//    [self setState:TKAModelChange
-//        withObject:[TKAChangeModel deleteModelWithIndex:index]];
 }
 
 - (void)removeUnitAtIndex:(NSUInteger)index {
@@ -98,11 +90,11 @@ static NSString * const kTKAKeyArrayModel   = @"TKAArrayModel";
 - (id)objectAtIndexedSubscript:(NSUInteger)index {
     NSMutableArray *units = self.mutableUnits;
     assert(index < [units count]);
-    //if (index < [units count]) {
+//    if (index < [units count]) {
         return [units objectAtIndexedSubscript:index];
-    //}
+//    }
     
-    //return nil;
+//    return nil;
 }
 
 - (void)moveUnitAtIndex:(NSUInteger)sourceIndex

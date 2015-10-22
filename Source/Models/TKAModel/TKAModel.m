@@ -28,9 +28,9 @@
    
     [self setupLoading];
     
-    TKAWeakifyVariable(self)
+//    TKAWeakifyVariable(self)
     TKAPerformBlockAsyncOnBackgroundQueue(^{
-        TKAStrongifyVariableAndReturnEmptyIfNil(self);
+//        TKAStrongifyVariableAndReturnEmptyIfNil(self);
         [self performLoading];
         [self finishLoading];
     });
