@@ -69,11 +69,7 @@ static NSString * const kTKAKeyArrayModel   = @"TKAArrayModel";
 }
 
 - (void)removeUnit:(id)unit {
-    NSUInteger index = [self indexOfObject:unit];
-    [self.mutableUnits removeObjectAtIndex:index];
-    [self setState:TKAModelDidChange
-        withObject:[TKAChangeModel deleteModelWithIndex:index]];
-//    [self removeUnitAtIndex:index];
+    [self removeUnitAtIndex:[self indexOfObject:unit]];
 }
 
 - (void)removeUnitAtIndex:(NSUInteger)index {

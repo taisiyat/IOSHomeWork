@@ -20,6 +20,8 @@
 #import "NSIndexPath+TKAExtension.h"
 
 static NSString * const kTKANavigationItemTitle = @"users";
+static NSString * const kTKANavigationAddButton = @"ADD";
+static NSString * const kTKANavigationEditButton = @"EDIT";
 
 TKAViewControllerBaseViewProperty(TKAUsersViewController, usersView, TKAUsersView)
 
@@ -114,11 +116,11 @@ TKAViewControllerBaseViewProperty(TKAUsersViewController, usersView, TKAUsersVie
 - (void)setupNavigationItem {
     UINavigationItem *usersItem = self.navigationItem;
     usersItem.title = kTKANavigationItemTitle;
-    usersItem.leftBarButtonItem = [[UIBarButtonItem alloc] initWithTitle:@"ADD"
+    usersItem.leftBarButtonItem = [[UIBarButtonItem alloc] initWithTitle:kTKANavigationAddButton
                                                                    style:UIBarButtonItemStyleDone
                                                                   target:self
                                                                   action:@selector(onAddButton:)];
-    usersItem.rightBarButtonItem = [[UIBarButtonItem alloc] initWithTitle:@"Edit"
+    usersItem.rightBarButtonItem = [[UIBarButtonItem alloc] initWithTitle:kTKANavigationEditButton
                                                                     style:UIBarButtonItemStyleDone
                                                                    target:self
                                                                    action:@selector(onEditButton:)];

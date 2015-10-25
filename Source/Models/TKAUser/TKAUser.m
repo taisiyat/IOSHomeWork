@@ -85,6 +85,7 @@ static NSString * const kTKAKeyUser          = @"TKAKeyUser";
 }
 
 - (id)initWithCoder:(NSCoder *)decoder {
+    self = [super init];
     if (self) {
         self.name = [decoder decodeObjectForKey:kTKAKeyUser];
     }

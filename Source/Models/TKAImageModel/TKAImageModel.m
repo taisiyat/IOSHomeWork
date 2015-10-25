@@ -11,10 +11,10 @@
 @interface TKAImageModel ()
 @property (nonatomic, strong) UIImage *image;
 @property (nonatomic, strong) NSURL   *url;
+@property (nonatomic, strong) NSURLSessionTask *sessionTask;
+
 
 @end
-
-NSMapTable
 
 @implementation TKAImageModel
 

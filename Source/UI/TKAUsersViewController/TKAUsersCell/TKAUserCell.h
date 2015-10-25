@@ -9,10 +9,11 @@
 #import <UIKit/UIKit.h>
 
 #import "TKATableViewCell.h"
+#import "TKAModel.h"
 
 @class TKAUser;
 
-@interface TKAUserCell : TKATableViewCell
+@interface TKAUserCell : TKATableViewCell <TKAModelObserver>
 @property (nonatomic, strong) IBOutlet UILabel      *nameLabel;
 @property (nonatomic, strong) IBOutlet UIImageView  *image;
 @property (nonatomic, strong) IBOutlet UIActivityIndicatorView *spinner;

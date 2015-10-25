@@ -9,7 +9,7 @@
 #import "TKACache.h"
 
 @interface TKACache ()
-@property (nonatomic, assign) NSMutableArray *objects;
+@property (nonatomic, assign) NSMapTable *objects;
 
 @end
 
