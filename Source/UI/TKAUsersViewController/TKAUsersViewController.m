@@ -12,7 +12,7 @@
 #import "TKAUserCell.h"
 #import "TKAUser.h"
 #import "TKAUsers.h"
-#import "TKALoadingView.h"
+#import "TKABaseView.h"
 
 #import "TKAMacros.h"
 

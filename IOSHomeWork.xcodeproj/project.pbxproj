@@ -13,7 +13,6 @@
 		8A0109101BD9856000DBF561 /* TKACache.m in Sources */ = {isa = PBXBuildFile; fileRef = 8A01090F1BD9856000DBF561 /* TKACache.m */; };
 		8A0E0E7C1BB80EC10062C0BD /* TKAObservableObject.m in Sources */ = {isa = PBXBuildFile; fileRef = 8A0E0E7B1BB80EC10062C0BD /* TKAObservableObject.m */; };
 		8A0E0E891BB813E80062C0BD /* TKAPerformBlock.m in Sources */ = {isa = PBXBuildFile; fileRef = 8A0E0E881BB813E80062C0BD /* TKAPerformBlock.m */; };
-		8A25F1651BD2947400041058 /* TKALoadingView.m in Sources */ = {isa = PBXBuildFile; fileRef = 8A25F1641BD2947400041058 /* TKALoadingView.m */; };
 		8A25F1691BD298BA00041058 /* TKAModel.m in Sources */ = {isa = PBXBuildFile; fileRef = 8A25F1681BD298BA00041058 /* TKAModel.m */; };
 		8A3638661BB6D83900702D47 /* UITableView+TKAExtension.m in Sources */ = {isa = PBXBuildFile; fileRef = 8A3638651BB6D83900702D47 /* UITableView+TKAExtension.m */; };
 		8A3638691BB6DA5200702D47 /* UINib+TKAExtension.m in Sources */ = {isa = PBXBuildFile; fileRef = 8A3638681BB6DA5200702D47 /* UINib+TKAExtension.m */; };
@@ -36,9 +35,10 @@
 		8A6EF8DD1B41A1D400CABD97 /* Images.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = 8A6EF8D21B41A1D400CABD97 /* Images.xcassets */; };
 		8A7224B41BC4194B0062AE2E /* TKAChangeModel+UITableView.m in Sources */ = {isa = PBXBuildFile; fileRef = 8A7224B31BC4194B0062AE2E /* TKAChangeModel+UITableView.m */; };
 		8A7224B81BC4241F0062AE2E /* NSMutableArray+TKAExtension.m in Sources */ = {isa = PBXBuildFile; fileRef = 8A7224B71BC4241F0062AE2E /* NSMutableArray+TKAExtension.m */; };
-		8A808B451BC6BA82006CA11C /* TKAVisibleView.m in Sources */ = {isa = PBXBuildFile; fileRef = 8A808B441BC6BA82006CA11C /* TKAVisibleView.m */; };
-		8A808B491BC6BAFC006CA11C /* TKAVisibleView.xib in Resources */ = {isa = PBXBuildFile; fileRef = 8A808B481BC6BAFC006CA11C /* TKAVisibleView.xib */; };
 		8A86DCCF1B42893B007FE402 /* TKAAppDelegate.m in Sources */ = {isa = PBXBuildFile; fileRef = 8A86DCCE1B42893B007FE402 /* TKAAppDelegate.m */; };
+		8A8986791BDD541700F6E003 /* TKALoadingView.m in Sources */ = {isa = PBXBuildFile; fileRef = 8A8986771BDD541700F6E003 /* TKALoadingView.m */; };
+		8A89867A1BDD541700F6E003 /* TKALoadingView.xib in Resources */ = {isa = PBXBuildFile; fileRef = 8A8986781BDD541700F6E003 /* TKALoadingView.xib */; };
+		8A89867E1BDD542E00F6E003 /* TKABaseView.m in Sources */ = {isa = PBXBuildFile; fileRef = 8A89867D1BDD542E00F6E003 /* TKABaseView.m */; };
 		8A8B58E41BA9FE3D0001982A /* UIViewController+TKAExtension.m in Sources */ = {isa = PBXBuildFile; fileRef = 8A8B58E31BA9FE3D0001982A /* UIViewController+TKAExtension.m */; };
 		8AA02BFF1BC19FBC004B93DB /* TKAUsersView.m in Sources */ = {isa = PBXBuildFile; fileRef = 8AA02BF91BC19FBC004B93DB /* TKAUsersView.m */; };
 		8AA02C001BC19FBC004B93DB /* TKAUsersViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 8AA02BFB1BC19FBC004B93DB /* TKAUsersViewController.m */; };
@@ -72,12 +72,9 @@
 		8A0109081BD9611700DBF561 /* TKAImageView.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = TKAImageView.m; sourceTree = "<group>"; };
 		8A01090E1BD9856000DBF561 /* TKACache.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = TKACache.h; sourceTree = "<group>"; };
 		8A01090F1BD9856000DBF561 /* TKACache.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = TKACache.m; sourceTree = "<group>"; };
-		8A0E0E7A1BB80EC10062C0BD /* TKAObservableObject.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = TKAObservableObject.h; sourceTree = "<group>"; };
 		8A0E0E7B1BB80EC10062C0BD /* TKAObservableObject.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = TKAObservableObject.m; sourceTree = "<group>"; };
 		8A0E0E881BB813E80062C0BD /* TKAPerformBlock.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = TKAPerformBlock.m; sourceTree = "<group>"; };
 		8A0E0E8A1BB814380062C0BD /* TKAPerformBlock.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = TKAPerformBlock.h; sourceTree = "<group>"; };
-		8A25F1631BD2947400041058 /* TKALoadingView.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = TKALoadingView.h; sourceTree = "<group>"; };
-		8A25F1641BD2947400041058 /* TKALoadingView.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = TKALoadingView.m; sourceTree = "<group>"; };
 		8A25F1671BD298BA00041058 /* TKAModel.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = TKAModel.h; sourceTree = "<group>"; };
 		8A25F1681BD298BA00041058 /* TKAModel.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = TKAModel.m; sourceTree = "<group>"; };
 		8A3638641BB6D83900702D47 /* UITableView+TKAExtension.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = "UITableView+TKAExtension.h"; sourceTree = "<group>"; };
@@ -118,11 +115,14 @@
 		8A7224B31BC4194B0062AE2E /* TKAChangeModel+UITableView.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = "TKAChangeModel+UITableView.m"; sourceTree = "<group>"; };
 		8A7224B61BC4241F0062AE2E /* NSMutableArray+TKAExtension.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = "NSMutableArray+TKAExtension.h"; sourceTree = "<group>"; };
 		8A7224B71BC4241F0062AE2E /* NSMutableArray+TKAExtension.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = "NSMutableArray+TKAExtension.m"; sourceTree = "<group>"; };
-		8A808B431BC6BA82006CA11C /* TKAVisibleView.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = TKAVisibleView.h; sourceTree = "<group>"; };
-		8A808B441BC6BA82006CA11C /* TKAVisibleView.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = TKAVisibleView.m; sourceTree = "<group>"; };
-		8A808B481BC6BAFC006CA11C /* TKAVisibleView.xib */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.xib; path = TKAVisibleView.xib; sourceTree = "<group>"; };
 		8A86DCCD1B42893B007FE402 /* TKAAppDelegate.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = TKAAppDelegate.h; sourceTree = "<group>"; };
 		8A86DCCE1B42893B007FE402 /* TKAAppDelegate.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = TKAAppDelegate.m; sourceTree = "<group>"; };
+		8A8986741BDD50CA00F6E003 /* TKAObservableObject.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = TKAObservableObject.h; sourceTree = "<group>"; };
+		8A8986761BDD541700F6E003 /* TKALoadingView.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = TKALoadingView.h; sourceTree = "<group>"; };
+		8A8986771BDD541700F6E003 /* TKALoadingView.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = TKALoadingView.m; sourceTree = "<group>"; };
+		8A8986781BDD541700F6E003 /* TKALoadingView.xib */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.xib; path = TKALoadingView.xib; sourceTree = "<group>"; };
+		8A89867C1BDD542E00F6E003 /* TKABaseView.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = TKABaseView.h; sourceTree = "<group>"; };
+		8A89867D1BDD542E00F6E003 /* TKABaseView.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = TKABaseView.m; sourceTree = "<group>"; };
 		8A8B58E21BA9FE3D0001982A /* UIViewController+TKAExtension.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = "UIViewController+TKAExtension.h"; sourceTree = "<group>"; };
 		8A8B58E31BA9FE3D0001982A /* UIViewController+TKAExtension.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = "UIViewController+TKAExtension.m"; sourceTree = "<group>"; };
 		8AA02BF81BC19FBC004B93DB /* TKAUsersView.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = TKAUsersView.h; sourceTree = "<group>"; };
@@ -205,21 +205,12 @@
 		8A0E0E791BB80EC10062C0BD /* TKAObservableObject */ = {
 			isa = PBXGroup;
 			children = (
-				8A0E0E7A1BB80EC10062C0BD /* TKAObservableObject.h */,
+				8A8986741BDD50CA00F6E003 /* TKAObservableObject.h */,
 				8A0E0E7B1BB80EC10062C0BD /* TKAObservableObject.m */,
 				8A0E0E8A1BB814380062C0BD /* TKAPerformBlock.h */,
 				8A0E0E881BB813E80062C0BD /* TKAPerformBlock.m */,
 			);
 			path = TKAObservableObject;
-			sourceTree = "<group>";
-		};
-		8A25F1621BD2947400041058 /* TKALoadingView */ = {
-			isa = PBXGroup;
-			children = (
-				8A25F1631BD2947400041058 /* TKALoadingView.h */,
-				8A25F1641BD2947400041058 /* TKALoadingView.m */,
-			);
-			path = TKALoadingView;
 			sourceTree = "<group>";
 		};
 		8A25F1661BD2983900041058 /* TKAModel */ = {
@@ -463,14 +454,23 @@
 			path = "NAMutableArray+TKAExtension";
 			sourceTree = "<group>";
 		};
-		8A808B421BC6BA82006CA11C /* TKAVisibleView */ = {
+		8A8986751BDD541700F6E003 /* TKALoadingView */ = {
 			isa = PBXGroup;
 			children = (
-				8A808B431BC6BA82006CA11C /* TKAVisibleView.h */,
-				8A808B441BC6BA82006CA11C /* TKAVisibleView.m */,
-				8A808B481BC6BAFC006CA11C /* TKAVisibleView.xib */,
+				8A8986761BDD541700F6E003 /* TKALoadingView.h */,
+				8A8986771BDD541700F6E003 /* TKALoadingView.m */,
+				8A8986781BDD541700F6E003 /* TKALoadingView.xib */,
 			);
-			path = TKAVisibleView;
+			path = TKALoadingView;
+			sourceTree = "<group>";
+		};
+		8A89867B1BDD542E00F6E003 /* TKABaseView */ = {
+			isa = PBXGroup;
+			children = (
+				8A89867C1BDD542E00F6E003 /* TKABaseView.h */,
+				8A89867D1BDD542E00F6E003 /* TKABaseView.m */,
+			);
+			path = TKABaseView;
 			sourceTree = "<group>";
 		};
 		8A8B58E11BA9FDF50001982A /* UIViewController+TKAExtension */ = {
@@ -485,9 +485,9 @@
 		8AA02BF31BC19FBC004B93DB /* TKAUsersViewController */ = {
 			isa = PBXGroup;
 			children = (
+				8A89867B1BDD542E00F6E003 /* TKABaseView */,
+				8A8986751BDD541700F6E003 /* TKALoadingView */,
 				8A0109061BD9611700DBF561 /* TKAImageView */,
-				8A25F1621BD2947400041058 /* TKALoadingView */,
-				8A808B421BC6BA82006CA11C /* TKAVisibleView */,
 				8AA02BF41BC19FBC004B93DB /* TKAUsersCell */,
 				8AA02BF81BC19FBC004B93DB /* TKAUsersView.h */,
 				8AA02BF91BC19FBC004B93DB /* TKAUsersView.m */,
@@ -680,9 +680,9 @@
 			isa = PBXResourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
-				8A808B491BC6BAFC006CA11C /* TKAVisibleView.xib in Resources */,
 				8AEC46471BA8655C00F6FC0D /* TKAViewController.xib in Resources */,
 				8AA02C061BC1A05C004B93DB /* TKAUserCell.xib in Resources */,
+				8A89867A1BDD541700F6E003 /* TKALoadingView.xib in Resources */,
 				8A6EF8DC1B41A1D400CABD97 /* Images.xcassets in Resources */,
 				8AA02C011BC19FBC004B93DB /* TKAUsersViewController.xib in Resources */,
 				8A6EF8D81B41A1D400CABD97 /* LaunchScreen.xib in Resources */,
@@ -741,16 +741,16 @@
 			files = (
 				8A8B58E41BA9FE3D0001982A /* UIViewController+TKAExtension.m in Sources */,
 				8AEC46701BA8931A00F6FC0D /* UIWindow+TKAExtension.m in Sources */,
-				8A808B451BC6BA82006CA11C /* TKAVisibleView.m in Sources */,
 				8AA02BFF1BC19FBC004B93DB /* TKAUsersView.m in Sources */,
+				8A89867E1BDD542E00F6E003 /* TKABaseView.m in Sources */,
 				8A3F5A991BBB29BB00176831 /* TKAArrayModel.m in Sources */,
+				8A8986791BDD541700F6E003 /* TKALoadingView.m in Sources */,
 				8AEC464A1BA8657400F6FC0D /* TKAMacros.m in Sources */,
 				8A3E1A771BD3D08700E9F854 /* NSFileManager+TKAExtension.m in Sources */,
 				8A0109091BD9611700DBF561 /* TKAImageView.m in Sources */,
 				8A0E0E7C1BB80EC10062C0BD /* TKAObservableObject.m in Sources */,
 				8A3F16D61B3AD6C500E6551E /* main.m in Sources */,
 				8A25F1691BD298BA00041058 /* TKAModel.m in Sources */,
-				8A25F1651BD2947400041058 /* TKALoadingView.m in Sources */,
 				8AA02C001BC19FBC004B93DB /* TKAUsersViewController.m in Sources */,
 				8A3638741BB6EF0800702D47 /* TKAUsers.m in Sources */,
 				8A3F5A9C1BBB308900176831 /* TKAChangeModel.m in Sources */,

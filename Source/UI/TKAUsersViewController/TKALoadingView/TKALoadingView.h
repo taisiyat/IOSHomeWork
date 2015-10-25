@@ -2,20 +2,18 @@
 //  TKALoadingView.h
 //  IOSHomeWork
 //
-//  Created by Taisiya on 16.10.15.
+//  Created by Taisiya on 08.10.15.
 //  Copyright (c) 2015 TKAHomeWork. All rights reserved.
 //
 
 #import <UIKit/UIKit.h>
 
-@class TKAVisibleView;
-
 @interface TKALoadingView : UIView
-@property (nonatomic, strong) TKAVisibleView    *loadingView;
-@property (nonatomic, readonly, getter=isHidden) BOOL hidden;
+@property (nonatomic, assign, getter=isVisible) BOOL visible;
 
-- (void)showLoadingView;
-- (void)hideLoadingView;
-- (id)newLoadingView;
++ (instancetype)visibleViewWithSuperview:(UIView *)superView;
+
+- (void)setVisible:(BOOL)visible animate:(BOOL)animate;
+- (void)setVisible:(BOOL)visible animate:(BOOL)animate completion:(void(^)())completion;
 
 @end

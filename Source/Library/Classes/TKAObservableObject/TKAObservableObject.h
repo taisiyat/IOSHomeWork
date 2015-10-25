@@ -9,7 +9,7 @@
 #import <Foundation/Foundation.h>
 #import "TKAPerformBlock.h"
 
-@interface TKAObservableObject : NSObject
+@interface TKAObservableObject : NSObject //<NSCoding>
 @property (atomic, assign)       NSUInteger  state;
 @property (nonatomic, readonly)  NSSet       *observerSet;
 

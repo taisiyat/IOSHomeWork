@@ -2,63 +2,59 @@
 //  TKALoadingView.m
 //  IOSHomeWork
 //
-//  Created by Taisiya on 16.10.15.
+//  Created by Taisiya on 08.10.15.
 //  Copyright (c) 2015 TKAHomeWork. All rights reserved.
 //
 
 #import "TKALoadingView.h"
 
-#import "TKAVisibleView.h"
+#import "UINib+TKAExtension.h"
+
+static const NSTimeInterval kTKATimeDuration    = 3.0;
+static const NSTimeInterval kTKATimeDelay       = 0.0;
+static const NSTimeInterval kTKATimeIntervalNUL = 0.0;
+static const CGFloat        kTKALoadingView     = 1.0;
 
 @implementation TKALoadingView
 
 #pragma mark -
 #pragma mark Initializations and Deallocations
 
-- (instancetype)init {
-    self = [super init];
++ (instancetype)visibleViewWithSuperview:(UIView *)superview {
+    TKALoadingView *visibleView = [UINib objectWithClass:[self class]];
+    [superview addSubview:visibleView];
+    visibleView.frame = superview.bounds;
     
-    if (self) {
-        self.loadingView = [self newLoadingView];
-    }
-    
-    return self;
-}
-
-//- (void)awakeFromNib {
-//    [super awakeFromNib];
-//    
-//    if (self) {
-//        self.loadingView = [self newLoadingView];
-//    }
-//}
-
-#pragma mark -
-#pragma mark Accessors
-
-- (BOOL)isHidden {
-    return self.loadingView.visible;
+    return visibleView;
 }
 
 #pragma mark -
-#pragma mark Public
+#pragma mark Accesssors
 
-- (void)showLoadingView {
-    if (!self.loadingView) {
-        self.loadingView = [self newLoadingView];
+- (void)setVisible:(BOOL)visible {
+    [self setVisible:visible animate:NO];
+}
+
+- (void)setVisible:(BOOL)visible animate:(BOOL)animate {
+    [self setVisible:visible animate:animate completion:nil];
+}
+
+- (void)setVisible:(BOOL)visible animate:(BOOL)animate completion:(void(^)())completion {
+    if (_visible != visible) {
+        [UIView animateWithDuration:animate ? kTKATimeDuration : kTKATimeIntervalNUL
+                              delay:kTKATimeDelay
+                            options:UIViewAnimationOptionCurveEaseInOut
+                         animations:^{
+                             self.alpha = visible ? kTKALoadingView : 0.0;
+                         }
+                         completion:^(BOOL finished) {
+                             _visible = visible;
+                             
+                             if (completion) {
+                                 completion();
+                             }
+                         }];
     }
-    
-    [self bringSubviewToFront:self.loadingView];
-    [self.loadingView setVisible:YES animate:YES];
-}
-
-- (void)hideLoadingView {
-    [self.loadingView setVisible:NO animate:YES];
-//    [self sendSubviewToBack:self.loadingView];
-}
-
-- (id)newLoadingView {
-    return [TKAVisibleView visibleViewWithSuperview:self];
 }
 
 @end

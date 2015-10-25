@@ -8,9 +8,9 @@
 
 #import <UIKit/UIKit.h>
 
-#import "TKALoadingView.h"
+#import "TKABaseView.h"
 
-@interface TKAUsersView : TKALoadingView
+@interface TKAUsersView : TKABaseView
 @property (nonatomic, strong) IBOutlet UITableView  *tableView;
 @property (nonatomic, strong) IBOutlet UIButton     *addButton;
 @property (nonatomic, strong) IBOutlet UIButton     *editButton;

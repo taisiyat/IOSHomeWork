@@ -10,6 +10,8 @@
 
 #import "TKAPerformBlock.h"
 
+static NSString * const kTKAKeyObservervable = @"kTKAKeyObservervable";
+
 @interface TKAObservableObject ()
 //@property (nonatomic, retain)     NSMutableSet  *mutableObserverSet;
 @property (nonatomic, retain)     NSHashTable   *mutableObserverSet;
@@ -128,6 +130,21 @@
 - (void)notifyOfStateChangeWithSelectorWithObject:(id)object {
     [self notifyOfStateWithSelector:[self selectorForState:_state] withObject:object];
 }
+
+//#pragma mark -
+//#pragma mark NSCoding
+//
+//- (void)encodeWithCoder:(NSCoder *)coder {
+//    [coder encodeObject:self forKey:kTKAKeyObservervable];
+//}
+//
+//- (id)initWithCoder:(NSCoder *)decoder {
+//    if (self) {
+//        self = [decoder decodeObjectForKey:kTKAKeyObservervable];
+//    }
+//    
+//    return self;
+//}
 
 @end
 
