@@ -8,6 +8,9 @@
 
 #import "TKAImageModel.h"
 
+static NSString * const kTKAURL1 = @"http://donutey.com/images/format/PNG1.png";
+static NSString * const kTKAURL2 = @"http://steelasophical.com/hello-world/1283614816-rasta1-png/";
+
 @interface TKAImageModel ()
 @property (nonatomic, strong) UIImage *image;
 @property (nonatomic, strong) NSURL   *url;
@@ -61,11 +64,28 @@
     self.state = self.image ? TKAModelDidLoad : TKAModelFailLoad;
 }
 
+- (void)nameCacheFileFromURL:(NSURL *)url {
+    
+}
+
+- (void)path {
+    
+}
+
 #pragma mark -
 #pragma mark Private
 
+- (void)load {
+//    if () {
+//        //load from file
+//    } else {
+//        //load from net
+//    }
+}
+
 - (void)loadWithPath {
     self.image = [UIImage imageWithContentsOfFile:[self.url absoluteString]];
+
 }
 
 

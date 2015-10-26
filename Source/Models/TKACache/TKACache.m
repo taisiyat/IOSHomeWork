@@ -16,27 +16,57 @@
 @implementation TKACache
 
 + (TKACache *)sharedCache {
-    return nil;
+    static TKACache *__object = nil;
+    static dispatch_once_t onceToken;
+    dispatch_once(&onceToken, ^{
+        __object = [TKACache new];
+    });
+    
+    return __object;
 }
+
+- (instancetype)init {
+    self = [super init];
+    if (self) {
+        self.objects = [NSMapTable strongToWeakObjectsMapTable];
+    }
+
+    return self;
+}
+
 
 - (id)objectForKey:(id)key {
-    
-    return nil;
+    @synchronized (self) {
+        return [self.objects objectForKey:key];
+    }
 }
 
-- (void)setObject:(id)obj forKey:(id)key {
-    
+- (void)setObject:(id)object forKey:(id)key {
+    @synchronized (self) {
+        [self.objects setObject:object forKey:key];
+    }
 }
 - (void)removeObjectForKey:(id)key {
-    
+    @synchronized (self) {
+        [self.objects removeObjectForKey:key];
+    }
 }
 - (void)removeAllObjects {
-    
+    @synchronized (self) {
+        [self.objects removeAllObjects];
+    }
 }
 
 - (BOOL)containObjectForKey:(id)key {
-    
-    return NO;
+    @synchronized (self) {
+//        if ([self objectForKey:key]) {
+//            return YES;
+//        }
+//        
+//        return NO;
+        
+        return [self objectForKey:key];
+    }
 }
 
 @end
