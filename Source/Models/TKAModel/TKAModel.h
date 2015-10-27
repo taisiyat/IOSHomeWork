@@ -14,7 +14,6 @@ typedef NS_ENUM(NSUInteger, TKAModelState) {
     TKAModelUnload,
     TKAModelWillLoad,
     TKAModelDidLoad,
-    TKAModelFailLoad,
     TKAModelDidFailLoading,
     TKAModelDidChange
 };
@@ -22,10 +21,10 @@ typedef NS_ENUM(NSUInteger, TKAModelState) {
 @protocol TKAModelObserver <NSObject>
 
 @optional
+- (void)modelUnload:(id)model;
 - (void)modelWillLoad:(id)model;
 - (void)modelDidLoad:(id)model;
-- (void)modelFailLoad:(id)model;
-- (void)modelDidFailLoad:(id)model;
+- (void)modelDidFailLoading:(id)model;
 - (void)model:(id)model didChangeWithObject:(TKAChangeModel *)object;
 
 @end

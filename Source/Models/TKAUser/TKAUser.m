@@ -73,7 +73,7 @@ static NSString * const kTKAKeyUser          = @"TKAKeyUser";
     TKAWeakifyVariable(self);
     TKAPerformBlockSyncOnMainQueue(^{
         TKAStrongifyVariable(self);
-        self.state = self.image ? TKAModelDidLoad : TKAModelFailLoad;
+        self.state = self.image ? TKAModelDidLoad : TKAModelDidFailLoading;
     });
 }
 

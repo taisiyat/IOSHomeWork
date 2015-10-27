@@ -26,10 +26,10 @@
         
             return;
         }
+    
+        [self setupLoading];
     }
-    
-    [self setupLoading];
-    
+
     TKAWeakifyVariable(self)
     TKAPerformBlockAsyncOnBackgroundQueue(^{
         TKAStrongifyVariableAndReturnEmptyIfNil(self);
@@ -43,9 +43,7 @@
 }
 
 - (void)setupLoading {
-//    self.state = TKAModelWillLoad;
-    [self doesNotRecognizeSelector:_cmd];
-
+    self.state = TKAModelWillLoad;
 }
 
 - (void)finishLoading {
@@ -67,11 +65,11 @@
         case TKAModelDidLoad:
             return @selector(modelDidLoad:);
             
-        case TKAModelFailLoad:
-            return @selector(modelFailLoad:);
+        case TKAModelUnload:
+            return @selector(modelUnload:);
             
         case TKAModelDidFailLoading:
-            return @selector(modelDidFailLoad:);
+            return @selector(modelDidFailLoading:);
          
         default:
             return [super selectorForState:state];

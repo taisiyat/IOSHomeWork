@@ -25,6 +25,10 @@
     return __object;
 }
 
+-(void)dealloc {
+    self.objects = nil;
+}
+
 - (instancetype)init {
     self = [super init];
     if (self) {
@@ -34,7 +38,6 @@
     return self;
 }
 
-
 - (id)objectForKey:(id)key {
     @synchronized (self) {
         return [self.objects objectForKey:key];
@@ -43,6 +46,7 @@
 
 - (void)setObject:(id)object forKey:(id)key {
     @synchronized (self) {
+        if (![self objectForKey:key] && object)
         [self.objects setObject:object forKey:key];
     }
 }
@@ -65,7 +69,7 @@
 //        
 //        return NO;
         
-        return [self objectForKey:key];
+        return nil != [self objectForKey:key];
     }
 }
 

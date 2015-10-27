@@ -53,12 +53,12 @@
     [self.spinner stopAnimating];
 }
 
-- (void)modelFailLoad:(TKAUser *)user {
-//    [self.user load];
+- (void)modelUnload:(TKAUser *)user {
+
 }
 
-- (void)modelDidFailLoad:(TKAUser *)user {
-    
+- (void)modelDidFailLoading:(TKAUser *)user {
+    [self.user load];
 }
 
 @end

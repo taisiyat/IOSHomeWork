@@ -10,10 +10,16 @@
 #import <UIKit/UIKit.h>
 
 #import "TKAModel.h"
+@class TKACache;
 
 @interface TKAImageModel : TKAModel
-@property (nonatomic, readonly) UIImage *image;
-@property (nonatomic, readonly) NSURL  *url;
+@property (nonatomic, strong)   UIImage *image;
+@property (nonatomic, readonly) NSURL   *url;
+
+@property (nonatomic, strong) TKACache  *cache;
+@property (nonatomic, readonly) NSString *fileName;
+@property (nonatomic, readonly) NSString *filePath;
+@property (nonatomic, readonly) BOOL cached;
 
 + (instancetype)imageWithUrl:(NSURL *)url;
 

@@ -14,4 +14,6 @@
 + (NSString *)pathForDocumentsDirectoryWithFileName:(NSString *)fileName;
 + (BOOL)fileExistsWithFileName:(NSString *)fileName;
 
++ (NSString *)fileNameFromURL:(NSURL *)url;
+
 @end

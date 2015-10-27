@@ -8,9 +8,11 @@
 
 #import <UIKit/UIKit.h>
 
+#import "TKABaseView.h"
+
 @class TKAImageModel;
 
-@interface TKAImageView : UIView
+@interface TKAImageView : TKABaseView
 @property (nonatomic, strong) IBOutlet UIImageView *imageView;
 @property (nonatomic, strong)        TKAImageModel *imageModel;
 

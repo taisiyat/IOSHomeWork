@@ -150,12 +150,12 @@ TKAViewControllerBaseViewProperty(TKAUsersViewController, usersView, TKAUsersVie
     [self.usersView hideLoadingView];
 }
 
-- (void)modelFailLoad:(TKAArrayModel *)users {
- //   [self.users load];
+- (void)modelUnload:(TKAArrayModel *)users {
+
 }
 
-- (void)modelDidFailLoad:(TKAArrayModel *)users {
-    
+- (void)modelDidFailLoading:(TKAArrayModel *)users {
+    [self.users load];
 }
 
 #pragma mark -

@@ -22,4 +22,12 @@
     return [[NSFileManager defaultManager] fileExistsAtPath:[self pathForDocumentsDirectoryWithFileName:fileName]];
 }
 
++ (NSString *)fileNameFromURL:(NSURL *)url {
+    NSString *fileName = [NSString stringWithFormat:@"%@", url];
+    NSCharacterSet *charSet = [NSCharacterSet characterSetWithCharactersInString:@"/.@*!:^#{}[]()$;=+$%?<>,"];
+    
+    return [fileName stringByAddingPercentEncodingWithAllowedCharacters:charSet];
+//    fileName stringByAddingPercentEscapesUsingEncoding:<#(NSStringEncoding)#>
+}
+
 @end
