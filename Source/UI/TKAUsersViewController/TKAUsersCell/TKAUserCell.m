@@ -35,7 +35,7 @@
 - (void)fillWithModel:(TKAUser *)user {
     self.nameLabel.text = user.name;
     if (user.image) {
-        self.image.image = user.image;
+        self.image.imageModel = user.image;
     } else {
         [user load];
     }

@@ -7,6 +7,9 @@
 //
 
 #import "TKAImageView.h"
+#import "TKAImageModel.h"
+
+#import "TKAMacros.h"
 
 @implementation TKAImageView
 
@@ -17,6 +20,7 @@
 #pragma mark Initializations and Deallocations
 
 - (void)dealloc {
+    self.imageModel = nil;
     self.imageView = nil;
 }
 
@@ -41,15 +45,9 @@
 #pragma mark Accessors
 
 - (void)setImageModel:(TKAImageModel *)imageModel {
-    if (imageModel != _imageModel) {
-        _imageModel = nil;
-        _imageModel = imageModel;
-        if (!imageModel) {
-            self.imageView.image = nil;
-        } else {
-//            self.imageView.image = imageModel.image;
-        }
-    }
+    TKASynthesizeObservingSetter(imageModel, imageModel);
+    [self fillWithModel:_imageModel];
+    [_imageModel load];
 }
 
 - (void)setImageView:(UIImageView *)imageView {
@@ -63,9 +61,37 @@
 #pragma mark -
 #pragma mark Public
 
+- (void)fillWithModel:(TKAImageModel *)imageModel {
+    if (imageModel) {
+        self.imageView.image = imageModel.image;
+    } else {
+        self.imageView.image = nil;
+        [self.imageModel load];
+    }
+}
+
 #pragma mark -
 #pragma mark Private
 
+#pragma mark -
+#pragma mark TKAModelObserver
+
+- (void)modelWillLoad:(TKAImageModel *)imageModel {
+    [self showLoadingView];
+}
+
+- (void)modelDidLoad:(TKAImageModel *)imageModel {
+    [self fillWithModel:imageModel];
+    [self hideLoadingView];
+}
+
+- (void)modelUnload:(TKAImageModel *)imageModel {
+    
+}
+
+- (void)modelDidFailLoading:(TKAImageModel *)imageModel {
+    [self.imageModel load];
+}
 
 
 @end

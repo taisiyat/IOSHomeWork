@@ -83,7 +83,7 @@ static NSString * const    kTKAURL2        = @"http://steelasophical.com/hello-w
 #pragma mark Accessors
 
 - (NSURL *)url {
-    return [NSURL URLWithString:kTKAURL2];
+    return [NSURL URLWithString:kTKAURL1];
 }
 
 - (TKACache *)cache {

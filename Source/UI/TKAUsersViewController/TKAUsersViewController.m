@@ -19,8 +19,8 @@
 #import "UITableView+TKAExtension.h"
 #import "NSIndexPath+TKAExtension.h"
 
-static NSString * const kTKANavigationItemTitle = @"users";
-static NSString * const kTKANavigationAddButton = @"ADD";
+static NSString * const kTKANavigationItemTitle  = @"users";
+static NSString * const kTKANavigationAddButton  = @"ADD";
 static NSString * const kTKANavigationEditButton = @"EDIT";
 
 TKAViewControllerBaseViewProperty(TKAUsersViewController, usersView, TKAUsersView)

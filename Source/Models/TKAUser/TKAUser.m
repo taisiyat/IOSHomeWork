@@ -7,6 +7,7 @@
 //
 
 #import "TKAUser.h"
+#import "TKAImageModel.h"
 
 #import "NSString+TKARandomWord.h"
 #import "NSFileManager+TKAExtension.h"
@@ -17,9 +18,11 @@ static const NSTimeInterval kTKASleepTime    = 1;
 static NSString * const kTKAImageName        = @"image";
 static NSString * const kTKAImageExtension   = @"jpg";
 static NSString * const kTKAKeyUser          = @"TKAKeyUser";
+static NSString * const kTKAURL2             = @"http://steelasophical.com/hello-world/1283614816-rasta1-png/";
 
 @interface TKAUser ()
-@property (nonatomic, strong)   UIImage     *image;
+//@property (nonatomic, strong)   UIImage     *image;
+@property (nonatomic, strong)   TKAImageModel     *image;
 @property (nonatomic, readonly) NSString    *fileFolder;
 @property (nonatomic, readonly) NSString    *filePath;
 @property (nonatomic, readonly, getter=isFileExists) BOOL fileExists;
@@ -59,10 +62,12 @@ static NSString * const kTKAKeyUser          = @"TKAKeyUser";
 
 - (void)performLoading {
     TKASleep(kTKASleepTime);
-    NSURL *url = [[NSBundle mainBundle] URLForResource:kTKAImageName
-                                         withExtension:kTKAImageExtension];
-    UIImage *image = [UIImage imageWithContentsOfFile:[url path]];
-    self.image = image;
+//    NSURL *url = [[NSBundle mainBundle] URLForResource:kTKAImageName
+//                                         withExtension:kTKAImageExtension];
+//    UIImage *image = [UIImage imageWithContentsOfFile:[url path]];
+//    self.image = image;
+    TKAImageModel *imageModel = [[TKAImageModel alloc] initWithUrl:[NSURL URLWithString:kTKAURL2]];
+    self.image = imageModel;
 }
 
 - (void)setupLoading {
