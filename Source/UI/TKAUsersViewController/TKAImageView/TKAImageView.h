@@ -13,8 +13,7 @@
 
 @class TKAImageModel;
 
-@interface TKAImageView : TKABaseView <TKAModelObserver>
-@property (nonatomic, strong) IBOutlet UIImageView *imageView;
+@interface TKAImageView : UIImageView <TKAModelObserver>
 @property (nonatomic, strong)        TKAImageModel *imageModel;
 
 @end

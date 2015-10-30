@@ -8,6 +8,7 @@
 
 #import "TKAUserCell.h"
 #import "TKAUser.h"
+#import "TKAURLImageModel.h"
 
 #import "TKAMacros.h"
 
@@ -24,9 +25,13 @@
 }
 
 - (void)setUser:(TKAUser *)user {
-    TKASynthesizeObservingSetter(user, user);
+    //TKASynthesizeObservingSetter(user, user);
+    if (user != _user) {
+        _user = user;
+    }
+    
     [self fillWithModel:_user];
-    [_user load];
+//    [_user load];
 }
 
 #pragma mark -
@@ -34,31 +39,27 @@
 
 - (void)fillWithModel:(TKAUser *)user {
     self.nameLabel.text = user.name;
-    if (user.image) {
-        self.image.imageModel = user.image;
-    } else {
-        [user load];
-    }
+    self.imageModelView.imageModel = user.imageModel;
 }
 
 #pragma mark -
 #pragma mark TKAModelObserver
 
-- (void)modelWillLoad:(TKAUser *)user {
-    [self.spinner startAnimating];
-}
-
-- (void)modelDidLoad:(TKAUser *)user {
-    [self fillWithModel:user];
-    [self.spinner stopAnimating];
-}
-
-- (void)modelUnload:(TKAUser *)user {
-
-}
-
-- (void)modelDidFailLoading:(TKAUser *)user {
-    [self.user load];
-}
+//- (void)modelWillLoad:(TKAUser *)user {
+//    [self.spinner startAnimating];
+//}
+//
+//- (void)modelDidLoad:(TKAUser *)user {
+//    [self fillWithModel:user];
+//    [self.spinner stopAnimating];
+//}
+//
+//- (void)modelUnload:(TKAUser *)user {
+//
+//}
+//
+//- (void)modelDidFailLoading:(TKAUser *)user {
+//    [self.user load];
+//}
 
 @end

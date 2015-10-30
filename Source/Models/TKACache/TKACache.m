@@ -9,7 +9,7 @@
 #import "TKACache.h"
 
 @interface TKACache ()
-@property (nonatomic, assign) NSMapTable *objects;
+@property (nonatomic, strong) NSMapTable *objects;
 
 @end
 
@@ -23,10 +23,6 @@
     });
     
     return __object;
-}
-
--(void)dealloc {
-    self.objects = nil;
 }
 
 - (instancetype)init {
@@ -46,7 +42,6 @@
 
 - (void)setObject:(id)object forKey:(id)key {
     @synchronized (self) {
-        if (![self objectForKey:key] && object)
         [self.objects setObject:object forKey:key];
     }
 }
@@ -62,15 +57,7 @@
 }
 
 - (BOOL)containObjectForKey:(id)key {
-    @synchronized (self) {
-//        if ([self objectForKey:key]) {
-//            return YES;
-//        }
-//        
-//        return NO;
-        
-        return nil != [self objectForKey:key];
-    }
+    return nil != [self objectForKey:key];
 }
 
 @end

@@ -9,20 +9,30 @@
 #import "TKAURLImageModel.h"
 
 #import "NSFileManager+TKAExtension.h"
+#import "NSURL+TKAExtension.h"
 
 #import "TKAMacros.h"
 
-static const NSTimeInterval kTKASleepTime   = 1;
+//static const NSTimeInterval kTKASleepTime   = 1;
 static NSString * const    kTKAURL1        = @"http://donutey.com/images/format/PNG1.png";
 static NSString * const    kTKAURL2        = @"http://steelasophical.com/hello-world/1283614816-rasta1-png/";
 
 @interface TKAURLImageModel ()
 @property (nonatomic, strong) NSURLSession *session;
 @property (nonatomic, strong) NSURLSessionDownloadTask *downloadTask;
+@property (nonatomic, readonly) NSString *fileName;
+@property (nonatomic, readonly) NSString *fileFolder;
+@property (nonatomic, readonly) NSString *filePath;
+@property (nonatomic, readonly) BOOL cached;
 
 @end
 
 @implementation TKAURLImageModel
+
+@dynamic fileName;
+@dynamic fileFolder;
+@dynamic filePath;
+@dynamic cached;
 
 #pragma mark -
 #pragma mark Class Methods
@@ -38,8 +48,24 @@ static NSString * const    kTKAURL2        = @"http://steelasophical.com/hello-w
 #pragma mark -
 #pragma mark Accessors
 
+- (NSString *)fileFolder {
+    return [NSFileManager documentsDirectory];
+}
+
+- (NSString *)fileName {
+    return [NSURL fileNameFromURL:self.url];
+}
+
+- (NSString *)filePath {
+    return [NSFileManager pathForDocumentsDirectoryWithFileName:self.fileName];
+}
+
+- (BOOL)isCached {
+    return [NSFileManager fileExistsWithFileName:self.fileName];
+}
+
 - (NSURLSession *)session {
-    return [[self class] sharedSession];
+    return [TKAURLImageModel sharedSession];
 }
 
 - (void)setDownloadTask:(NSURLSessionDownloadTask *)downloadTask {
@@ -50,11 +76,11 @@ static NSString * const    kTKAURL2        = @"http://steelasophical.com/hello-w
     }
 }
 
-- (NSURLSession *)sharedSession {
++ (NSURLSession *)sharedSession {
     static NSURLSession *__object = nil;
     static dispatch_once_t onceToken;
     dispatch_once(&onceToken, ^{
-        NSURLSessionConfiguration *sessionConfiguration = [NSURLSessionConfiguration defaultSessionConfiguration];//backgroundSessionConfigurationWithIdenticator, ephemeralSessionConfiguration, downloadSessionConfiguration
+        NSURLSessionConfiguration *sessionConfiguration = [NSURLSessionConfiguration ephemeralSessionConfiguration];
         __object = [NSURLSession sessionWithConfiguration:sessionConfiguration];
     });
     
@@ -64,10 +90,6 @@ static NSString * const    kTKAURL2        = @"http://steelasophical.com/hello-w
 #pragma mark -
 #pragma mark Public
 
-- (void)setupLoading {
-    self.state = TKAModelWillLoad;
-}
-
 - (void)finishLoading {
     TKAWeakifyVariable(self);
     TKAPerformBlockSyncOnMainQueue(^{
@@ -76,36 +98,49 @@ static NSString * const    kTKAURL2        = @"http://steelasophical.com/hello-w
     });
 }
 
-- (void)URLSession:(NSURLSession *)session downloadTask:(NSURLSessionDownloadTask *)downloadTask didFinishDownloadingToURL:(NSURL *)location {
-
-}
-
-- (void)performLoadingWithURLWithComplition:(void(^)(UIImage * image, id error))complition {
-
-}
-
-- (void)performLoadingWithURL {
-    NSURLRequest *request = [NSURLRequest requestWithURL:self.url];
-//    self.downloadTask = [[self sharedSession] downloadTaskWithURL:self.url];
-    self.downloadTask = [[self sharedSession] downloadTaskWithRequest:request completionHandler:^(NSURL *location, NSURLResponse *response, NSError *error) {
-        location = self.url;
-        NSURL *destination = [NSURL URLWithString:self.filePath];
-        NSFileManager *fileManager = [NSFileManager defaultManager];
-        
-        [fileManager removeItemAtURL:destination error:NULL];
-        [fileManager copyItemAtURL:location toURL:destination error:NULL];
- 
-    } ];
-    
-    [self.downloadTask resume];
-    self.image = [UIImage imageWithData:[NSData dataWithContentsOfFile:self.filePath]];
+- (void)performLoadingWithCompletion:(void(^)(UIImage * image, id error))completion {
+    if (self.cached) {
+        [self performLoadingWithFile:(NSString *)self.filePath withCompletion:completion];
+    } else {
+        [self performLoadingWithURLWithCompletion:completion];
+    }
 }
 
 - (void)dump {
-    self.image = nil;
     self.state = TKAModelDidFailLoading;
 }
 
+- (void)performLoadingWithURLWithCompletion:(void(^)(UIImage *image, id error))completion {
+    NSError *error = nil;
+    UIImage *image = nil;
+    NSURLRequest *request = [NSURLRequest requestWithURL:self.url];
+    self.downloadTask = [self.session downloadTaskWithRequest:request
+                                              completionHandler:^(NSURL *location, NSURLResponse *response, NSError *error) {
+                                                  location = self.url;
+                                                  NSURL *destination = [NSURL URLWithString:self.filePath];
+                                                  NSFileManager *fileManager = [NSFileManager defaultManager];
+        
+                                                  [fileManager removeItemAtURL:destination error:NULL];
+                                                  [fileManager copyItemAtURL:location toURL:destination error:&error];
+                                              }];
+    if (!error) {
+        [self performLoadingWithFile:self.filePath withCompletion:completion];
+    } else {
+        [self deleteFromCache];
+    }
+    
+    if (completion) {
+        completion(image, error);
+    }
+}
+
+- (void)performLoadingWithFile:(NSString *)filePath withCompletion:(void(^)(UIImage *image, id error))completion {
+    
+}
+
+- (void)deleteFromCache {
+    [[NSFileManager defaultManager] removeItemAtPath:self.filePath error:NULL];
+}
 
 #pragma mark -
 #pragma mark Private

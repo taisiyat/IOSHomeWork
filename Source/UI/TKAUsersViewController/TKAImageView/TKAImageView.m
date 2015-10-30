@@ -21,24 +21,6 @@
 
 - (void)dealloc {
     self.imageModel = nil;
-    self.imageView = nil;
-}
-
-- (instancetype)init {
-    self = [super init];
-    if (self) {
-    
-    }
-    
-    return self;
-}
-
-- (void)awakeFromNib {
-    [super awakeFromNib];
-    
-    if (!self.imageView) {
-
-    }
 }
 
 #pragma mark -
@@ -50,24 +32,11 @@
     [_imageModel load];
 }
 
-- (void)setImageView:(UIImageView *)imageView {
-    if (imageView != _imageView) {
-        [_imageView removeFromSuperview];
-        _imageView = imageView;
-        [self addSubview:imageView];
-    }
-}
-
 #pragma mark -
 #pragma mark Public
 
 - (void)fillWithModel:(TKAImageModel *)imageModel {
-    if (imageModel) {
-        self.imageView.image = imageModel.image;
-    } else {
-        self.imageView.image = nil;
-        [self.imageModel load];
-    }
+   self.image = imageModel.image;
 }
 
 #pragma mark -
@@ -77,12 +46,12 @@
 #pragma mark TKAModelObserver
 
 - (void)modelWillLoad:(TKAImageModel *)imageModel {
-    [self showLoadingView];
+//    [self showLoadingView];
 }
 
 - (void)modelDidLoad:(TKAImageModel *)imageModel {
     [self fillWithModel:imageModel];
-    [self hideLoadingView];
+//    [self hideLoadingView];
 }
 
 - (void)modelUnload:(TKAImageModel *)imageModel {
@@ -92,6 +61,5 @@
 - (void)modelDidFailLoading:(TKAImageModel *)imageModel {
     [self.imageModel load];
 }
-
 
 @end

@@ -13,16 +13,15 @@
 @class TKACache;
 
 @interface TKAImageModel : TKAModel
-@property (nonatomic, strong)   UIImage *image;
+@property (nonatomic, readonly) UIImage *image;
 @property (nonatomic, readonly) NSURL   *url;
 
-@property (nonatomic, strong) TKACache  *cache;
-@property (nonatomic, readonly) NSString *fileName;
-@property (nonatomic, readonly) NSString *filePath;
-@property (nonatomic, readonly) BOOL cached;
+@property (nonatomic, readonly) TKACache  *cache;
 
 + (instancetype)imageWithUrl:(NSURL *)url;
 
-- (instancetype)initWithUrl:(NSURL *)url;
+//- (instancetype)initWithUrl:(NSURL *)url;
+
+- (void)performLoadingWithCompletion:(void(^)(UIImage *image, id error))completion;
 
 @end
