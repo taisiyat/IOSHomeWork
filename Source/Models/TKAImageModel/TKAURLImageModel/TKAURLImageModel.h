@@ -6,8 +6,10 @@
 //  Copyright (c) 2015 TKAHomeWork. All rights reserved.
 //
 
-#import "TKAImageModel.h"
+#import "TKAFileImageModel.h"
 
-@interface TKAURLImageModel : TKAImageModel
+@interface TKAURLImageModel : TKAFileImageModel
+
++ (NSURLSession *)sharedSession;
 
 @end

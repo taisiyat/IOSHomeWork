@@ -10,18 +10,21 @@
 #import <UIKit/UIKit.h>
 
 #import "TKAModel.h"
+
 @class TKACache;
 
 @interface TKAImageModel : TKAModel
 @property (nonatomic, readonly) UIImage *image;
 @property (nonatomic, readonly) NSURL   *url;
 
-@property (nonatomic, readonly) TKACache  *cache;
-
 + (instancetype)imageWithUrl:(NSURL *)url;
++ (TKACache *)sharedCache;
 
 //- (instancetype)initWithUrl:(NSURL *)url;
+- (void)clear;
 
 - (void)performLoadingWithCompletion:(void(^)(UIImage *image, id error))completion;
+- (void)finalizeLoadingWithImage:(UIImage *)image error:(id)error;
+- (void)notificationOfStateWithImage:(UIImage *)image error:(id)error;
 
 @end

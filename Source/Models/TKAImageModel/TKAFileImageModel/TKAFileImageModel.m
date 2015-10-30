@@ -27,13 +27,10 @@
 #pragma mark -
 #pragma mark Public
 
-- (void)performLoadingWithFile:(NSString *)filePathLocation withCompletion:(void(^)(UIImage * image, id error))completion {
-    UIImage *image = nil;
-    NSError *error = nil;
-    image = [UIImage imageWithContentsOfFile:filePathLocation];
-    
+- (void)performLoadingWithCompletion:(void(^)(UIImage * image, id error))completion {
+    UIImage *image = [UIImage imageWithContentsOfFile:self.url.path];
     if (completion) {
-        completion(image,error);
+        completion(image, nil);
     }
 }
 

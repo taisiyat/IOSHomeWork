@@ -13,9 +13,6 @@
 
 #import "TKAMacros.h"
 
-#import "NSFileManager+TKAExtension.h"
-#import "NSURL+TKAExtension.h"
-
 static const NSTimeInterval kTKASleepTime   = 1;
 static NSString * const    kTKAURL1        = @"http://donutey.com/images/format/PNG1.png";
 static NSString * const    kTKAURL2        = @"http://steelasophical.com/hello-world/1283614816-rasta1-png/";
@@ -23,14 +20,13 @@ static NSString * const    kTKAURL2        = @"http://steelasophical.com/hello-w
 @interface TKAImageModel ()
 @property (nonatomic, strong) UIImage   *image;
 @property (nonatomic, strong) NSURL     *url;
-@property (nonatomic, strong) TKACache  *cache;
-//@property (nonatomic, readonly) NSString *fileName;
-//@property (nonatomic, readonly) NSString *filePath;
-//@property (nonatomic, readonly) BOOL cached;
+@property (nonatomic, readonly) TKACache  *cache;
 
 @end
 
 @implementation TKAImageModel
+
+@dynamic cache;
 
 #pragma mark -
 #pragma mark Class Methods
@@ -41,15 +37,15 @@ static NSString * const    kTKAURL2        = @"http://steelasophical.com/hello-w
     return [[class alloc] initWithUrl:url];
 }
 
++ (TKACache *)sharedCache {
+    return [TKACache sharedCache];
+}
+
 #pragma mark -
 #pragma mark Initializations and Deallocations
 
 - (void)dealloc {
-    [self.cache removeObjectForKey:self.url];
-    self.url = nil;
-    self.image = nil;
     [self clear];
-    self.cache = nil;
 }
 
 - (instancetype)init {
@@ -67,7 +63,7 @@ static NSString * const    kTKAURL2        = @"http://steelasophical.com/hello-w
         self = [super init];
         if (self) {
             self.url = url;
-            [self.cache setObject:self forKey:url];
+            [cache setObject:self forKey:url];
         }
     }
 
@@ -77,21 +73,15 @@ static NSString * const    kTKAURL2        = @"http://steelasophical.com/hello-w
 #pragma mark -
 #pragma mark Accessors
 
-- (NSURL *)url {
-    return [NSURL URLWithString:kTKAURL1];
-    return self.url;
-}
-
 - (TKACache *)cache {
-//    return [[self class] sharedCache];
-    return [TKACache sharedCache];
+    return [[self class] sharedCache];
 }
 
 #pragma mark -
 #pragma mark Public
 
 - (void)clear {
-    [self.cache removeAllObjects];
+    [self.cache removeObjectForKey:self.url];
 }
 
 - (void)performLoading {
@@ -99,7 +89,8 @@ static NSString * const    kTKAURL2        = @"http://steelasophical.com/hello-w
     TKAWeakifyVariable(self);
     [self performLoadingWithCompletion:^(UIImage *image, id error) {
         TKAStrongifyVariable(self)
-        [self finalizeLoadingWithDate:image withError:error];
+        [self finalizeLoadingWithImage:image error:error];
+        [self notificationOfStateWithImage:image error:error];
     }];
 }
 
@@ -107,7 +98,7 @@ static NSString * const    kTKAURL2        = @"http://steelasophical.com/hello-w
     self.state = TKAModelWillLoad;
 }
 
-- (void)finishLoading {
+- (void)notificationOfStateWithImage:(UIImage *)image error:(id)error {
     TKAWeakifyVariable(self);
     TKAPerformBlockSyncOnMainQueue(^{
         TKAStrongifyVariable(self);
@@ -115,12 +106,8 @@ static NSString * const    kTKAURL2        = @"http://steelasophical.com/hello-w
     });
 }
 
-- (void)finalizeLoadingWithDate:(UIImage *)image withError:(id)error {
-    if (!error && image) {
-        self.image = image;
-    } else {
-        self.image = nil;
-    }
+- (void)finalizeLoadingWithImage:(UIImage *)image error:(id)error {
+    self.image = image;
 }
 
 - (void)performLoadingWithCompletion:(void(^)(UIImage *image, id error))completion {
