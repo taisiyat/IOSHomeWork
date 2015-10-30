@@ -36,7 +36,7 @@
 #pragma mark Public
 
 - (void)fillWithModel:(TKAImageModel *)imageModel {
-   self.image = imageModel.image;
+   self.imageModelView.image = imageModel.image;
 }
 
 #pragma mark -
@@ -46,12 +46,12 @@
 #pragma mark TKAModelObserver
 
 - (void)modelWillLoad:(TKAImageModel *)imageModel {
-//    [self showLoadingView];
+    [self showLoadingView];
 }
 
 - (void)modelDidLoad:(TKAImageModel *)imageModel {
     [self fillWithModel:imageModel];
-//    [self hideLoadingView];
+    [self hideLoadingView];
 }
 
 - (void)modelUnload:(TKAImageModel *)imageModel {

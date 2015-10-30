@@ -13,7 +13,10 @@
 
 @class TKAImageModel;
 
-@interface TKAImageView : UIImageView <TKAModelObserver>
+@interface TKAImageView : TKABaseView <TKAModelObserver>
+@property (nonatomic, strong)        UIImageView   *imageModelView;
 @property (nonatomic, strong)        TKAImageModel *imageModel;
+
+- (void)fillWithModel:(TKAImageModel *)imageModel;
 
 @end

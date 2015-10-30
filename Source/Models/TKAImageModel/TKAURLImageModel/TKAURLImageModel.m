@@ -113,6 +113,9 @@
                                                     [fileManager copyItemAtURL:location toURL:destination error:&error];
                                                     if (error) {
                                                         [self deleteFromCache];
+                                                        if (completion) {
+                                                            completion(nil, error);
+                                                        }
                                                     }
                                                     [super performLoadingWithCompletion:completion];
                                                  }
