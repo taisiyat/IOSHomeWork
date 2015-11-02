@@ -25,7 +25,7 @@
 }
 
 - (void)setUser:(TKAUser *)user {
-    //TKASynthesizeObservingSetter(user, user);
+//    TKASynthesizeObservingSetter(user, user);
     if (user != _user) {
         _user = user;
     }
@@ -33,20 +33,20 @@
     [self fillWithModel:_user];
 //    [_user load];
 }
-
+    
 #pragma mark -
 #pragma mark Public
 
 - (void)fillWithModel:(TKAUser *)user {
     self.nameLabel.text = user.name;
-//    self.imageView.imageModel = user.imageModel;
+    self.imageView.imageModel = user.imageModel;
 //    self.image = self.imageView.imageModelView;
-    self.image.image = user.imageModel.image;
+//    self.image.image = user.imageModel.image;
+//    [self.image addSubview:imageView];
 }
 
 #pragma mark -
 #pragma mark TKAModelObserver
-
 //- (void)modelWillLoad:(TKAUser *)user {
 //    [self.spinner startAnimating];
 //}
@@ -57,7 +57,7 @@
 //}
 //
 //- (void)modelUnload:(TKAUser *)user {
-//
+//    
 //}
 //
 //- (void)modelDidFailLoading:(TKAUser *)user {

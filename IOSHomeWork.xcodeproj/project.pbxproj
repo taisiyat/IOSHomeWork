@@ -528,6 +528,66 @@
 			path = TKAUsersCell;
 			sourceTree = "<group>";
 		};
+		8ADA45431BE41D3A00B29EA8 /* TKAFriendDetailViewController */ = {
+			isa = PBXGroup;
+			children = (
+			);
+			path = TKAFriendDetailViewController;
+			sourceTree = "<group>";
+		};
+		8ADA45441BE41D3A00B29EA8 /* TKAFriendsViewController */ = {
+			isa = PBXGroup;
+			children = (
+			);
+			path = TKAFriendsViewController;
+			sourceTree = "<group>";
+		};
+		8ADA45451BE41D3A00B29EA8 /* TKALoginViewController */ = {
+			isa = PBXGroup;
+			children = (
+			);
+			path = TKALoginViewController;
+			sourceTree = "<group>";
+		};
+		8ADA45461BE41EF300B29EA8 /* TKAContext */ = {
+			isa = PBXGroup;
+			children = (
+				8ADA45471BE41EF300B29EA8 /* TKABaseContext */,
+				8ADA45481BE41EF300B29EA8 /* TKALoadingContext */,
+				8ADA45491BE41EF300B29EA8 /* TKALoginContext */,
+			);
+			path = TKAContext;
+			sourceTree = "<group>";
+		};
+		8ADA45471BE41EF300B29EA8 /* TKABaseContext */ = {
+			isa = PBXGroup;
+			children = (
+			);
+			path = TKABaseContext;
+			sourceTree = "<group>";
+		};
+		8ADA45481BE41EF300B29EA8 /* TKALoadingContext */ = {
+			isa = PBXGroup;
+			children = (
+			);
+			path = TKALoadingContext;
+			sourceTree = "<group>";
+		};
+		8ADA45491BE41EF300B29EA8 /* TKALoginContext */ = {
+			isa = PBXGroup;
+			children = (
+			);
+			path = TKALoginContext;
+			sourceTree = "<group>";
+		};
+		8ADA454A1BE41FA000B29EA8 /* TKANavigationViewController */ = {
+			isa = PBXGroup;
+			children = (
+			);
+			name = TKANavigationViewController;
+			path = TKALoginViewController/TKANavigationViewController;
+			sourceTree = "<group>";
+		};
 		8AEC463F1BA8655C00F6FC0D /* TKASquare */ = {
 			isa = PBXGroup;
 			children = (
@@ -607,6 +667,7 @@
 		8AFC61681BA77B16001ACBA9 /* Models */ = {
 			isa = PBXGroup;
 			children = (
+				8ADA45461BE41EF300B29EA8 /* TKAContext */,
 				8A01090D1BD9856000DBF561 /* TKACache */,
 				8A0108F81BD9505400DBF561 /* TKAImageModel */,
 				8A25F1661BD2983900041058 /* TKAModel */,
@@ -622,6 +683,10 @@
 		8AFC61691BA77B21001ACBA9 /* UI */ = {
 			isa = PBXGroup;
 			children = (
+				8ADA454A1BE41FA000B29EA8 /* TKANavigationViewController */,
+				8ADA45431BE41D3A00B29EA8 /* TKAFriendDetailViewController */,
+				8ADA45441BE41D3A00B29EA8 /* TKAFriendsViewController */,
+				8ADA45451BE41D3A00B29EA8 /* TKALoginViewController */,
 				8AA02BF31BC19FBC004B93DB /* TKAUsersViewController */,
 				8AEC463F1BA8655C00F6FC0D /* TKASquare */,
 			);

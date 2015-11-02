@@ -19,7 +19,8 @@
 @property (nonatomic, strong) IBOutlet UIImageView              *image;
 @property (nonatomic, strong) IBOutlet UIActivityIndicatorView *spinner;
 
-@property (nonatomic, strong) IBOutlet TKAImageView             *imageView;
+//@property (nonatomic, strong) IBOutlet TKAImageView             *imageView;
+@property (nonatomic, strong) TKAImageView                      *imageView;
 @property (nonatomic, strong) TKAUser                           *user;
 
 - (void)fillWithModel:(TKAUser *)user;
