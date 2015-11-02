@@ -49,7 +49,6 @@ static NSString * const kTKAURL2             = @"http://steelasophical.com/hello
     self = [super init];
     if (self) {
         self.name = [NSString randomName];
-        self.imageModel = [TKAImageModel imageWithUrl:[NSURL URLWithString:kTKAURL2]];
     }
     
     return self;
@@ -57,6 +56,10 @@ static NSString * const kTKAURL2             = @"http://steelasophical.com/hello
 
 #pragma mark -
 #pragma mark Accessors
+
+- (TKAImageModel *)imageModel {
+    return [TKAImageModel imageWithUrl:[NSURL URLWithString:kTKAURL2]];
+}
 
 #pragma mark -
 #pragma mark Public
@@ -94,7 +97,6 @@ static NSString * const kTKAURL2             = @"http://steelasophical.com/hello
     self = [super init];
     if (self) {
         self.name = [decoder decodeObjectForKey:kTKAKeyUser];
-        self.imageModel = [TKAImageModel imageWithUrl:[NSURL URLWithString:kTKAURL2]];
     }
     
     return self;

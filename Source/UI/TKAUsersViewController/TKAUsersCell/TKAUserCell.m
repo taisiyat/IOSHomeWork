@@ -39,9 +39,7 @@
 
 - (void)fillWithModel:(TKAUser *)user {
     self.nameLabel.text = user.name;
-    self.imageView.imageModel = user.imageModel;
-//    self.image = self.imageView.imageModelView;
-//    self.image.image = user.imageModel.image;
+    self.imageModelView.imageModel = user.imageModel;
 //    [self.image addSubview:imageView];
 }
 

@@ -19,21 +19,17 @@
                         <color key="textColor" cocoaTouchSystemColor="darkTextColor"/>
                         <nil key="highlightedColor"/>
                     </label>
-                    <imageView userInteractionEnabled="NO" contentMode="scaleToFill" horizontalHuggingPriority="251" verticalHuggingPriority="251" fixedFrame="YES" translatesAutoresizingMaskIntoConstraints="NO" id="Jep-Ca-Ilx">
-                        <rect key="frame" x="165" y="0.0" width="64" height="43"/>
-                    </imageView>
                     <activityIndicatorView opaque="NO" contentMode="scaleToFill" horizontalHuggingPriority="750" verticalHuggingPriority="750" fixedFrame="YES" style="gray" translatesAutoresizingMaskIntoConstraints="NO" id="5Ih-eD-7c3">
                         <rect key="frame" x="187" y="11" width="20" height="20"/>
                     </activityIndicatorView>
                     <view contentMode="scaleToFill" fixedFrame="YES" translatesAutoresizingMaskIntoConstraints="NO" id="Rde-qy-MQI" userLabel="ImageModelView" customClass="TKAImageView">
-                        <rect key="frame" x="247" y="-1" width="94" height="43"/>
+                        <rect key="frame" x="172" y="0.0" width="50" height="42"/>
                         <color key="backgroundColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
                     </view>
                 </subviews>
             </tableViewCellContentView>
             <connections>
-                <outlet property="image" destination="Jep-Ca-Ilx" id="EZX-W2-arZ"/>
-                <outlet property="imageView" destination="Rde-qy-MQI" id="BvA-s3-jEh"/>
+                <outlet property="imageModelView" destination="Rde-qy-MQI" id="zKO-Tn-VO2"/>
                 <outlet property="nameLabel" destination="hMu-a7-RhC" id="YXZ-qS-7Bw"/>
                 <outlet property="spinner" destination="5Ih-eD-7c3" id="Q6a-XU-Ahk"/>
             </connections>
