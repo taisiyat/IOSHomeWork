@@ -21,7 +21,7 @@
 //+ (TKACache *)sharedCache;
 
 //- (instancetype)initWithUrl:(NSURL *)url;
-- (void)clear;
+- (void)cancel;
 
 - (void)performLoadingWithCompletion:(void(^)(UIImage *image, id error))completion;
 - (void)finalizeLoadingWithImage:(UIImage *)image error:(id)error;

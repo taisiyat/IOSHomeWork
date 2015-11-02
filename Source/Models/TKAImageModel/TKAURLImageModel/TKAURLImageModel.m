@@ -24,6 +24,8 @@
 @property (nonatomic, readonly) NSString                 *filePath;
 @property (nonatomic, readonly) BOOL cached;
 
+-(void)deleteFromCache;
+
 @end
 
 @implementation TKAURLImageModel
@@ -50,11 +52,6 @@
 
 #pragma mark -
 #pragma mark Initializations and Deallocations
-
-- (void)dealloc {
-    self.downloadTask = nil;
-//    self.session = nil;
-}
 
 #pragma mark -
 #pragma mark Accessors
@@ -93,14 +90,24 @@
 - (void)performLoadingWithCompletion:(void(^)(UIImage * image, id error))completion {
     if (self.cached) {
         [super performLoadingWithCompletion:completion];
+        if (!self.image) {
+            [self deleteFromCache];
+        }
     } else {
         [self performLoadingWithURLWithCompletion:completion];
     }
 }
 
+- (void)cancel {
+    self.downloadTask = nil;
+}
+
 - (void)dump {
     self.state = TKAModelDidFailLoading;
 }
+
+#pragma mark -
+#pragma mark Private
 
 - (void)performLoadingWithURLWithCompletion:(void(^)(UIImage *image, id error))completion {
     NSURLRequest *request = [NSURLRequest requestWithURL:self.url];
@@ -111,24 +118,24 @@
                                                     NSURL *destination = [NSURL URLWithString:self.filePath];
                                                     [fileManager removeItemAtURL:destination error:NULL];
                                                     [fileManager copyItemAtURL:location toURL:destination error:&error];
-                                                    if (error) {
+                                                    
+                                                    if (!error) {
+                                                        [super performLoadingWithCompletion:completion];
+                                                        
+                                                        return;
+                                                    } else {
                                                         [self deleteFromCache];
                                                         if (completion) {
                                                             completion(nil, error);
                                                         }
                                                     }
-                                                    [super performLoadingWithCompletion:completion];
-                                                 }
+                                                }
                                             }];
 }
 
 - (void)deleteFromCache {
     NSError *error = nil;
     [[NSFileManager defaultManager] removeItemAtPath:self.filePath error:&error];
-    assert(!error);
 }
-
-#pragma mark -
-#pragma mark Private
 
 @end

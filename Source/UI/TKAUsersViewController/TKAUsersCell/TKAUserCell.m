@@ -25,13 +25,11 @@
 }
 
 - (void)setUser:(TKAUser *)user {
-//    TKASynthesizeObservingSetter(user, user);
     if (user != _user) {
         _user = user;
     }
     
     [self fillWithModel:_user];
-//    [_user load];
 }
     
 #pragma mark -
@@ -40,7 +38,6 @@
 - (void)fillWithModel:(TKAUser *)user {
     self.nameLabel.text = user.name;
     self.imageModelView.imageModel = user.imageModel;
-//    [self.image addSubview:imageView];
 }
 
 #pragma mark -

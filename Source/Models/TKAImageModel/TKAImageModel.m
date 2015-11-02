@@ -13,7 +13,7 @@
 
 #import "TKAMacros.h"
 
-static const NSTimeInterval kTKASleepTime   = 1;
+static const NSTimeInterval kTKASleepTime  = 1;
 static NSString * const    kTKAURL1        = @"http://donutey.com/images/format/PNG1.png";
 static NSString * const    kTKAURL2        = @"http://steelasophical.com/hello-world/1283614816-rasta1-png/";
 
@@ -45,12 +45,13 @@ static NSString * const    kTKAURL2        = @"http://steelasophical.com/hello-w
 #pragma mark Initializations and Deallocations
 
 - (void)dealloc {
-    [self clear];
+    [self.cache removeObjectForKey:self.url];
+    [self cancel];
 }
 
-- (instancetype)init {
-    return [self initWithUrl:nil];
-}
+//- (instancetype)init {
+//    return [self initWithUrl:nil];
+//}
 
 - (instancetype)initWithUrl:(NSURL *)url {
     TKACache *cache = self.cache;
@@ -80,8 +81,8 @@ static NSString * const    kTKAURL2        = @"http://steelasophical.com/hello-w
 #pragma mark -
 #pragma mark Public
 
-- (void)clear {
-    [self.cache removeObjectForKey:self.url];
+- (void)cancel {
+
 }
 
 - (void)performLoading {

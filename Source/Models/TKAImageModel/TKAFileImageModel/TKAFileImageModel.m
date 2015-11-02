@@ -28,8 +28,8 @@
 #pragma mark Public
 
 - (void)performLoadingWithCompletion:(void(^)(UIImage * image, id error))completion {
-    UIImage *image = [UIImage imageWithContentsOfFile:self.url.path];
     if (completion) {
+        UIImage *image = [UIImage imageWithContentsOfFile:self.url.path];
         completion(image, nil);
     }
 }
