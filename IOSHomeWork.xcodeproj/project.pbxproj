@@ -15,6 +15,11 @@
 		8A0E0E891BB813E80062C0BD /* TKAPerformBlock.m in Sources */ = {isa = PBXBuildFile; fileRef = 8A0E0E881BB813E80062C0BD /* TKAPerformBlock.m */; };
 		8A235D8C1BE25ADA009F2414 /* NSURL+TKAExtension.m in Sources */ = {isa = PBXBuildFile; fileRef = 8A235D8B1BE25ADA009F2414 /* NSURL+TKAExtension.m */; };
 		8A25F1691BD298BA00041058 /* TKAModel.m in Sources */ = {isa = PBXBuildFile; fileRef = 8A25F1681BD298BA00041058 /* TKAModel.m */; };
+		8A33F6BA1BE80D2B0012204D /* FBSDKCoreKit.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 8A33F6B81BE80D2B0012204D /* FBSDKCoreKit.framework */; };
+		8A33F6BB1BE80D2B0012204D /* FBSDKLoginKit.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 8A33F6B91BE80D2B0012204D /* FBSDKLoginKit.framework */; };
+		8A33F6BD1BE80D370012204D /* FBSDKShareKit.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 8A33F6BC1BE80D370012204D /* FBSDKShareKit.framework */; };
+		8A33F6C11BE8165C0012204D /* TKALoginViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 8A33F6BF1BE8165C0012204D /* TKALoginViewController.m */; };
+		8A33F6C21BE8165C0012204D /* TKALoginViewController.xib in Resources */ = {isa = PBXBuildFile; fileRef = 8A33F6C01BE8165C0012204D /* TKALoginViewController.xib */; };
 		8A3638661BB6D83900702D47 /* UITableView+TKAExtension.m in Sources */ = {isa = PBXBuildFile; fileRef = 8A3638651BB6D83900702D47 /* UITableView+TKAExtension.m */; };
 		8A3638691BB6DA5200702D47 /* UINib+TKAExtension.m in Sources */ = {isa = PBXBuildFile; fileRef = 8A3638681BB6DA5200702D47 /* UINib+TKAExtension.m */; };
 		8A3638741BB6EF0800702D47 /* TKAUsers.m in Sources */ = {isa = PBXBuildFile; fileRef = 8A3638731BB6EF0800702D47 /* TKAUsers.m */; };
@@ -82,6 +87,12 @@
 		8A235D8B1BE25ADA009F2414 /* NSURL+TKAExtension.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = "NSURL+TKAExtension.m"; sourceTree = "<group>"; };
 		8A25F1671BD298BA00041058 /* TKAModel.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = TKAModel.h; sourceTree = "<group>"; };
 		8A25F1681BD298BA00041058 /* TKAModel.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = TKAModel.m; sourceTree = "<group>"; };
+		8A33F6B81BE80D2B0012204D /* FBSDKCoreKit.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = FBSDKCoreKit.framework; path = ../FacebookSDK/FBSDKCoreKit.framework; sourceTree = "<group>"; };
+		8A33F6B91BE80D2B0012204D /* FBSDKLoginKit.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = FBSDKLoginKit.framework; path = ../FacebookSDK/FBSDKLoginKit.framework; sourceTree = "<group>"; };
+		8A33F6BC1BE80D370012204D /* FBSDKShareKit.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = FBSDKShareKit.framework; path = ../FacebookSDK/FBSDKShareKit.framework; sourceTree = "<group>"; };
+		8A33F6BE1BE8165C0012204D /* TKALoginViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = TKALoginViewController.h; sourceTree = "<group>"; };
+		8A33F6BF1BE8165C0012204D /* TKALoginViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = TKALoginViewController.m; sourceTree = "<group>"; };
+		8A33F6C01BE8165C0012204D /* TKALoginViewController.xib */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.xib; path = TKALoginViewController.xib; sourceTree = "<group>"; };
 		8A3638641BB6D83900702D47 /* UITableView+TKAExtension.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = "UITableView+TKAExtension.h"; sourceTree = "<group>"; };
 		8A3638651BB6D83900702D47 /* UITableView+TKAExtension.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = "UITableView+TKAExtension.m"; sourceTree = "<group>"; };
 		8A3638671BB6DA5200702D47 /* UINib+TKAExtension.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = "UINib+TKAExtension.h"; sourceTree = "<group>"; };
@@ -161,6 +172,9 @@
 			isa = PBXFrameworksBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				8A33F6BB1BE80D2B0012204D /* FBSDKLoginKit.framework in Frameworks */,
+				8A33F6BA1BE80D2B0012204D /* FBSDKCoreKit.framework in Frameworks */,
+				8A33F6BD1BE80D370012204D /* FBSDKShareKit.framework in Frameworks */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -545,6 +559,9 @@
 		8ADA45451BE41D3A00B29EA8 /* TKALoginViewController */ = {
 			isa = PBXGroup;
 			children = (
+				8A33F6BE1BE8165C0012204D /* TKALoginViewController.h */,
+				8A33F6BF1BE8165C0012204D /* TKALoginViewController.m */,
+				8A33F6C01BE8165C0012204D /* TKALoginViewController.xib */,
 			);
 			path = TKALoginViewController;
 			sourceTree = "<group>";
@@ -696,6 +713,9 @@
 		C08E624FF0E0289DD105FE78 /* Frameworks */ = {
 			isa = PBXGroup;
 			children = (
+				8A33F6BC1BE80D370012204D /* FBSDKShareKit.framework */,
+				8A33F6B81BE80D2B0012204D /* FBSDKCoreKit.framework */,
+				8A33F6B91BE80D2B0012204D /* FBSDKLoginKit.framework */,
 				406304F163B6566C4D1B0BC9 /* libPods-IOSHomeWorkTests.a */,
 			);
 			name = Frameworks;
@@ -787,6 +807,7 @@
 				8AEC46471BA8655C00F6FC0D /* TKAViewController.xib in Resources */,
 				8AA02C061BC1A05C004B93DB /* TKAUserCell.xib in Resources */,
 				8A89867A1BDD541700F6E003 /* TKALoadingView.xib in Resources */,
+				8A33F6C21BE8165C0012204D /* TKALoginViewController.xib in Resources */,
 				8A6EF8DC1B41A1D400CABD97 /* Images.xcassets in Resources */,
 				8AA02C011BC19FBC004B93DB /* TKAUsersViewController.xib in Resources */,
 				8A6EF8D81B41A1D400CABD97 /* LaunchScreen.xib in Resources */,
@@ -866,6 +887,7 @@
 				8A3F5A9F1BBB3C4C00176831 /* TKAChangeModelOneIndex.m in Sources */,
 				8A7224B41BC4194B0062AE2E /* TKAChangeModel+UITableView.m in Sources */,
 				8AFA18461BDE9B3B00D45E21 /* TKAFileImageModel.m in Sources */,
+				8A33F6C11BE8165C0012204D /* TKALoginViewController.m in Sources */,
 				8AEC46671BA8926300F6FC0D /* NSString+TKAExtension.m in Sources */,
 				8AEC46461BA8655C00F6FC0D /* TKAViewController.m in Sources */,
 				8A6AE53C1BB9D64200C03250 /* NSIndexPath+TKAExtension.m in Sources */,
@@ -948,6 +970,7 @@
 				GCC_WARN_UNINITIALIZED_AUTOS = YES_AGGRESSIVE;
 				GCC_WARN_UNUSED_FUNCTION = YES;
 				GCC_WARN_UNUSED_VARIABLE = YES;
+				INFOPLIST_FILE = "<key>CFBundleURLTypes</key>\n<array>\n  <dict>\n  <key>CFBundleURLSchemes</key>\n  <array>\n    <string>fb1803448309882038</string>\n  </array>\n  </dict>\n</array>\n  <key>FacebookAppID</key>\n  <string>1803448309882038</string>\n  <key>FacebookDisplayName</key>\n<string>IOSHomeWork</string>";
 				IPHONEOS_DEPLOYMENT_TARGET = 8.3;
 				MTL_ENABLE_DEBUG_INFO = YES;
 				ONLY_ACTIVE_ARCH = YES;
@@ -985,6 +1008,7 @@
 				GCC_WARN_UNINITIALIZED_AUTOS = YES_AGGRESSIVE;
 				GCC_WARN_UNUSED_FUNCTION = YES;
 				GCC_WARN_UNUSED_VARIABLE = YES;
+				INFOPLIST_FILE = "<key>CFBundleURLTypes</key>\n<array>\n  <dict>\n  <key>CFBundleURLSchemes</key>\n  <array>\n    <string>fb1803448309882038</string>\n  </array>\n  </dict>\n</array>\n  <key>FacebookAppID</key>\n  <string>1803448309882038</string>\n  <key>FacebookDisplayName</key>\n<string>IOSHomeWork</string>";
 				IPHONEOS_DEPLOYMENT_TARGET = 8.3;
 				MTL_ENABLE_DEBUG_INFO = NO;
 				SDKROOT = iphoneos;
@@ -996,8 +1020,14 @@
 			isa = XCBuildConfiguration;
 			buildSettings = {
 				ASSETCATALOG_COMPILER_APPICON_NAME = AppIcon;
+				FRAMEWORK_SEARCH_PATHS = (
+					"$(inherited)",
+					"$(PROJECT_DIR)",
+					/Users/taisiya/Documents/FacebookSDK,
+				);
 				INFOPLIST_FILE = IOSHomeWork/Info.plist;
 				LD_RUNPATH_SEARCH_PATHS = "$(inherited) @executable_path/Frameworks";
+				New_Setting = "";
 				PRODUCT_NAME = "$(TARGET_NAME)";
 			};
 			name = Debug;
@@ -1006,8 +1036,14 @@
 			isa = XCBuildConfiguration;
 			buildSettings = {
 				ASSETCATALOG_COMPILER_APPICON_NAME = AppIcon;
+				FRAMEWORK_SEARCH_PATHS = (
+					"$(inherited)",
+					"$(PROJECT_DIR)",
+					/Users/taisiya/Documents/FacebookSDK,
+				);
 				INFOPLIST_FILE = IOSHomeWork/Info.plist;
 				LD_RUNPATH_SEARCH_PATHS = "$(inherited) @executable_path/Frameworks";
+				New_Setting = "";
 				PRODUCT_NAME = "$(TARGET_NAME)";
 			};
 			name = Release;
