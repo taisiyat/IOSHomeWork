@@ -13,18 +13,18 @@
 
 #import "TKAViewController.h"
 #import "TKAUsersViewController.h"
+#import "TKALoginViewController.h"
 #import "TKAUsers.h"
 
 #import "UIWindow+TKAExtension.h"
 #import "UIViewController+TKAExtension.h"
 
 @interface TKAAppDelegate ()
-@property (nonatomic, assign) TKAUsers *users;
+//@property (nonatomic, assign) TKAUsers *users;
 
 @end
 
 @implementation TKAAppDelegate
-
 
 - (BOOL)application:(UIApplication *)application didFinishLaunchingWithOptions:(NSDictionary *)launchOptions {
     [[FBSDKApplicationDelegate sharedInstance] application:application
@@ -33,13 +33,17 @@
     UIWindow *window = [UIWindow window];
     self.window = window;
     
-    TKAUsersViewController *controller = [TKAUsersViewController viewController];
-    UINavigationController *navController = [[UINavigationController alloc] initWithRootViewController:controller];
-    window.rootViewController = navController;
-    
-    TKAUsers *users = [TKAUsers users];
-    controller.users = users;
-    self.users = users;
+//    TKAUsersViewController *controller = [TKAUsersViewController viewController];
+//    UINavigationController *navController = [[UINavigationController alloc] initWithRootViewController:controller];
+//    window.rootViewController = navController;
+//    
+//    TKAUsers *users = [TKAUsers users];
+//    controller.users = users;
+//    self.users = users;
+ 
+    TKALoginViewController *controller = [TKALoginViewController viewController];
+    window.rootViewController = controller;
+
     [window makeKeyAndVisible];
     
     return YES;

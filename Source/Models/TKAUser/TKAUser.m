@@ -20,20 +20,9 @@ static NSString * const kTKAImageExtension   = @"jpg";
 static NSString * const kTKAKeyUser          = @"TKAKeyUser";
 static NSString * const kTKAURL2             = @"http://steelasophical.com/hello-world/1283614816-rasta1-png/";
 
-@interface TKAUser ()
-//@property (nonatomic, strong)   UIImage     *image;
-@property (nonatomic, strong)   TKAImageModel   *imageModel;
-//@property (nonatomic, readonly) NSString        *fileFolder;
-//@property (nonatomic, readonly) NSString        *filePath;
-//@property (nonatomic, readonly, getter=isFileExists) BOOL fileExists;
-
-@end
-
 @implementation TKAUser
 
-//@dynamic fileFolder;
-//@dynamic filePath;
-//@dynamic fileExists;
+@dynamic imageModel;
 
 #pragma mark -
 #pragma mark Class Method
@@ -63,28 +52,6 @@ static NSString * const kTKAURL2             = @"http://steelasophical.com/hello
 
 #pragma mark -
 #pragma mark Public
-
-//- (void)performLoading {
-//    TKASleep(kTKASleepTime);
-////    NSURL *url = [[NSBundle mainBundle] URLForResource:kTKAImageName
-////                                         withExtension:kTKAImageExtension];
-////    UIImage *image = [UIImage imageWithContentsOfFile:[url path]];
-////    self.image = image;
-//    self.imageModel = [TKAImageModel imageWithUrl:[NSURL URLWithString:kTKAURL2]];
-//    [self.imageModel load];
-//}
-
-//- (void)setupLoading {
- //   self.state = TKAModelWillLoad;
-//}
-//
-//- (void)finishLoading {
-//    TKAWeakifyVariable(self);
-//    TKAPerformBlockSyncOnMainQueue(^{
-//        TKAStrongifyVariable(self);
-//        self.state = self.imageModel ? TKAModelDidLoad : TKAModelDidFailLoading;
-//    });
-//}
 
 #pragma mark -
 #pragma mark NSCoding

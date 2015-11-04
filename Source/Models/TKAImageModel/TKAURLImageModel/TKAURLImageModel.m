@@ -73,7 +73,7 @@
 }
 
 - (NSURLSession *)session {
-    return [TKAURLImageModel sharedSession];
+    return [[self class] sharedSession];
 }
 
 - (void)setDownloadTask:(NSURLSessionDownloadTask *)downloadTask {
@@ -102,35 +102,33 @@
     self.downloadTask = nil;
 }
 
-- (void)dump {
-    self.state = TKAModelDidFailLoading;
-}
-
 #pragma mark -
 #pragma mark Private
 
 - (void)performLoadingWithURLWithCompletion:(void(^)(UIImage *image, id error))completion {
     NSURLRequest *request = [NSURLRequest requestWithURL:self.url];
+    id block = ^(NSURL *location, NSURLResponse *response, NSError *error) {
+        if (!error) {
+            NSFileManager *fileManager = [NSFileManager defaultManager];
+            NSURL *destination = [NSURL URLWithString:self.filePath];
+            [fileManager removeItemAtURL:destination error:NULL];
+            [fileManager copyItemAtURL:location toURL:destination error:&error];
+            
+            if (!error) {
+                [super performLoadingWithCompletion:completion];
+                
+                return;
+            } else {
+                [self deleteFromCache];
+                if (completion) {
+                    completion(nil, error);
+                }
+            }
+        }
+    };
+
     self.downloadTask = [self.session downloadTaskWithRequest:request
-                                            completionHandler:^(NSURL *location, NSURLResponse *response, NSError *error) {
-                                                if (!error) {
-                                                    NSFileManager *fileManager = [NSFileManager defaultManager];
-                                                    NSURL *destination = [NSURL URLWithString:self.filePath];
-                                                    [fileManager removeItemAtURL:destination error:NULL];
-                                                    [fileManager copyItemAtURL:location toURL:destination error:&error];
-                                                    
-                                                    if (!error) {
-                                                        [super performLoadingWithCompletion:completion];
-                                                        
-                                                        return;
-                                                    } else {
-                                                        [self deleteFromCache];
-                                                        if (completion) {
-                                                            completion(nil, error);
-                                                        }
-                                                    }
-                                                }
-                                            }];
+                                            completionHandler:block];
 }
 
 - (void)deleteFromCache {

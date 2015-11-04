@@ -18,9 +18,9 @@
 @property (nonatomic, readonly) NSURL   *url;
 
 + (instancetype)imageWithUrl:(NSURL *)url;
-//+ (TKACache *)sharedCache;
++ (TKACache *)sharedCache;
 
-//- (instancetype)initWithUrl:(NSURL *)url;
+- (instancetype)initWithUrl:(NSURL *)url;
 - (void)cancel;
 
 - (void)performLoadingWithCompletion:(void(^)(UIImage *image, id error))completion;

@@ -15,7 +15,6 @@
 
 @interface TKAUser : TKAModel <NSCoding>
 @property (nonatomic, copy)     NSString      *name;
-//@property (nonatomic, readonly) UIImage     *image;
 @property (nonatomic, readonly) TKAImageModel *imageModel;
 
 + (instancetype)user;
