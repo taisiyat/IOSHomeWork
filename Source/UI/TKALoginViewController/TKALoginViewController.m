@@ -10,35 +10,41 @@
 #import <FBSDKLoginKit/FBSDKLoginKit.h>
 
 #import "TKALoginViewController.h"
+#import "TKALoginView.h"
 
-@interface TKALoginViewController ()
+#import "TKAMacros.h"
 
-@end
+static NSString* kTKAAppId = @"11111111111";
+static NSString* kTKAUserEmail = @"11111111111";
+static NSString* kTKAUserID = @"11111111111";
+
+TKAViewControllerBaseViewProperty(TKALoginViewController, loginView, TKALoginView)
 
 @implementation TKALoginViewController
+
+#pragma mark -
+#pragma mark Initializations and Dealocations
+
+#pragma mark -
+#pragma mark View Lifecycle
 
 - (void)viewDidLoad {
     [super viewDidLoad];
     
-    FBSDKLoginButton *loginButton = [[FBSDKLoginButton alloc] init];
-    loginButton.center = self.view.center;
-    [self.view addSubview:loginButton];
-    // Do any additional setup after loading the view from its nib.
+//    _facebook = [[Facebook alloc] initWithAppId:kTKAAppId];
 }
 
 - (void)didReceiveMemoryWarning {
     [super didReceiveMemoryWarning];
-    // Dispose of any resources that can be recreated.
+
 }
 
-/*
-#pragma mark - Navigation
+#pragma mark -
+#pragma mark Interface Handling
 
-// In a storyboard-based application, you will often want to do a little preparation before navigation
-- (void)prepareForSegue:(UIStoryboardSegue *)segue sender:(id)sender {
-    // Get the new view controller using [segue destinationViewController].
-    // Pass the selected object to the new view controller.
+- (IBAction)onLoginButton:(id)sender {
+    self.loginView.loginButton.readPermissions =
+    @[@"public_profile", @"email", @"user_friends"];
 }
-*/
 
 @end

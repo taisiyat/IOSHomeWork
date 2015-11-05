@@ -48,6 +48,7 @@
 		8AA02C011BC19FBC004B93DB /* TKAUsersViewController.xib in Resources */ = {isa = PBXBuildFile; fileRef = 8AA02BFC1BC19FBC004B93DB /* TKAUsersViewController.xib */; };
 		8AA02C051BC1A05C004B93DB /* TKAUserCell.m in Sources */ = {isa = PBXBuildFile; fileRef = 8AA02C031BC1A05C004B93DB /* TKAUserCell.m */; };
 		8AA02C061BC1A05C004B93DB /* TKAUserCell.xib in Resources */ = {isa = PBXBuildFile; fileRef = 8AA02C041BC1A05C004B93DB /* TKAUserCell.xib */; };
+		8AA73DCB1BEA4C8700AC9472 /* TKALoginView.m in Sources */ = {isa = PBXBuildFile; fileRef = 8AA73DCA1BEA4C8700AC9472 /* TKALoginView.m */; };
 		8AEC46451BA8655C00F6FC0D /* TKAView.m in Sources */ = {isa = PBXBuildFile; fileRef = 8AEC46411BA8655C00F6FC0D /* TKAView.m */; };
 		8AEC46461BA8655C00F6FC0D /* TKAViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 8AEC46431BA8655C00F6FC0D /* TKAViewController.m */; };
 		8AEC46471BA8655C00F6FC0D /* TKAViewController.xib in Resources */ = {isa = PBXBuildFile; fileRef = 8AEC46441BA8655C00F6FC0D /* TKAViewController.xib */; };
@@ -147,6 +148,8 @@
 		8AA02C021BC1A05C004B93DB /* TKAUserCell.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = TKAUserCell.h; sourceTree = "<group>"; };
 		8AA02C031BC1A05C004B93DB /* TKAUserCell.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = TKAUserCell.m; sourceTree = "<group>"; };
 		8AA02C041BC1A05C004B93DB /* TKAUserCell.xib */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.xib; path = TKAUserCell.xib; sourceTree = "<group>"; };
+		8AA73DC91BEA4C8700AC9472 /* TKALoginView.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = TKALoginView.h; sourceTree = "<group>"; };
+		8AA73DCA1BEA4C8700AC9472 /* TKALoginView.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = TKALoginView.m; sourceTree = "<group>"; };
 		8AEC46401BA8655C00F6FC0D /* TKAView.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = TKAView.h; sourceTree = "<group>"; };
 		8AEC46411BA8655C00F6FC0D /* TKAView.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = TKAView.m; sourceTree = "<group>"; };
 		8AEC46421BA8655C00F6FC0D /* TKAViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = TKAViewController.h; sourceTree = "<group>"; };
@@ -457,6 +460,7 @@
 		8A6EF8D31B41A1D400CABD97 /* Source */ = {
 			isa = PBXGroup;
 			children = (
+				8ADA45461BE41EF300B29EA8 /* TKAContext */,
 				8AFC61691BA77B21001ACBA9 /* UI */,
 				8AFC61661BA77B15001ACBA9 /* Library */,
 				8AFC61681BA77B16001ACBA9 /* Models */,
@@ -543,6 +547,13 @@
 			path = TKAUsersCell;
 			sourceTree = "<group>";
 		};
+		8AA73DCC1BEA4CCD00AC9472 /* TKANavigationViewController */ = {
+			isa = PBXGroup;
+			children = (
+			);
+			path = TKANavigationViewController;
+			sourceTree = "<group>";
+		};
 		8ADA45431BE41D3A00B29EA8 /* TKAFriendDetailViewController */ = {
 			isa = PBXGroup;
 			children = (
@@ -563,6 +574,8 @@
 				8A33F6BE1BE8165C0012204D /* TKALoginViewController.h */,
 				8A33F6BF1BE8165C0012204D /* TKALoginViewController.m */,
 				8A33F6C01BE8165C0012204D /* TKALoginViewController.xib */,
+				8AA73DC91BEA4C8700AC9472 /* TKALoginView.h */,
+				8AA73DCA1BEA4C8700AC9472 /* TKALoginView.m */,
 			);
 			path = TKALoginViewController;
 			sourceTree = "<group>";
@@ -574,7 +587,8 @@
 				8ADA45481BE41EF300B29EA8 /* TKALoadingContext */,
 				8ADA45491BE41EF300B29EA8 /* TKALoginContext */,
 			);
-			path = TKAContext;
+			name = TKAContext;
+			path = Models/TKAContext;
 			sourceTree = "<group>";
 		};
 		8ADA45471BE41EF300B29EA8 /* TKABaseContext */ = {
@@ -596,14 +610,6 @@
 			children = (
 			);
 			path = TKALoginContext;
-			sourceTree = "<group>";
-		};
-		8ADA454A1BE41FA000B29EA8 /* TKANavigationViewController */ = {
-			isa = PBXGroup;
-			children = (
-			);
-			name = TKANavigationViewController;
-			path = TKALoginViewController/TKANavigationViewController;
 			sourceTree = "<group>";
 		};
 		8AEC463F1BA8655C00F6FC0D /* TKASquare */ = {
@@ -685,7 +691,6 @@
 		8AFC61681BA77B16001ACBA9 /* Models */ = {
 			isa = PBXGroup;
 			children = (
-				8ADA45461BE41EF300B29EA8 /* TKAContext */,
 				8A01090D1BD9856000DBF561 /* TKACache */,
 				8A0108F81BD9505400DBF561 /* TKAImageModel */,
 				8A25F1661BD2983900041058 /* TKAModel */,
@@ -701,7 +706,7 @@
 		8AFC61691BA77B21001ACBA9 /* UI */ = {
 			isa = PBXGroup;
 			children = (
-				8ADA454A1BE41FA000B29EA8 /* TKANavigationViewController */,
+				8AA73DCC1BEA4CCD00AC9472 /* TKANavigationViewController */,
 				8ADA45431BE41D3A00B29EA8 /* TKAFriendDetailViewController */,
 				8ADA45441BE41D3A00B29EA8 /* TKAFriendsViewController */,
 				8ADA45451BE41D3A00B29EA8 /* TKALoginViewController */,
@@ -917,6 +922,7 @@
 				8A3638691BB6DA5200702D47 /* UINib+TKAExtension.m in Sources */,
 				8A4AD5051BB13DC300837631 /* TKAUser.m in Sources */,
 				8A3F5A9F1BBB3C4C00176831 /* TKAChangeModelOneIndex.m in Sources */,
+				8AA73DCB1BEA4C8700AC9472 /* TKALoginView.m in Sources */,
 				8A7224B41BC4194B0062AE2E /* TKAChangeModel+UITableView.m in Sources */,
 				8AFA18461BDE9B3B00D45E21 /* TKAFileImageModel.m in Sources */,
 				8A33F6C11BE8165C0012204D /* TKALoginViewController.m in Sources */,

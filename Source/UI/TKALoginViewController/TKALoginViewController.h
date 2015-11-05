@@ -10,4 +10,6 @@
 
 @interface TKALoginViewController : UIViewController
 
+- (void)onLoginButton:(id)sender;
+
 @end
